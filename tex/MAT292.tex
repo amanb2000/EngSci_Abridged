@@ -1,0 +1,579 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{hyperref}
+
+\begin{document}
+\title{MAT292 Abridged}
+\author{Aman Bhargava}
+\date{September 2019}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+The textbook and lectures for this course offer a great comprehensive guide for the 
+methods of solving ODE's. The goal here is to give a very concise overview of the things you 
+need to know (NTK) to answer exam questions. Unlike
+some of our other courses, you don't need to be very intimately familiar with the derivations
+of everything in order to solve the problems (though it certainly doesn't hurt). Think of this 
+as a really good cheat sheet.
+
+\chapter{Qualitative Things and Definitions}
+\section{Definitions}
+\begin{enumerate}
+\item \textbf{Differential Equation: } Any equation that contains a differential of dependent variable(s) with respect to any independent variable(s)
+\item \textbf{Order: } The order of the highest derivative present.
+\item \textbf{Autonomous: } When the definition of the $\frac{dy}{dt}$ doesn't contain $t$
+\item \textbf{ODE and PDE: } Ordinary derivatives or partial derivatives. 
+\item \textbf{Linear Differential Equations: } $n$th order Linear ODE is of the form: $$\sum a_i(t)y^{(i)} = 0$$
+\item \textbf{Homogenous: } if the $0$th element of the above sum has $a_0(t) = 0$ for all $t$. 
+\end{enumerate}
+
+
+\section{Qualitative Analytic Methods to Know}
+\begin{enumerate}
+\item Phase lines
+\item Slope fields
+\end{enumerate}
+
+\section{Types of Equilibrium}
+\begin{enumerate}
+\item Asymptotic stable equilibrium 
+\item Unstable equilibrium 
+\item Semistable equilibirium
+\end{enumerate}
+
+\chapter{1st Order ODE's}
+\section{Separable 1st Order ODE's}
+If you can write the ODE as: $$\frac{dy}{dx} = p(x)q(y)$$
+
+Then you can put $p(x)$ with $dx$ on one side and $q(y)$ with  $dy$ on the other and 
+integrate them both so solve the ODE.
+
+\section{Method of Integrating Factors}
+This is used to solve ODE's that can be put into the form 
+$$\frac{dy}{dt} + p(t)*y = g(t)$$
+
+The chain rule can be written as: $\int (f'(x)g(x) + f(x)g'(x)) dx =  f(x)g(x)$
+
+We can use an \textbf{integrating factor} equivalent to $e^{\int p(t) dt}$ to multiply
+both sides and arrive at a form that can be integrated with ease using the reverse chain 
+rule.
+
+\section{Exact Equations}
+If the equation is of the form $$M(x, y) + N(x, y) \frac{dy}{dx} = 0$$
+and $$M_y(x, y) = N_x(x, y)$$ 
+then $\exists$ a function $f$ satistfying $$f_x(x, y) = M(x, y); f_y(x, y) = N(x, y)$$
+
+\paragraph{The solution: } $f(x, y) = C$ where $C$ is an arbitrary constant.
+
+\section{Modeling with First Order Equations}
+These are some vague tips on how to solve these types of problems from textbook section 
+2.3
+\begin{itemize}
+\item To \textbf{create} the equation, state physical principles
+\item To \textbf{solve}, solve the equation and/or find out as much as you can about the nature of the solution.
+\item Try \textbf{comparing} the solution/equation to the physical phenomenon to `check' your work.
+\end{itemize}
+
+\section{Non-Linear vs. Linear DE's}
+\paragraph{Theorem on Uniqueness of 1st Order Solutions}
+$$y' + p(t)y = g(t)$$
+There exists a unique solution $y=\Phi(t)$ for each starting point $(y_0, t_0)$ if 
+$p$, $g$ are continuous on the given interval.
+
+\section{Population Dynamcis with Autonomous Equations}
+\paragraph{Autonomous: } $\frac{dy}{dt} = f(y)$
+
+\subsection{Simple Exponential}
+$\frac{dy}{dt} = ry$
+Problem: doesn't take into account the upper bound for population/sustainability.
+
+\subsection{Logistic equation}
+$$\frac{dy}{dt} = (r-ay)y$$
+Equivalent form: 
+$$\frac{dy}{dt} = r(1 - \frac{y}{k})y$$
+$f$ is the \textit{intrinsic growth rate}.
+
+
+
+
+
+
+
+\chapter{Systems of Two 1st Order DE's}
+\section{Set Up}
+Your first goal is to get the system in the form $$\frac{d \pmb{u}}{dt} = \pmb{Ku + b}$$
+Where $\pmb{K}$ is a 2 by 2 matrix, $\pmb{u}$ is your vector of values you want to 
+predict, and $\pmb{b}$ is a $2$-long vector of constants.
+
+\paragraph{More generally, } the equation is of the type 
+$$\frac{d\pmb{x}}{dt} = \pmb{P}(t)x + \pmb{g}(t)$$
+
+Called a \textbf{first order linear system of two dimensions}. If $\pmb{g}(t) = \pmb{0} \forall t$ 
+then it is called \textbf{homogenous}, else \textbf{non-homogenous}. We let $x$ be composed
+of values $$\pmb{x} = \begin{bmatrix}
+                           x \\
+                           y \\
+                      \end{bmatrix}$$
+
+\section{Existence and Uniqueness of Solutions}
+\paragraph{Theorem: } $\exists$ unique solution to $$\frac{d\pmb{x}}{dt} = \pmb{P}(t)x + \pmb{g}(t)$$ 
+so long as the functions $\pmb{P}(t)$ exist and are continuous on the interval $I$ in equestion.
+
+\subsection{Linear Autonomous Systems}
+If the right side doesn't depend on $t$, it's autonomous. In this case, the autonomous 
+version looks (familiarly) like: $$\frac{d\pmb{x}}{dt} = \pmb{A}x + \pmb{b}$$
+
+\paragraph{Equilibrium points} arise when $\pmb{A}x = -\pmb{b}$
+
+\section{Solving}
+\subsection{General Solution}
+We start with $y' = \pmb{A}y+b$
+\begin{itemize}
+\item Find eigen values $\lambda$ s.t. $det(A-I\lambda) = 0$
+\item Find eigen vectors $v$ s.t. $(A-I\lambda)v = 0$
+\item Enter and simplify $y(t) = C_1 v_1 e^{\lambda_1 t} + C_2 v_2 e^{\lambda_2 t}$
+\end{itemize}
+\paragraph{Converting to homogenous equation: } Let $y_{eq}$ be the equilibrium value of $y$ that 
+can be found when $y' = 0 = Ay + b$. 
+$$y_{eq} + \bar{y} = y$$ and $y_{eq}$ is the solution to $\bar{y}' = A\bar{y}$.
+
+
+\subsection{Special Case 1: Repeated Eigen Value}
+Start in the same fashion as above. You will easily be able to find the eigen value and 
+at least one eigen vector. Then, the path diverges:
+
+\paragraph{Case 1: Another can easily be found - } Now you find your $v_2$ and proceed.
+
+\paragraph{Case 2: Another cannot easily be found - } You must use the following formula 
+to find your second vector if this is the case:
+$$(A-I\lambda)v_2 = v_1$$
+This is known as the "general" eigen vector.
+
+\subsubsection{Final Form}
+Your final form for this case is going to be rather different than the others:
+$$x = C_1e^{\lambda_1 t}tv_1 + C_2e^{\lambda_2 t}v_2$$
+
+\subsection{Special Case 2: Two Complex Eigen Values}
+
+\chapter{Numerical Methods}
+$$\frac{dy}{dt} = f(t, y)$$
+\section{Euler's Method}
+We start with a first order ODE. Let us define a fixed step $\Delta t$.
+$$y_{n+1} = y_n + \Delta t(f(t_n, y_n))$$
+Error = $|y(t_n)-y_n| \approx \Delta t$
+
+\subsection{Basic Idea: Integrate The ODE}
+$$\int_{t_n}^{t_n+1} \frac{dy}{dt} dt = \int_{t_n}^{t_n+1} f(t, y(t)) dt$$
+Euler's method makes the following approximation.
+$$\int_{t_n}^{t_n+1} f(t, y(t)) dt \approx \Delta t f(t_n, y_n)$$
+But we can do better.
+
+\subsubsection{Mean Value Theorem for Integrals}
+If y is continuous on $[a, b]$ then $\exists c \in (a, b)$ so that 
+$$\frac{1}{b-a} \int_a^b g(t) dt = g(c)$$
+ 
+Euler's method would just assume that $g(c)$ is at the far left hand side of the 
+Riemann sum, so we can improve upon this! If we can guess $c$ more accurately, 
+our final answer will be a lot better.
+
+\paragraph{Since $c$} is more likely to be inside the interval $[t_n, t_{n+1}$, we could 
+try the following estimations to improve upon Euler's method. We will now try \textbf{sampling}.
+
+\section{Improved Euler Method}
+Let $g(t) = f(t, y(t))$. We literally use that riemann sum trapezoidal rule for this approximation.
+
+$$y_{n+1}-y_n \approx \frac{\Delta t}{2}(f(t_n, y_n)+f(t_{n+1}, y_{n+1}))$$
+Where we make the approximation for $y_{n+1}$ as
+$$y_{n+1} \approx y_n + \Delta t f(t_{n+1}, y_n)$$
+
+\paragraph{Steps: }
+\begin{itemize}
+\item Evaluate $K_1 = f(t_n, y_n)$
+\item Predict $u_{n+1} = y_n + \Delta t K_1$
+\item Evaluate $K_2 = f(t_{n+1}, u_{n+1})$
+\item Update $u_{n+1} = u_n + \Delta t \frac{k_1+k_2}{2}$
+\end{itemize}
+
+This method is consider \textbf{second order}, so $$|y(t_n)-y_n| \approx C(\Delta t)^2$$ (global error). 
+
+\paragraph{The expense } of a numerical method is roughly the \textbf{number of function calls to $f()$}. 
+Therefore, improved Euler's method comes at the cost of one more function evaluation of $f()$. 
+
+\section{Runge Kutta Method}
+Modern workhorse of solving ODE's. It's 4th order, so requires 4 function $f$ calls.
+
+\paragraph{Steps}
+\begin{itemize}
+\item $k_1 = f(t_n, y_n)$
+\item $u_n = y_n + \frac{\Delta t}{2} k_1$ (half step)
+\item $k_2 = f(t_n + \frac{\Delta t}{2}, u_n$
+\item $v_n = y_n + \frac{\Delta t}{2} k_2$
+\item $k_3 = f(t_n+\frac{\Delta t}{2}, v_n$
+\item $w_n = y_n + \Delta t k_3$
+\item $k_{-1} = f(t_{n+1}, w_n$
+\item $y_{n+1} = y_n + \Delta t(\frac{k_1}{6}+\frac{k_2}{3}+\frac{k_3}{3}+\frac{k_4}{6}$
+\end{itemize}
+
+\section{Above and Beyond 4th Order}
+If we can just increase our accuracy by adding more functional evaluations, then why can't we just keep on 
+adding function evaluations and increasing the order?
+
+\begin{tabular}{l|llllllllll}
+\textbf{Order} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\hline
+\textbf{Min Function Evaluations} & 1 & 2 & 3 & 4 & \textbf{6} & 7 & \textbf{9} & 11 & 14 & ? \\
+\end{tabular}
+
+Answer: Past a 4 evaluations, it's not really worth while.
+
+\chapter{Systems of First-Order Equations}
+\section{Theory of First-Order Linear Systems}
+\paragraph{$n\times n$ Linear System: } $$\vec{x}' = \pmb{P}(t)\vec{x} + \vec{g}(t)$$
+\paragraph{Existence and Uniqueness Theorem: } If $\pmb{P},\vec{g}$ are continuous on $[a, b]$, there exists unique $\vec{x}(t)$ for the IVP. 
+
+For constant $n\times n $ matrix, we use $\pmb{A} = \pmb{P}(t)$. 
+
+\paragraph{SUPERPOSITION: } For linear systems, any linear combination of solutions is another solution. 
+
+\section{Wronskians}
+$$W = W[x_1,x_2,..., x_n](t) = det(\pmb{X}(t))$$
+Where $\pmb{X}(t)$ is an $n\times n$ matrix with column vectors being solutions to the problem. 
+
+\paragraph{THEOREM: } If each column vector $\vec{x}(t)$ solution is linearly independent, then $W[x_1, ..., x_n] \neq 0$ for all time in the 
+given interval. If $W(t) = 0$, that tells us that the solutions are not linearly independent.
+
+\paragraph{THEOREM: } There exists at least one funadmental set of solutions for all linear systems. 
+
+\section{Fundamental Matrices}
+If $\{\vec{x}_1(t), \vec{x}_2(t), ..., \vec{x}_n(t)\}$ are solutions to $\vec{x}' = \pmb{P}(t)\vec{x}$ then the \textbf{FUNDAMENTAL MATRIX} is 
+
+$$\pmb{X}(t) = [\vec{x}_1(t), ..., \vec{x}_n(t)]$$
+\begin{enumerate}
+\item It is invertible
+\item Any solution to the IVP can be written as $\vec{x}(t) = \pmb{X}(t)\vec{c}$ where $\vec{c} \in \mathbb{R}^n$. 
+\item $\pmb{X}' = \pmb{P}(t)\pmb{X}$
+\end{enumerate}
+
+\section{Matrix Exponential}
+Motivation: For $x' = ax$, the solution is $x = x_0 e^{at}$. What's the equivalent to $e^{at}$ for matrices? 
+\paragraph{Definition of Matrix Exponential: } $$e^{\pmb{A}t} = \sum_{k=0}^{\infty}\pmb{A}^k\frac{t^k}{k!}$$
+That's not terribly useful, so we dive deeper. \textbf{THEOREM: } 
+
+$$e^{\pmb{A}t} = \pmb{\Phi(t)}$$
+
+Where $\pmb{\Phi(t)} = \pmb{X}(t)\pmb{X}^{-1}(t_0)$ such that $\pmb{\Phi(t)} = \pmb{I}$ at $t = t_0$. In essence, it's a 
+special fundamental matrix. 
+
+\paragraph{Properties: } for $\pmb{A}, \pmb{B} \in \mathbb{R}^{n\times n}$:   
+\begin{enumerate}
+\item $e^{A(t + \tau)} = e^{At}e^{A\tau}$
+\item $Ae^{At} = e^{At}A$
+\item $(e^{At})^{-1} = e^{-At}$
+\item $e^{(A+B)t} = e^{At + Bt}$ it $AB = BA$
+\end{enumerate}
+
+\subsection{Constructing Matrix Exponential}
+Let $[\vec{x}_1(t), ..., \vec{x}_n(t)] = \pmb{X}(t)$ be a fundamental set of solutions. Then $$e^{At} = \pmb{X}(t)\pmb{X}^-1(t_0)$$
+
+\paragraph{When A is non-defective } (i.e. has complete set of eigen values and is diagonalizable): 
+
+$$X(t) = [e^{\lambda_1 t}V_1 + ... + e^{\lambda_n t}V_n]$$
+
+$$\Phi(t) = \pmb{I}[e^{\lambda_1 t}, e^{\lambda_2 t}, ..., e^{\lambda_n t}]$$
+
+
+\chapter{Second-Order Linear Equations}
+These equations combine $t, y, y', y''$: $$y'' = f(t, y, y')$$ Initial conditions are specified as $y(0), y'(0)$. 
+
+\paragraph{Linearity: } If and only if it is of the form $y'' + p(t)y' + q(t)y = g(t)$. 
+\paragraph{Homogenous: } If $g(t) = 0$ for all $t$ in the interval.
+\paragraph{Constant Coefficients: } $ay'' + by' + cy = g(t)$
+
+\section{Dynamical System Formulation}
+We can convert this into a first-order system by stating: 
+\begin{enumerate}
+\item $x'_1 = x2$
+\item $x'_2 = f(t, x1, x2)$
+\end{enumerate}
+Where $x_1 = y$, and $x_2 = y'$. In vector notation: 
+
+$$\vec{x}' = \vec{f}(t, x_1, x_2) = [x_2, f(t, x_1, x_2)$$
+
+\section{Theory of Second Order Linear Homogenous Systems}
+\paragraph{Existence: } There exists a solution for $y'' + p(t)y' + q(t)y = g(t)$ as long as $p, q, g$ are cts. 
+
+\subsection{Abel's Theorem}
+Let $\vec{x}' = \pmb{P}(t)\vec{x}$. Then the Wronskian $$W(t) = c[\exp(\int tr(\pmb(P)(t)))dt]$$
+Where the trace is the sum of the diagonal. 
+
+\section{Linear Homogenouse Equations with Constant Coefficients}
+$$ay'' + by' + cy = 0$$
+$$\vec{x}' = \pmb{A}\vec{x} = \begin{bmatrix}
+0 & 1 \\
+\frac{-c}{a} & \frac{-b}{a} \notag
+\end{bmatrix}
+\vec{x}
+$$
+
+\subsection{Solution}
+$$\vec{x} = \sum e^{\lambda_n t}\vec{V}_n$$
+\begin{enumerate}
+\item Find eigen values of $\pmb{A}$. 
+\item Vector $V_n$ is $$\begin{bmatrix}
+1 \\
+\lambda \\
+\end{bmatrix}$$
+\end{enumerate}
+
+\subsection{Phase Portraits}
+\begin{itemize}
+\item Real + Negative $\to $ Asymmetrically stable.
+\item Real + Positive $\to $ Asymmetrically unstable.
+\item Complex + Negative $\to $ Stable spiral in.
+\item Complex + Positive $\to $ Unstable spiral out.
+\end{itemize}
+\textbf{ALWAYS CLOCKWISE}. 
+
+\section{Mechanical and Electrical Vibration}
+Pretty much just what we did in physics.
+
+\section{Method of Undetermined Coefficients}
+$$y'' + y' + y = f(t)$$
+This can be applied when $f(t)$ is one of the following: 
+\begin{enumerate}
+\item $f(t) = e^{st}$: Try $y_p = ae^{st}$
+\item $f(t) = \text{polynomial}^n$: Try $y_p = a_n t^n + a_{n-1}t^{n-1} + ...$
+\item $f(t) = \sin t$: Try $y_p = c_1\cos(t) + c_2\sin(t)$
+\item $f(t) = t\sin t$: Try $y_p = (a+bt)\cos(t) + (c+dt)\sin(t)$
+\end{enumerate}
+\subsection{Resonance}
+The one situation that breaks the system is $y'' - y = e^t$. We might try $y_p = ae^t$, but that will cancel out no matter what! 
+This is called \textbf{resonance}. 
+
+To get around this, we add in a $t$ term: $y_p = tae^t$
+
+\section{Variation of Parameters}
+$$y'' + B(t)y' + C(t)y = f(t)$$
+First we must find two null solutions $y_1(t), y_2(t)$ that solve $y'' + by' + cy = 0$. Our final solution will be of the form: 
+
+$$y(t) = c_1(t)y_1(t) = c_2(t)y_2(t)$$
+
+Where $c_1, c_2$ are ``varying parameters''. When we plug in the hypothesized $y(t)$, we get
+
+$$c_1' y_1 + c_2' y_2 = 0$$
+
+$$c_1' y_1' + c_2' y_2' = f(t)$$
+
+From these two, we can solve for $c_1'$ and $c_2'$. Then: 
+
+$$y(t) = y_1(t) \int_0^t \frac{(-y_2)f(t)}{W(t)} dt + y_2(t) \int_0^t \frac{y_1(t)f(t)}{W(t)} dt$$
+
+Where $W(t) = \det \begin{vmatrix}
+y_1 & y_2 \\
+y_1' & y_2' \notag
+\end{vmatrix}$
+
+
+\chapter{The Laplace Transform}
+The value-add of the Laplace trasnform is that it lets you convert an ODE into a different form, solve that different form,
+then convert back.
+\section{Definition and Properties}
+$$\mathcal{L}\{f(t)\} = F(S) = \int_0^{\infty} e^{-st} f(t)dt$$
+
+\subsection{Linearity}
+$$\mathcal{L}\{ c_1f_1 + c_2f_2\} = c_1\mathcal{L}\{ f_1 \} + c_2 \mathcal{L}\{ f_2 \}$$
+
+\subsection{Exponential Order}
+\paragraph{IF } $|f(t)| \leq Ke^{at}$ as $t\to\infty$ for some $K, a \in \mathbb{R}$ it is of exponential order. 
+
+\subsection{Existence of $\mathcal{L}\{ f \}$}
+\paragraph{CONDITION I: } The function must be piecewise continuous.
+\paragraph{CONDITION II: } The function must be of exponential order. 
+
+If these two hold, the Laplace transform is defined and approaches zero as $s\to\infty$.
+
+\section{Properties of Laplace Transform}
+\begin{enumerate}
+\item If $c$ is a constant then $$\mathcal{L}\{ e^{ct}f(t) \} \to F(s-c)$$
+\item Derivatives of $f(t)$: 
+% $$\mathcal{L}\{ f'(t) \} \to sF(s) - f(0)$$
+% $$\mathcal{L}\{ f''(t) \}  \to s^2 F(s) - sf(0)-f'(0)$$
+$$\mathcal{L}\{ f^{(n)}(t) \} \to s^n \mathcal{L}\{ f(t) \} + s^{n-1} f(0) + ... + sf^{(n-2)}(0) + f^{(n-1)}(0)$$
+\item Multiplying by powers of $t$: 
+$$\mathcal{L}\{ t^n f(t) \} \to (-1^n)F^{(n)}(s)$$
+$$\mathcal{L}\{ t^n \} \to \frac{n!}{s^{n+1}}(-1)^n$$
+\end{enumerate}
+
+\section{Inverse Laplace Transform}
+$$f = \mathcal{L}^{-1}\{ F(s) \}$$
+This is usually a 1-1 correspondence, so we use a lookup table. 
+
+\subsection{Partial Fractions}
+\begin{enumerate}
+\item Factor the denominator
+\item Write in terms of sums of $\frac{X}{factored term}$
+\item Solve for coefficients of $X$ terms.
+\item Use linearity of $\mathcal{L}^-1\{  \}$ to solve for $f(t)$.
+\end{enumerate}
+
+\paragraph{Rules for different types of factored denominators: } 
+\begin{itemize}
+\item Single linear roots: $\frac{A}{s - c_1}$
+\item Repeated linear roots: $\frac{A}{s - c_1} + \frac{B}{(s-c_1)^2} + ... + \frac{Z}{(s-c_1)^k}$
+\item Quadratic roots: $\frac{A + Bs}{s^2 + c_1s + c_2}$
+\end{itemize}
+
+\section{Solving ODE's with $\mathcal{L} \{\}$}
+\paragraph{Steps: } 
+\begin{enumerate}
+\item Convert to $F(s), Y(s)$ space with $$\mathcal{L} \{\}$$
+\item Solve for $Y(s)$ in terms of $s$.
+\item Solve for $\mathcal{L}^{-1} \{Y(s)\}$
+\end{enumerate}
+
+\subsection{Characteristic Polynomial}
+Let $$ay'' + by' + cy = f(t),\,\,\,\,\, y(0) = 0,\,y'(0) = 0$$
+If we let $Z(s) = as^2 + bs + c$:
+$$Y(s) = \frac{(as + b)y(0) + ay'(0)}{Z(s)} + \frac{F(s)}{Z(s)}$$
+
+In the general case, if $Z(s) = \sum_{n=0}^{k} a_ns^n$:
+$$Y(s) = \frac{ [\sum_{n=1}^m a_n s^{n-1}] y(0) + ... + [a_ns + a_{n-1}]y^{n-2}(0) + a_n y^{(n-1)}(0) }{Z(s)} + \frac{F(s)}{Z(s)}$$
+
+\subsection{Systems of Differential Equations}
+$$\vec{y}' = \pmb{A}\vec{y} + \vec{f}(t)$$ with $\vec{y}(0) = \vec{y}_0$.
+
+We then (1) Take $\mathcal{L} \{\}$ of both sides and (2) re-arrange to find:
+$$(s\pmb{I} - \pmb{A})\vec{Y}(s) = \vec{y}_0 + \vec{F}(s)$$
+\begin{itemize}
+\item $\vec{Y}(s)$ is just each function in $\vec{y}(t)$ run through laplace transform.
+\item $\vec{F}(s)$ is just each function in $\vec{f}(t)$ run through laplace transform.
+\end{itemize}
+
+\paragraph{Therefore: } 
+$$\vec{Y}(s) = (s\pmb{I} - \pmb{A})^{-1} \vec{y}_0 + (s\pmb{I} - \pmb{A})^{-1}\vec{F}(s) $$
+
+\section{Discontinuous and Periodic Functions}
+\subsection{Heaviside function}
+(a.k.a. unit step function) is $u(t)$:
+\[ u(t) =
+\begin{cases}
+0 & \text{if } t < 0 \\
+1 & \text{if } t \geq 0
+\end{cases}
+\] 
+
+\[ u_c(t) =
+\begin{cases}
+0 & \text{if } t < c \\
+1 & \text{if } t \geq c
+\end{cases}
+\] 
+
+\[ u_{cd}(t) =
+\begin{cases}
+0 & \text{if } t < c \text{ or } t > d \\
+1 & \text{if } c \leq t < d
+\end{cases}
+\] 
+
+\[
+u_{cd} = u_c(t) - u_d(t)
+\]
+
+
+\paragraph{Laplace Transforms of Heaviside functions: } 
+$$\mathcal{L}\{ u_c(t) \} \to \frac{e^{-cs}}{s}$$
+$$\mathcal{L}\{ u_{cd}(t) \} = \mathcal{L}\{ u_c(t) - u_d(t) \} \to \frac{e^{-cs} - e^{-ds}}{s}$$
+
+\subsection{Time-Shifted Functions}
+Consider $y = g(t) = 
+\begin{cases}
+0 & \text{if } t < c \\ 
+f(t-c) & \text{if } t \geq c
+\end{cases}$. Therefore $g(t) = u_c(t)f(t-c)$
+
+$$\therefore \mathcal{L}\{ u_c(t)f(t-c) \} \to e^-cs\mathcal{L}\{ f(t) \}$$
+$$\therefore \mathcal{L}^{(-1)}\{ e^{-cs} F(s) \} \to u_c(t)f(t-c)$$
+
+
+\subsection{Periodic Functions}
+\paragraph{DEFINITION: } $f(t+T) = f(t) \forall t \in \mathbb{R}, T \in \mathbb{R} $
+
+\paragraph{WINDOW FUNCTION: } $f_T(t) = f(t)[1-u_T(t)$. It corresponds the first period then zeros everywhere else. 
+The laplace transform is understandably simple $$\mathcal{L}\{f_T(t)\} \to \int_0^T e^{-st}f(t)dt$$
+
+\paragraph{Laplace Transform of Periodic Functions: } $$F(s) = \frac{F_T(s)}{1-e^{-sT}}$$
+
+\section{Discontinuous Forcing Functions}
+$ay'' + by' + cy = g(t)$ still has the same process for solving with Laplace transforms as before, even with a discontinuous forcing function.
+
+\subsection{Impulse Functions}
+These functions show a forcing function that is zero everywhere other than in $[t, t+\epsilon]$, and is very large in the non-zero range. 
+$$I(\epsilon) = \int_{t_0}^{t_0+\epsilon} g(t) dt$$
+After the forcing, the momentum of the system is $I$. We define $\delta_{\epsilon}(t) = \frac{u_0(t)-u_{\epsilon}(t)}{\epsilon}$ so that 
+$$g(t) = I_0\delta_{\epsilon}(t)$$
+
+As $\epsilon \to 0$, we get instantaneous \textbf{unit impulse function} $\delta(t)$. The properties are as follows:
+\begin{itemize}
+\item $\delta(t-t_0) = \lim_{\epsilon \to 0} \delta_{\epsilon}(t-t_0)$
+\item $int_a^b f(t)\delta(t-t_0) dt = f(t_0)$
+\item $\mathcal{L}\{\delta(t-t_0)\} \to e^{-st_0}$
+\item $\mathcal{L}\{\delta(t)\} \to 1$
+\item $\delta(t-t_0) = \frac{d}{dt} u(t-t_0)$
+\end{itemize}
+
+\section{Convolution Integrals}
+\paragraph{Definition: } $$f * g = h(t) = \int_0^t f(t-\tau)g(\tau)d\tau$$
+
+\subsection{Convolution Properties}
+\begin{enumerate}
+\item $f*g = g*f$
+\item $f*(g_1 + g_2) = f*g_1 + f*g_2$
+\item $(f*g)*h = f*(g*h)$
+\item $f*0 = 0$
+\end{enumerate}
+
+\subsection{Convolution Theorem}
+Let $F(s) = \mathcal{L}\{f(t)\}$, $G(s) = \mathcal{L}\{g(t)\}$. If $$H(s) = F(s)G(s) = \mathcal{L}\{h(t)\}$$ 
+then $$h(t) = f*g = \int_0^t f(t-\tau)g(\tau) d\tau$$
+
+\subsection{Free and Forced Response}
+If we try solving $ay'' + by' + cy = g(t)$ with $y_0, y_1=y'(0)$ we find that the laplace transformed solution is: 
+$$
+Y(s) = H(s)[(as+b)y_0 + ay_1]+H(s)G(s)
+$$
+where $H(s) = \frac{1}{Z(s)} = \frac{1}{as^2 + bs + c}$. Then, in the time domain, we get: 
+$$
+y(t) = \mathcal{L}^{-1}\{H(s)[(as+b)y_0 + ay_1]\} + \int_0^1 h(t-\tau)g(\tau)d\tau
+$$
+
+On the right, the \textbf{first term} is the solution to $ay'' + by' + cy = 0$. It is the \textbf{FREE RESPONSE}. 
+
+Meanwhile, the second term is the \textbf{forced response}. 
+
+\paragraph{In summary: } Total response = free + forced
+$$Y(s) = H(s)[(as+b)y_0 + ay_1] + H(s)G(s)$$
+$$y(t) = \alpha_1y_1(t) + \alpha_2y_2(t) + \int_0^t h(t-\tau)g(\tau)d\tau$$
+
+\paragraph{Transfer function: } Function describing ratio of forced response to free response. In this case, it is $H(t)$. It has 
+all the characteristics of the system. 
+
+$h(t)$ is also called the \textbf{impulse response} because it is the response when an impulse is used so that $G(s) = 1$. 
+
+$y_g(t) = h(t)*g(t)$ is, therefore, the forced response in the time domain while $Y_g(s) = H(s)*G(s)$ is the forced response in the s-domain. 
+
+\paragraph{How to get system response in the time domain: } 
+\begin{enumerate}
+\item Determine $H(s)$
+\item Find $G(s)$
+\item Construct $Y_g(s) = H(s)G(s)$
+\item Convert to the time-domain with $\mathcal{L}^{-1}(Y_g(s))$
+\end{enumerate}
+
+
+\end{document}

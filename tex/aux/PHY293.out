@@ -1,0 +1,68 @@
+\BOOKMARK [1][-]{section.0.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Simple Harmonic Oscillators \(SHO's\)}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Set Up}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{ODE and Solution}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Dampened Harmonic Oscillators \(DHO's\)}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Set Up}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{ODE and Solutions}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.1}{General Solution}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{Regieme 1: Underdampened}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.3}{Regieme 2: Heavily Dampened}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.4}{Regieme 3: Critically Dampened}{section.2.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Energy}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.3.1}{Underdampened Energy}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.2}{Critical and Overdampened Energy}{section.2.3}% 14
+\BOOKMARK [1][-]{section.2.4}{Q-Factor}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Forced Oscillators}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Equation of Motion ODE}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{Solution: Undamped Forced Oscillator}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{= 0}{section.3.2}% 19
+\BOOKMARK [1][-]{section.3.3}{Solution: Forced Damped Oscillators}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Transient Response}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{Power in FDHO's}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.5.1}{Average Power Per Cycle}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.2}{Power vs. }{section.3.5}% 24
+\BOOKMARK [0][-]{chapter.4}{Coupled Oscillators}{}% 25
+\BOOKMARK [1][-]{subsection.4.0.1}{How to Solve Coupled Systems}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.0.2}{Review: Results from Linear Algebra}{subsection.4.0.1}% 27
+\BOOKMARK [0][-]{chapter.5}{Standing Waves}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Expectations and Takeaways}{chapter.5}% 29
+\BOOKMARK [1][-]{section.5.2}{The Taut String}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.3}{Solution to Wave Equation}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.3.1}{Boundary Conditions}{section.5.3}% 32
+\BOOKMARK [2][-]{subsection.5.3.2}{Final Solution}{section.5.3}% 33
+\BOOKMARK [2][-]{subsection.5.3.3}{Surrounding Math}{section.5.3}% 34
+\BOOKMARK [2][-]{subsection.5.3.4}{Energy Considerations}{section.5.3}% 35
+\BOOKMARK [0][-]{chapter.6}{Travelling Waves}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Energy Considerations}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Power Considerations}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{Reflection and Transmission}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.4}{travelling Waves in Multiple Dimensions}{chapter.6}% 40
+\BOOKMARK [0][-]{chapter.7}{Dispersion}{}% 41
+\BOOKMARK [1][-]{section.7.1}{Example of Dispersive Waves}{chapter.7}% 42
+\BOOKMARK [0][-]{chapter.8}{Special Relativity}{}% 43
+\BOOKMARK [1][-]{section.8.1}{Introduction}{chapter.8}% 44
+\BOOKMARK [1][-]{section.8.2}{Formulae}{chapter.8}% 45
+\BOOKMARK [2][-]{subsection.8.2.1}{Time Dilation}{section.8.2}% 46
+\BOOKMARK [2][-]{subsection.8.2.2}{Length Contraction}{section.8.2}% 47
+\BOOKMARK [2][-]{subsection.8.2.3}{Relativstic Events: Location and Time}{section.8.2}% 48
+\BOOKMARK [2][-]{subsection.8.2.4}{Relativistic Energy and Momentum}{section.8.2}% 49
+\BOOKMARK [2][-]{subsection.8.2.5}{4-Vectors}{section.8.2}% 50
+\BOOKMARK [0][-]{chapter.9}{Quantum}{}% 51
+\BOOKMARK [1][-]{section.9.1}{Particle Energy, Wave Energy}{chapter.9}% 52
+\BOOKMARK [1][-]{section.9.2}{Compton Scattering}{chapter.9}% 53
+\BOOKMARK [1][-]{section.9.3}{Photoelectric Effect}{chapter.9}% 54
+\BOOKMARK [1][-]{section.9.4}{Hydrogen Model}{chapter.9}% 55
+\BOOKMARK [1][-]{section.9.5}{De Broglie Waves}{chapter.9}% 56
+\BOOKMARK [1][-]{section.9.6}{Wave-Particle Duality}{chapter.9}% 57
+\BOOKMARK [2][-]{subsection.9.6.1}{Uncertainty Principle}{section.9.6}% 58
+\BOOKMARK [2][-]{subsection.9.6.2}{Double Slit Experiment}{section.9.6}% 59
+\BOOKMARK [1][-]{section.9.7}{Black Body Radiation}{chapter.9}% 60
+\BOOKMARK [0][-]{chapter.10}{Matter Waves and The Schr\366dinger Equation}{}% 61
+\BOOKMARK [1][-]{section.10.1}{Normalization and Probability}{chapter.10}% 62
+\BOOKMARK [1][-]{section.10.2}{Energy Considerations}{chapter.10}% 63
+\BOOKMARK [1][-]{section.10.3}{Infinite Well}{chapter.10}% 64
+\BOOKMARK [2][-]{subsection.10.3.1}{Superposition}{section.10.3}% 65
+\BOOKMARK [1][-]{section.10.4}{Expectation Values}{chapter.10}% 66
+\BOOKMARK [1][-]{section.10.5}{Operators}{chapter.10}% 67
+\BOOKMARK [1][-]{section.10.6}{Schr\366dinger's For Free Particle}{chapter.10}% 68

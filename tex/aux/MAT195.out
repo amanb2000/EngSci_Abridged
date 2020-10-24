@@ -1,0 +1,131 @@
+\BOOKMARK [1][-]{section.0.1}{Review: Memorizy Stuff}{}% 1
+\BOOKMARK [2][-]{subsection.0.1.1}{Trig Function Derivatives}{section.0.1}% 2
+\BOOKMARK [2][-]{subsection.0.1.2}{Inverse Trig Derivatives}{section.0.1}% 3
+\BOOKMARK [2][-]{subsection.0.1.3}{How to complete the Square}{section.0.1}% 4
+\BOOKMARK [2][-]{subsection.0.1.4}{Trig Angle Sums}{section.0.1}% 5
+\BOOKMARK [2][-]{subsection.0.1.5}{Hyperbolic Trig Functions}{section.0.1}% 6
+\BOOKMARK [2][-]{subsection.0.1.6}{Inverse Hyperbolic Trig Function}{section.0.1}% 7
+\BOOKMARK [1][-]{section.0.2}{Introduction and Course Description}{}% 8
+\BOOKMARK [0][-]{chapter.1}{Techniques of Integration \(Chapter 7 in Textbook\)}{}% 9
+\BOOKMARK [1][-]{section.1.1}{Integration by Parts}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.1.1}{Tips for Integration by Parts:}{section.1.1}% 11
+\BOOKMARK [1][-]{section.1.2}{Trigonometric Integrals}{chapter.1}% 12
+\BOOKMARK [2][-]{subsection.1.2.1}{Strategy for sinm \(x\)cosn \(x\)}{section.1.2}% 13
+\BOOKMARK [2][-]{subsection.1.2.2}{Strategy for tanm \(x\)secn \(x\)}{section.1.2}% 14
+\BOOKMARK [2][-]{subsection.1.2.3}{Strategy for sin\(mx\)cos\(nx\) dx}{section.1.2}% 15
+\BOOKMARK [2][-]{subsection.1.2.4}{Strategy for cscm \(x\)cotn \(x\) dx}{section.1.2}% 16
+\BOOKMARK [1][-]{section.1.3}{Trig Sub}{chapter.1}% 17
+\BOOKMARK [2][-]{subsection.1.3.1}{Inverse Substitution}{section.1.3}% 18
+\BOOKMARK [2][-]{subsection.1.3.2}{List of Trig Subs}{section.1.3}% 19
+\BOOKMARK [2][-]{subsection.1.3.3}{General Layout for Trig Sub}{section.1.3}% 20
+\BOOKMARK [1][-]{section.1.4}{Partial Fractions}{chapter.1}% 21
+\BOOKMARK [2][-]{subsection.1.4.1}{Denominator is only distinct Linear Factors}{section.1.4}% 22
+\BOOKMARK [2][-]{subsection.1.4.2}{Denominator is only Linear Factors but some are Repeated}{section.1.4}% 23
+\BOOKMARK [2][-]{subsection.1.4.3}{Denominator has non-repeated Quadratic Factors}{section.1.4}% 24
+\BOOKMARK [2][-]{subsection.1.4.4}{Denominator has repeated Quadratic Factors}{section.1.4}% 25
+\BOOKMARK [2][-]{subsection.1.4.5}{Rationalizing Substitutions}{section.1.4}% 26
+\BOOKMARK [1][-]{section.1.5}{Strategy for Solving Integrals}{chapter.1}% 27
+\BOOKMARK [1][-]{section.1.6}{Improper Integrals \(Involving Infinity\)}{chapter.1}% 28
+\BOOKMARK [2][-]{subsection.1.6.1}{Definition of Improper Integral}{section.1.6}% 29
+\BOOKMARK [2][-]{subsection.1.6.2}{Comparison Theorem}{section.1.6}% 30
+\BOOKMARK [0][-]{chapter.2}{Further Applications of Integration}{}% 31
+\BOOKMARK [1][-]{section.2.1}{Arc Length}{chapter.2}% 32
+\BOOKMARK [2][-]{subsection.2.1.1}{Definition of Arc Length}{section.2.1}% 33
+\BOOKMARK [2][-]{subsection.2.1.2}{Arc Length Formula}{section.2.1}% 34
+\BOOKMARK [1][-]{section.2.2}{Surface Area of Revolution}{chapter.2}% 35
+\BOOKMARK [2][-]{subsection.2.2.1}{Surface Area of Revolution Formulae}{section.2.2}% 36
+\BOOKMARK [1][-]{section.2.3}{Applications to Physics and Engineering}{chapter.2}% 37
+\BOOKMARK [2][-]{subsection.2.3.1}{Hydrostatic Force}{section.2.3}% 38
+\BOOKMARK [2][-]{subsection.2.3.2}{Center of Mass}{section.2.3}% 39
+\BOOKMARK [2][-]{subsection.2.3.3}{Rotating cross sections around line}{section.2.3}% 40
+\BOOKMARK [0][-]{chapter.3}{Parametric Equations and Polar Coordinates}{}% 41
+\BOOKMARK [1][-]{section.3.1}{Parametric Equations}{chapter.3}% 42
+\BOOKMARK [2][-]{subsection.3.1.1}{Tangents}{section.3.1}% 43
+\BOOKMARK [2][-]{subsection.3.1.2}{Integrals}{section.3.1}% 44
+\BOOKMARK [1][-]{section.3.2}{Polar Coordinates}{chapter.3}% 45
+\BOOKMARK [2][-]{subsection.3.2.1}{Quick Info: }{section.3.2}% 46
+\BOOKMARK [2][-]{subsection.3.2.2}{Symmetry}{section.3.2}% 47
+\BOOKMARK [2][-]{subsection.3.2.3}{Tangents to Polar Curves}{section.3.2}% 48
+\BOOKMARK [1][-]{section.3.3}{Areas and Lengths in Polar Coordinates}{chapter.3}% 49
+\BOOKMARK [2][-]{subsection.3.3.1}{Area}{section.3.3}% 50
+\BOOKMARK [2][-]{subsection.3.3.2}{Arc Length}{section.3.3}% 51
+\BOOKMARK [0][-]{chapter.4}{Infinite Sequences and Series}{}% 52
+\BOOKMARK [1][-]{section.4.1}{Sequences}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.1.1}{Limits of Sequences}{section.4.1}% 54
+\BOOKMARK [2][-]{subsection.4.1.2}{Definitions}{section.4.1}% 55
+\BOOKMARK [1][-]{section.4.2}{Series}{chapter.4}% 56
+\BOOKMARK [2][-]{subsection.4.2.1}{Partial Sums}{section.4.2}% 57
+\BOOKMARK [2][-]{subsection.4.2.2}{Infinite Series}{section.4.2}% 58
+\BOOKMARK [2][-]{subsection.4.2.3}{Geometric Series}{section.4.2}% 59
+\BOOKMARK [2][-]{subsection.4.2.4}{Test for Divergence}{section.4.2}% 60
+\BOOKMARK [2][-]{subsection.4.2.5}{Working with Series}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.6}{Comparison Test}{section.4.2}% 62
+\BOOKMARK [2][-]{subsection.4.2.7}{Limit Comparison Test}{section.4.2}% 63
+\BOOKMARK [2][-]{subsection.4.2.8}{P-Series}{section.4.2}% 64
+\BOOKMARK [1][-]{section.4.3}{The Integral Test and Estimates of Sums}{chapter.4}% 65
+\BOOKMARK [2][-]{subsection.4.3.1}{Integral Test}{section.4.3}% 66
+\BOOKMARK [2][-]{subsection.4.3.2}{Estimating The Sum of a Series}{section.4.3}% 67
+\BOOKMARK [1][-]{section.4.4}{Comparison Tests}{chapter.4}% 68
+\BOOKMARK [2][-]{subsection.4.4.1}{The Limit Comparison Test}{section.4.4}% 69
+\BOOKMARK [1][-]{section.4.5}{Alternating Series}{chapter.4}% 70
+\BOOKMARK [2][-]{subsection.4.5.1}{Alternating Series Test}{section.4.5}% 71
+\BOOKMARK [2][-]{subsection.4.5.2}{Estimating Sums for Alternating Series}{section.4.5}% 72
+\BOOKMARK [1][-]{section.4.6}{Absolute Convergence and Ratio and Roots Test}{chapter.4}% 73
+\BOOKMARK [2][-]{subsection.4.6.1}{Absolute Convergence}{section.4.6}% 74
+\BOOKMARK [2][-]{subsection.4.6.2}{Ratio Test}{section.4.6}% 75
+\BOOKMARK [2][-]{subsection.4.6.3}{Root Test}{section.4.6}% 76
+\BOOKMARK [2][-]{subsection.4.6.4}{Rearrangements}{section.4.6}% 77
+\BOOKMARK [1][-]{section.4.7}{Strategy for Series: }{chapter.4}% 78
+\BOOKMARK [1][-]{section.4.8}{Power Series}{chapter.4}% 79
+\BOOKMARK [2][-]{subsection.4.8.1}{3 Possibilities for Power Series}{section.4.8}% 80
+\BOOKMARK [1][-]{section.4.9}{Representing Functions as Power Series}{chapter.4}% 81
+\BOOKMARK [1][-]{section.4.10}{Taylor and McLauren Series}{chapter.4}% 82
+\BOOKMARK [2][-]{subsection.4.10.1}{Taylor Series}{section.4.10}% 83
+\BOOKMARK [2][-]{subsection.4.10.2}{Finding the Radius of Convergence for Taylor Series}{section.4.10}% 84
+\BOOKMARK [2][-]{subsection.4.10.3}{Taylor's Inequality}{section.4.10}% 85
+\BOOKMARK [2][-]{subsection.4.10.4}{Manipulations of Power Series}{section.4.10}% 86
+\BOOKMARK [0][-]{chapter.5}{All Continuous Functions are Integrable}{}% 87
+\BOOKMARK [1][-]{section.5.1}{Starting Point, Definitions: }{chapter.5}% 88
+\BOOKMARK [1][-]{section.5.2}{Tips for answering questions}{chapter.5}% 89
+\BOOKMARK [1][-]{section.5.3}{Fourier Series}{chapter.5}% 90
+\BOOKMARK [2][-]{subsection.5.3.1}{Fourier Convergence Theorem}{section.5.3}% 91
+\BOOKMARK [2][-]{subsection.5.3.2}{Fourier Series for T =}{section.5.3}% 92
+\BOOKMARK [0][-]{chapter.6}{Vectors and Space}{}% 93
+\BOOKMARK [1][-]{section.6.1}{Cylinders and Quadratic Surfaces}{chapter.6}% 94
+\BOOKMARK [0][-]{chapter.7}{Vector Functions}{}% 95
+\BOOKMARK [1][-]{section.7.1}{Vector Functions and Space Curves}{chapter.7}% 96
+\BOOKMARK [1][-]{section.7.2}{Derivatives, Integrals of Vector Functions}{chapter.7}% 97
+\BOOKMARK [1][-]{section.7.3}{Basic Vector Operation Definitions}{chapter.7}% 98
+\BOOKMARK [2][-]{subsection.7.3.1}{Integrals of Vector Functions}{section.7.3}% 99
+\BOOKMARK [1][-]{section.7.4}{Arc Length, Curvature of Vector Functions}{chapter.7}% 100
+\BOOKMARK [2][-]{subsection.7.4.1}{Arc Length}{section.7.4}% 101
+\BOOKMARK [2][-]{subsection.7.4.2}{Curvature}{section.7.4}% 102
+\BOOKMARK [2][-]{subsection.7.4.3}{Normal and Binormal Vectors}{section.7.4}% 103
+\BOOKMARK [2][-]{subsection.7.4.4}{Velocity and Acceleration}{section.7.4}% 104
+\BOOKMARK [0][-]{chapter.8}{Partial Derivatives}{}% 105
+\BOOKMARK [1][-]{section.8.1}{Functions of Several Variables}{chapter.8}% 106
+\BOOKMARK [1][-]{section.8.2}{Limits and Continuity with Functions of Several Variables}{chapter.8}% 107
+\BOOKMARK [2][-]{subsection.8.2.1}{Limits}{section.8.2}% 108
+\BOOKMARK [2][-]{subsection.8.2.2}{Continuity}{section.8.2}% 109
+\BOOKMARK [1][-]{section.8.3}{Partial Derivatives}{chapter.8}% 110
+\BOOKMARK [2][-]{subsection.8.3.1}{Higher Partial Derivatives}{section.8.3}% 111
+\BOOKMARK [2][-]{subsection.8.3.2}{Partial Differential Equations}{section.8.3}% 112
+\BOOKMARK [1][-]{section.8.4}{Tangent Planes and Linear Approximations}{chapter.8}% 113
+\BOOKMARK [2][-]{subsection.8.4.1}{Tangent Planes}{section.8.4}% 114
+\BOOKMARK [2][-]{subsection.8.4.2}{Linear Approximations}{section.8.4}% 115
+\BOOKMARK [2][-]{subsection.8.4.3}{Differentials}{section.8.4}% 116
+\BOOKMARK [1][-]{section.8.5}{Chain Rule \(With Many Variables\)}{chapter.8}% 117
+\BOOKMARK [2][-]{subsection.8.5.1}{Chain Rule: Case 1}{section.8.5}% 118
+\BOOKMARK [2][-]{subsection.8.5.2}{Chain Rule: Case 2}{section.8.5}% 119
+\BOOKMARK [2][-]{subsection.8.5.3}{Chain Rule: General Rule}{section.8.5}% 120
+\BOOKMARK [2][-]{subsection.8.5.4}{Implicit Differentiation}{section.8.5}% 121
+\BOOKMARK [1][-]{section.8.6}{Directional Derivatives and the Gradient Vector}{chapter.8}% 122
+\BOOKMARK [2][-]{subsection.8.6.1}{Directional Derivatives}{section.8.6}% 123
+\BOOKMARK [2][-]{subsection.8.6.2}{Gradient Vector}{section.8.6}% 124
+\BOOKMARK [1][-]{section.8.7}{Maximum and Minimum Values}{chapter.8}% 125
+\BOOKMARK [2][-]{subsection.8.7.1}{Definitions}{section.8.7}% 126
+\BOOKMARK [2][-]{subsection.8.7.2}{Second Derivative Test}{section.8.7}% 127
+\BOOKMARK [2][-]{subsection.8.7.3}{Absolute Max/Min Values}{section.8.7}% 128
+\BOOKMARK [1][-]{section.8.8}{Lagrange Multipliers}{chapter.8}% 129
+\BOOKMARK [2][-]{subsection.8.8.1}{Method of Lagrange Multipliers}{section.8.8}% 130
+\BOOKMARK [2][-]{subsection.8.8.2}{Lagrange Multipliers with Two Constraints}{section.8.8}% 131

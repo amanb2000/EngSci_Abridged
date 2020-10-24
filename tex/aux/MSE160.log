@@ -1,0 +1,132 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:44
+entering extended mode
+**./MSE160.tex
+(MSE160.tex
+LaTeX2e <2018-12-01>
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/report.cls"
+Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/size12.clo"
+File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+No file MSE160.aux.
+\openout1 = `MSE160.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 6.
+[1
+
+{/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
+pdftex.map}]
+Chapter 1.
+[1
+
+]
+Chapter 2.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 17.
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 24.
+ [2
+
+] [3] [4]
+Overfull \hbox (12.35966pt too wide) in paragraph at lines 84--85
+[]\OT1/cmr/m/n/12 As well, it conflicted with Maxwell's theory (classical elect
+romagnetic
+ []
+
+
+Overfull \hbox (3.5947pt too wide) in paragraph at lines 87--88
+[]\OT1/cmr/m/n/12 Therefore, by classical electromagnetic theory, electrosn sho
+uld
+ []
+
+
+Overfull \hbox (9.90845pt too wide) in paragraph at lines 94--95
+\OT1/cmr/m/n/12 When you shoot electrons through double slits, they ALSO show a
+n interference
+ []
+
+[5]
+Overfull \hbox (17.26382pt too wide) in paragraph at lines 119--120
+[]\OT1/cmr/m/n/12 Quantum dots are semiconductor molecules that have very large
+ absorption
+ []
+
+
+Overfull \hbox (10.66667pt too wide) in paragraph at lines 120--121
+[]\OT1/cmr/m/n/12 As well, we can tailor molecules to have practically any emis
+sion frequency 
+ []
+
+[6]
+Chapter 3.
+[7
+
+] (MSE160.aux) ) 
+Here is how much of TeX's memory you used:
+ 271 strings out of 494866
+ 3361 string characters out of 3176398
+ 59999 words of memory out of 3000000
+ 3996 multiletter control sequences out of 15000+200000
+ 9414 words of font info for 33 fonts, out of 3000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 22i,6n,19p,394b,233s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Users/abhargava/Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Applic
+ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></Users/abhargava/Library/Application Support/MiKT
+eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/abhargava/Li
+brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/f
+onts/type1/public/amsfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Su
+pport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/a
+bhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb>
+Output written on MSE160.pdf (8 pages, 104853 bytes).
+PDF statistics:
+ 61 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

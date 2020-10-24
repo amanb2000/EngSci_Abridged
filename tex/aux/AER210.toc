@@ -1,0 +1,105 @@
+\contentsline {chapter}{\numberline {1}Review: Stuff to Have Memorized}{4}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Trig Functions and Derivatives}{4}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Inverse Trig Derivatives}{4}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}How to complete the Square}{4}{section.1.3}% 
+\contentsline {section}{\numberline {1.4}Trig Angle Sums}{5}{section.1.4}% 
+\contentsline {section}{\numberline {1.5}Identities Assorted}{5}{section.1.5}% 
+\contentsline {chapter}{\numberline {2}In-Class Review}{6}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Vectors \& Vector Functions}{6}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Arc Length}{6}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}One-Variable Functions}{6}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Parametric Functions}{7}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Vector Funtions}{7}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Reparamerizing with respect to Arc Length}{7}{subsection.2.2.4}% 
+\contentsline {paragraph}{What is this? }{7}{section*.2}% 
+\contentsline {paragraph}{Why would you want to do this? }{7}{section*.3}% 
+\contentsline {paragraph}{Steps to Reparameterizing}{7}{section*.4}% 
+\contentsline {section}{\numberline {2.3}Partial Derivatives}{7}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Functions of Several Variables}{7}{subsection.2.3.1}% 
+\contentsline {paragraph}{A function of two variables }{7}{section*.5}% 
+\contentsline {paragraph}{Level functions }{8}{section*.6}% 
+\contentsline {paragraph}{Functions of 3 or more variables }{8}{section*.7}% 
+\contentsline {subsection}{\numberline {2.3.2}Limits and Continuity with Functions of Several Variables}{8}{subsection.2.3.2}% 
+\contentsline {subsubsection}{Limits}{8}{section*.8}% 
+\contentsline {paragraph}{Definition of limit }{8}{section*.9}% 
+\contentsline {paragraph}{How to find: }{8}{section*.10}% 
+\contentsline {subsection}{\numberline {2.3.3}Higher Partial Derivatives}{8}{subsection.2.3.3}% 
+\contentsline {subsubsection}{Clairaut's Theorem}{8}{section*.11}% 
+\contentsline {section}{\numberline {2.4}Gradient}{8}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}Chain Rule with Many Variables}{9}{section.2.5}% 
+\contentsline {chapter}{\numberline {3}Multiple Integrals}{10}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Basic Meaning and Solving}{10}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Leibniz Integral Rule (Differentiability of Integral with Respect to Parameter)}{10}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Constant Bounds of Integration}{10}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Derivation}{11}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Variable Bounds of Integration}{11}{subsection.3.2.3}% 
+\contentsline {section}{\numberline {3.3}Polar Coordinates with Multiple Integrals}{11}{section.3.3}% 
+\contentsline {paragraph}{A polar rectangle}{11}{section*.12}% 
+\contentsline {paragraph}{Basic form of double integral in polar coordinates: }{11}{section*.13}% 
+\contentsline {subsection}{\numberline {3.3.1}Change to Polar Coordinates in Double Integrals}{11}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}Variable Bounds of Integration for $r$}{12}{subsection.3.3.2}% 
+\contentsline {section}{\numberline {3.4}Applications of Multiple Integrals}{12}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}Density and Mass}{12}{subsection.3.4.1}% 
+\contentsline {paragraph}{Lamina }{12}{section*.14}% 
+\contentsline {paragraph}{Calculating Mass: }{12}{section*.15}% 
+\contentsline {subsection}{\numberline {3.4.2}Moments of Intertia}{12}{subsection.3.4.2}% 
+\contentsline {paragraph}{Moment $M_x$}{12}{section*.16}% 
+\contentsline {paragraph}{Centre of Mass }{12}{section*.17}% 
+\contentsline {subsection}{\numberline {3.4.3}Moments of Intertia}{13}{subsection.3.4.3}% 
+\contentsline {subsubsection}{Radius of Gyration}{13}{section*.18}% 
+\contentsline {paragraph}{About Arbitrary Axis: }{13}{section*.19}% 
+\contentsline {paragraph}{About the Origin: }{13}{section*.20}% 
+\contentsline {subsection}{\numberline {3.4.4}Probability}{13}{subsection.3.4.4}% 
+\contentsline {paragraph}{Probability of $a < x < b$: }{13}{section*.21}% 
+\contentsline {paragraph}{2-D Probability Function: }{13}{section*.22}% 
+\contentsline {subsubsection}{Expected Values}{13}{section*.23}% 
+\contentsline {paragraph}{Multi-Variable Functions: }{14}{section*.24}% 
+\contentsline {paragraph}{Normal Distribution: }{14}{section*.25}% 
+\contentsline {section}{\numberline {3.5}Surface Area}{14}{section.3.5}% 
+\contentsline {paragraph}{How it's derived: }{14}{section*.26}% 
+\contentsline {section}{\numberline {3.6}Triple Integrals}{14}{section.3.6}% 
+\contentsline {subsection}{\numberline {3.6.1}Type 1}{14}{subsection.3.6.1}% 
+\contentsline {subsection}{\numberline {3.6.2}Type 2}{15}{subsection.3.6.2}% 
+\contentsline {subsection}{\numberline {3.6.3}Type 3}{15}{subsection.3.6.3}% 
+\contentsline {subsection}{\numberline {3.6.4}Applications of Triple Integrals}{15}{subsection.3.6.4}% 
+\contentsline {subsubsection}{Obvious}{15}{section*.27}% 
+\contentsline {subsubsection}{Moments and CoM}{15}{section*.28}% 
+\contentsline {paragraph}{REMEMBER: }{15}{section*.29}% 
+\contentsline {section}{\numberline {3.7}Cylindrical Coordinates}{16}{section.3.7}% 
+\contentsline {section}{\numberline {3.8}Spherical Coordinates}{16}{section.3.8}% 
+\contentsline {section}{\numberline {3.9}Taylor Series with Two Variables}{16}{section.3.9}% 
+\contentsline {section}{\numberline {3.10}Jacobians}{17}{section.3.10}% 
+\contentsline {subsection}{\numberline {3.10.1}How it Works}{17}{subsection.3.10.1}% 
+\contentsline {subsection}{\numberline {3.10.2}How to Change your Variable with Jacobians}{17}{subsection.3.10.2}% 
+\contentsline {chapter}{\numberline {4}Vector Calculus}{18}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Review: Vector Fields, Gradient Fields}{18}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Vector Fields}{18}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Gradient Fields}{18}{subsection.4.1.2}% 
+\contentsline {section}{\numberline {4.2}Line Integrals}{19}{section.4.2}% 
+\contentsline {paragraph}{Definition: }{19}{section*.30}% 
+\contentsline {subsection}{\numberline {4.2.1}Line Integrals with respect to $x$ and $y$}{19}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Path Independence}{19}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Line Integrals in Space}{20}{subsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Line Integrals of Vector Fields}{20}{subsection.4.2.4}% 
+\contentsline {subsection}{\numberline {4.2.5}Useful Tips}{20}{subsection.4.2.5}% 
+\contentsline {section}{\numberline {4.3}Fundamental Theorem of Line Integrals}{21}{section.4.3}% 
+\contentsline {paragraph}{Fundamental Theorem of Line Integrals}{21}{section*.31}% 
+\contentsline {subsection}{\numberline {4.3.1}Path Independence}{21}{subsection.4.3.1}% 
+\contentsline {section}{\numberline {4.4}Parametric Surfaces}{22}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}How to Visualize and Plot}{22}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}Surface of Revolution}{22}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}Tangent Planes}{22}{subsection.4.4.3}% 
+\contentsline {subsection}{\numberline {4.4.4}Areas of Parametric Surfaces}{23}{subsection.4.4.4}% 
+\contentsline {section}{\numberline {4.5}Surface Integrals}{23}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Flux}{23}{subsection.4.5.1}% 
+\contentsline {paragraph}{In $(u, v)$ space: }{23}{section*.32}% 
+\contentsline {subsection}{\numberline {4.5.2}Mass Flux}{23}{subsection.4.5.2}% 
+\contentsline {section}{\numberline {4.6}Green's Theorem}{23}{section.4.6}% 
+\contentsline {paragraph}{Note on orientation: }{24}{section*.33}% 
+\contentsline {section}{\numberline {4.7}Curl and Divergence}{24}{section.4.7}% 
+\contentsline {paragraph}{Curl }{24}{section*.34}% 
+\contentsline {paragraph}{Divergence }{24}{section*.35}% 
+\contentsline {subsection}{\numberline {4.7.1}Properties of Divergence and Curl}{24}{subsection.4.7.1}% 
+\contentsline {subsection}{\numberline {4.7.2}Vector form of Green's Theorem}{24}{subsection.4.7.2}% 
+\contentsline {section}{\numberline {4.8}Divergence Theorem}{25}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}Stoke's Theorem}{25}{section.4.9}% 

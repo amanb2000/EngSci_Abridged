@@ -1,0 +1,98 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Counting}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Random Experiments}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Sample Space}{section.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2.2}{Events}{section.1.2}% 5
+\BOOKMARK [0][-]{chapter.2}{Probability}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Axioms of Probability Theory}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Conditional Probability}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{Independence}{section.2.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Total Probability}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.4}{Bayes Theorem}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.4.1}{Multiple Tests}{section.2.4}% 12
+\BOOKMARK [0][-]{chapter.3}{Random Variables and Probability Distributions}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Random Variables}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Probability Functions}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.2.1}{Probability Mass Functions \(PMF's\)}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.2}{Cumulative Distribution Functions \(CDFs\)}{section.3.2}% 17
+\BOOKMARK [2][-]{subsection.3.2.3}{Probability Density Functions \(PDFs\)}{section.3.2}% 18
+\BOOKMARK [1][-]{section.3.3}{Mixed Random Variables}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.4}{Joint PDFs and PMFs}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.4.1}{Joint PMFs}{section.3.4}% 21
+\BOOKMARK [2][-]{subsection.3.4.2}{Marginal PMFs}{section.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.4.3}{Conditional PMFs}{section.3.4}% 23
+\BOOKMARK [0][-]{chapter.4}{Mathematical Expectation}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Expected Value}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{Variance}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.2.1}{Covariance}{section.4.2}% 27
+\BOOKMARK [2][-]{subsection.4.2.2}{Correlation Coefficient}{section.4.2}% 28
+\BOOKMARK [1][-]{section.4.3}{Means and Variance of Linear Combinations of Random Variables}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.3.1}{What if the Function is Non-Linear?}{section.4.3}% 30
+\BOOKMARK [0][-]{chapter.5}{Some Discrete Probability Distributions}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Binomial and Multinomial Distribution}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.1.1}{Bernoulli Process}{section.5.1}% 33
+\BOOKMARK [1][-]{section.5.2}{Multinomial Experiments and Distribution}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.3}{Hypergeometric Distribution}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.3.1}{Mean and Variance of Hypergeometric Distributions}{section.5.3}% 36
+\BOOKMARK [1][-]{section.5.4}{Negative Binomial Distribution}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.5}{Geometric Distribution}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.6}{Poisson Distribution and Poisson Process}{chapter.5}% 39
+\BOOKMARK [0][-]{chapter.6}{Continuous Probability Functions}{}% 40
+\BOOKMARK [1][-]{section.6.1}{Continuous Uniform Distribution}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.2}{Normal Distribution}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.3}{Areas under the Normal Curve}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.4}{Applications of the Normal Distribution}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.5}{Normal Approximation to the Binomial}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.6}{Gamma and Exponential Distributions}{chapter.6}% 46
+\BOOKMARK [2][-]{subsection.6.6.1}{Gamma Function}{section.6.6}% 47
+\BOOKMARK [2][-]{subsection.6.6.2}{Exponential Distribution}{section.6.6}% 48
+\BOOKMARK [2][-]{subsection.6.6.3}{Means and Variances}{section.6.6}% 49
+\BOOKMARK [2][-]{subsection.6.6.4}{Relationship to Poisson Process}{section.6.6}% 50
+\BOOKMARK [2][-]{subsection.6.6.5}{Memoryless Property}{section.6.6}% 51
+\BOOKMARK [1][-]{section.6.7}{Chi-Squared Distribution}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.8}{Weibull Distribution}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.8.1}{Failure Rate for Weibull Distribution}{section.6.8}% 54
+\BOOKMARK [0][-]{chapter.7}{Functions of Random Variables}{}% 55
+\BOOKMARK [1][-]{section.7.1}{Transformations on Variables}{chapter.7}% 56
+\BOOKMARK [1][-]{section.7.2}{Moments and Moment-Generating Functions}{chapter.7}% 57
+\BOOKMARK [2][-]{subsection.7.2.1}{Moment Generating Function}{section.7.2}% 58
+\BOOKMARK [2][-]{subsection.7.2.2}{Linear Combinations of Random Variables}{section.7.2}% 59
+\BOOKMARK [0][-]{chapter.8}{Introductory Statistics and Data Analysis Topics}{}% 60
+\BOOKMARK [1][-]{section.8.1}{Overview: Statistical Inference and Probability}{chapter.8}% 61
+\BOOKMARK [1][-]{section.8.2}{Sampling Procedures and Data Collection}{chapter.8}% 62
+\BOOKMARK [1][-]{section.8.3}{Measures of Location: Mean and Median}{chapter.8}% 63
+\BOOKMARK [1][-]{section.8.4}{Measures of Variability}{chapter.8}% 64
+\BOOKMARK [1][-]{section.8.5}{Statistical Modeling, Scientific Inspection, and Graphical Diagnostics}{chapter.8}% 65
+\BOOKMARK [0][-]{chapter.9}{Fundamental Sampling Distributions and Data Descriptions}{}% 66
+\BOOKMARK [1][-]{section.9.1}{Random Sampling}{chapter.9}% 67
+\BOOKMARK [1][-]{section.9.2}{Important Statistics}{chapter.9}% 68
+\BOOKMARK [1][-]{section.9.3}{Sampling Distributions}{chapter.9}% 69
+\BOOKMARK [1][-]{section.9.4}{Sampling Distribution of Means and the Central Limit Theorem}{chapter.9}% 70
+\BOOKMARK [2][-]{subsection.9.4.1}{Inferences on the Population Mean}{section.9.4}% 71
+\BOOKMARK [2][-]{subsection.9.4.2}{Sampling Distribution between Two Means}{section.9.4}% 72
+\BOOKMARK [1][-]{section.9.5}{Sampling Distribution of S2}{chapter.9}% 73
+\BOOKMARK [1][-]{section.9.6}{t-Distribution}{chapter.9}% 74
+\BOOKMARK [1][-]{section.9.7}{F-distribution}{chapter.9}% 75
+\BOOKMARK [2][-]{subsection.9.7.1}{F-distribution with Two Sample Variances}{section.9.7}% 76
+\BOOKMARK [1][-]{section.9.8}{Quantile and Probability Plots}{chapter.9}% 77
+\BOOKMARK [2][-]{subsection.9.8.1}{Quantile Plots}{section.9.8}% 78
+\BOOKMARK [2][-]{subsection.9.8.2}{Normal Quantile-Quantile Plot}{section.9.8}% 79
+\BOOKMARK [0][-]{chapter.10}{One and Two-Sample Estimation Problems}{}% 80
+\BOOKMARK [1][-]{section.10.1}{Statistical Inference}{chapter.10}% 81
+\BOOKMARK [1][-]{section.10.2}{Classical Method of Estimation}{chapter.10}% 82
+\BOOKMARK [1][-]{section.10.3}{Single Sample: Estimating the Mean}{chapter.10}% 83
+\BOOKMARK [2][-]{subsection.10.3.1}{One-Sided Confidence Bounds}{section.10.3}% 84
+\BOOKMARK [2][-]{subsection.10.3.2}{Case of Unknown }{section.10.3}% 85
+\BOOKMARK [1][-]{section.10.4}{Standard Error on a Point Estimate}{chapter.10}% 86
+\BOOKMARK [1][-]{section.10.5}{Prediction Intervals}{chapter.10}% 87
+\BOOKMARK [2][-]{subsection.10.5.1}{Prediction Limits for Outlier Detection}{section.10.5}% 88
+\BOOKMARK [1][-]{section.10.6}{Cramer-Rao Lower Bounds}{chapter.10}% 89
+\BOOKMARK [0][-]{chapter.11}{One and Two-Sample Tests of Hypotheses}{}% 90
+\BOOKMARK [1][-]{section.11.1}{Statistical Hypotheses: General Concepts}{chapter.11}% 91
+\BOOKMARK [1][-]{section.11.2}{Testing a Statistical Hypothesis}{chapter.11}% 92
+\BOOKMARK [2][-]{subsection.11.2.1}{Probability of a Type I Error}{section.11.2}% 93
+\BOOKMARK [2][-]{subsection.11.2.2}{One- and Two-Tailed Tests}{section.11.2}% 94
+\BOOKMARK [1][-]{section.11.3}{P-Values for Decision making in Testing Hypotheses}{chapter.11}% 95
+\BOOKMARK [1][-]{section.11.4}{Not-In-Textbook}{chapter.11}% 96
+\BOOKMARK [0][-]{chapter.12}{Logistics}{}% 97
+\BOOKMARK [1][-]{section.12.1}{Midterm I}{chapter.12}% 98

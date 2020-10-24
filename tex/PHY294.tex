@@ -1,0 +1,339 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{hyperref}
+
+\begin{document}
+\title{PHY294 Abridged}
+\author{Aman Bhargava}
+\date{Janaury 2020}
+\maketitle
+
+\tableofcontents
+
+\chapter{Wave Applications}
+\section{Polarization}
+
+We learned last year that wave-particle duality leads to \textbf{predictable probabilities} and unpredictable individual behavior. The simplest example of this is polarization.
+\begin{itemize}
+\item Light oscillates perpendicular to its direction of propagation.
+\item There are two possible polarization states: $\{\uparrow, \rightarrow\}$. A diagonal state is just a superposition of these two.
+\item A \textbf{polarizer} allows only one polarization state through.
+\end{itemize}
+$$I = I_0 \cos^2(\theta)$$
+
+\paragraph{What's with the $\cos^2$? } Remember how we learned that the energy of a wave is proportional to the amplitude$^2$? It's just like that here. There's this idea of a \textbf{probability amplitude}. If you square the probability amplitude, you get the actual \textbf{probability} (kind of like how squaring the amplitude gets you energy when considering oscillators). 
+
+\paragraph{What's the point of probability amplitudes? } The utility of using probability amplitudes is that, when you have two probabilities that affect eachother (e.g. in an additive way), you get the \textbf{correct answer} when you add the probability \textbf{amplitudes} and THEN square them to get the actual probabilities. This becomes particularly important in interference problems where probability waves can \textit{interfere} with eachother. 
+
+\paragraph{A note on unpolarized light: } All the light that we deal with in this course will be polarized. Unpolarized light doesn't have as nice of a mathematical characterization and is overall a pain to deal with.
+
+\section{Interference}
+\section{Double Slit}
+Remember the double slit experiment? If you do, then you just need to know the following formula: 
+
+$$I(y) = 4I_0 \cos^2(\frac{\pi d y}{D \lambda})$$
+
+\textit{Where $y$ is how far along the screen away from the centre you are, $d$ is the slit distance, $D$ is the distance to the screen}
+
+The interference patterns occur due to a difference in path length. The probability waves of the photons interfere with eachother because they are not in phase, leading to the patterns. Just takes some trigonometry to derive! The $\cos^2$ is there, as again, due to the difference between probability amplitudes and probabilities.
+
+\chapter{Schroedinger's Equation}
+This chapter discusses the mathematical background required to understand, validate, and use Schroedinger's equation.
+\section{Fourier Series}
+
+We're going to re-do Fourier series with complex exponentials instead of the usual sin and cos functions because that's going to make actual analysis a lot easier.
+\paragraph{Handy formulae: }
+$$e^{i2\pi n x/L} = \cos(2\pi n x / L) + i\sin(2\pi n x/L)$$
+$$cos(x) = \frac{1}{2}[e^{ix} + e^{-ix}]$$
+$$\sin(x) = \frac{1}{2i}[e^{ix} - e^{-ix}]$$
+
+\paragraph{Fourier Equations:}
+$$f(x) = \sum_{n=-\infty}^{\infty} c_n e^{i2\pi n x / L} $$
+$$c_0 = \frac{1}{L} \int_0^L f(x) dx$$
+$$c_n = \frac{1}{L} \int_0^L f(x) e^{-i 2\pi n x /L}dx$$
+
+Where $c_0 = A_0$, $c_n = \frac{a_n-ib_n}{2}$ for $n > 0$ and $c_n = \frac{a_n + ib_n}{2}$ for $n < 0$. 
+
+One of the main benefits of this complex exponential form is that it makes it easier for us to solve for when $L \to \infty$.
+
+\subsection{Infinite Fourier Coefficients}
+
+Since we have uncountably infinite Fourier bands when we expand the limits to $\pm \infty$, we can make a \textbf{function} that gives us the Fourier coefficients for any real number. 
+
+$$\phi(x) = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} \tilde{\psi(k)} e^{ikx} dk $$
+$$\tilde{\phi(k)} = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} \phi(x) e^{-ikx} dx $$
+
+\section{Matter Waves}
+
+That Fourier series stuff becomes quite useful when we start thinking of \textbf{matter as waves}. The \textbf{de Broglie Hypothesis} states that all particles have wavelengths ($\lambda$). 
+
+$$p = \hslash k = \frac{h}{\lambda}; \,\,\, k = \frac{n\pi}{L}=\frac{\omega}{c};\,\,\,$$
+$$\hslash = \frac{h}{2\pi}$$
+
+Therefore, if we can represent a particle as a wave, we are good to go to analyze the components using fourier analysis! If the particle is described as a non-repeating pulse, then you need to use the $\lim_{L\to\infty}$ we talked about at the end of the Fourier series section. This allows us to convert from a plot that shows \textbf{location} and another that shows the \textbf{frequency (momentum)}. 
+
+\subsection{Uncertainty Principle}
+
+Remember R.M.S. from ECE159? Me neither. Basically it's just a way of denoting how spread out a distribution of values on a graph is. For the example of a particle that is described by a local \textbf{pulse} of probability, we can find the RMS value for its position $\Delta x$. 
+
+We can also take the \textit{infinite bounds Fourier transform} and to get a distribution of the wave number intensities ($k$) and get the RMS value for that. But the wave number is just momenutum times a constant! So really, we know both the $\Delta x$ and the $\Delta k$ values! 
+
+Here's the really cool thing: We can derive a mathemtical relationship between the two! And that is: $$\Delta k \Delta x \geq \frac{1}{2}$$
+
+
+Which makes a lot of sense! If you think about a function with an infinitely small RMS in the $k$-domain, you think of a function described with just one Fourier coefficient. That's just an infinite wave -- it has literally infinite RMS in the real domain. Same goes vice-versa. We did the actual math with a Gaussian function in class, but that's kind of extra for a review document like this. Just take my word for it and know it's pretty cool.
+
+
+\subsection{Solving Problems with Uncertainty Principle}
+
+Personally I didn't remember a lot of this stuff from PHY293, so here goes. In the real world, the uncertainty principle is: $\Delta x \Delta p \geq \frac{\hslash}{2}$. They key to solving is having an intuition for what happens to a randomly distributed variable when you square it. 
+
+Let's say that $x$ is normally distributed around $0$. The average value of $x$ ($<x>$) is obviously zero. But what about the average value of $x^2$? All those negative $x$ values turn positive when you square them, so $<x^2>$ must be positive. Here's the expression for a general variable: 
+$$<x^2> = <x>^2 + <\Delta x>^2$$
+
+It makes a lot of sense for the square of the uncertainty to correlate with the mean squared value. The fact that $<x^2>$ is non-zero for anything where $\Delta x > 0$ is really important when you start thinking about \textbf{minimizing energy} in a system. If kinetic energy is $KE = \frac{1}{2m}p^2$, you're in a good position to solve some interesting problems if you know the bounds on $x$!
+
+If you have an expression for energy that relies on momentum and/or position and you have some other boundary condition in place to fully constrain $p$ and $x$, you can generally use the uncertainty principle to deduce the \textbf{minimum possible allowable energy}. 
+
+\section{Schroedinger Equation}
+
+\paragraph{GOAL: } Specify the \textbf{state} of the system and predict the \textbf{future state} of the system perfectly. 
+
+In classical terms, we would achieve this goal via the equations of motion ($\vec{F} = m\vec{a}$). For quantum, however, we have more of a focus on \textbf{probability amplitudes} rather than absolute values. Therefore, we have an equation for a wave function:
+
+$$i\hslash \frac{\partial}{\partial t} \Psi(x, t)  =   \frac{-\hslash^2}{2m} \frac{\partial^2}{\partial x^2} \Psi(x, t) + V(x) \Psi(x, t)$$
+
+$$E\phi(x) = \frac{-\hslash^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x)\phi(x)$$ % TODO: Populate this with the time-independent Schroedinger equation.
+
+\begin{itemize}
+\item Term 1: Representative of Total Energy.
+\item Term 2: Representative of Kinetic Energy.
+\item Term 3: Representative of Potential Energy.
+\end{itemize}
+
+Schroedinger arrived at this conclusion via educated trial and error. The solutions are of the form:
+
+$$\Psi(x, t) = e^{i(kx-\omega t)}$$
+
+This reduces to the following relationships:
+$$\hslash \omega = \frac{( \hslash k )^2}{2m};\,\,\, \hslash \omega = E;\,\,\, (\hslash k)^2 = p^2$$
+
+\paragraph{Separation of variables: } To find more solutions, we can try $\Psi(x, t) = \phi(x)f(t)$. We arrive at
+$$\frac{i\hslash}{f(t)} \frac{df}{dt} = -\frac{\hslash^2}{2m}\frac{1}{\psi(x)}\frac{d^2\phi}{dx^2} + V(x) = C_{onst}$$
+
+Since the left side is time dependent and the right side is space dependent, they must be equal to a constant. Bsed on this we have the following constraints:
+\begin{enumerate}
+\item $i \hslash \frac{df}{dt} = af(t)$
+\item $\frac{-\hslash^2}{2m} \frac{d^2 \phi}{dx^2} + v(x)\phi(x) = a\phi(x)$
+\item $a = \hslash \omega = E_{tot}$
+\item Therefore, $$\Psi(x, t) = \phi_a(x) f(0)e^{-iat/\hslash}$$
+\end{enumerate}
+
+Know that $a$ can only come in \textbf{quantized} energy states. This is due to the fact that a non-quantized $a$ makes the equation very difficult to solve, and the experiments tend to agree that this is the case in quantum mechanics. 
+
+
+\subsection{Particle in a Box}
+We now know the Schroedinger equation. When we try to `solve' it for a particle in an infinite square well, we must apply the following boundary conditions and assumptions:
+\begin{enumerate}
+\item For $0 < x < L$, $V = 0$. Elsewhere $V = \infty$ 
+\item $\phi(x)$ is continuous.
+\item $\phi(x) = 0$ for $x = L;\,\, x=0$.
+\end{enumerate}
+
+Handily, the equation simplifies to the following (we can use our amazing knowledge of wave mathematics to solve it): 
+
+$$\frac{-\hslash^2}{2m}\frac{d^2\phi(x)}{dx^2} = E\phi(x)$$
+
+So clearly $\phi(x) = A e^{i\alpha x} + B e^{-i\alpha x}$ where $\alpha = \sqrt{\frac{2mE}{\hslash}}$. The solutions, including time-dependence, are as follows:
+
+$$\Psi_n(x, t) = \sqrt{\frac{2}{L}} \sin(\frac{n\pi x}{L}) f_n(0) e^{-i E_n t/\hslash}$$
+
+And the most general form is $\Psi = \sum_{n=1}^{\infty} \Psi_n(x, t)$. The coefficients that describe the varying intensity of each component wave is inside of $f_n(0)$. Also, make sure you know the \textbf{energy levels for a particle in a box}: 
+
+$$E_n = \frac{\hslash^2 n^2 \pi^2}{2mL^2},\,\,\,\, n \in N^*$$
+
+\subsection{Time Dependence in Superposition}
+
+When we just have one $n$ value (i.e. $\Psi$ is a perfect sinusoidal wave), it's not really time dependent. When we take the superposition of \textbf{more than one energy level}, we get time dependence in the form of what our professor calls `cross terms'.
+
+$$P = \Psi^*(x, t) \Psi(x, t)$$ 
+
+The rate at which time-dependent \textbf{sloshing} that occurs when you superimpose two energy levels is: $\omega = \frac{E_1-E_2}{\hslash}$. 
+
+\subsection{Determining the Likelihood of a Given Superposition}
+
+When you make an observation of a particle whose state is described as superposition of many energy levels/states, it will collapse to just one of those states.
+
+The probability of a given state being actualized can be deduced using the following steps:
+\begin{enumerate}
+\item We begin with a general wave function $\Psi(x)$ and a specific state $\psi_n(x)$. We wish to deduce the probability $P(\phi_n)$.
+\item Remember that each $\phi_n$ comprises a basis set. $\Psi = \sum c_n \phi_n$. We can deduce $c_n$ by the inner product of $\Psi$, $\phi_n$ which is 
+$$c_n = \int_0^L \phi_n^*(x)\Psi(x)dx$$
+\item $c_n$ gives the probability amplitude of $\phi_n$. We get $P(\phi_n)$ via $$P(\phi_n) = |c_n|^2$$.
+\end{enumerate}
+
+If we want to get the \textbf{expected value} of energy or wavelength, we just need to take the weighted average of that value with its associated probability.
+
+\subsection{Quantum Harmonic Oscillator}
+
+This classic example gives you a curve that describes the potential energy of a particle at a given distance from an atom. It's generally bowl shaped, but slightly irregular. Here are the steps taken to solve it:
+
+\begin{itemize}
+\item To simplify the potential energy curve, we Taylor expand at $r_0$. We use this as the $V(x)$ term in the Schroedinger equation such that $V(r) = V(r_0) + \frac{1}{2}\frac{d^V}{dr^2}$
+\item Set $m$ to the \textbf{reduced mass} of the system ($\frac{1}{\frac{1}{m_1} + \frac{1}{m_2}}$)
+\item Plug that value into the \textbf{time-independent} Schroedinger equation.
+\item $\frac{-\hslash^2}{2m} \frac{d^2\phi}{dx^2} + \frac{1}{2}Kx^2 \phi(x) = E\phi(x)$ where $K$ is the spring constant.
+\item Boundary conditions: $lim_{|x|\to\infty}\phi(x) = 0$
+\item At large $|x|$, the first term might be there, the second term is definitely there due to the $x^2$, and the last term is definitely not there since it's finite.
+\item We make a guess that, at large $x$, $\phi(x) \approx \exp(-\sqrt{\frac{mk}{\hslash^2}\frac{x^2}{2}})$
+\item Since that function is $\approx 1$ at around $x = 0$, we can say that the final form is $\phi(x) = g(x) \exp(-\sqrt{\frac{mk}{\hslash^2}}\frac{x^2}{2})$. $g(x) = \beta_n$.
+\end{itemize}
+
+\paragraph{ENERGY OF A QHO: } $$E_n = (n+\frac{1}{2})\hslash \omega$$
+\paragraph{Useful Facts: }
+\begin{itemize}
+\item $\omega = \frac{2\pi c}{\lambda}$
+\item $\omega_0^2 = \frac{k}{m}$
+\item Reduced mass: $$\frac{1}{ \frac{1}{m_1} + \frac{1}{m_2} }$$
+\end{itemize}
+
+\subsection{Probability Density and Current}
+
+Do you remember anything whatsoever from the fluid dynamics portion of AER210? Me neither. Anyway, the idea here is that flowing incompressible fluids have similar behavior to probability moving in time and space. 
+
+$$\frac{\partial P}{\partial t} = -\frac{\partial J_x}{\partial x}$$
+
+Where $P$ is the fluid density and $J_x$ is the current density. We can make the analogy that probability is equivalent to fluids. From Schroedinger's equation, we can simplify:
+
+$$\frac{\partial P}{\partial t} = \frac{\hslash}{2mi} (\Psi\frac{\partial^2 \Psi^*}{\partial x^2} - \Psi^* \frac{\partial^2 \Psi}{\partial x^2})$$
+
+From this we get that the \textbf{probability current} is $J_x = \frac{\hslash}{2mi} (\Psi^* \frac{\partial \Psi}{\partial x} - \Psi \frac{\partial \Psi^*}{\partial x})$
+
+\subsection{Eherenfeist Theorem}
+
+The macroscopic manifestations of quantum probabilities are usefully approximated as the \textbf{expected values} of the wavefunctions. For example:
+$$\frac{d<x>}{dt} = \frac{<p>}{m};\,\,\, \frac{d<p>}{dt} = <\frac{-\partial V}{\partial x}>$$
+In order to find the average value of a given variable in quantum, you must take the following integral:
+$$<x> = \int \Psi^*\Psi x dx$$
+So, for example: $<p> = \int P(x, t) [-i\hslash \frac{d}{dx}dx = \int \Psi^*(k, t) \Psi(k, t) \hslash k dk$
+
+\chapter{Quantum Wave Transmission}
+\section{Index of Refraction}
+Generally speaking, the light phenomena taught in Grade 10 Ontario High School (e.g. index of refraction, optics, etc.) have solid analogues in quantum mechanics. That should make sense intuitively because light is best characterized by quantum mechanical models in many cases.
+
+The refraction index for light is characterized by the varying \textbf{speeds of light} that exist in different media. That difference causes refraction, reflection, and a whole lot of other jazz. 
+
+\paragraph{Quantum version: } Instead of varying the speed of light in media, we consider a \textbf{potential energy step function}. The following attributes apply:
+\begin{itemize}
+\item Total energy remains the same from region I to II.
+\item Potential energy goes from $V_{I} \to V_{II}$.
+\item $P_I = \sqrt{2m(E-V_I)}$ and $P_{II} = \sqrt{2m(E-V_{II}}$.
+\item $\lambda_I = h/P_I$, $\lambda_{II} = h/P_{II}$.
+\end{itemize}
+
+\paragraph{Wave function form: }
+$$\phi_I(x) = Ae^{ik_1x} + Be^{-ik_1x}$$
+$$\phi_{II}(x) = Ce^{ik_2x}$$
+That second equation for after the potential energy step only has one term because only transmitted light gets through (by definition) and it's only characterized by one wavelength.
+
+\subsection{Case I: $E > V_0$}
+
+\paragraph{Boundary conditions: }
+\begin{itemize}
+\item $\phi(x)$ is continuous.
+\item $\phi'(x)$ is continuous.
+\end{itemize}
+
+The continuity arises because a discontinuous function would lead to an infinite $\frac{d^2\phi}{dx^2}$ in the Schroedinger equation that doesn't make sense because all the other terms definitely go to zero when integrated over very short periods.
+
+\paragraph{Conclusions on the wave functions: } 
+\begin{enumerate}
+\item $A + B = C$
+\item $(A-B) = \frac{k_2}{k_1}C$
+\end{enumerate}
+
+Classically, transmission coefficient is $T = \frac{J_{transmitted}}{J_{incident}}$ and the reflection coefficient is $R = \frac{J_{reflected}}{J_{incident}}$. When we apply \textbf{quantum equations...}
+
+$$J_{trans} = |C|^2\frac{\hslash k_2}{m};\,\,\, J_{inc} = |A|^2\frac{\hslash k_1}{m};\,\,\, J_{refl} = |B|^2 \frac{-\hslash k_1}{m}$$
+$$T = \frac{|C|^2}{|A|^2}(\frac{k_2}{k_1});\,\,\, R = \frac{|B|^2}{|A|^2}$$
+
+\subsection{Case II: $E < V_0$}
+
+$$A = \frac{1}{2}C(1 + \frac{i\beta}{k_1});\,\,\, B = \frac{1}{2}C(1-\frac{i\beta}{})$$
+$$\frac{J_{refl}}{J_{inc}} = \frac{|B|^2}{|A|^2} = 1$$
+
+Unexpectedly, the results are what one would intuitively reason given your experience with the material world. If the ball doesn't have enough energy to overcome the potential energy of a step, it's not getting up there. All particles in that situation are reflected back.
+
+\paragraph{HOWEVER: } There's a weird pooling of probability right around the cusp of the step function. The wave coming to the step is a regular complex exponential (it's oscillating. The wave function right after the step is a \textbf{non-complex decaying exponential}! Because of course there has to be comething confusing about each topic in quantum :)
+
+So yeah, $J_trans$, the probability current of the particle going above $x = 0$ is still 0, but the actual probability is greater than 1. 
+
+Low key this is actually seen in lens optics. When you have total internal reflection, there is this thing called the \textbf{evanescent wave} that is $\approx \lambda$ distance away from the surface of the medium that does have EM radiation.
+
+
+\section{Quantum Tunneling}
+
+\chapter{Quantum Measurements, Operators and the Like}
+
+\section{Hamiltonians and Eigen Things}
+
+If we manipulate the time-independent Schroedinger equation, we can get the following: $$[-\frac{\hslash^2}{2m} \nabla^2 + V(r)]\phi_n(x) = E_n\phi_n$$
+
+If you look carefully, you can see the Eigen value form! Remember how the whole thing was that $\pmb{A}\vec{x} = \lambda \vec{X}$? Well here we have this big 
+\textbf{operator} in the square brackets times the \textbf{state} $\phi_n(x)$ being set equal to the scalar value for total energy $E$ times the same state $\phi_n(x)$
+
+We call the stuff in the brackets the \textbf{Hamiltonian operator}. The state $\phi_n(x)$ is an \textbf{eigen state} or \textbf{eigen vector} of the Hamiltonian and the value of $E_n$ is an \textbf{eigen value} of the Hamiltonian. 
+
+\paragraph{Problem Solving Tips: }
+\begin{itemize}
+\item You can always re-derive the conventional Hamiltonian operator from the time-independent Schroedinger equation.
+\item If you are asked to confirm that a state is an \textbf{eigen state}, just run it through the given operator. You should get a scalar multiple of the original state.
+\item If you are asked to find the energy level of a given state, use the Hamiltonian operator (or whatever other operators you have access to, the rest will be discussed later) 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,184 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{MSE160 Notes: Materials NTK}
+\author{Eli Scott and Aman Bhargava}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Basic Properties}
+\begin{itemize}
+\item \textbf{Resilience}: Ability to absorb energy and recover it upon unloading (elastic energy)
+\item \textbf{Tensile Strength}: Absolute peak stress on stress-strain curve.
+\item \textbf{Fracture Toughness}: $K_c$, Fracture toughness (amount of energy absorbed before rupture)
+\item \textbf{Polymorphism}: Ability to have more than one molecular structure.
+\item \textbf{Amorphous}: Non-crystalline solid w/o long-range order.
+\item \textbf{Yield Stress}: Stress that causes 0.2\% elastic deformation.
+\item \textbf{Cathodic Protection}: When you use an anodic material to protect a cathodic material from corrosion.
+
+\end{itemize}
+
+\section{Material Design}
+\begin{enumerate}
+\item Choose what to min/max
+\item Decide on functionality (supporting, min deflection)
+\item Decide objectives
+\item Decide constraints
+\item Figure out free var
+\item Derive function for objective and constraints
+\item Eliminate free variable using constraints
+\item Solve for geometric/functional/material parameters
+\item Always maximize
+\item Cost parameter = material index/cost per kg
+\end{enumerate}
+
+
+\section{Crystal Structures}
+\paragraph{Theoretical Density: } $$\rho = \frac{n*A/N_a}{V_c}$$ Where $n$ is the number of atoms per unit cell, $A$ is the atomic mass, $N_a$ is avogadro's number, and $V_c$ is the volume of the unit cell.
+\subsection{Simple Cubic}
+\begin{itemize}
+\item Packing efficiency: 52.4\%
+\item Coordination number: 6
+\item One atom at each corner.
+\end{itemize}
+
+\subsection{Body Centered Cubic}
+\begin{itemize}
+\item Packing efficiency: 68\%
+\item Coordination number: 8
+\item One atom in the middle and one atom at each corner.
+\item Slip system: plane = $(0, 1, 1)$, direction = $<1, 1, 1>$
+\end{itemize}
+
+\subsection{Face Centered Cubic}
+\begin{itemize}
+\item Packing efficiency: 74\%
+\item Coordination number: 12
+\item Eigth of atom at corners. Half atoms on each face.
+\item Slip system: plane = $(1, 1, 1)$, direction = $<1, 1, 1>$
+\end{itemize}
+
+\paragraph{Trend for coordination number in ionic crystal} $~\frac{r_{cation}}{r_{anion}}$
+
+\subsection{Ductile-Brittle Transition}
+BCC and polymers experience transition from brittle to ductile from low to high temperatures. 
+
+
+
+
+\section{Strength of Crystalline Materials (Metals)}
+\subsection{4 Strengthening Mechanisms: }
+\begin{enumerate}
+\item Alloying (larger and smaller atoms)
+\item Precipitation/"particle" strengthening (relies on the fact that distortions can't easily pass through graini boundaries)
+\item Cold work/work hardening
+\item Grain size reduction
+\end{enumerate}
+
+\paragraph{Equation to fit work hardening stress-strain response}
+$$\sigma_t = K(\epsilon_t)^n$$
+Where $t$ indicates 'true' as opposed to engineering values, $K$ is a constant and $n$ is the hardening exponent.
+
+\subsection{Conditions for Substitutional Solid Solutions}
+\begin{itemize}
+\item $\Delta r < 15\%$
+\item Similar electronegativities
+\item Same crystal structures
+\item Similar valences
+\end{itemize}
+
+\paragraph{Empiric relationship between $\sigma_y$ and concentration of alloy $C$: } $sigma_y ~ \sqrt{C}$
+
+\subsection{Resolved Shear Stress: }
+$$\tau_r = \sigma_o*cos(\lambda)*cos(\phi)$$
+$\lambda$ is the angle between the $\sigma_o$ and the plane, $\phi$ is the angle between the normal of the plane and ${\sigma}_o$
+
+$\tau_{crss} = \frac{\sigma_{y}}{2}$ is the critical resolved shear stress.
+
+\subsection{Defects}
+Types of Defects:
+\begin{enumerate}
+\item Point defects (vacancy, self-interstitial, substitutions)
+\item Linear defects (dislocations)
+\item Area defects (grain bounds)
+\end{enumerate}
+
+\paragraph{Conditions for dislocation motion: } $\tau_r > \tau_{crss}$
+
+\subsection{Equilibrium Concentration of Point Defects}
+$$\frac{N_v}{N} = exp(\frac{-Q_v}{kT}$$ Where $\frac{N_v}{N}$ is the ratio of vacancies to potential vacancies (i.e. number of atoms), $Q_v$ is activiatioin energy, $k$ is Boltzmann's constant, and $T$ is temperature.
+
+\subsection{Fatigue}
+Fatigue is cyclic stressing. Here are the main parameters:
+\begin{enumerate}
+\item $S$: amplitude of cyclic stress
+\item $\sigma_0$: mean stress
+\item Frequency of stressing
+\end{enumerate}
+
+$$\frac{da}{dN} = \Delta K^{m}$$
+Where a = half crack length, N = number of cycles, $\Delta K ~ \Delta \sigma * \sqrt(a)$, m is a constant
+
+\textbf{$S_{fat}$ is the minimum $S$ for fatigue behavior.}
+
+
+\subsection{Hall-Petch Equation}
+Gives you $\sigma_y$ from grain size.
+$$\sigma_y = sigma_0 + k_y * d^{-1/2}$$
+Where $\sigma_0$ and $k_y$ are constants and $d$ is the diameter of the grain size.
+
+
+
+
+
+\section{C R A C K}
+\subsection{Griffith's Formula: $\sigma_m$}
+Crack tip stress. $$\sigma_m = 2*\sigma_o*\sqrt{a/p_t}$$
+Where $p_t$ is the radius of curvature, a is half crack length, and $\sigma_o$ is the applied stress.
+
+\paragraph{Propagation criterion: } When $\sigma_m > \sigma_c$
+
+\subsection{$\sigma_c$}
+Critical stress, $$\sigma_c = \sqrt{2E\gamma_s}{\pi*a}$$ Where $E$ is modulus of elasticity, $\gamma_s$ is the specific surface energy (add $\gamma_p$ = plastic deformation energy if ductile), $a$ is half crack length.
+
+Basically just the stress that cracks can withstand before propagating. 
+
+\subsection{$K$}
+At crack failure, $$K_c = Y*\sigma*\sqrt{\pi*a}$$ Where $K_c$ is fracture toughness of material, $Y$ is a constant, and $a$ is the half crack width.
+
+Two failure cases here: either cracks are too large or $\sigma$ is too large.
+
+\section{Electrical Properties}
+
+\subsection{4 Ways to Increase Resistivity?}
+\begin{enumerate}
+\item Increase temperaturre
+\item Increase grain boundaries, dislocations
+\item Add impurities
+\item Add vacancies
+\end{enumerate}
+
+\paragraph{Calculating resistance of a sample: } $R = \frac{L}{A*\sigma}$
+
+\subsection{P vs. N-Type Doping}
+P-type brings the acceptor band down significantly. N-type brings the donor band up. P-type results in more free holes, N-type results in more free electrons. 
+
+
+\paragraph{Current Density} = $J = I/A$ = current/cross sectional area.
+\paragraph{Electric Field Potential} = $E = V/L$
+
+\subsection{New Ohm's Law}
+$$J = \sigma*E$$
+
+\subsection{Calculating $\sigma$}
+$$\sigma = n|e|\mu_e + p|e|\mu_h$$
+Where $n$ is the number of mobile electrons, $p$ is the number of holes, $\mu_e$ is electron mobility and $\mu_h$ is the hole mobility.
+
+\paragraph{Voltage threshold for semiconductors: $2eV$}
+
+
+\end{document}

@@ -1,0 +1,451 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{hyperref}
+
+\begin{document}
+\title{ECE259 Abridged}
+\author{Aman Bhargava}
+\date{Janaury 2020}
+\maketitle
+
+\tableofcontents
+
+
+\chapter{Electrostatics}
+\section{Coulomb's Law and Electric Field}
+
+$$\vec{F}_e = k\frac{Q_1Q_2}{|\vec{R}^2|}(\vec{R_2} - \vec{R_1})$$
+
+\section{Electric Field Intensity $\vec{E}$}
+\begin{itemize}
+\item \textbf{Source} charges 'make' the charge.
+\item \textbf{Test} charges 'feel' the charge.
+\item Field lines point in the direction that a \textbf{positive test charge} would be pushed if it were placed at a given point in space.
+\end{itemize}
+
+\paragraph{Electric Field at $R_2$ due to $Q_1$ at $R_1$: }
+$$\vec{E_1} = \lim_{Q_2 \to 0} \frac{\vec{F}_{12}}{Q_2} = \frac{Q_1}{4\pi \varepsilon_0 |\vec{R}_2 - \vec{R}_1|^3}(\vec{R}_2 - \vec{R}_1)$$
+\textit{Note: $F_{12}$ is the force acting on 1 due to charge 2}.
+
+\paragraph{Properties of $\vec{E}$}
+\begin{itemize}
+\item Points away from positive charges.
+\item Points toward negative charges.
+\item Points along line between source and point of measurement.
+\item Linear such that $\vec{E}_{tot} = \sum \vec{E}_i$
+\end{itemize}
+
+
+\section{$\vec{E}$ from Continuous Charge Distribution}
+
+$$\vec{E}_{tot} = \int d\vec{E}' = \int \frac{dQ' (\vec{R} - \vec{R}')}{4\pi\varepsilon_0 |\vec{R} - \vec{R}'|^3}$$
+
+Possible charge distribution types consist of \textbf{linear, surface, and volumes}. Arbitrary surfaces will not be tested - they generally fall into 
+\textbf{disk, cone, cylinder, sphere, and cube}.
+
+\paragraph{Steps for Finding $\vec{E}_{tot}$:}
+\begin{enumerate}
+\item Write down Coulomb's Law:
+$$\vec{E} = \int d\vec{E}' = \int \frac{dQ'}{4\pi\varepsilon_0 |\vec{R}-\vec{R}'|^3} (\vec{R}-\vec{R}') $$
+\item State $dQ'$, $\vec{R}$, and $\vec{R}'$.
+$$dQ' = \rho_s dS$$
+
+\item Integrate: 
+\begin{itemize}
+\item Determine $d\vec{E}' = \frac{dQ'(\vec{R}-\vec{R}')}{4\pi\varepsilon_0 |\vec{R}-\vec{R}'|^3}$
+\item Ensure that position vectors do not vary with spatial coordinates (if they do, convert them to cartesian or otherwise).
+\item Cancel any unit vectors you can using symmetry.
+\item Perform the integration. 
+\end{itemize}
+\end{enumerate}
+
+\section{Gauss's Law}
+\subsection{Fundamental Postulates of Electrostatics}
+$$\nabla \times \vec{E} = 0 \,\, \to \,\, \int_C \vec{E} \cdot d\vec{l} = 0$$
+$$\nabla \cdot \vec{D} = \rho_S \,\, \to \,\, \iint_C \vec{D} \cdot d\vec{S} = Q_{enc} = \iiint \rho_v dV$$
+
+The second line is Gauss's law. The first is simply stating that electric fields are conservative/irrotational/etc.
+
+\paragraph{What is $\vec{D}$? } $\vec{D} = \varepsilon \vec{E} = \varepsilon_r \varepsilon_o \vec{E}$. $\vec{D}$ is electric \textbf{flux density} while 
+$\vec{E}$ is the electric \textbf{field density}.
+
+\subsection{Why is Gauss's law true?} 
+
+Why should it be the case that local charge density is given by the divergence of electric flux density? Let's 
+think about the properties of electric fields. We know that electric field lines (and thus electric flux lines) point away from positive charges. 
+\textbf{Divergence is how much the vector field points away} (or to) a given point. For that reason, it makes a lot of sense for the divergence to give 
+you the magnitude of local charge density. If you have a positive charge, your field lines will point away from that charge. Therefore, the divergence of 
+$\vec{D}$ will be correlated (in this case, equal) to the charge density!
+
+\subsection{Problem Solving with Gauss's Law}
+Using Gauss's law, we can greatly simplify the process of finding $\vec{E}$ if a few conditions are met. We need to pick a surface that surrounds a 
+given charge mass that has the following properties:
+
+\paragraph{Gaussian Surface Properties: }
+\begin{enumerate}
+\item Closed.
+\item $\vec{E}$ is either perpenndicular or parallel to $d\vec{S}$.
+\item $|\vec{E}|$ is constant over the surface.
+\end{enumerate}
+
+\paragraph{Steps to getting $\vec{E}$ with Gauss's Law:}
+\begin{enumerate}
+\item Determine the charge distribution from the given source. 
+\item Choose a corresponding Gaussian surface.
+\item $\iint \vec{E} \cdot d\vec{S} \,\, \to \,\, E_R \iint d\vec{S} = E_r\cdot SA$. From here, we can solve for $E_R$, or the 
+electric field at a given point on the surface (which is constant). The direction of that field can be found via common sense...
+\end{enumerate}
+
+You can also solve things with the non-differential form of Gauss's law by knowing that $\nabla\cdot \vec{D} = \rho_v$.
+
+\section{Electric Scalar Potential}
+We have the following methods of finding $\vec{E}$ from a charge distribution:
+\begin{enumerate}
+\item Coulomb's law with integral superposition.
+\item Gauss's Law.
+\item \textbf{Potential Theory}
+\item Getting a computer to do it for us. 
+\end{enumerate}
+
+We define electric potential $\Delta V$ as the amount of work needed to move a 1-Coulomb charge from 
+one place to another in an electric field: 
+$$\Delta V = -\int_{p_1}^{p_2} \vec{E} \cdot dl = \frac{W_{ext}}{Q}$$
+$$\nabla V = -\vec{E}$$
+$$V = \frac{1}{4\pi\varepsilon} \int_{v, s, l} \frac{dQ'}{|\vec{R} - \vec{R}'|}$$
+
+
+That second one is Maxwell's 2nd equation. 
+
+Fortunately, this is conservative and linear. If you know that $\Delta V$ from point $a$ to point $b$ and the 
+$\Delta V$ from point $b$ to point $c$, you can easily get the $\Delta V$ from point $a$ to point $c$.
+
+\paragraph{Absolute $V$: } If we take our reference point as one that is infinite distance away, we define 
+\textbf{absolute $V$} as the energy required to move a 1-Coulomb test charge from infinite distance to a given 
+point. If it's not otherwise stated, this is the voltage value you are being given. 
+
+\paragraph{Equipotential surfaces: } These surfaces have the same $V$ value. Remember how $\nabla V = -\vec{E}$? 
+Well thanks to our knowledge of gradients, we know that these are always going to be perpendicular to $\vec{E}$ 
+lines. Also, we now know that $\vec{E}$ points from \textbf{high to low $V$} thanks to our awesome vector calculus 
+prowess. Very cool. 
+
+
+\paragraph{Steps for Problem Solving: }
+\begin{itemize}
+\item Write $\Delta V = -\int_{p_1}^{p_2} \vec{E}_a \cdot dl$.
+\item Evaluate $V_{origin \to p_1}$ and $V_{origin \to p_2}$.
+\item Subtract.
+\end{itemize}
+
+\paragraph{Electric Potential of a Point Charge: } Using Coulomb's law, we get: $$V = \frac{Q}{4\pi \varepsilon_0 |\vec{R} - \vec{R}'|}$$
+
+For larger bodies, $V$ is a \textbf{simple scalar summation} of the voltage due to individual point charges.
+
+Note that the formulae for the \textbf{gradient operator} $\nabla$ in various coordinate systems are on the aid sheet for the sheet.
+
+
+\section{Dielectrics}
+
+If you put a material that's not conductive in an electric field, the electron clouds will stretch, and you'll get some surface-bound net charges $\rho_{sb}$. You don't actually have any volume charges, because in the middle of the material, the net charges still cancel out with adjacent atoms since you don't have any net flow of electrons away from their nucleii.
+
+In the case of a capacitor, the original electric field is due entirely to the surface charge on the plates of the capacitor $\pm \rho_s$. This is the sole factor for generating the actual field within the capacitor $E_0 = \frac{\rho_{s}}{\varepsilon_0}$. Similarly, there is an electric field due to polarization within the material due to the \textbf{bound charge density} $\rho_{sb}$: 
+
+$$\vec E_p = \frac{\rho_{sb}}{\varepsilon_0};\,\,\, E_{tot} = E_0 + E_p = \frac{\vec E_0}{\varepsilon_r}$$
+
+After some fancy algebra, we also get: 
+
+$$\vec P = \rho_{sb} \hat n; \,\, \vec D = \rho_s \hat n = \varepsilon_0 \vec E + \vec P = \varepsilon_r \varepsilon_0 \vec E$$
+
+This is super cool, because it shows that $D$ doesn't really care about dielectrics or anything that gets in its way -- it just cares about the original sources of electric charge: \textbf{free charge} densities. 
+
+We also have these super important relationships for when you don't actually have any field causing the polarization and you want to know stuff about the polarization vector or whatever. 
+
+$$\rho_{p, v} = -\nabla \cdot \vec P; \,\, \rho_{p, s} = -\hat a_n \cdot (\vec P_2 - \vec P_1)$$
+
+Where $\rho_{p, v}$ is the volume charge density caused by the polarization, etc.  
+
+
+
+
+\subsection{Dielectric Strength}
+
+Dielectrics have a maximum $\vec{E}_b$ at which they turn into conductors because the electrons are ripped into the conduction band.
+
+\subsection{Dielectric Boundary Conditions}
+
+At the interface between two materials, the magnitude and direction of the electric field changes. There are \textbf{two boundary conditions} that are able to effectively describe that change, derived from Maxwell's Equations.
+
+\begin{itemize}
+\item $E_{t1} = E_{t2}$. \textit{Tangential $\vec{E}$ is continuous across boundary}.
+\item $D_{n1} - D_{n2} = \rho_s$. \textit{Normal $\vec{D}$ is discontinuous by difference of $\rho_s$ across boundary}.
+\end{itemize}
+
+These both apply in static AND time-varying situations.
+
+\paragraph{Resultant properties of boundary conditions: } 
+\begin{itemize}
+\item $\vec{E} = 0$ for all conductors.
+\item \textbf{Current densities} at imperfect conductor boundaries are: $$\frac{J_{t1}}{\sigma_1} = \frac{J_{t2}}{\sigma_2}; J_{n1} = J_{n2} = J_n$$
+\item At imperfect boundaries, the surface charge density is: $$\rho_s = J_n\{ \frac{\varepsilon_{r1}\varepsilon_0}{\sigma_1} - \frac{\varepsilon_{r2}\varepsilon_0}{\sigma_2} \}$$
+\end{itemize}
+
+Do note that all these rules only apply at interfaces, not in free spaces.
+
+\subsection{Capacitance}
+
+$$Q = C\Delta V;\,\,\,\, C = \frac{Q}{V}$$
+
+Capacitance is the proportionality constant for a given setup between the voltage applied and the charge accumulated. Converting the above statement into integrals, we get:
+
+$$C = \frac{Q}{V} = \frac{\iint_s \vec{D}\cdot d\vec{S}}{|-\int \vec{E} \cdot dl|}$$
+
+\paragraph{Capacitors: } Pretty wacky, can usually be solved with a combination of Gauss's law and knowing your material properties and how to get voltage from an electric field or electric flux density distribution.
+
+\begin{itemize}
+\item \textbf{Compound capacitors} have multiple dielectrics. BOUNDARY CONDITIONS MUST BE APPLIED when solving these.
+\item \textbf{DIELECTRIC RESISTANCE} is given by: $$RC = \frac{\varepsilon_r \varepsilon_0}{\sigma}$$
+\item Supercapacitors use nanoengineering to make high capacitance capacitors.
+\end{itemize}
+
+\section{Electrostatic Energy}
+
+\subsection{Parallel Plate Capacitor}
+
+$$Q = CV_0; |\vec D| = \rho_s = \frac{Q}{S}$$
+$$\vec E = \frac{\vec D}{\varepsilon_r \varepsilon_0} = \frac{\rho_s}{\varepsilon_R \varepsilon_0} = \frac{V_0}{d}$$
+
+\textbf{Energy} in an electrostatic system is defined as \textbf{work} is required to go from \textbf{infinite disperasl of particles} to the given configuration of charges.
+
+$$W_e = \frac{1}{2} \sum_{i = 1}^{n} Q_i V_i$$
+
+$$W_e = \frac{1}{2} \int_l \rho_l V dl = \frac{1}{2} \iint_s \rho_s V dS = \frac{1}{2} \iiint \rho_v V dv$$
+
+$$W_e = \frac{1}{2} \iiint \vec{D} \cdot \vec{E} dv = \frac{1}{2} \iiint \frac{|\vec{D}^2|}{\varepsilon_r \varepsilon_0} dv$$
+
+\begin{enumerate}
+\item $V_i$ is the voltage 'seen' by particle $i$.
+\item $Q_i$ is the charge of particle $i$.
+\item $\frac{1}{2}$ is because we technically count each charge/associated energy twice.
+\end{enumerate}
+
+
+\paragraph{Energy density: } $w_e = \frac{1}{2} \vec{D}\cdot\vec{E}$
+
+\paragraph{Two Paths to Energy $W_e$}
+\textbf{Pathway I: } 
+\begin{enumerate}
+\item $\nabla V = \vec{E}$
+\item $\vec{D} = \varepsilon_0 \varepsilon_r \vec{E}$
+\item $\rho_s = |\vec{D}|$
+\item $Q = \iiint \rho_v dv$
+\item $C = \frac{Q}{V_0}$ $$W_e = \frac{1}{2} CV_0^2$$
+\end{enumerate}
+
+\textbf{Pathway II: } 
+$$W_e = \frac{1}{2} \iiint_v \varepsilon_r \varepsilon_0 |\vec{E}|^2 dv = \frac{1}{2} CV_0^2 $$
+
+
+\section{LaPlace and Poisson's Equations}
+
+These are techniques for going from \textbf{charge density} to \textbf{$\vec{E}$} and are generally used in most practical situations.
+
+Poisson's Equation: 
+
+$$\nabla\cdot(\varepsilon_r\varepsilon_0\nabla V) = -\rho_v$$
+
+Laplace's Equation:
+
+$$\nabla\cdot(\varepsilon_r\varepsilon_0 \nabla V) = 0$$
+
+\paragraph{Some vocabulary: } 
+\begin{itemize}
+\item $\nabla \nabla V = \frac{-\rho_v}{\varepsilon_r\varepsilon_0} \to \vec{\nabla}^2 V$ is the \textbf{Laplacian} 
+\item Therefore $\vec{\nabla}^2 V = 0$ is the true version of Laplace's equation.
+\item Under the same notation, $\vec{\nabla}^2V = -\frac{\rho_s}{\varepsilon_r \varepsilon_0}$.
+\end{itemize}
+
+This leaves us with a \textbf{boundary value problem}. If we know the voltage at the bounds (or we can infer it from something else), we can then use the fact that $\vec{\nabla{V}}^2 = 0$ wherever there is no surface charge to solve the rest!
+
+\paragraph{Notes on solving the BVP: }
+\begin{itemize}
+\item Even though the dielectric can be polarized in a question, it doesn't count because it's not a \textbf{FREE} charge.
+\item Since you rarely know the actual $\rho_s$ (you would likely know the $V_0$), this is a far more utile problem solving strategy.
+\item A reliable \textbf{technique to solve the boundary value problem} is to \textit{integrate the equation twice}.
+\end{itemize}
+
+\paragraph{Procedure for BVP's: } 
+\begin{itemize}
+\item Solve \textbf{LaPlace or Poisson's} equation via \textit{direct integration} or \textit{separation of variables}.
+\item Apply \textit{boundary conditions} to solve for arbitrary constants to get to a \textit{particular solution}.
+\item Use the following formulae to transform to any other variable of interest after solving for the voltage distribution:
+$$\vec{E} = -\nabla V; \,\,\,\, \vec{D} = \varepsilon_r\varepsilon_0 \vec{E}; \,\,\,\, \vec{J} = \sigma \vec{E}$$
+$$R = \frac{V_0}{\iint \vec{J} \cdot dS} = \frac{\varepsilon_r \varepsilon_0}{\sigma C}$$
+\end{itemize}
+
+\paragraph{Electric Shielding}
+
+A conducting material can be used to `shield' the inside from external $\vec{E}$. This is because you can't have a $\Delta V$ across a conductor -- it just conducts the 
+difference in charge. Since we know that $V_{in} = V_{out}$, we can solve for $$\vec{\nabla}V = 0 \to V(x, y, z) = V_0$$
+
+By the uniquess principle, we know that this HAS to be the only solution. That's how \textbf{Faraday cages} work!
+
+
+\section{Resistance and Joule's Law}
+
+Recall that
+\begin{itemize}
+\item $\vec{\nabla} \cdot (\varepsilon_r \varepsilon_0 \vec{\nabla} V) = -\rho_v$
+\item $D_{n1} - D_{n2} = \rho_s$
+\item $E_{t1} = E_{t2}$
+\end{itemize}
+
+\subsection{Volume Current Density}
+
+$\vec{J}$ is the vector field that represents microscopic current flow. $$\vec{J} = \sigma \vec{E}$$
+$$I = \iint_S \vec{J} \cdot dS$$
+$$\mu_e = \frac{e \tau}{m_e}$$
+$$\sigma = \frac{N_e e^2 \tau}{m_e}$$
+
+\paragraph{Resistance: } plays into the situation as follows.
+
+$$R = \frac{V_0}{I} = \frac{|-\int \vec{E}\cdot dl|}{\iint_s \vec{J} \cdot dS} = \frac{|-\int \vec{E}\cdot dl|}{|\iint_s \sigma \vec{E} \cdot d\vec{S}|}$$
+
+And if \textbf{$S$ is uniform over $L$}: 
+
+$$R = \frac{L}{\sigma S}$$
+
+% Continue from end of March 5/Beginning of March 6
+
+\subsection{Power}
+
+$$P = \iiint_V \vec{E} \cdot \vec{J} dV$$
+
+This gives the power loss due to resistance leading to heat loss.
+
+
+\chapter{Magnetostatics}
+
+\section{Biot-Savart Law} 
+
+$\vec H$ is the magnetic field intensity and $\vec B$ is the magnetic flux density. $\vec B$ is kind of like $\vec E$ and $\vec H$ is like $\vec D$. 
+
+\textbf{All magnetic fields} are due to moving charges of one sort or another. In general, 
+
+$$d\vec B = \frac{\mu_0 I d\vec{l} \times (\vec R - \vec R ')}{4\pi |\vec R - \vec R'|^3}$$
+
+\begin{itemize}
+\item Point charge current: $$\vec{B} = \frac{\mu_0}{4\pi} \frac{Q\vec{u} \times (\vec R - \vec R')}{|\vec R - \vec R'|^3}$$
+\item Line current: $$B = \frac{\mu_0 I}{4 \pi} \int_C \frac{dl' \times (\vec R - \vec R')}{|\vec R - \vec R'|^3}$$
+\item Surface current: $$B = \frac{-\mu_0}{4\pi} \iint_S \frac{\vec J_s \times (\vec R - \vec R')}{|\vec R - \vec R'|^3}$$
+\item Volume current: $$B = \frac{\mu_0}{4\pi} \iiint_{vol} \frac{\vec{J} \times (\vec R - \vec R')}{|\vec R - \vec R'|^3} dV'$$
+\end{itemize}
+
+$\mu$ is the new version of the electric permeability: $$\vec B =  \mu \vec H = \mu_0 \mu_r \vec H$$
+
+\section{Boundary Conditions}
+
+$$B_{n1} = B_{n2}; H_{t1} - H_{t_2} = J_s$$
+
+\section{Energy} 
+
+$$w_m = \frac{1}{2} \vec B \cdot \vec H$$
+
+$$W_m = \frac{1}{2} \iiint_{vol} \vec B \cdot \vec H dV$$
+
+\section{Lorentz Force}
+
+This relates the movement of a charge in a magnetic field to the force it experiences.
+
+$$F_m = q\vec u \times \vec B = \vec I l \times \vec B$$
+
+You use the right-hand-rule for this relationship: Your fingers represent the direction of motion $\vec u$, your palm is the field $\vec B$, and then your thumb is $F_m$. 
+
+$$F_{tot} = F_e + F_m = q\vec E + q \vec u + \vec B$$
+
+
+\section{Ampere's Law} 
+
+$$\vec \nabla \times \vec H = \vec J$$
+
+$$\int_C \vec H \cdot d\vec l = \iint_S \vec J \cdot d\vec S = I_{enc}$$
+
+You relate the current with $\vec H$ via the right hand rule. Your fingers wrap around the wire in the direction of $\vec{H}$ while your thumb points in the direction of the net current.
+
+This is basically Gauss's law. Make sure that your $\vec H$ is going to be constant and either be perpendicular or parallel to the closed path you draw, and then use the fact that:   $$\int_C \vec H \cdot d\vec l = |\vec{H}| \cdot \text{circumference}$$ 
+
+
+
+\section{Magnetization}
+
+\textbf{Magnetic Dipole: } A closed loop of current. $\vec m = I S \hat n$, where $I$ is the current, $S$ is the surface area of the loop, and $\hat n$ is given by the right hand rule. 
+
+\textbf{Torque: } Is given by 
+
+$$\vec T = \vec m \times \vec B$$
+
+In other worse, $\vec m$ will rotate until it conforms to $\vec B$ so that torque is minimized. This leads to an internal magnetic field $$\vec B_{material} > \vec B_{external}$$
+
+\textbf{Bound current density: } $\vec J_{ms} = \vec M \times \hat n$
+
+\textbf{Magnetic field intensity: } $\vec H = \frac{\vec B}{\mu_0} - \vec{M}$
+
+\textbf{Magnetic susceptibility: } $\vec{M} = \chi_m \vec H$
+
+\textbf{Relative permeability: } $\mu_r = \chi_m + 1$
+
+Much like with electrostatics, $\vec H$ only arises from \textbf{free currents}. $\vec B$ is the one that deals with both free and bound currents. 
+
+\section{Material Properties: Atomic Magnetic Dipoles}
+
+\begin{enumerate}
+\item \textbf{Non-zero moment} materials will have $\vec M$ align with $\vec B$. If strong alignment is achieved, then the field is enhanced (\textit{ferromagnetism}. If weak alignment, then there will be moderate enhancement (\textit{paramagnetic}). 
+\item \textbf{Net-zero moment} materials will have a small \textit{reduction} in $\vec B$, leading to \textit{diamagnetism}. 
+\end{enumerate}
+
+\begin{itemize}
+\item \textbf{Diamagnetic: } $\mu_r \approx \leq 1$ (values like 0.999). $B_{internal} < B_{applied}$. 
+\item \textbf{Paramagnetic: } $\mu_r \approx \geq 1$ (values like 1.01). $B_{internal} > B_{applied}$. 
+\item \textbf{Ferromagnetic: } $\mu_r >>> 1$. $B_{internal} >>> B_{applied}$. 
+\item \textbf{Ferrimagnetic: } $\mu_r > 1$. $B_{internal} > B_{applied}$.
+\end{itemize}
+
+\section{Modeling Transformer Circuits}
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Electric} & \textbf{Magnetic} \\
+\hline
+Voltages & $V_m = NI_0$ \\ 
+Current & $\Phi$ \\ 
+Resistance & $ R = \frac{L}{\mu S}$ \\ 
+Conductivity & Permeability $\mu = \mu_r \mu_0$ \\
+\hline
+\end{tabular}
+
+
+\subsection{Mesh Analysis}
+
+\section{Inductance}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

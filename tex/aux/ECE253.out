@@ -1,0 +1,82 @@
+\BOOKMARK [0][-]{chapter.1}{Review: Bit Manipulation}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Converting to and from Different Bases}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Converting from base 10 \040base 2}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Converting from base 2 \040base 16}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Converting from base 10 \040base 16 \(and vice versa\)}{section.1.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Boolean Algebra}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Useful Boolean Expression Rules}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Sum-of-Products \(SOP\)}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Product of Sums \(POS\)}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{How 2 Verilog}{}% 10
+\BOOKMARK [1][-]{subsection.3.0.1}{Code: 3-Way Multiplexer}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.1}{Full Adder}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{7-Segment Display}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.2.1}{Displaying Numbers}{section.3.2}% 14
+\BOOKMARK [1][-]{section.3.3}{FPGA's}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{Karnaugh Maps}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Motivation}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Review of Terminology}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.3}{Procedure for Minimum Cost Cover}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.4}{5 Variable Karnaugh Map}{chapter.4}% 20
+\BOOKMARK [0][-]{chapter.5}{Storage Elements}{}% 21
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.2}{RS Latches}{chapter.5}% 23
+\BOOKMARK [2][-]{subsection.5.2.1}{Behavior}{section.5.2}% 24
+\BOOKMARK [1][-]{section.5.3}{Gated RS Latch}{chapter.5}% 25
+\BOOKMARK [2][-]{subsection.5.3.1}{Synchronous Reset}{section.5.3}% 26
+\BOOKMARK [2][-]{subsection.5.3.2}{Behavior}{section.5.3}% 27
+\BOOKMARK [1][-]{section.5.4}{Gated D Latch}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.4.1}{Behavior: }{section.5.4}% 29
+\BOOKMARK [1][-]{section.5.5}{D Flip-Flops}{chapter.5}% 30
+\BOOKMARK [2][-]{subsection.5.5.1}{Master-Slave Flip Flop}{section.5.5}% 31
+\BOOKMARK [2][-]{subsection.5.5.2}{Behavior}{section.5.5}% 32
+\BOOKMARK [2][-]{subsection.5.5.3}{Why it's Useful}{section.5.5}% 33
+\BOOKMARK [1][-]{section.5.6}{T Flip-Flop}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.7}{Verilog Implementations}{chapter.5}% 35
+\BOOKMARK [2][-]{subsection.5.7.1}{Gated D-Latch}{section.5.7}% 36
+\BOOKMARK [2][-]{subsection.5.7.2}{Edge-Triggered Flip Flop}{section.5.7}% 37
+\BOOKMARK [2][-]{subsection.5.7.3}{Synchronous Reset \(Active Low\)}{section.5.7}% 38
+\BOOKMARK [0][-]{chapter.6}{Finite State Machine}{}% 39
+\BOOKMARK [1][-]{section.6.1}{Review}{chapter.6}% 40
+\BOOKMARK [2][-]{subsection.6.1.1}{State Diagrams}{section.6.1}% 41
+\BOOKMARK [2][-]{subsection.6.1.2}{Lmao what is an always block actually}{section.6.1}% 42
+\BOOKMARK [2][-]{subsection.6.1.3}{Case Statements}{section.6.1}% 43
+\BOOKMARK [2][-]{subsection.6.1.4}{Case Statements for State Machines}{section.6.1}% 44
+\BOOKMARK [0][-]{chapter.7}{Introduction to Microprocessors}{}% 45
+\BOOKMARK [1][-]{section.7.1}{Computer Organization}{chapter.7}% 46
+\BOOKMARK [2][-]{subsection.7.1.1}{Memory Unit}{section.7.1}% 47
+\BOOKMARK [2][-]{subsection.7.1.2}{Arithmetic Logic Unit \(ALU\)}{section.7.1}% 48
+\BOOKMARK [2][-]{subsection.7.1.3}{Control Unit}{section.7.1}% 49
+\BOOKMARK [0][-]{chapter.8}{Basic Concepts in Microprocessors}{}% 50
+\BOOKMARK [1][-]{section.8.1}{Basic Concepts}{chapter.8}% 51
+\BOOKMARK [1][-]{section.8.2}{Memory Locations and Addresses}{chapter.8}% 52
+\BOOKMARK [2][-]{subsection.8.2.1}{Memory Operations}{section.8.2}% 53
+\BOOKMARK [1][-]{section.8.3}{Instruction Sequencing}{chapter.8}% 54
+\BOOKMARK [2][-]{subsection.8.3.1}{RISC and CISC Instructions}{section.8.3}% 55
+\BOOKMARK [1][-]{section.8.4}{Branching}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.5}{Addressing Modes}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.6}{More on Assembly}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.7}{Stacks}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.8}{Subroutines}{chapter.8}% 60
+\BOOKMARK [2][-]{subsection.8.8.1}{Subroutine Nesting}{section.8.8}% 61
+\BOOKMARK [2][-]{subsection.8.8.2}{Parameter Passing}{section.8.8}% 62
+\BOOKMARK [2][-]{subsection.8.8.3}{Stack Frame}{section.8.8}% 63
+\BOOKMARK [1][-]{section.8.9}{Flags and Conditionals}{chapter.8}% 64
+\BOOKMARK [2][-]{subsection.8.9.1}{Comparisons}{section.8.9}% 65
+\BOOKMARK [2][-]{subsection.8.9.2}{Flags}{section.8.9}% 66
+\BOOKMARK [0][-]{chapter.9}{IO Devices}{}% 67
+\BOOKMARK [1][-]{section.9.1}{Program Control IO}{chapter.9}% 68
+\BOOKMARK [1][-]{section.9.2}{Interrupts}{chapter.9}% 69
+\BOOKMARK [2][-]{subsection.9.2.1}{Notes on SUBROUTINE INTERRUPT IMPLEMENTATION: }{section.9.2}% 70
+\BOOKMARK [2][-]{subsection.9.2.2}{Enable and Disabling Interrupts}{section.9.2}% 71
+\BOOKMARK [2][-]{subsection.9.2.3}{Process for a Single Device Interrupt Call}{section.9.2}% 72
+\BOOKMARK [1][-]{section.9.3}{Multiple Device Interrupts}{chapter.9}% 73
+\BOOKMARK [2][-]{subsection.9.3.1}{Approach One: Na\357ve Polling}{section.9.3}% 74
+\BOOKMARK [2][-]{subsection.9.3.2}{Vectored Inputs}{section.9.3}% 75
+\BOOKMARK [2][-]{subsection.9.3.3}{Interrupt Nesting}{section.9.3}% 76
+\BOOKMARK [1][-]{section.9.4}{Processor Control Register}{chapter.9}% 77
+\BOOKMARK [0][-]{chapter.10}{Closing Remarks}{}% 78
+\BOOKMARK [1][-]{section.10.1}{Multiplexer Synethesis}{chapter.10}% 79
+\BOOKMARK [1][-]{section.10.2}{Timing Considerations for Flip Flop Circuits}{chapter.10}% 80
+\BOOKMARK [2][-]{subsection.10.2.1}{Clock Skew}{section.10.2}% 81
+\BOOKMARK [2][-]{subsection.10.2.2}{Process for Timing Analysis}{section.10.2}% 82

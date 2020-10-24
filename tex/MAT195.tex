@@ -1,0 +1,895 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{hyperref}
+
+\begin{document}
+\title{MAT195 TextBook Notes}
+\author{Aman Bhargava}
+\date{January 2019}
+\maketitle
+
+\tableofcontents
+
+
+\pagebreak
+\section{Review: Memorizy Stuff}
+\subsection{Trig Function Derivatives}
+\def\arraystretch{2}%
+\begin{tabular}{cc}
+$ \frac{d}{dx}sin(x) = cos(x) $ & $ \frac{d}{dx}csc(x) = -csc(x)cot(x) $ \\
+$ \frac{d}{dx}cos(x) = -sin(x) $ & $ \frac{d}{dx}sec(x) = sec(x)tan(x) $ \\
+$ \frac{d}{dx}tan(x) = sec^2(x) $ & $ \frac{d}{dx}cot(x) = -csc^2(x) $ \\
+\end{tabular}
+
+\subsection{Inverse Trig Derivatives}
+\def\arraystretch{2}%
+\begin{tabular}{cc}
+$ \frac{d}{dx}sin^{-1}(x) = \frac{1}{\sqrt(1-x^2)} $ \\
+$ \frac{d}{dx}cos^{-1}(x) = \frac{-1}{\sqrt(1-x^2)} $ \\
+$ \frac{d}{dx}tan^{-1}(x) = \frac{1}{1+x^2} $ \\
+\end{tabular}
+
+\subsection{How to complete the Square}
+\begin{enumerate}
+\item Put $ax^2 + bx$ in brackets and forcefully factor out the $a$
+\item Add $ ( \frac{b}{2})^2$ to the inside of the brackets and subtract it from the outside (you got it)
+\item Factor and be happy that you've completed the square;
+\end{enumerate}
+
+\subsection{Trig Angle Sums}
+\begin{enumerate}
+\item $sin(A+B) = sin(A)cos(B) + cos(A)sin(B)$
+\item $cos(A+B) = cos(A)cos(B) - sin(A)sin(B)$
+\item $sin(A-B) = sin(A)cos(B) - cos(A)sin(B)$
+\item $cos(A-B) = cos(A)cos(B) + sin(A)sin(B)$
+\end{enumerate}
+
+\subsection{Hyperbolic Trig Functions}
+\subsection{Inverse Hyperbolic Trig Function}
+
+\section{Introduction and Course Description}
+\chapter{Techniques of Integration (Chapter 7 in Textbook)}
+\section{Integration by Parts}
+
+Integration by parts is basically just the reverse product rule.\\
+
+Product rule: $d/dx [f(x)g(x)] = f'(x)g(x) + f(x)g'(x)$\\
+
+You could reverse this simply, but it wouldn't be that useful. The more useful form that \textit{is} the integration by parts formula looks like this: $$\int [f(x)g'(x)] = f(x)g(x) - \int [f'(x)g(x)]$$
+
+You can think through that one pretty easily | you are just splitting up the initial integral, then moving half of it to the other side.\\
+
+That's pretty useful, but there's an even more useful way to write the formula, and it looks like this: $$\int u dv = uv - \int v du$$
+
+This works because we let $u = f(x)$ and $v = g(x)$. $g'(x) = v' = dv/dx$, and same with $u'$. So to get to that formula we go like this:
+\begin{eqnarray}
+\int uv' dx = uv - \int u'v dx \\
+\int u \frac{dv}{dx} dx = uv - \int v \frac{du}{dx} dx \\
+\int u dv = uv - \int v du
+\end{eqnarray}
+
+\subsection{Tips for Integration by Parts:}
+\begin{itemize}
+\item When using the $uv$ equation, it's useful to define things in this order:
+\begin{itemize}
+\item u = ? dv = ?
+\item du = ? v = ?
+\item keeping in mind that $u'dx = du$ and $\int \frac{dv}{dx} dx = \int v' = v$
+\end{itemize}
+\item Choose your $u$ so that it becomes simpler when differentiated, and let your $v$ be the thing that gets a little hairier.
+\item Practice a lot from the textbook, ya dingus
+\end{itemize}
+
+\section{Trigonometric Integrals}
+There are a bunch of configurations of trig functions for which we need to learn the steps necessary to take the integral. It's important to practice this because recognizing the form of the integral is the most difficult thing to do here.
+\subsection{Strategy for $\int sin^m (x)cos^n (x)$}
+\paragraph{If the power of cosine is odd:}
+"Save" one of the cosine terms, and then express it as $\int sin^m(x)cos^{2k+1}(x)*cos(x)$. Then turn the $cos^{2k+1}(x)$ into sin terms with pythagorean identity. Then substitute $u = sin(x)$ and solve.
+\paragraph{If the power of sine is odd:} 
+Do the same thing but reverse $sin$ and $cos$ (save one $sin(x)$ and sub $u$ for $cos(x)$
+\paragraph{If both powers are even:} 
+Use the following identities to help you solve it:
+\begin{eqnarray}
+sin^2 (x) = 1/2 (1-cos(2x)) \\
+cos^2 (x) = 1/2 (1+cos(2x)) \\
+sinxcosx = 1/2 sin2x
+\end{eqnarray}
+
+\subsection{Strategy for $\int tan^m (x)sec^n (x)$}
+\paragraph{If the power of $sec(x)$ is even,} "save" a factor of $sec^2 (x)$ and use identity $sec^2 (x) = 1+tan^2 (x)$ to express the rest in terms of $tan(x)$. Then substitute $u = tan(x)$
+\paragraph{If the power of tangent is odd,} save a factor of $sec(x)tan(x)$ and convert the rest of the $tan(x)$'s using $tan^2(x) = sec^2 (x) - 1$ 
+\paragraph{Also note the following:} $$\int tan(x) dx = ln|sec(x)| + C$$ $$\int sec(x) dx = ln|sec(x) + tan(x)| + C$$
+\paragraph{Remember this as well:} $$\frac{d}{dx} tan(x) = sec^2(x)$$ $$\frac{d}{dx} sec(x) = sec(x)tan(x)$$
+
+\subsection{Strategy for $\int sin(mx)cos(nx) dx$}
+Use the following identities:
+\begin{eqnarray}
+sin A cos B = 1/2 [sin(A-B) + sin(A+B)] \\
+sin A sin B = 1/2 [cos(A-B) - cos(A+B)] \\
+cos A cos B = 1/2 [cos(A-B) + cos(A+B)]
+\end{eqnarray}
+
+\subsection{Strategy for $\int csc^m (x)cot^n (x) dx$}
+Know the following things:
+\begin{eqnarray}
+\frac{d}{dx} csc(x) = -csc(x)cot(x) \\
+cot^2(x) = csc^2(x) - 1 \\
+\frac{d}{dx} cot(x) = -csc^2(x)
+\end{eqnarray}
+
+\section{Trig Sub}
+\paragraph{What is trig sub?} Trig sub is when you use the \textit{inverse substitution} rule in conjunction with useful trigonometric identities and trigonometric integrals to solve integrals that you wouldn't otherwise be able to solve.
+\subsection{Inverse Substitution}
+Unlike u-substitution, you are substituting in a non-equivalent function ($g(x)$) for x instead of substituting a variable like $u$ for the actual value of x. Hence, the following result arises: $$\int f(x) dx = \int f(g(x))g'(x) dx $$
+\paragraph{Qualificiations:} $g$ must have an inverse function, and $g$ must be one-to-one.
+\subsection{List of Trig Subs}
+The main use of trig subs is to get rid of irritating radical signs that make integration hard. The following is a table of types (from the textbook):
+
+\medskip
+\begin{tabular}{c|l|c}
+Expression & Substitution & Identity \\
+\hline
+$\sqrt{a^2 - x^2}$ & $x = a sin \theta$, $-\pi/2 <= \theta <= \pi/2$ & $1-sin^2 \theta = cos^2 \theta$ \\
+$\sqrt{a^2 + x^2}$ & $x = a tan \theta$, $-\pi/2 < \theta < \pi/2$ & $1+tan^2 \theta = sec^2 \theta$ \\
+$\sqrt{x^2 - a^2}$ & $x = a sec \theta$, $-\pi/2 <= \theta <= \pi/2$ & $sec^2 \theta - 1= tan^2 \theta$ \\
+\end{tabular}
+
+\subsection{General Layout for Trig Sub}
+\begin{enumerate}
+\item Make sure there is no other way (e.g. u-sub, etc.)
+\item If there is a quadratic in the root, complete the square
+\item Recognize the stuff in the root as one of the three.
+\item Set $x = a*trig(\theta)$ and find $dx$ in terms of $\theta$
+\item Solve the stuff.
+
+\end{enumerate}
+
+\section{Partial Fractions}
+This is just a way to break up rational functions in to little pieces that we can actually deal with.
+A proper rational function is one where the power on the top polynomial is lower than that of the bottom. Improper rationals are the other way around.
+
+In order to use partial fractions, you need to make the rational function a proper one.
+
+There are a few cases to consider for splitting things up into partial fractions:
+
+\subsection{Denominator is only distinct Linear Factors}
+\begin{enumerate}
+\item Set an equality between the original rational and $\frac{A}{(root_1)} + \frac{B}{(root2)} + ...$
+\item Multiply both sides by the denominator of the rational
+\item Expand and solve for $A, B, ...$
+\end{enumerate}
+
+\subsection{Denominator is only Linear Factors but some are Repeated}
+It's roughly the same as last time, EXCEPT:
+\begin{enumerate}
+\item Suppose $(root_1)$ is repeated $k$ times so $(root_1)^k$ is a factor
+\item Then you need to use $\frac{A_1}{(root_1)} + \frac{A_2}{(root_1)^2} + ... + \frac{A_k}{(root_1)^k}$
+\item Now solve as you did last time.
+\end{enumerate}
+
+\subsection{Denominator has non-repeated Quadratic Factors}
+Basically just have a linear term on top in the expansion, so $\frac{A_1x+B}{ax^2+bx+c}$ would be a term in the thing.
+
+\paragraph{Also, } $\int\frac{dx}{x^2+a^2} = \frac{1}{a}tan^{-1}(\frac{x}{a})+C$
+
+\subsection{Denominator has repeated Quadratic Factors}
+Roughly the same as when you have linear repeated factors. if you have $(root_1)^k$, then you get $$\frac{Ax+B}{(root_1)} + \frac{Cx+D}{(root_1)^2} + ... + \frac{Yx+Z}{(root_1)^k}$$
+Then just solve as before.
+
+\subsection{Rationalizing Substitutions}
+Use substitutions to make annoying functions into rational functions and solve from there. For instance, if you have a radical in the numerator, make the subsitution $u^2 = $ whatever was in the radical.
+
+\section{Strategy for Solving Integrals}
+\begin{enumerate}
+\item Simplify the integrand with identities/algebra if possible.
+\item Look for an obvious u-sub
+\item Classify the integrand according to its form:
+\begin{enumerate}
+\item Trig integral ($sin^m(x)cos^n(x)$, etc.)
+\item Rational Function
+\item Integration by parts - especially with $polynomial * transcendental function$
+\item Radicals $\to$ consider trig sub ($x = atan\theta$, etc.)
+\end{enumerate}
+\item Try again, using several methods, and drawing from your MASSIVE PAST EXPERIENCE
+
+\end{enumerate}
+
+
+\section{Improper Integrals (Involving Infinity)}
+\subsection{Definition of Improper Integral}
+$\int_{a}^{\infty} f(x) dx = \lim_{t \to \infty} \int_a^t f(x) dx $
+Convergent improper integrals have an actual value. Divergent improper integrals don't.
+Integrals from negative infinity to positive infinity exist if and only if the integral from -infinity to $a$ converges and the integral from $a$ to +infinity converges (it is the sum of the two).
+
+\paragraph{For $\int_1^{\infty} \frac{1}{x^p} dx$} is convergent if $p > 1$
+
+\paragraph{For integrals where the y value goes to infinity}, then you take limits around where it goes to infinity, ya dingus.
+
+\subsection{Comparison Theorem}
+You can prove that an integral is convergent if you can find another one for which the function is strictly of greater magnitude that is convergent (and likewise for non-convergency)
+
+\chapter{Further Applications of Integration}
+\section{Arc Length}
+\subsection{Definition of Arc Length}
+Arc length is the actual length of a curve. It is defined as: $$L = \lim_{n \to \infty} \sum_{i = 1}^{n} |P_{i-1},P_i|$$
+
+\subsection{Arc Length Formula}
+$$L = \int_a^b \sqrt{1 + [f'(x)]^2} dx $$
+
+\section{Surface Area of Revolution}
+\subsection{Surface Area of Revolution Formulae}
+$$S = \int_a^b 2\pi y \sqrt{1+(\frac{dy}{dx})^2}dx$$
+$$S = \int_a^b 2\pi y \sqrt{1+(\frac{dx}{dy})^2}dy$$
+
+\paragraph{Simplified: For rotation around $x$-axis}
+$$S = \int 2\pi y ds$$
+
+\paragraph{Simplified: For rotation around $y$-axis}
+$$S = \int 2\pi x ds$$
+
+Where $$ds = \sqrt{1+(\frac{dy}{dx})^2}dx$$ or $$ds = \sqrt{1+(\frac{dx}{dy})^2)}dy$$
+
+\section{Applications to Physics and Engineering}
+\subsection{Hydrostatic Force}
+Integral of the area of each slice times the pressure on that slice at that depth (pressure = density * depth)
+
+\subsection{Center of Mass}
+For a thin plate on the plane, the centroid is at $(\bar{x}, \bar{y})$ where:
+$$ \bar{x} = \frac{1}{A} \int_a^b x(f(x)-g(x))dx $$
+$$ \bar{y} = \frac{1}{2A} \int_a^b (f(x)^2 -g(x)^2) dx$$
+
+\subsection{Rotating cross sections around line}
+If cross section is completely outside of the line, volume = area * distanc traveled by cross section.
+
+\chapter{Parametric Equations and Polar Coordinates}
+\section{Parametric Equations}
+\subsection{Tangents}
+$$\frac{dy}{dx} = \frac{ \frac{dy}{dt} }{ \frac{dx}{dt} }$$
+$$\frac{d^2y}{dx^2} = \frac{ \frac{d}{dt}(\frac{dy}{dx}) }{ \frac{dx}{dt} }$$
+
+\subsection{Integrals}
+\subsubsection{Normal Integral: Area from $\alpha \to \beta$}
+$$\int_{\alpha}^{\beta}y(t)*\frac{dx}{dt}dt$$
+\subsubsection{Arc Length}
+$$L = \int_{\alpha}^{\beta} \sqrt{ \frac{dx}{dt}^2 + \frac{dy}{dt}^2 }dt$$
+\subsubsection{Surface Area of Revolution: }
+$$S = \int_{\alpha}^{\beta} 2\pi y \sqrt{\frac{dx}{dt}^2 + \frac{dy}{dt}^2}dt$$
+
+
+
+\section{Polar Coordinates}
+\subsection{Quick Info: }
+\begin{enumerate}
+\item Points are in form $(r, \theta)$
+\item Origin denoted by $O$ or as "pole"
+\item For point $(x, y)$ in cartesian space and point $(r, \theta)$:
+\begin{itemize}
+\item $x = r cos \theta$
+\item $y = r sin \theta$
+\item $tan \theta = \frac{y}{x}$
+\end{itemize}
+\end{enumerate}
+
+\subsection{Symmetry}
+If an equation is unchanged when $\theta \to -\theta$, it is symmetric about line $\theta = 0$
+If an equation is unchanged when $r \to -r$ OR $\theta \to \theta + \pi$, it is symmetric about the pole.
+If an equation is unchanged when $\theta \to \pi - \theta$ then the curve is symmetric about the line $\theta = \pi/2$ (a vertical line in polar coordinates)
+
+\subsection{Tangents to Polar Curves}
+Treat as parametric equation. Steps:
+$$ x = r cos \theta = f(\theta) cos (\theta)$$
+$$ y = r sin \theta = f(\theta) sin (\theta)$$
+
+Then $\frac{dy}{dx}$ is just $\frac{dy}{d\theta}/\frac{dx}{d\theta}$
+
+\section{Areas and Lengths in Polar Coordinates}
+\subsection{Area}
+\paragraph{Area of a Sector of a Circle}
+$$A = \frac{1}{2}r^2\theta$$
+\paragraph{Area Inside Curve: }
+$$A = \int_a^b \frac{1}{2} (f(\theta))^2 d\theta $$
+$$A = \int_a^b \frac{1}{2} r^2 d\theta $$
+
+\subsection{Arc Length}
+\subsubsection{Review of Parametric Arc Length}
+$$L = \int_a^b \sqrt{r^2 + (\frac{dr}{d\theta})^2 } d\theta$$
+
+
+\chapter{Infinite Sequences and Series}
+\section{Sequences}
+\paragraph{Definition: } List of numbers written in definite order. Notation is the same as set notation.
+\subsection{Limits of Sequences}
+\paragraph{A sequence has a limit $L$ if: } you can make $a_n$ as close as you want to $L$ by increasing $n$
+
+You can encorporate ($\delta$) $\epsilon$ notation if you want to.
+
+Also, if you can find a function that matches the sequence at all integer points, then you can just find the limit of the function using regular limit rules to find the limit of the sequence.
+
+You can also disperse the a limit inside of a function.
+$$\lim_{n \to \infty} sin(\pi/n) = sin( \lim_{n \to \infty} \pi /n )$$
+
+\subsection{Definitions}
+\paragraph{Monotonic sequences} are sequences that are either strictly increasing or strictly decreasing.
+\paragraph{Bounded above} if no value of $n$ will make $a_n$ greater than $M$. Ditto bounded below.
+\paragraph{Monotonic Sequence Theorem: } Every bounded, monotonic sequence is convergent.
+
+\section{Series}
+\paragraph{A series is: } a sum of a sequence (often infinite)
+\subsection{Partial Sums}
+$$s_1 = a_1, s_2 = a_1 + a_2, s_n = a_1 + ... + a_n$$
+$$s_n = \sum_{i=1}^{n} a_i$$
+\subsection{Infinite Series}
+$$\sum_{n=1}{\infty} a_n = \lim_{a \to \infty} \sum_{i=1}^{n} a_i$$
+
+\subsection{Geometric Series}
+If $a_n = (a_1)r^n$, then $s_n = a + ar + ar^2 + ... + ar^{n-1}$
+
+$$s_n = \frac{a(1-r^n)}{1-r}$$
+
+\subsection{Test for Divergence}
+If $\lim_{n \to \infty} a_n$ does not exist or equals $\infty$, then the infinite series of $a_n$ is divergent.
+
+\subsection{Working with Series}
+You can add and subtract series normally.
+$$\sum (a_n + b_n) = \sum a_n + \sum b_n$$
+$$\sum (c * a_n) = c \sum a_n$$
+
+\subsection{Comparison Test}
+If $a_n$ is less than $b_n$ for all $n$ and $\sum^{\infty}b_n$ converges, then $\sum^{\infty}a_n$ also converges. Likewise, if the sum of $b_n$ diverges and $a_n$ is greater for all $n$, then the sum of $a_n$ diverges. 
+
+\paragraph{Conditions for Comparison Test: } 
+\begin{enumerate}
+\item Must be series with positive terms.
+\end{enumerate}
+
+\subsection{Limit Comparison Test}
+Let $a_n$ be one series you DON'T know the limit of and $b_n$ be another. Make sure $a_n/b_n$ divides nicely. let $c = \lim_{n \to \infty}a_n/b_n$
+
+Use $c$ as a comparator - if it tells you that $a$ is bigger than $b$ and $b$ is known to be divergent, then $a$ must be divergent, etc.
+
+\paragraph{Conditions for Limit Comparison Test}
+\begin{enumerate}
+\item $a_n$ and $b_N$ must both be series with positive terms.
+\end{enumerate}
+
+\subsection{P-Series}
+A p-series is of the form: $$\sum_{n=1}^{\infty} 1/{n^p}$$
+If $p > 1$, it converges. Otherwise it diverges.
+
+\section{The Integral Test and Estimates of Sums}
+\subsection{Integral Test}
+It's not easy to find the sum of series except for geometric series and $\sum 1/[n(1+n)]$. 
+
+To prove that a sum diverges, take the integral of the continuous function $f(n) = a_n$ from $1 \to \infty$. If the integral is divergent, then so is the sum. If the integral is convergent, so is the sum. Think about the geometric argument and draw out the boxes on the page if necessary (reimann sums). 
+
+\paragraph{Conditions for Applying the Integral Test: }
+\begin{enumerate}
+\item Continuous
+\item Positive
+\item Decreasing
+\end{enumerate}
+
+\subsection{Estimating The Sum of a Series}
+Any partial sum of a series is an approximation of the infinite sum. We can get a good picture of how good the approximation is via the \texttt{remainder}.
+$$R_n = s - s_n = a_{n+1} + a_{n+2} + ...$$
+By the integral test (and intuition), the remainder is less than or equal to theintegral from $n$ to $\infty$
+$$R_n = a_{n+1} + a_{n+2} + ... \leq \int_n^{\infty}f(x)dx$$
+$$R_n \geq \int_{n+1}^{\infty}f(x)dx$$
+
+In other words, the \paragraph{Remainder Estimate for the Integral Test} is:
+$$ \int_{n+1}^{\infty}f(x) dx \leq R_n \leq \int_n^{\infty}f(x) dx$$
+
+\section{Comparison Tests}
+\subsection{The Limit Comparison Test}
+Let $\sum a_n$ and $\sum b_n$ are series with positive terms. If $$lim_{n \to \infty} \frac{a_n}{b_n} = c$$ and c is a finite number $>$ 0, then both either converge or diverge.
+
+\section{Alternating Series}
+Convergence tests so far only apply to positive series. 
+\subsection{Alternating Series Test}
+$$\sum_{n=1}^{\infty} (-1)^{n-1} b_n = b_1 - b_2 + b_3 - b_4 + ... b_n > 0$$
+\paragraph{If } the series obeys:
+\begin{enumerate}
+\item $b_{n+1} \leq b_n$ for all n
+\item $lim_{n \to \infty} b_n = 0$
+\end{enumerate}
+Then the series is CONVERGENT.
+
+\paragraph{Fun fact: } $s_{2n} \leq b_1$ for all n. 
+
+\subsection{Estimating Sums for Alternating Series}
+\paragraph{Alternating Series Estimation Theorem: } If $s = \sum (-1)^{n-1} b_n$ where $b_n$ > 0, and the series $b$ converges to zero and is strictly decreases, then:
+$$ |R_n| = |s-s_n| \leq b_{n+1} $$
+
+\section{Absolute Convergence and Ratio and Roots Test}
+\subsection{Absolute Convergence}
+\paragraph{Definition: } $\sum a_n$ is absolutely convergent if $\sum |a_n|$ converges.
+
+\paragraph{Conditional Convergence: } When a series is convergent, but not absolutely so (depends on the operators between values in series).
+
+\subsection{Ratio Test}
+\begin{enumerate}
+\item if $lim_{n\to\infty} |(a_{n+1}/a_n| = L < 1$, then the sequence is \textbf{absolutely convergent}
+\item if the result of the above is $> 1$, then the sequence is \textbf{divergent}
+\item if the result of the above is $= 1$, then the ratio test was \textbf{inconclusive}.
+\end{enumerate}
+
+\subsection{Root Test}
+This is just the same as the ratio test, but as it turnt out, you can apply the ratio test to stuff inside nth roots and the same results will be forthcoming. 
+
+
+Basically, if the limit of whatever inside the root is $<1$ then it converges and so on.
+
+\subsection{Rearrangements}
+\begin{enumerate}
+\item Any rearrangement of a \textbf{absolutely convergent} series is the same.
+\end{enumerate}
+
+Non-absolutely convergent series don't have the same sums necessarily when the order is changed. 
+
+\section{Strategy for Series: }
+\begin{enumerate}
+\item Is it a p-series (form: $\sum 1/{n^p}$)? If $p > 1$, it converges, otherwise, it doesn't. 
+\item Is it a geometric series (form: $\sum ar^{n-1}$? If $|r| < 1$, then it converges. Otherwise it diverges.
+\item If it is similar to a p-series or geometric series, use a comparison test.
+\item If you can tell that $\lim_{n\to\infty} a_n \neq 0$, use \textbf{Test for Divegence} 
+\item If it's $\sum(-1)^{n-1}b_n$ or of a similar form, then alternating series tests are the way to go. 
+\item If it involves factorials or other products (e.g. constants raised to some power), use the ratio test. 
+\item Use the root test for if $a_n$ is of form $(b_n)^n$
+\item If the corresponding integral is easy to evaluate, then use the integral test. 
+\end{enumerate}
+
+\section{Power Series}
+Of the form: 
+$$\sum_{n=0}^{\infty} c_n x^n = c_0 + c_1x + c_2x^2 + ... + c_nx^n$$
+
+$x$ is a variable, $c_n$ is a sequence of coefficients.
+
+Converges when $-1 < x < 1$ if all $c_n$ are one. 
+
+\paragraph{Power Series "Centered at $a$" or "In $(x-a)$"} when:
+$$\sum_{n=0}^{\infty} c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + ...$$
+Always converges for $x = a$ because all terms after $c_0$ reduce to 0.
+
+\subsection{3 Possibilities for Power Series}
+\begin{enumerate}
+\item The series converges only when x = a
+\item The series converges for all x
+\item There exists R so that if $|(x-a)| < R$ then the series will converge. R is "radius of convergence".
+\end{enumerate}
+
+\section{Representing Functions as Power Series}
+$$\frac{1}{1-x} = 1 + x + x^2 + ... = \sum_{n=0}^{\infty}x^n$$ where |x|<1
+
+You can take derivative/integral for x values that \textbf{don't} cause it to diverge.
+
+\paragraph{General Strategy for Representing as Power Series: }
+Integrate/differentiate until it's in a similar form to $$\frac{1}{1-x}$$
+Then convert to power series then integrate/differentiate back.
+
+\section{Taylor and McLauren Series}
+\subsection{Taylor Series}
+\paragraph{If $f$ has a power series representation, } then:
+$$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)} (a)}{n!} (x-a)^n$$
+
+Mclauren Series is just a Taylor Series centered at 0.
+
+\subsection{Finding the Radius of Convergence for Taylor Series}
+Let $a_n$ be whatever is inside the summation of the Taylor Series. Use $$L = |\frac{a_{n+1}}{a_n}|$$ and the ratio test to see what values of x are necessary for it to converge (L < 1 to converge).
+
+\subsection{Taylor's Inequality}
+\paragraph{Pre-Inequality Theorem: } If $f(x) = T_n(x) + R_n(x)$ and $T_n(x)$ is the nth-degree Taylor polynomial and $R_n(x)$ is the remainder of the polynomial, then $\lim_{n \to \infty} R_n(x) = 0$ (pretty obvious, huh?)
+
+\paragraph{Taylor's Inequality (for real now)}
+If $|f^{(n+1)}(x)| 	\leq M$ for all $|x-a| \leq d$ then $R_n(x)$ is follows:
+$$|R_n(x)| \leq \frac{M}{(n+1)!} |x-a|^{n+1}$$ for all $|x-a| \leq d$
+
+\paragraph{Useful facts and figures}
+$$lim_{n \to \infty} \frac{x^n}{n!} = 0$$
+(for every x)
+
+
+$$e = \sum_{n = 0}^{\infty} \frac{1}{n!}$$
+
+$$sin(x) = \sum_{n=0}^{\infty}(-1)^n \frac{x^{2n+1}}{(2n+1)!}$$
+$$cos(x) = \sum_{n=0}^{\infty}(-1)^n \frac{x^{2n}}{(2n)!}$$
+
+\subsection{Manipulations of Power Series}
+Divide power series by long division informally...
+
+...
+
+\chapter{All Continuous Functions are Integrable}
+This section is pretty strange in my opinion. This course is mostly quite procedural and technique-based, but in the middle, we are suddenly spending a large chunk of time on one proof.
+
+The questions pertaining to this proof are fairly straightforward if you know the terminology used in the proof well. So, I'll focus on that for this section rather than going over the proof again (the professors for this course posted a pretty decent PDF of the proof that you can read if you want all the details). 
+
+\section{Starting Point, Definitions: }
+$$\int_a^b f(x) dx = \lim_{||P|| \to 0} \sum_{i=1}^{n} f(x_i*)\Delta x_i$$
+
+\begin{enumerate}
+\item $||P||$ is the size of any \textbf{partition} in $[a, b]$
+\item \textbf{Lower sum sequence: } $$L_{2^n} = \frac{(b-a)}{2^n} \sum_{i=1}^{2^n} f_i^{min}$$
+\item \textbf{Upper sum sequence: } $$U_{2^n} = \frac{(b-a)}{2^n} \sum_{i=1}^{2^n} f_i^{max}$$
+\item \textbf{Note on upper/lower sequences: } they are obviously bounded, and as you increase the $n$ in the $2^n$, the lower sum sequence is \textbf{strictly increasing} and the upper sum sequence is \textbf{strrictly decreasing}. Think about it :)
+\item How the squeeze theorem ties it all together: If you get that the upper and lower sum sequences converge, and you also understand that the true integral is \textbf{always} between the values of the upper anas lower sums, then it's trivial to say that the limit as $n\to \infty$ of $L_{2^n}$ which is equal to that of $U_{2^n}$ is the value of the integral.
+\item \textbf{Definition of uniform continuity:} If you can find just one $\delta$ for any $\epsilon$ imposed for an area $[a, b]$ that satisfies the limit/continuity definitions for delta-epsilon proofs, then the function is uniformly continuous on that region $[a, b]$.A
+\item \textbf{Definition of span:} Span is $s = M-m$ where M is the max of an interval and m is the minimum of that interval.
+\begin{enumerate}
+\item \textbf{Small span theorem:} For a continuous function on a given interval, you can divide the function into $2^n$ sub-intervals that have a span less than any given $\epsilon > 0$
+\end{enumerate}
+\item Thanks to the \textbf{small span theorem}, you can keep increasing $n$ in $2^n$ and dividing a region into that many parititions to make the difference between the max and the min of that partition approach zero, hence ensuring that the \textbf{Upper sum sequence} will approach the \textbf{Lower sum sequence}. 
+\end{enumerate}
+
+\section{Tips for answering questions}
+\begin{itemize}
+\item If they ask you to prove that something is not integrable, think about why the $$L_{2^n}$$ would not converge with the $$U_{2^n}$$.
+\item If they ask a proofy questions where you assert that there is a max/min on an interval, invoke the \textbf{extreme value theorem}
+\item 
+\end{itemize}
+
+
+
+
+\section{Fourier Series}
+\paragraph{Form of Fourier Series: }
+$$f(x) = a_0 + \sum_{n=1}^{\infty} (a_n cos(nx) + b_n sin(nx))$$
+for $-\pi \leq x \leq \pi$
+
+\paragraph{Finding Coefficients: }
+$$a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) dx$$
+
+$$a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) cos(nx) dx$$
+
+$$b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) cos(nx) dx$$
+
+\subsection{Fourier Convergence Theorem}
+Here are the prerequisites for the Fourier series to converge:
+\begin{enumerate}
+\item $f$ is periodic with period of $2\pi$
+\item $f$ and $f'$ are piecewise continuous on $[-\pi, \pi]$
+\item Fourier series at x = $f(x)$ where $f(x)$ is continous. Otherwise, it is the mean of the two points.
+\end{enumerate}
+
+\subsection{Fourier Series for $T \neq \pi$}
+Let period be $2L$
+$$f(x) = a_0 + \sum_{n=1}^{\infty} [a_n cos(\frac{n\pi x}{L}) + b_n sin(\frac{n\pi x}{L})]$$
+$$a_0 = \frac{1}{2L} \int_{-L}^{L} f(x) dx$$
+$$a_n = \frac{1}{L}\int_{-L}^{L} f(x) cos(\frac{n\pi x}{L}) dx$$
+$$b_n = \frac{1}{L}\int_{-L}^{L} f(x) sin(\frac{n\pi x}{L}) dx$$
+
+\chapter{Vectors and Space}
+\section{Cylinders and Quadratic Surfaces}
+\paragraph{Cylinder definition: } Surface of all lines that are paralell to a given line and pass through a given plane (e.g. $z = x^2$)
+
+\paragraph{Quadratic Surface definition: } Second-degree equation with three variables (usually $x, y, z$). General form is:
+$$Ax^2 + By^2 + Cz^2 + Dxy + Eyz + Fzx + Gx + Hy + Iz + J = 0 $$
+However, by translation and rotation, standard form becomes:
+$$Ax^2 + By^2 + Cz^2 + D = 0$$
+
+Types of Quadratic Surfaces:
+\begin{enumerate}
+\item Ellipsoid: $x^2/a^2 + y^2/b^2 + z^2/c^2 = 1$ 
+\item Elliptic Paraboloid: $z/c = x^2/a^2 + y^2/b^2$, looks like upward 3d hyperbolic cup. Horizontal traces = ellipses, vertical traces = parabolas. 
+\item Hyperbolic Parabaloid: $z/c = x^2/a^2 - y^2/b^2$, horizontal traces are hyperbolas, vertical = parabolas. 
+\item Cones: $z^2/c^2 = x^2/a^2 + y^2/b^2$, Horizontal traces = ellipses, vertical traces are hyperbolas unless at 0, where it is an x.
+\item Hyperboloid of One Sheet: $x^2/a^2 + y^2/b^2 - z^2/c^2 = 1$, horizontal = ellipses, vertical = hyperbolas, axis of symmetry is the variable that is negative. 
+\item Hyperboloid of Two Sheets: $-x^2/a^2 - y^2/b^2 + z^2/c^2 = 1$, horizontal = ellipses, vertical = hyperbolas, two negatives indicates two sheets.
+\end{enumerate}
+
+\chapter{Vector Functions}
+\section{Vector Functions and Space Curves}
+Vector function is one where the domain is the set of real numbers and the range is $R^n$
+
+\paragraph{Limits of Vector Functions: } Just take the limit of each of the internal functions.
+
+\paragraph{Space Curve: } You give $x(t), y(t), $and$ z(t)$ 
+
+\paragraph{Vector equation for joining two points: } $$r(t) = (1-t)r_0 + tr_1$$
+
+\section{Derivatives, Integrals of Vector Functions}
+If $r(t) = [f(t), g(t), h(t)]$ then $r'(t) = [f'(t), g'(t), h'(t)]$
+
+All derivative rules still apply, and product rule applies to dot and cross product!
+
+\section{Basic Vector Operation Definitions}
+\paragraph{Dot Product: } $$x * y = x_1y_1+x_2y_2+ ... + x_ny_n$$
+$$x * y = |x|*|y|*cos(\theta)$$
+\paragraph{Cross Product: } $$x \times y = |x|*|y|*sin(\theta) * n$$ where n is a vector normal to the plane formed by x and y.
+
+\subsection{Integrals of Vector Functions}
+Just integrate each component of the function.
+
+\section{Arc Length, Curvature of Vector Functions}
+\subsection{Arc Length}
+Pretty self explanatory - length of an arc through space from point a to point b (literally)
+$$L = \int_a^b |r'(t)|dt$$
+$$L = \int_a^b \sqrt(f'[t]^2 + g'[t]^2 + h'[t]^2)$$
+Where $r(t) = [f(t), g(t), h(t)]$
+
+\paragraph{The arc length function } is defined as: 
+$$s(t) = \int_a^t |r'(u)| du = \int_a^t \sqrt{(dx/du)^2 + (dy/du)^2 + (dz/du)^2} du$$
+
+\subsection{Curvature}
+A curve $r(t)$ is smooth is $r'(t)$ is continuous and $r'(t) \neq 0$ on the interval. Basically, the tangent vector isn't allowed to turn discontinuously.
+
+$$T(t) = \frac{r'(t)}{|r'(t)|}$$
+Where $T(t)$ is the tangent vector at time $t$. 
+
+\paragraph{The curvature of a curve } is defined as:
+$$\kappa = |\frac{dT}{ds}|$$
+
+Where $s$ is the \textbf{arc length function} discussed previously.
+
+\paragraph{Therefore: }
+$$\kappa(t) = \frac{|T'(t)|}{|r'(t)|}$$
+$$\kappa(t) = \frac{|r'(t) \times r''(t)|}{|r'(t)|^3}$$
+$$\kappa(x) = \frac{|f''(x)|}{[1+(f'(x))^2]^{3/2}}$$
+
+\subsection{Normal and Binormal Vectors}
+\paragraph{Normal vector } $N(t)$ is defined as: 
+$$N(t) = \frac{T'(t)}{|T'(t)|}$$
+
+\paragraph{Binormal vector } $B(t)$ is defined as:
+$$B(t) = T(t) \times N(t)$$
+It's whole shtick is that it is perpendicular to both T and N and is a unit vector.
+
+\subsection{Velocity and Acceleration}
+This section actually has some stuff that isn't entirely obvious about normal vectors and such to acceleration/velocity, so come back when you have time.
+
+\chapter{Partial Derivatives}
+\section{Functions of Several Variables}
+\paragraph{A function of two variables } transforms each pair of Reals $(x, y)$ in a given set to a single real number. The given set is the domain, and the set of reals that the pair is transformed to is the range.
+
+\paragraph{Level functions } are functions that have $f(x, y) = k$ for given ranges of $(x, y)$
+
+\paragraph{Functions of 3 or more variables } are pretty easy to extrapolate from functions of two variables, tbh.
+
+\section{Limits and Continuity with Functions of Several Variables}
+\subsection{Limits}
+\paragraph{Definition of limit } with many variables:
+$$\lim_{(x, y) \to (a, b)} f(x, y) = L$$
+if for every number $\epsilon > 0$ there is a corresponding number $\delta > 0$ s.t.
+if $0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta$ then $|f(x, y) - L | < \epsilon$
+
+\paragraph{How to disprove that a limit exists: }
+
+If $f(x, y) \to L_1$ on one path (e.g. keeping x the same and varying y) while $f(x, y) \to L_2$ from another path and $L_1 \neq L_2$ then limit DNE.
+
+\paragraph{Squeeze theorem } still holds in n-dimensional space. 
+
+\subsection{Continuity}
+Remember how finding limits of continuous functions is super easy because $\lim_{x\to a} f(x) = f(a)$ if $f(x)$ is continuous? Well that still holds.
+
+\paragraph{Definition of continuity: }
+
+$f(x, y)$ is continuous if $\lim_{(x, y) \to (a, b)} f(x, y) = f(a, b)$ for all $(a, b)$ in $D$ ($D$ is domain)
+
+\paragraph{Polynomials and rationals with more than 1 variable: }
+
+Polynomials with two variables are the sum of $cx^my^n$ where $c$ is constant and $m$ and $n$ are non-negative integers.
+
+All polynomials of two variables are continuous. 
+
+
+\section{Partial Derivatives}
+
+When we take the derivatives of functions of multiple variables, we can pretend that all varaibles are static except for one and take the regular derivative of that one variable.
+
+For instance, if we were plotting the \textit{price of a house} $p$ based on the size $s$ and the proximity $d$ to the ocean, we can take the \textbf{partial derivative} with respect to the size of the house at a certain proximity to the ocean by pretending that the proximity to the ocean is a constant and thus making the \textit{price of house} function a function of just the size of the house. 
+$$p(s, d)$$
+$$p_s(s) = p(s, 50)$$
+Above is an arbitrary value of $d$ at which to take the partial derivative.
+
+$p_s'(s)$ is the partial derivative with respect to $s$ at distance $d=50$.
+
+Based on this definition, the limit definition of derivatives would work exactly how you think they would work (basically just varying one variable by factor $a$ and keeping the other one the same)
+
+$$f_x(x, y) = lim_{h\to 0}\frac{f(x+h, y)-f(x, y)}{h}$$
+$$f_y(x, y) = lim_{h\to 0}\frac{f(x, y+h)-f(x, y)}{h}$$
+
+Other notations for partial derivatives (let $z = f(x, y)$)
+
+$$f_x(x, y) = f_x = \frac{\partial f}{\partial x} = \frac{\partial}{\partial x} f(x, y) = \frac{\partial z}{\partial x} = D_1f = D_xf$$
+$$f_y(x, y) = f_y = \frac{\partial f}{\partial y} = \frac{\partial}{\partial y} f(x, y) = \frac{\partial z}{\partial y} = D_2f = D_yf$$
+
+\paragraph{How to find: }
+Regard the non-mentioned variable in the notation as a constant and differentiate with respect to the mentioned variable.
+
+\subsection{Higher Partial Derivatives}
+$$(f_x)_y = f_{xy} = f_{12} = \frac{\partial}{\partial y} (\frac{\partial f}{\partial x}) = \frac{\partial ^2 f}{\partial y \partial x} = \frac{\partial z}{\partial y \partial x}$$
+
+\subsubsection{Clairaut's Theorem}
+If $f_{xy}$ and $f_{yx}$ are both \textbf{defined} and \textbf{continuous} on disk $D$ then:
+$$f_{xy}(a, b) = f_{yx}(a, b)$$
+
+\subsection{Partial Differential Equations}
+Basically, they exist. We don't really learn how to solve them much in this section/course(?) because that would be super hard. Like think about how hard normal differential equations are, then imagine if they were PARTIAL differentiatial equations. Plus, in real life, you'd just use a computer for them like a normal human being. 
+
+\section{Tangent Planes and Linear Approximations}
+The tangent plane to a point on a function of multiple variables is the plane that contains the first-order partial derivatives of that function at that point. In essence, it is the set of all linear approximations to the vectors produced by taking the partial derivative with respect to each independent variable.
+\subsection{Tangent Planes}
+\paragraph{The form of a plane passing through given points } $x_0$, $y_0$, and $z_0$ is:
+$$A(x-x_0) + B(y-y_0) + C(z-z_0) = 0$$
+
+Rearranging and substituting some knowledge, we get:
+\paragraph{Formula for tangent plane to a point: }
+$$z - z_0 = f_{x}(x_0, y_0) (x-x_0) + f_y(x_0, y_0)(y-y_0)$$
+
+\subsection{Linear Approximations}
+The tangent plane is analogous to the tangent line for functions of one variable. Like with the linear approximations we are used to, you just plug the known coordinates into the tangent plane function to find the linear (tangent plane) approximation.
+$$f(x, y) = f_{x}(x_0, y_0)(x-x_0) + f_y(x_0, y_0)(y-y_0) + f(a, b)$$
+
+\paragraph{Important theorem on differentiability: } If $f_x$ and $f_y$ exist near $(a, b)$ \textbf{and are continuous at $(a, b)$} then $f(x, y)$ is differentiable at $(a, b)$
+
+\paragraph{$\epsilon$-ish Theorem on Differentiability: } $f$ is differentiable at $(a, b)$ if $\Delta z$ can be expressed as: 
+$$ \Delta z = f_x(a, b)\Delta x + f_y(a, b)\Delta y + \epsilon_1x + \epsilon_2y$$
+And the value of $\epsilon_1, \epsilon_2$ tends to zero as $\Delta x, \Delta y \to 0$
+
+\subsection{Differentials}
+$$dy = f'(x) dx$$
+$$dz = f_x(x, y)dx + f_y(x, y)dy = \frac{\partial z}{\partial x} dx + \frac{\partial z}{\partial y}dy$$
+
+\section{Chain Rule (With Many Variables)}
+\paragraph{Normal chain rule: }
+$$\frac{dy}{dt} = \frac{dy}{dx} \frac{dx}{dt}$$
+
+\subsection{Chain Rule: Case 1}
+$z = f(x, y)$ and $x = g(t)$ and $y = h(t)$. If $x$ and $y$ are differentiable functions of $t$, then $z(t)$ is a differentiable function of $t$
+$$\frac{dz}{dt} = \frac{\partial f}{\partial x} \frac{dx}{dt} + \frac{\partial f}{\partial y} \frac{dy}{dt}$$
+
+\subsection{Chain Rule: Case 2}
+Pretty pointless, just use the general rule.
+
+\subsection{Chain Rule: General Rule} 
+If $u$ is a differentiable function of $n$ variables and each $x_j$ is a differentiable function of $m$ variables $t_1 ... t_m$, then
+$$\frac{\partial u}{\partial t_i} = \frac{\partial u}{\partial x_1}\frac{\partial x_1}{\partial t_i} + ... + \frac{\partial u}{\partial x_n} \frac{\partial x_n}{\partial t_i}$$
+
+\subsection{Implicit Differentiation}
+Assume that an equation $F(x, y) = 0$ implicitly defines $y$ as a differentiable function of $x$.
+
+If we let $y = f(x)$, then the above becomes $F(x, f(x)) = 0$.
+
+From there, we can use the chain rule (case 1) to find $\frac{\partial F}{\partial x}$
+
+$$\frac{\partial F}{\partial x} \frac{\partial x}{\partial x} + \frac{\partial F}{\partial y} \frac{\partial y}{\partial x} = 0$$
+
+\paragraph{Resulting Implicit Differentiation Theorem}
+$$\frac{dy}{dx} = - \frac{ \frac{\partial F}{\partial x} }{ \frac{\partial F}{\partial y} } = - \frac{F_x}{F_y}$$
+
+$$\frac{\partial z}{\partial x} = - \frac{F_x}{F_z}$$
+$$\frac{\partial z}{\partial y} = - \frac{F_y}{F_z}$$
+
+\section{Directional Derivatives and the Gradient Vector}
+What if you want to know the instantaneous rate of change as you in a direction that isn't perfectly aligned with an axis? Recall how 
+if you have a function $f(x, y)$ you can have partial derivatives $f_x, f_y$ that you can use to find $df/dx, df/dy$. However, 
+if you had a function of two variables describing the shape of a hill and wanted to know the curvature of the hill at a particular
+point, it's more useful to be able to be able to find the instaneous rate of change of $f$ with respect to any given direciton.
+
+\subsection{Directional Derivatives}
+
+Recall the definitions of partial derivatives $f_x$ and $f_y$:
+$$f_x(x_0, y_0) = lim_{h \to 0} \frac{f(x_0+h, y_0)-f(x_0, y_0)}{h}$$
+$$f_y(x_0, y_0) = lim_{h \to 0} \frac{f(x_0, y_0+h)-f(x_0, y_0)}{h}$$
+
+Now we can imagine that these are the instantaneous rates of change of $f$ in the $i$ and $j$ directions (the unit vectors, not the imaginary numbers).
+
+\subsubsection{Definition: }
+Let $u$ be a unit vector $[a, b]$. Then
+
+$$D_u f(x_0, y_0) = lim_{h \to 0} \frac{f(x_0+ha, y_0+hb)-f(x_0, y_0}{h}$$
+
+is the directional derivative in the direction of u, assuming the limit exists.
+
+\subsubsection{More useful definition: }
+$$D_u f(x, y) = f_x(x, y)a + f_y(x, y)b$$
+if $u = [a, b]$ is a unit vector.
+
+\subsection{Gradient Vector}
+The gradient vector is just the partials packaged into a vector. Often notated as 'grad $f$' or $\nabla f$ (pronounced "del f")
+
+$$\nabla f = [f_x, f_y]$$
+
+Also can be written:
+
+$$\nabla f(x, y) = \frac{\partial f}{\partial x} i + \frac{\partial f}{\partial y} j$$
+
+\subsubsection{Maximizing the Directional Derivative}
+The motivation here is to find the direction of steepest slope for a multi-variable function.
+
+
+It \textbf{always} will occur when $u$ (the direction vector) is in the same direction as $\nabla f(x)$ (where $x$ is a vector of the inputs to the function.
+
+\subsubsection{Tangent Planes to Level Surfaces}
+Let's say that $F(x, y, z) = k$ defines a \textbf{3D surface}, and let $P$ be a point on that surface.
+
+Let $C$ be a curve that lies on surface $F$ going through $P$. 
+
+$C = r(t) = [x(t), y(t), z(t)]$. Let $t_0$ be paramater value corresponding to point $P$ on curve.
+
+$F(x(t), y(t), z(t)) = k$ because $C$ lies on $F$.
+
+Differentiating both sides give: $$\frac{\partial F}{\partial x} \frac{dx}{dy} + \frac{\partial F}{\partial y} \frac{dy}{dt} + ... = 0$$
+
+Since $\nabla F = [F_x, F_y, F_z]$, that means that:
+
+$$\nabla F(t) * r'(t) = 0$$
+
+Therefore the gradient of a surface will always be \textbf{perpendicular} to the tangent plane of that surface!
+
+Remember how to write the equation for the plane tangent to a 3d surface (think of the expansion of the linearization thing...)?
+
+Here's how you write the equation of the gradient line and also the line tangent to the tangent plane to a 3d curve.
+
+
+$$\frac{x-x_0}{F_x(x_0, y_0, z_0} = \frac{y-y_0}{F_y(x_0, y_0, z_0} = \frac{z-z_0}{F_z(x_0, y_0, z_0}$$
+
+\section{Maximum and Minimum Values}
+
+\subsection{Definitions}
+\textbf{Local} maxima/minima are greater/less than points that are close (partial derivatives are all zero if they exist there).
+\textbf{Absolute} maxima/minima are greater/less than ALL points in a specified region (partial derivatives are all zero if they exist there).
+
+\subsection{Second Derivative Test}
+The first derivative test mentioned above is pretty straight forward to extrapolate from previous stuff we've learned about 2D functions.
+
+The second derivative test is a little weirder.
+
+\paragraph{The Test: }
+If $(a, b)$ has $f_x, f_y = 0$, let $$D = D(a, b) = f_{xx}(a, b)f_{yy}(a, b) - [f_xy(a, b)]^2$$
+\begin{enumerate}
+\item If $D > 0$ and $f_{xx} > 0$, then $f(a, b)$ is a local \textbf{minimum}. 
+\item If $D > 0$ and $f_{xx} < 0$, then $f(a, b)$ is a local \textbf{maximum}. 
+\item If $D < 0$ then $f(a, b)$ is a \textbf{saddle point}. 
+\item If $D = 0$ no information is gained.
+\end{enumerate}
+
+\paragraph{Memory trick for $D$}
+$$D = |
+\begin{bmatrix}
+	f_{xx} & f_{xy} \\
+	f_{yx} & f_{yy}
+\end{bmatrix}
+|$$
+
+\subsection{Absolute Max/Min Values}
+\paragraph{What is a bounded set? }
+Remember how we needed to have the extreme value theorem only applied to intervals that included the endpoints (i.e. $[a, b]$ but not $(a, b)$)?
+
+Same with the new extreme value theorem for $R^2$. When you define a disk like $$D = {(x, y) | x^2 + y^2 \leq 1}$$ you NEED to have a $\leq$ in order to have a \textbf{closed set}.
+
+\subsubsection{Extreme Value Theorem for Functions of Two Variables}
+If disk $D$ is a closed set where continuous function $f(x, y)$ is defined in $R^2$, it will achieve a maximum and a minimum point at some points in $D$.
+
+\paragraph{How to find absolute min/max on disk $D$: } 
+\begin{enumerate}
+\item Find the values of f at critical points (first derivatives = 0) in $D$
+\item Find extreme values of f on boundary $D$.
+\item Largest value found are absolute maximae, smallest value found is absolute minimum.
+\end{enumerate}
+
+\section{Lagrange Multipliers}
+Basically a way to solve for the global max/min of functions of many variables (e.g. $f(x, y)$ under some constraint $g(x, y) = k$
+
+You gotta find max/min $c$ s.t. $f(x, y) = c$ while $g(x, y) = k$ still.
+
+This happens when $f(x, y)$ and $g(x, y) = k$ have common tangent lines $\frac{dy}{dx}$ (otherwise $c$ could be increased further).
+
+Therefore the normal lines where $f$ and $g$ touch are the same. And so $$\nabla f(x_0, y_0) = \lambda \nabla g(x_0, y_0)$$ when intersection is maximized (for some Lagrange Multiplier $\lambda$)
+
+\subsection{Method of Lagrange Multipliers}
+To find max/min of $f(x, y, z)$ under constraint $g(x, y, z) = k$:
+\begin{enumerate}
+\item Find all values of $x, y, z$ and $\lambda$ s.t. $$\nabla f(x, y, z) = \lambda \nabla g(x, y, z)$$ and $g(x, y, z) = k$.
+\item Evaluate $f$ at all found points. The largest is the maximum and the smallest is the minimum of $f$ under condition $g$.
+\end{enumerate}
+(Assuming exterme values exist and $\nabla g \neq 0$ on surface $g(x, y, z) = k$)
+
+\subsection{Lagrange Multipliers with Two Constraints}
+Now we have to find two multipliers $\mu$ and $\lambda$ as follows:
+$$\nabla f(x, y, z) = \lambda \nabla g(x, y, z) + \mu \nabla h(x, y, z)$$
+
+
+
+
+\end{document}

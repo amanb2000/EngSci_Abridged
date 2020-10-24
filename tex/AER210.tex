@@ -1,0 +1,619 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{hyperref}
+
+\begin{document}
+\title{AER210 Abridged}
+\author{Aman Bhargava}
+\date{September 2019}
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+
+\chapter{Review: Stuff to Have Memorized}
+%TODO: Populate this with stuff from MAT195
+\section{Trig Functions and Derivatives}
+\def\arraystretch{2}%
+\begin{tabular}{cc}
+$ \frac{d}{dx}sin(x) = cos(x) $ & $ \frac{d}{dx}csc(x) = -csc(x)cot(x) $ \\
+$ \frac{d}{dx}cos(x) = -sin(x) $ & $ \frac{d}{dx}sec(x) = sec(x)tan(x) $ \\
+$ \frac{d}{dx}tan(x) = sec^2(x) $ & $ \frac{d}{dx}cot(x) = -csc^2(x) $ \\
+\end{tabular}
+
+\section{Inverse Trig Derivatives}
+\def\arraystretch{2}%
+\begin{tabular}{cc}
+$ \frac{d}{dx}sin^{-1}(x) = \frac{1}{\sqrt(1-x^2)} $ \\
+$ \frac{d}{dx}cos^{-1}(x) = \frac{-1}{\sqrt(1-x^2)} $ \\
+$ \frac{d}{dx}tan^{-1}(x) = \frac{1}{1+x^2} $ \\
+\end{tabular}
+
+\section{How to complete the Square}
+\begin{enumerate}
+\item Put $ax^2 + bx$ in brackets and forcefully factor out the $a$
+\item Add $ ( \frac{b}{2})^2$ to the inside of the brackets and subtract it from the outside (you got it)
+\item Factor and be happy that you've completed the square;
+\end{enumerate}
+
+\section{Trig Angle Sums}
+\begin{enumerate}
+\item $sin(A+B) = sin(A)cos(B) + cos(A)sin(B)$
+\item $cos(A+B) = cos(A)cos(B) - sin(A)sin(B)$
+\item $sin(A-B) = sin(A)cos(B) - cos(A)sin(B)$
+\item $cos(A-B) = cos(A)cos(B) + sin(A)sin(B)$
+\end{enumerate}
+
+\section{Identities Assorted}
+\begin{eqnarray}
+sin^2 (x) = 1/2 (1-cos(2x)) \\
+cos^2 (x) = 1/2 (1+cos(2x)) \\
+sinxcosx = 1/2 sin2x
+\end{eqnarray}
+
+\begin{eqnarray}
+sin A cos B = 1/2 [sin(A-B) + sin(A+B)] \\
+sin A sin B = 1/2 [cos(A-B) - cos(A+B)] \\
+cos A cos B = 1/2 [cos(A-B) + cos(A+B)]
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{d}{dx} csc(x) = -csc(x)cot(x) \\
+cot^2(x) = csc^2(x) - 1 \\
+\frac{d}{dx} cot(x) = -csc^2(x)
+\end{eqnarray}
+
+
+
+
+\chapter{In-Class Review}
+\section{Vectors \& Vector Functions}
+
+\begin{itemize}
+\item Vector = magnitude + direction
+\item If the origin of the vector is the origin of the coordinate system, it's a position vector.
+\item Dot product: 
+$\vec{a} \cdot \vec{b} = \vec{a}_1 \cdot \vec{b}_1 + ... + \vec{a}_n \cdot \vec{b}_n$
+\item Cross product: $\vec{a} \times \vec{b} = det(i, j, k; \vec{a}^{T}; \vec{b}^{T})$
+\item Cross product is the area of the paralellogram traced out by the two vectors.
+\item Scalar triple product: $\vec{a} \cdot (\vec{b} \times \vec{c})$, produces a scalar, represents the volume of the parallelepiped formed by the three vectors.
+\item To get the derivative of a vector function, simply  take the derivative of each of the internal functions and package them into a new vector function.
+\end{itemize}
+
+\section{Arc Length}
+\subsection{One-Variable Functions}
+$$L = \int_a^b \sqrt{1+[f'(x)]^2} dx$$
+
+\subsection{Parametric Functions}
+Let $y(t)$ and $x(t)$ describe a parametric function in 2 dimensions. Then the arc length would be:
+$$L = \int_a^b \sqrt{[x'(t)]^2 + [y'(t)]^2} dx$$
+
+\subsection{Vector Funtions}
+Let $\vec{r}(t)$ describe a vector function that converts a scalar $t$ into a vector. Then the arclength function would be:
+$$L = \int_a^b |\vec{r}(t)| dt$$
+
+\subsection{Reparamerizing with respect to Arc Length}
+\paragraph{What is this? } Let there be a vector function $\vec{r}(t)$ and its correponding arc length function 
+$s(t)$. Since $s$ is strictly increasing, we can safely \textbf{reparameterize} $\vec{r}(t)$ to be 
+$\vec{r}(s(t)) \to \vec{r}(s)$. 
+\paragraph{Why would you want to do this? } This type of reparameterization is useful because now we do not have to
+rely on any particular coordinate system.
+\paragraph{Steps to Reparameterizing}
+\begin{enumerate}
+\item Find $s(t) = \int_a^b |\vec{r}(u)| du$.
+\item Put $s$ in terms of $t$.
+\item Substitute the expression found in part 2 in the original $\vec{r}(t)$.
+\end{enumerate}
+
+
+\section{Partial Derivatives}
+\subsection{Functions of Several Variables}
+\paragraph{A function of two variables } transforms each pair of Reals $(x, y)$ in a given set to a single real number. The given set is the domain, and the set of reals that the pair is transformed to is the range.
+
+\paragraph{Level functions } are functions that have $f(x, y) = k$ for given ranges of $(x, y)$
+
+\paragraph{Functions of 3 or more variables } are pretty easy to extrapolate from functions of two variables, tbh.
+
+\subsection{Limits and Continuity with Functions of Several Variables}
+\subsubsection{Limits}
+\paragraph{Definition of limit } with many variables:
+$$\lim_{(x, y) \to (a, b)} f(x, y) = L$$
+if for every number $\epsilon > 0$ there is a corresponding number $\delta > 0$ s.t.
+if $0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta$ then $|f(x, y) - L | < \epsilon$
+
+\paragraph{How to find: }
+Regard the non-mentioned variable in the notation as a constant and differentiate with respect to the mentioned variable.
+
+\subsection{Higher Partial Derivatives}
+$$(f_x)_y = f_{xy} = f_{12} = \frac{\partial}{\partial y} (\frac{\partial f}{\partial x}) = \frac{\partial ^2 f}{\partial y \partial x} = \frac{\partial z}{\partial y \partial x}$$
+
+\subsubsection{Clairaut's Theorem}
+If $f_{xy}$ and $f_{yx}$ are both \textbf{defined} and \textbf{continuous} on disk $D$ then:
+$$f_{xy}(a, b) = f_{yx}(a, b)$$
+
+\section{Gradient}
+Think of the gradient like an operator that applies to functions of many variables (functions of vectors). The $\nabla$
+just calculates the partial derivatative of the function with respect to each of its input variables and puts it
+into a vector.
+
+$$\nabla f(x, y) = [\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}]$$
+
+Or, more generally for a function $f(\vec{x})$, $$\nabla f(\vec{x}) = [\frac{\partial f}{\partial x_1}, ... , 
+\frac{\partial f}{\partial x_n}]$$
+
+\section{Chain Rule with Many Variables}
+Let there be a function $f(\vec{x})$. Let $\vec{x}$ of length $n$ be a function of $\vec{t}$ of length $m$. 
+We take the partial derivative of $f$  with respect to $t_i$ by the following:
+
+$$\frac{\partial f}{\partial t_i} = \frac{\partial f}{\partial x_1} \frac{\partial x_1}{\partial t_i} + 
+... + \frac{\partial f}{\partial x_n} \frac{\partial x_n}{\partial t_i} $$
+
+\chapter{Multiple Integrals}
+Pretty much the same as regular integrals, you just do two. You can apply them to volumes under surfaces.
+
+\section{Basic Meaning and Solving}
+
+\section{Leibniz Integral Rule (Differentiability of Integral with Respect to Parameter)}
+The Leibniz integral rule simply lets you more easily take the derivative of the integral of a multivariable
+function where the variable you are integrating with respect to is not the same as the variable you are taking
+the derivative with respect to.
+$$\frac{d}{dx} \int_a^b f(x, t) dt$$
+
+\subsection{Constant Bounds of Integration}
+When you are integrating from one constant to another $[a, b]$, the result is quite simple and elegant.
+$$\frac{d}{dx} \int_a^b f(x, t) dt = \int_a^b \frac{\partial f}{\partial x} dt$$
+
+\subsection{Derivation}
+Let's write $\frac{d}{dx} \int_a^b f(x, t) dt$ in terms of the definition of the derivative:
+\begin{align*}
+& = \frac{\int_a^b f(x +\Delta x, t)dt - \int_a^b f(x+\Delta x, t)dt}{\Delta x} \\
+& = \frac{\int_a^b f(x, t) dx + \int_a^b \frac{\partial f}{\partial x} dt \Delta t dx - \int_a^b f(x, t) dt}{\Delta x} \\
+& = \int_a^b \frac{\partial f}{\partial t} dx \\
+\label{Constant Bounds}
+\end{align*}
+
+\subsection{Variable Bounds of Integration}
+Final result:
+$$\frac{d}{dx} \int_{a(t)}^{b^t} f(x, t) dt = \int_{a(t)}^{b(t)} \frac{\partial f}{\partial x} dt - f(a, t)\frac{da}{dt} + f(b, t)\frac{db}{dt}$$
+
+\section{Polar Coordinates with Multiple Integrals}
+Recall $r^2 = x^2 + y^2$, $x = rcos(\theta)$, $y = rsin(\theta)$
+
+\paragraph{A polar rectangle} is of the form $$R = {(r, \theta) | a \leq r \leq b, \alpha \leq \theta \leq \beta}$$
+
+\paragraph{Basic form of double integral in polar coordinates: }
+$$\iint_R g dA = \int_{\alpha}^{\beta} \int_a^b g(r, \theta)\,dr\,d\theta$$
+
+\subsection{Change to Polar Coordinates in Double Integrals}
+$$\iint_R f(x, y) dA = \int_{\alpha}^{\beta}\int_a^b f(rcos(\theta), rsin(\theta))*r \,dr\,d\theta$$
+Make sure not to forget the $r$ in the integral!
+
+\subsection{Variable Bounds of Integration for $r$}
+$$D = {(r, \theta) | \alpha \leq \theta \leq \beta, h(\theta) \leq r \leq g(\theta)}$$
+Then:
+$$\iint_D f(r, \theta) = \int_{\alpha}^{\beta} \int_{h(\theta)}^{h(\theta)} f(r, \theta)*r \, dr \, d\theta$$
+
+\section{Applications of Multiple Integrals}
+The obvious application of multiple integrals is to compute volume. But, like with regular 
+integrals, there are a lot more ways you can apply them (think back to centre of mass, 
+arc length, etc). 
+
+\subsection{Density and Mass}
+\paragraph{Lamina } is a plan of mass and surface density. With double integrals, 
+we can now calculate mass of a lamina with \textbf{variable} density!
+
+$$\rho(x, y) = \lim \frac{\Delta m}{\Delta A}$$
+$$\rho(x, y) = \frac{\partial m}{dx dy}$$
+
+\paragraph{Calculating Mass: }
+$$m = \iint_D \rho(x, y) dA$$
+
+\subsection{Moments of Intertia}
+
+\paragraph{Moment $M_x$} is the distance of the centre of mass from the $x$-axis times 
+the mass. Likewise with $y$.
+
+\paragraph{Centre of Mass } is at $(\bar{x}, \bar{y})$ where $m\bar{x} = M_y$ and 
+$m\bar{y} = M_x$.
+
+If you're confused as to why the $\bar{x}$ and $M_y$ are related, just remember that 
+the moment about the $y$-axis ($M_y$) is defined as the \textbf{distance from the 
+y-axis to the centre of mass} times the mass of the lamina. That distance is the $\bar{x}$ 
+value!
+
+\subsection{Moments of Intertia}
+
+Recall that $I = mr^2$ for particles.
+
+$$I_x = \iint_D y^2 \rho(x, y)dA$$
+$$I_y = \iint_D x^2 \rho(x, y)dA$$
+
+$$I_o = I_x + I_y = \iint_D (x^2 + y^2) \rho(x, y)dA$$
+Makes sense because $x^2+y^2$ is the distance of the chunk from the 
+origin. 
+
+\subsubsection{Radius of Gyration}
+\paragraph{About Arbitrary Axis: } $R$ is the radius of gyration if $mR^2 = I$. Basically, if mass were concentrated at $R$,
+then it would have the same moment of inertia as the original lamina.
+
+\paragraph{About the Origin: } $(\bar{\bar{x}}, \bar{\bar{y}})$ is the point of gyration about the origin.
+
+\subsection{Probability}
+The probability function of a random variable $x$ is: 
+$$f(x) > 0\,\forall \, x, \int_{-\infty}^{\infty} f(x) dx = 1$$
+
+\paragraph{Probability of $a < x < b$: } $\int_a^b f(x) dx$
+
+\paragraph{2-D Probability Function: } Chance of $(x, y) \in D$ is $\iint_D f(x, y) dA$.
+
+Note that $\iint_{\mathbb{R}^2} f(x, y) dA = 1$
+
+\subsubsection{Expected Values}
+For single variable $x$ with probability density function $f$, the expected value is the 
+average value of $x$ across many trials. 
+
+$$\mu = \int_{-\infty}^{\infty} x f(x) dx$$
+
+Makes sense because you're just summing the products of the chance of a particular $x$ 
+and the value of that $x$ for all $x$.
+
+\paragraph{Multi-Variable Functions: }
+$$\mu_1 = X_{mean} = \iint_{\mathbb{R}^2} x f(x, y) dA$$
+$$\mu_2 = Y_{mean} = \iint_{\mathbb{R}^2} y f(x, y) dA$$
+
+\paragraph{Normal Distribution: } $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-(x-\mu )^2/(2\sigma^2)}$$
+
+\section{Surface Area}
+
+\paragraph{How it's derived: } If you divide the surface in to an $m$ by $n$ grid, the 
+surface area of each piece is the area of that parallelogram. That can be found by 
+the cross product of the two vectors that define two sides of the parallelogram. Those 
+vectors are just the width and length of the piece times the partial derivatives along 
+that particular axis. 
+
+$$A(S) = \iint_D \sqrt{(\frac{\partial f}{\partial x})^2 
+                     + (\frac{\partial f}{\partial y})^2 + 1} dA$$
+
+$$A(S) = \iint_D \sqrt{(\nabla f(x, y))^2 + 1} dA$$
+
+The $+ 1$ term is there because it's $\frac{\partial f}{\partial f}$.
+
+\section{Triple Integrals}
+\subsection{Type 1}
+Lies between continuous functions of $f(x, y)$
+
+$$E = {(x, y, z) | (x, y) \in D, u_1(x, y) \leq z \leq u_2(x, y) }$$
+
+Then $$\iiint_E f(x, y, z) dV = \iint_D [\int_{u_1(x, y)}^{u_2(x, y)} f(x, y, z) dz] dA$$
+
+\subsection{Type 2}
+Lies between continuous functions of $f(y, z)$
+
+$$E = {(x, y, z) | (y, z) \in D, u_1(y, z) \leq x \leq u_2(y, z) }$$
+
+Then $$\iiint_E f(x, y, z) dV = \iint_D [\int_{u_1(y, z)}^{u_2(y, z)} f(x, y, z) dx] dA$$
+
+
+\subsection{Type 3}
+Lies between continuous functions of $f(x, z)$
+$$E = {(x, y, z) | (x, z) \in D, u_1(x, z) \leq y \leq u_2(x, z) }$$
+
+Then $$\iiint_E f(x, y, z) dV = \iint_D [\int_{u_1(x, z)}^{u_2(x, z)} f(x, y, z) dy] dA$$
+
+
+\subsection{Applications of Triple Integrals}
+\subsubsection{Obvious}
+$$V = \iiint_E dV$$
+$$m = \iiint_E \rho(x, y, z) dV$$
+
+\subsubsection{Moments and CoM}
+\paragraph{REMEMBER: } Moments are about a plane (e.g. $(x, y)$ plane) while moments of INERTIA are 
+about an axis (think about spinning vs. balancing - you balance along a plane, spin around an axis).
+
+$$M_{yz} = \iiint_E x\rho(x, y, z) dV$$
+etc.
+
+$$I_x = \iiint_E (y^2 + z^2) \rho(x,y,z)dV$$
+
+\section{Cylindrical Coordinates}
+These work pretty much how you would think they'd work based on your knowledge of polar coordiantes in 2-D. Just stick a
+conventional z-axis on the polar coordinate system and you have cylindrical coordinates.
+
+$$x = r\cos\theta; \,\,\,\, y = r\sin\theta; \,\,\,\, z = z$$
+$$\iiint_E f(x, y, z) dV = \iiint r f(r\cos(\theta), r\sin(\theta), z) dz\,dr\,d\theta$$
+
+Don't forget that little $r$ coefficient in there! 
+
+\section{Spherical Coordinates}
+Now we define points in 3-D space by the the following values: 
+\begin{enumerate}
+\item $p$: the distance away from the origin (scalar)
+\item $\theta$: angle from 0 of the point when it's projected onto the x-y plane.
+\item $\psi$: The angle from the z-axis.
+\end{enumerate}
+So yeah, a bit of a pain in the ass to visualize and draw. At least it's useful when they give you literal spheres... 
+
+Anyway, here are the relationships between those newfangled varibles and our trusty old $x, y, z$ system:
+\begin{enumerate}
+\item $x = p\sin\phi\cos\theta$
+\item $y = p\sin\phi\sin\theta$
+\item $z = p\cos\phi$
+\item $p = \sqrt{x^2+y^2+z^2}$
+\end{enumerate}
+
+Finally, here's the conversion formula for triple integrals:
+$$\iiint_E f(x, y, z) dV = \iiint f(p\sin(\phi)\cos(\theta), p\sin(\phi)\sin(\theta), p\cos(\theta)) p^2\sin(\phi) dp\,d\theta\,d\phi $$
+
+\section{Taylor Series with Two Variables}
+...
+
+\section{Jacobians}
+Remember that time when $\int_a^b f(x) dx = \int_c^d f(g(u))\frac{dx}{du} du$? Well imagine if we could do that with 
+multiple integrals. How cool would that be?
+
+Well guess what, we've been doing that for a while now! Whenever we transfer to cylindrical and spherical coordinates we're 
+basically just applying that same rule. The only new thing we have to learn is the equivalent of that $\frac{dx}{du}$ bit when 
+you have multiple independent variables. 
+
+\subsection{How it Works}
+Let $(u, v) = (G(x, y), H(x, y))$ be our transformation we want to use to make the integral easier. And, let's say we 
+want to change the followinig: 
+
+$$\iint_V f(x, y) dx\,dy \to \iint_{V_2} f(u, v) du\,dv$$
+
+All we gotta do is apply the same rule that we're used to using for u-substitutions, but the $\frac{dx}{du}$ term becomes:
+$$
+\frac{\partial (x, y)}{\partial (u, v)} = \det 
+\begin{vmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ 
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}  \notag
+\end{vmatrix}
+$$
+
+You can kind of see where that Jacob guy was coming from. It sort of makes sense that 
+$\Delta A \approx |\frac{\partial (x, y)}{\partial (u, v)}| du\, dv$. 
+
+\subsection{How to Change your Variable with Jacobians}
+$$\iint_R f(x, y) dA = \iint_S f(x(u, v), y(u, v))|\frac{\partial (x, y)}{\partial (u, v)}|du\,dv$$
+
+This applies to n-dimensional integrals. You can double check that the transformations to cylindrical and spherical coordinates 
+work out if you want!
+
+\chapter{Vector Calculus}
+\section{Review: Vector Fields, Gradient Fields}
+\subsection{Vector Fields}
+Let $E$ be a subset of $\mathbb{R}^3$. A vector field on $\mathbb{R}^3$ is $F$ that assigns each 
+$(x, y, z) \in \mathbb{R}^3$ to a 3D vector $F(x, y, z)$.
+
+\subsection{Gradient Fields}
+The gradient operator is represented by $\nabla$ and can be viewed as the operator 
+$$
+\begin{bmatrix}
+\frac{\partial }{\partial x} \\ 
+\frac{\partial }{\partial y} \\
+\frac{\partial }{\partial z} \\
+... \notag
+\end{bmatrix}
+$$
+
+A scalar field transforms each point $(x, y, ...) \in \mathbb{R}^n$ into a real number in $\mathbb{R}$ (e.g. $f(x, y, ...) \to \mathbb{R}$).
+A gradient field is a field of $n$-dimensional vectors that is made by taking the gradient of $f$ at each point $(x, y, z, ...)$ in 
+a given region $\nabla f(x, y, z, ...)$.
+
+These differ from regular vector fields because \textbf{not every vector field can be made from the gradient of a scalar field}.
+Think about that, it's really cool!
+
+\section{Line Integrals}
+From Stewart 16.2: It's like a regular integral, but we're integrating over a curve, not a 
+range of values.
+\paragraph{Definition: } Let $f$ be defined along smooth curve $C$. Then the line integral of $f$ 
+along $C$ is $$\int_C f(x, y) ds = \int_a^b f(x(t), y(t)) \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2} dt$$
+
+Visually it's just like taking the single integral along the path $<x(t), y(t)>$ as opposed to a straight line 
+along the $x$ or $y$ axis. More generally: 
+
+$$\int_C f(\vec{r}(t)) ds = \int_C f(\vec{r}(t))|r'(t)|dt$$
+
+\subsection{Line Integrals with respect to $x$ and $y$}
+You can also take the integral with respect to differences in $x$ and $y$ instead of with respect to 
+$s$ (the arc length).
+
+$$\int_C f(x, y) dx = \int_a^b f(x(t), y(t)) x'(t) dt$$
+$$\int_C f(x, y) dy = \int_a^b f(x(t), y(t)) y'(t) dt$$
+
+Physically, that means that the `significance' of an infinitessimal part of the line is decided by the $x$ or $y$-component 
+of the piece of the line. 
+
+A shorthand for adding these together is as follows: 
+$$\int_C P(x, y) dx + \int_C Q(x, y) dy = \int_C P(x, y) dx Q(x, y) dy$$
+
+\subsection{Path Independence}
+It is not necessarily the case that $$\int_C f(x, y) dx = -\int_{-C}f(x, y) dx$$
+However, when we take the line integral with respect to $s$ (path length), equality does hold! 
+$$\int_C f(x, y) ds = -\int_{-C}f(x, y)ds$$
+
+\subsection{Line Integrals in Space}
+This section pertains to 3D space. Let $C$ be a smooth space curve given by $<x(t), y(t), z(t)>$ for $a \leq t \leq b$
+
+Now let $f$ be a function of three variables. The line integral of $f$ along $C$ is then
+$$\int_C f(x, y, z) ds = \int_a^b f(x(t), y(t), z(t))\sqrt{(\frac{dx}{dt})^2+(\frac{dy}{dt})^2+(\frac{dz}{dt})^2} dt$$
+
+Which is equivalent to:
+$$\int_a^b f(r(t)) |r'(t)| dt$$ where $r(t)$ is the vector function $r(t)=<x(t), y(t), z(t)>$
+
+\subsection{Line Integrals of Vector Fields}
+Recall that the work done by force $f(x)$ on a particle from $a \to b$ along the $x$-axis is: 
+$$W = \int_a^b f(x) dx$$
+
+Also recall that $W = F \cdot D$
+
+Now we think of $F(x, y, z) = <p(x), q(y), r(z)>$ as a force field in 3-space. How do we compute the work done by 
+the force field on a moving particle?
+
+$$W = \int_a^b F(r(t)) \cdot r'(t) dt = \int_C F \cdot T ds$$
+Remembering that $F(r(t)) = F(x(t), y(t), z(t)) = [P, Q, R]$, so 
+$$\int_C F \cdot dr = \int_C P\,dx + Q\,dy + R\,dz$$
+
+
+
+
+
+
+\subsection{Useful Tips}
+The vector function that connects points $r_0, r_1$ is: 
+$$r(t) = (1-t)r_0 + t r_1 \,\,\, 0 \leq t \leq 1$$
+
+
+
+
+
+\section{Fundamental Theorem of Line Integrals}
+From 16.3 of Stewart.
+
+Recall: the fundamental theorem of calculus states $\int_a^b F'(x) dx = F(b) - F(a)$ (a.k.a. the net change theorem).
+
+Now let us generalize this to line integrals! 
+
+\paragraph{Fundamental Theorem of Line Integrals} Let $C$ be a smooth curve given by $r(t)$ and $f$ 
+is a differentiable function of 2-3 variables with a continuous gradient on C. 
+
+$$\int_C \nabla f \cdot dr = f(r(b)) - f(r(a))$$
+
+\subsection{Path Independence}
+Here are some fun theorems to understand and have in the back of your mind: 
+\begin{enumerate}
+\item \textbf{THM: } $\int_C \vec{F}\cdot\,d\vec{r}$ is path independent iff 
+$\int_C \vec{F}\cdot\,d\vec{r} = 0 \, \forall$ closed paths
+\item \textbf{THM: } A vector field is conservative iff it is path independent. 
+$\exists$ a function $f$ such that $\nabla f = F$ iff conservative/path independent.
+\item \textbf{THM: } if $\vec{F}(x, y) = [P(x, y)\hat{i}, Q(x, y)\hat{j}]$ is conservative, 
+then $$\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$$ assuming $P, Q$ have cts first derivatives and 
+the region is \textit{simply connected}.
+\end{enumerate}
+
+Some useful definitions:
+\begin{enumerate}
+\item A \textbf{simple curve} doesn't intersect itself between the ends.
+\item A \textbf{simply connected region} has every simple, closed curve enclose only points in that region $D$.
+\end{enumerate}
+
+\section{Parametric Surfaces}
+You can describe a 3D surface in terms of a 2D folded up surface:
+$$\vec{r}(u, v) = 
+\begin{bmatrix}
+x(u, v) \\
+y(u, v) \\
+z(u, v) \notag
+\end{bmatrix}
+$$
+
+\subsection{How to Visualize and Plot}
+Try to find relationships between the $x$, $y$, and $z$ funtions. Does $x^2 + z^2 = c$? If the function is $z = f(x, y)$ then the 
+parametric representation is: 
+
+$$\vec{r}(x, y) = 
+\begin{bmatrix}
+x \\
+y \\
+f(x, y) \notag
+\end{bmatrix}
+$$
+
+\subsection{Surface of Revolution}
+Let's say you're given the function $f(x)$ and you want the surface of revolution in 3D. 
+$$
+\vec{r}(x, \theta) = 
+\begin{bmatrix}
+x \\
+f(x)\cos\theta \\
+f(x)\sin\theta \notag
+\end{bmatrix}
+$$
+
+\subsection{Tangent Planes}
+$$\vec{r}_v(u_0, v_0) = 
+\begin{bmatrix}
+\frac{\partial x}{\partial v}(u_0, v_0) \\
+\frac{\partial y}{\partial v}(u_0, v_0) \\
+\frac{\partial z}{\partial v}(u_0, v_0) \notag
+\end{bmatrix}
+$$
+$r_u$ is defined in a similar way. The normal vector to the surface is $r_u \times r_v$. From this you can determine the tangent plane at a point.
+
+\subsection{Areas of Parametric Surfaces}
+$$A(S) = \iint_D |\vec{r}_u \times \vec{r}_v| dA$$
+
+\section{Surface Integrals}
+These are the 2D equivalent of line integrals. For a parametric surface $\vec{r}(u, v) \to \mathbb{R}^3$ and a function $f(x, y, z) \to \mathbb{R}$:
+
+$$\iint_S f(x, y, z) dS = \iint_D f(\vec{r}(u, v))|\vec{r}_u \times \vec{r}_v| dA$$
+
+If you don't have a parametric version of your surface (you're stuck with $z = g(x, y)$), then just turn that into a parametric surface like we had before.
+
+\subsection{Flux}
+$$\iint_S \vec{F} \cdot d\vec{S} = \iint_S \vec{F} \cdot \hat{n} dS$$
+where $\hat{n} = \frac{\vec{r}_u \times \vec{r}_v}{|\vec{r}_u \times \vec{r}_v|}$ is the normal vector to the surface at the point. 
+
+\paragraph{In $(u, v)$ space: } Flux is $$\iint_D \vec{F} \cdot (\vec{r}_u \times \vec{r}_v) dA$$
+
+Basically, if you're still in normal 3D space for calculating flux, you need to multiply by the \textbf{unit normal vector} when you do your 
+dot product. If you're in $(u, v)$ space, then you can just multiply by the non-unit normal vector $(\vec{r}_u \times \vec{r}_v)$.
+
+\subsection{Mass Flux}
+For mass flux, then the vector field you integrate over is $\vec{v}(x, y, z)\rho(x, y, z)$
+
+
+
+\section{Green's Theorem}
+Provides a relationship between the line integral of a \textbf{simple closed curve $C$} and the \textbf{double integral of 
+region $D$ that is bounded by $C$}. 
+
+\paragraph{Note on orientation: } We assume a \textbf{SINGLE, COUNTERCLOCKWISE} traversal of $C$. The region is `to the left' 
+of $r(t)$ as it traverses $C$.
+
+$$\int_C P\,dx+Q\,dy = \iint_D (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})dA$$
+
+It's kind of the counterpart to $\int_a^b F'(x) dx = F(b)-F(a)$.
+
+\section{Curl and Divergence}
+\paragraph{Curl } is a measure of the rotation about a point in a vector field.
+$$curl F = \nabla \times F = 
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\ 
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial }{\partial z} \\
+P & Q & R \notag
+\end{vmatrix}
+$$
+
+\paragraph{Divergence } is a measure of the amount of \textit{stuff} going outward from a point. Negative divergence means you have more stuff 
+going into the point (by measure of the vector field).  
+$$div F = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+
+\subsection{Properties of Divergence and Curl}
+\begin{enumerate}
+\item If $F$ has continuous second order derivatives, then $div curl F = 0$.
+\end{enumerate}
+
+\subsection{Vector form of Green's Theorem}
+$$\int_C F \cdot dr = \iint_D (curl\,F)\cdot k dA$$
+
+In other words, you can infer the \textit{curliness} of a surface in a vector field based on a line interal of the edge.
+
+\section{Divergence Theorem}
+$E$ is simple solid region with boundary surface $S$ with outward orientation. $F$ is a vector field in that area 
+with continuous partial derivatives. Then
+$$\iint_S \vec{F}\cdot d\vec{S} = \iiint_E div\,\vec{F} dV$$
+
+
+\section{Stoke's Theorem}
+If $S$ is an oriented piecewise-smooth surface with piecewise smooth closed boundary curve $C$ inside of 
+vector field $F$, then 
+$$\int_C \vec{F} \cdot d\vec{r} = \iint_S curl\,F\cdot d\vec{S}$$
+
+
+
+
+\end{document}
+

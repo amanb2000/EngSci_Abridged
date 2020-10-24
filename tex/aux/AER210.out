@@ -1,0 +1,71 @@
+\BOOKMARK [0][-]{chapter.1}{Review: Stuff to Have Memorized}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Trig Functions and Derivatives}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Inverse Trig Derivatives}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{How to complete the Square}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Trig Angle Sums}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Identities Assorted}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{In-Class Review}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Vectors \046 Vector Functions}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Arc Length}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{One-Variable Functions}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Parametric Functions}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{Vector Funtions}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Reparamerizing with respect to Arc Length}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Partial Derivatives}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{Functions of Several Variables}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.2}{Limits and Continuity with Functions of Several Variables}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.3}{Higher Partial Derivatives}{section.2.3}% 17
+\BOOKMARK [1][-]{section.2.4}{Gradient}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.5}{Chain Rule with Many Variables}{chapter.2}% 19
+\BOOKMARK [0][-]{chapter.3}{Multiple Integrals}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Basic Meaning and Solving}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Leibniz Integral Rule \(Differentiability of Integral with Respect to Parameter\)}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.2.1}{Constant Bounds of Integration}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.2}{Derivation}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.3}{Variable Bounds of Integration}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{Polar Coordinates with Multiple Integrals}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.1}{Change to Polar Coordinates in Double Integrals}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.2}{Variable Bounds of Integration for r}{section.3.3}% 28
+\BOOKMARK [1][-]{section.3.4}{Applications of Multiple Integrals}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.4.1}{Density and Mass}{section.3.4}% 30
+\BOOKMARK [2][-]{subsection.3.4.2}{Moments of Intertia}{section.3.4}% 31
+\BOOKMARK [2][-]{subsection.3.4.3}{Moments of Intertia}{section.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.4.4}{Probability}{section.3.4}% 33
+\BOOKMARK [1][-]{section.3.5}{Surface Area}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.6}{Triple Integrals}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.6.1}{Type 1}{section.3.6}% 36
+\BOOKMARK [2][-]{subsection.3.6.2}{Type 2}{section.3.6}% 37
+\BOOKMARK [2][-]{subsection.3.6.3}{Type 3}{section.3.6}% 38
+\BOOKMARK [2][-]{subsection.3.6.4}{Applications of Triple Integrals}{section.3.6}% 39
+\BOOKMARK [1][-]{section.3.7}{Cylindrical Coordinates}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.8}{Spherical Coordinates}{chapter.3}% 41
+\BOOKMARK [1][-]{section.3.9}{Taylor Series with Two Variables}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.10}{Jacobians}{chapter.3}% 43
+\BOOKMARK [2][-]{subsection.3.10.1}{How it Works}{section.3.10}% 44
+\BOOKMARK [2][-]{subsection.3.10.2}{How to Change your Variable with Jacobians}{section.3.10}% 45
+\BOOKMARK [0][-]{chapter.4}{Vector Calculus}{}% 46
+\BOOKMARK [1][-]{section.4.1}{Review: Vector Fields, Gradient Fields}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.1.1}{Vector Fields}{section.4.1}% 48
+\BOOKMARK [2][-]{subsection.4.1.2}{Gradient Fields}{section.4.1}% 49
+\BOOKMARK [1][-]{section.4.2}{Line Integrals}{chapter.4}% 50
+\BOOKMARK [2][-]{subsection.4.2.1}{Line Integrals with respect to x and y}{section.4.2}% 51
+\BOOKMARK [2][-]{subsection.4.2.2}{Path Independence}{section.4.2}% 52
+\BOOKMARK [2][-]{subsection.4.2.3}{Line Integrals in Space}{section.4.2}% 53
+\BOOKMARK [2][-]{subsection.4.2.4}{Line Integrals of Vector Fields}{section.4.2}% 54
+\BOOKMARK [2][-]{subsection.4.2.5}{Useful Tips}{section.4.2}% 55
+\BOOKMARK [1][-]{section.4.3}{Fundamental Theorem of Line Integrals}{chapter.4}% 56
+\BOOKMARK [2][-]{subsection.4.3.1}{Path Independence}{section.4.3}% 57
+\BOOKMARK [1][-]{section.4.4}{Parametric Surfaces}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.4.1}{How to Visualize and Plot}{section.4.4}% 59
+\BOOKMARK [2][-]{subsection.4.4.2}{Surface of Revolution}{section.4.4}% 60
+\BOOKMARK [2][-]{subsection.4.4.3}{Tangent Planes}{section.4.4}% 61
+\BOOKMARK [2][-]{subsection.4.4.4}{Areas of Parametric Surfaces}{section.4.4}% 62
+\BOOKMARK [1][-]{section.4.5}{Surface Integrals}{chapter.4}% 63
+\BOOKMARK [2][-]{subsection.4.5.1}{Flux}{section.4.5}% 64
+\BOOKMARK [2][-]{subsection.4.5.2}{Mass Flux}{section.4.5}% 65
+\BOOKMARK [1][-]{section.4.6}{Green's Theorem}{chapter.4}% 66
+\BOOKMARK [1][-]{section.4.7}{Curl and Divergence}{chapter.4}% 67
+\BOOKMARK [2][-]{subsection.4.7.1}{Properties of Divergence and Curl}{section.4.7}% 68
+\BOOKMARK [2][-]{subsection.4.7.2}{Vector form of Green's Theorem}{section.4.7}% 69
+\BOOKMARK [1][-]{section.4.8}{Divergence Theorem}{chapter.4}% 70
+\BOOKMARK [1][-]{section.4.9}{Stoke's Theorem}{chapter.4}% 71

@@ -1,0 +1,271 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{hyperref}
+
+\begin{document}
+\title{CHE260 Part 2 Abridged}
+\author{Aman Bhargava}
+\date{September 2019}
+\maketitle
+
+\tableofcontents
+
+\chapter{Basics of Heat Transfer}
+\section{Introduction}
+Heat is energy transferred because of temperature differences. The modes of heat transfer include:
+\begin{enumerate}
+\item Conduction
+\item Convection
+\item Radiation
+\end{enumerate}
+
+\section{Conduction}
+\paragraph{Fourier's Law of Heat Conduction: }
+$$\dot{Q} = -kA\frac{\Delta T}{\Delta x}$$
+\begin{enumerate}
+\item $k$: THERMAL CONDUCTIVITY. It's really a function of temperature but we assume it's constant in this course.
+\item $A$: Area of surface
+\end{enumerate}
+
+\paragraph{DIFFUSIVITY: } $\alpha = \frac{k}{\rho c_p}$ is the rate of heat propagation through a medium by volume. Small $\to$ mostly absorbed, not transmitted.
+
+\section{Convection}
+Heat transfer from solid to fluid in motion $\dot{Q}_{conv} = \dot{Q}_{cond} + \dot{Q}_{fluid motion}$
+
+\paragraph{NEWTON'S LAW OF COOLING: }
+$$\dot{Q}_{conv} = hA_s(T_s-T_{\infty}$$
+Where $h$ is experimentally and subjectively determined.
+
+\section{Radiation}
+$$\dot{Q}_{emit} = \varepsilon \sigma A_s T_s^4$$
+\begin{enumerate}
+\item $\varepsilon$: Emissivity
+\item $\sigma$: Stefan-Boltzmann constant
+\end{enumerate}
+$$\dot{Q}_{rad, net} = \varepsilon \sigma A_s(T_s^4 - T_{surr}^4)$$
+
+$$\dot{Q}_{conv+rad} = h_{combined}A_s(T_s-T_{\infty})$$
+
+\chapter{Steady Heat Conduction}
+\section{Thermal Resistance Networks}
+$$\dot{Q}=\frac{T_{\infty,1} - T_{\infty,2}}{R_{total}}$$
+$V = IR \to \Delta T = \dot{Q}R$
+
+Resistances add in the same ways as electrical resistances. For a wall, you must account for convective resistances on both sides and the 
+internal conductive resistance.
+
+\paragraph{Thermal contact resistance: } Results from microscopic gaps between two objects in physical contact. $R_c$ is the resistance 
+per unit area of contact. Use the ratio of $R_{layer} : R_c$ to determine if the contact resistance is worth taking into consideration.
+
+\section{Heat Conduction with Cylinders and Spheres}
+\subsection{Cylinders}
+By integrating $\dot{Q}_{cond, cyl} = -kA\frac{dT}{dr}$ we get $$R_{cyl} = \frac{1}{2\pi Lk}\ln(r_2/r_1)$$
+Where $r_2$ is outer, $r_1$ is inner, $L$ is length, etc.
+
+\subsection{Spheres}
+By the same logic: $$R_{sph} = \frac{r_2-r_1}{4\pi r_1 r_2 k}$$
+
+\paragraph{For both spheres and cylinders: } you must figure in $R_{conv, in} + R_{cyl} + R_{conv, out}$
+
+\section{Critical Radius of Insulation}
+For flat walls, more insulation $\to$ more thermal resistance.
+
+$$r_{cr,cyl} = \frac{k}{h}$$
+$$r_{cr,sph} = \frac{2k}{h}$$
+
+\section{Chapter 10 Class Notes}
+\begin{itemize}
+\item Biot number: Ratio of convection : conduction = $Bi = \frac{hw}{k}$, $w$ is the width of the surface.
+\item Diffusion time: $t_D = \frac{L^2}{\alpha}$
+\item Rate Limiting Step: If $Bi < 1$: CONVECTION. Else, conduction. 
+\item Governing Conduction Equation: $$\rho C\frac{\partial T}{\partial t} = \nabla \cdot(k\nabla T) + \dot{S}$$
+\begin{itemize}
+\item $\rho$ = density
+\item $C$ = heat capacity
+\item $k$ = thermal CONDUCTIVITY
+\item $\dot{S}$ = heat supplied per second
+\end{itemize}
+\end{itemize}
+
+\section{Fins}
+Fins allow you to increase the area of convection, leading to greater $\dot{Q}_{conv}$. We analyze fins at steady state with constant $k, h$. 
+
+\paragraph{FIN EQUATION: } For an infinitesimal slice of a fin, we have: 
+$$\dot{Q}_{cond, x} = \dot{Q}_{cond, x + \Delta x} + \dot{Q}_{conv}$$
+$$\frac{d^2\theta}{dx^2} - m^2\theta = 0$$
+Where $m^2 = \frac{h\rho}{kA_c}$, $\theta = T-T_\infty$
+$$\theta(x) = c_1e^{mx} + c_2e^{-mx}$$
+Boundary conditions: $\theta(0) = T_{base} - T_\infty$. Boundary condition 2 depends on situation...
+
+Note that $p$ is the perimeter of the fin at the tip.
+
+\begin{itemize}
+\item \textbf{Infinite Fin Length: } $T_{tip} = T_\infty$.
+\item \textbf{Insulated Tip: } $\dot{Q}_{tip} = 0 \to \frac{d\theta}{dx}|_{x=L} = 0$, so the general heat out is:
+$$\dot{Q} = \sqrt{hp kA_c}(T_b-T_\infty) \tanh(mL)$$
+\item Convective and radiative heat loss. Use insulated tip length with corrected length:$$L_c = L + A_c/p$$
+$L_{c,rect} = L + t/2$, t = thickness. $L_{c, cyl} = L + D/4$. 
+
+\end{itemize}
+
+\paragraph{FIN EFFICIENCY: } $\eta_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{fin, max}}$. 
+$$\dot{Q}_{max} = hA_{fin}(T_b-T_\infty)$$
+
+\paragraph{FIN EFFECTIVENESS: } $$\varepsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{nofin}} = \frac{\dot{Q}_{fin}}{hA_b(T_b-T_\infty)}$$
+$$\varepsilon_{fin} = \frac{A_{fin}}{A_b}\eta_fin$$
+
+\paragraph{Proper Fin Length: } Too long is a waste. $\frac{\dot{Q}_{fin}}{\dot{Q}_{long fin}} = tan{mL}$. Generally $mL = 1$ is a good compromise
+for 76.2\% efficiency. 
+
+$$\dot{Q}_{fin} = \frac{T_b-T_\infty}{R}$$
+$$R = \frac{1}{hA_{fin}\eta_{fin}}$$
+
+\chapter{Transient Temperature Changes}
+\section{Lump Analysis}
+Treating the body like it just has one internal temperature that is the same throughout. Used when $Bi = \frac{hL_c}{k} = \leq 0.1$, $L_c = V/A_s$. 
+$$hA_s(T_\infty - T) dt = mc_p dT$$
+$$\frac{T(t) - T_\infty}{T_i - T_\infty} = \exp(-bt)$$ 
+Where $b = \frac{hA_s}{\rho V c_p}$
+
+$$Q_{net} = mc_p[T(t) - T_i]$$
+
+\section{Transient Heat Conduction}
+We study 1-D transient heat conduction for walls, spheres, and cylinders.
+\begin{itemize}
+\item $\theta = \frac{T - T_\infty}{T_i-T_\infty}$ = dimensionless temperature
+\item $X = x/L$ = dimensionless time
+\item $Bi = hL/k$ = dimensionless heat transfer coefficient
+\end{itemize}
+
+The fourier series for each of these is on the formula sheet. When $\tau > 0.2$ we can use the single-term fourier approximation. 
+$\tau = \frac{\alpha t}{L^2}$.
+\subsection{Illustrative Example: }
+\paragraph{How long until the centre of an egg is 70 Celsius? }
+\begin{enumerate}
+\item $Bi = \frac{hr_0}{k}$. $Bi > 0.1 \to $ Transient 1-D analysis. Less means lump analysis. 
+\item Find $\lambda_1$ and $A_1$ from the table.
+\item Find $\tau$, the fourier number. $$\frac{T_0-T_\infty}{T_i - T_\infty} = A_1 e^{-\lambda_1^2 \tau}$$ to determine the fourier number $\tau$. 
+$T_0$ is the final temperature. 
+\item $t = \frac{\tau r_0^2}{\alpha}$ = time until middle reaches final temperature $T_0$. 
+\end{enumerate}
+
+
+\chapter{External Forced Convection}
+\section{Physical Mechanisms of Convection}
+\paragraph{No Slip Condition: } Fluid velocity is zero and `sticks' to the surface of objects it flows by. Therefore, we have pure conduction 
+at the surface of objects in fluids. 
+
+IMPORTANT NUMBERS: 
+\begin{enumerate}
+\item \textbf{Nusslet} $Nu = \frac{h L_c}{k} = \frac{\dot{q}_{conv}}{\dot{q}_{cond}}$
+\item 
+\item 
+\end{enumerate}
+
+\section{Classifying Fluid Flows}
+\begin{itemize}
+\item Viscous: internal stickiness is significant. Inviscous: internal stickiness is not relevant. 
+\item \textbf{External} means flow is unbounded. \textbf{Internal} means flow is bounded on all sides (e.g. pipe).
+\item \textbf{Compressible} corresponds to $Ma > 0.3$ or $v > 100m/s$. 
+\item \textbf{Natural} means that it's only stuff like buoyancy and convection.
+\item \textbf{Steady} means stable through time. \textbf{Uniform} means stable with location. 
+\item \textbf{Transient} means developing steady flows. \textbf{Periodic} means oscillatory.  
+\end{itemize}
+
+\section{Velocity Boundary Layer}
+Consider fluid flowing over a surface. Due to the non-slip condition, the fluid at the surface doesn't move. 
+$\delta$ is the height above the surface at which the x-velocity reaches $0.99v$ where $v$ is the upstream velocity. It's the
+\textbf{boundary layer thickness}. It divides the `boundary layer' from the `irrotational flow' area. 
+
+$F/A = \tau$ which is shear stress. $$\tau_s = \mu \frac{du}{dy}|_{y=0}$$
+
+$\nu = \mu/\rho$ is kinematic viscosity. Measured in stokes (cm2/s)
+
+More practically: $$\tau_s = C_f\frac{\rho V^2}{2}$$
+
+
+\chapter{In-Class Things and Guides}
+
+\section{Thermal Boundary Layer}
+This is the same as the velocity boundary layer but for temperature. It's where $T_s - T = 0.99(T_\infty - T_s)$. Its size 
+increases in the direction of flow. $\dot{Q}_x$ depends strongly on temperature gradient at the surface, so it's important!
+
+\textbf{Prantl Number} is the relative thickness of the velocity : thermal layer. $$Pr = \frac{\nu}{\alpha} = \frac{\mu c_p}{k}$$
+
+\section{Laminar and Turbulent Flows}
+
+Reynold numbers dictate whether you are in laminar, turbulent, or transitional flow. If $Re > Re_{cr}$, we have turbulent flow.
+
+\section{Drag and Heat Transfer in External Flow}
+
+Lift is just the sum of forces that are perpendicular to flow. 
+
+$$C_D = \frac{F_D}{\frac{1}{2}\rho V^2 A}$$
+
+There is a pressure component and a frictional component to drag force. Pressure dominates with large Reynold's numbers while friction 
+dominates with small Reynold's numbers. 
+
+The area in that formula for drag coefficient is the frontal projection of the object for most objects, but is the actual area of a 
+flat plate that is in line with the flow. 
+
+\subsection{Heat Transfer}
+Heat transfer relies on the same variables as drag. $$Nu = C_{onst} Re_i^m Pr^n$$ where $m, n$ are constant integer exponents and $C$ is 
+a constant that results from the geometry. 
+
+Since $C_D, h$ vary along the surface, we want the AVERAGE values of them. 
+
+$x_cr$ is the x coordinate where flow becomes turbulent over a plate. $Re_{cr} = 5 \times 10^5$ is the generally 
+accepted way to get the critical reynold's number. 
+
+\paragraph{Friction Coefficients at $x$:}
+\begin{itemize}
+\item Laminar: $$\delta_{v, x} = \frac{4.91 x}{Re_x^0.5}$$
+$$C_{fx} = \frac{0.664}{Re_{x}^0.5}$$
+$$Nu_x = \frac{h_xx}{k} = 0.332 Re_x^{0.5}Pr^{1/3}$$
+\item Turbulent: $$\delta_{v, x} = \frac{0.38 x}{Re_x^{1/5}}$$
+$$C_{fx} = \frac{0.059}{Re_x^{1/5}}$$
+$$Nu_x = \frac{h_xx}{k} = 0.0296Re_x^{0.8}Pr^{1/3}$$
+\end{itemize}
+
+\paragraph{Average Friction Coefficients: }
+\begin{itemize}
+\item Laminar: $$C_f = \frac{1.33}{Re_L^{0.5}}$$
+\item Turbulent: $$C_f = \frac{0.074}{Re_L^{1/5}}$$
+\item Laminar AND Turbulent: $$C_f = \frac{0.74}{Re_L^{1/5}}$$
+\end{itemize}
+
+\textbf{Rough, Turbulent Surfaces: } $$C_f = (1.89 - 1.62 \log \frac{\varepsilon}{L})^{-2.5}$$
+
+\paragraph{Average Heat Transfer Coefficients}
+\begin{itemize}
+\item Laminar: $Nu_{avg} = \frac{hL}{k} = 0.664 Re_L^0.5 Pr^{1/3}$
+\item Turbulent: $Nu_{avg} = \frac{hL}{k} = 0.037 Re_L^{0.8}Pr^{1/3}$
+\item Entire Plate: $Nu_{avg} = \frac{hL}{k} = (0.037 Re_l^{0.8} - 871)Pr^{1/3}$
+\end{itemize}
+There's some substantial deviation from these if the fluid has very niche characteristics (small Pr for liquid metals, etc.). Here is a 
+formula that applies to all fluids: $$Nu_x = \frac{h_xx}{k} = \frac{0.3387 Pr^{1/3} Re_x^{0.5}}{[1+(0.0468/Pr)^{2/3}]^{1/4}}$$
+
+\subsection{Unheated Starting Length}
+It's common for the first bit of the plate that the fluid goes over to not be heated. Let $\Xi$ be the distance from the physical and heated starting points.
+\begin{itemize}
+\item Laminar: $$Nu_x = \frac{Nu_{x, (\Xi = 0)}}{[1-(\Xi/x)^{3/4}]^{1/3}}$$
+$$h_{avg} = \frac{2[1-(\Xi/x)^{3/4}]}{1-\Xi/L} h_{x=L}$$
+
+\item Turbulent: $$Nu_x = \frac{Nu_{x, (\Xi = 0)}}{[1-(\Xi/x)^{9/10}]^{1/9}}$$
+$$h_{avg} = \frac{5[1-(\Xi/x)^{9/10}]}{4(1-\Xi/L)}h_{x=L}$$
+\end{itemize}
+
+\subsection{Uniform Heat Flux}
+When the plate has uniform heat flux instead of uniform heat. Relations for $\Xi \neq 0$ apply here too. 
+\begin{itemize}
+\item Laminar: $$Nu_x = 0.453 Re_x^{0.5}Pr^{1/3}$$
+\item Turbulent: $$Nu_x = 0.0308 Re_x^{0.8}Pr^{1/3}$$
+\end{itemize}
+
+$$\dot{Q} = \dot{q}_s A$$ $$\dot{q_s} = h_x[T_s(x) T_\infty] \to T_s(x) = T_\infty + \frac{\dot{q}_s}{h_x}$$
+
+
+\end{document}

@@ -1,0 +1,339 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:44
+entering extended mode
+**./MSE160-2.tex
+(MSE160-2.tex
+LaTeX2e <2018-12-01>
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/report.cls"
+Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/size12.clo"
+File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+hyperref/hyperref.sty"
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/generi
+c/oberdiek/hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/generi
+c/oberdiek/hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+graphics/keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/generi
+c/ifxetex/ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+oberdiek/auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+oberdiek/kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen103
+\Hy@linkcounter=\count89
+\Hy@pagecounter=\count90
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+hyperref/pd1enc.def"
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count91
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+00miktex/hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count92
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+url/url.sty"
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen104
+\Fld@menulength=\count93
+\Field@Width=\dimen105
+\Fld@charsize=\dimen106
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count94
+\c@Item=\count95
+\c@Hfootnote=\count96
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+hyperref/hpdftex.def"
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count97
+\c@bookmark@seq@number=\count98
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+oberdiek/rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+No file MSE160-2.aux.
+\openout1 = `MSE160-2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+\AtBeginShipoutBox=\box27
+Package hyperref Info: Link coloring OFF on input line 4.
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+hyperref/nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/generi
+c/oberdiek/gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count99
+)
+LaTeX Info: Redefining \ref on input line 4.
+LaTeX Info: Redefining \pageref on input line 4.
+LaTeX Info: Redefining \nameref on input line 4.
+\@outlinefile=\write3
+\openout3 = `MSE160-2.out'.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 10.
+ [1
+
+{/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
+pdftex.map}]
+\tf@toc=\write4
+\openout4 = `MSE160-2.toc'.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 15.
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+base/omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 17.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.36 \item C
+            ost parameter = material index/cost per kg [1
+
+] [2]
+Overfull \hbox (6.74388pt too wide) in paragraph at lines 73--73
+[]\OT1/cmr/bx/n/17.28 Strength of Crystalline Materials (Metals) 
+ []
+
+
+Overfull \hbox (5.0223pt too wide) in paragraph at lines 77--78
+[]\OT1/cmr/m/n/12 Precipitation/"particle" strengthening (relies on the fact th
+at distortions
+ []
+
+[3]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sigma' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 139.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 139.
+
+[4]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sigma' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 150.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 150.
+
+[5]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\sigma' on input line 177.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 177.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
+ (MSE160-2.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+
+
+Package rerunfilecheck Warning: File `MSE160-2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `MSE160-2.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  2D37DF5DFB22E7BA7A8317BCE9E3632D;1659.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
+ ) 
+Here is how much of TeX's memory you used:
+ 4316 strings out of 494866
+ 66027 string characters out of 3176398
+ 148320 words of memory out of 3000000
+ 7926 multiletter control sequences out of 15000+200000
+ 9414 words of font info for 33 fonts, out of 3000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 28i,6n,31p,251b,400s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
+e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
+MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abharga
+va/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/abhargava/Library/Applic
+ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
+Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></Users/abhargava/Library/Application Support/MiKTe
+X/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/abhargava/Lib
+rary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Sup
+port/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ab
+hargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb>
+Output written on MSE160-2.pdf (7 pages, 149333 bytes).
+PDF statistics:
+ 152 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,572 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amsmath,amsfonts,mathtools}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\begin{document}
+\title{PHY293 Abridged}
+\author{Aman Bhargava}
+\date{September 2019}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+Prof. Grisouard has put up some pretty solid 
+\href{https://github.com/PHY293-Grisouard/Chapters-2019}{notes} written in jupyter notebooks. 
+Those offer a great comprehensive guide for the course contents. The goal here is to give
+a very concise overview of the things you need to know (NTK) to answer exam questions. Unlike
+some of our other courses, you don't need to be very intimately familiar with the derivations
+of everything in order to solve the problems (though it certainly doesn't hurt). Think of this 
+as a really good cheat sheet.
+
+\chapter{Simple Harmonic Oscillators (SHO's)}
+\section{Set Up}
+Pretty much the same as covered last year.
+$$F_{restorative} = -kx$$
+$$F_{net} = ma$$
+$$ma + kx = 0$$
+We let $\omega_0^2 = k/m$ and rename $a$ to $\ddot{x}$
+\section{ODE and Solution}
+\paragraph{ODE:}
+$$\ddot{x} + \omega_0^2 x = 0$$
+\paragraph{Solution:}
+$$x(t) = a cos(\omega_0 t + \theta)$$
+Solve for 2 unknowns (usually $a$ and $\theta$) based on two initial conditions.
+
+\chapter{Dampened Harmonic Oscillators (DHO's)}
+\section{Set Up}
+We have all the same forces from last time plus the force of friction.
+
+$$F_{friction} = F_f = -bv$$
+
+\section{ODE and Solutions}
+\paragraph{ODE}
+We let $\gamma = b/m$ so that:
+$$\ddot{x} + \gamma \dot{x} + \omega_0^2 x = 0$$
+
+\subsection{General Solution}
+
+And for underdampened and over dampened, the overall solution looks like:
+$$x(t) = ae^{rt}$$
+Where $a, r \in \mathbb{C}$, remembering that $$e^{i \theta} = i sin(\theta) + cos(\theta)$$
+
+This is actually really cool, because the existence of a complex component in $r$ is what 
+enables oscillation. 
+
+If we populate the initial ODE with the derivatives of our $x(t)$, we get:
+$$ar^2e^{rt} + \gamma are^{rt} + \omega_0^2 ae^rt = 0$$
+$$r^2 + \gamma r + \omega_0^2 = 0$$
+
+This results in a simple quadratic for which you can solve for $r$ using the quadratic formula.
+
+$$x = \frac{b \pm \sqrt{b^2 - 4ac}}{2a}$$
+$$r = \frac{\gamma \pm \sqrt{\gamma^2 - 4w_0^2}}{2}$$
+
+There will be up to 2 $r$ values. Since the solution space is a 2-D vector space, any 
+linear combination of vectors (i.e. values of $r$) is still a valid vector.
+
+You might be wondering how $a$ figures into this whole thing. That's just based on initial
+conditions, really. 
+
+\subsection{Regieme 1: Underdampened}
+If the dampening is weak enough, there will still be \textbf{some} oscillation before the 
+oscillator comes to rest. In this case, the general solution is:
+
+$$x(t) = A_0 e^{-\gamma t/2} cos(w_dt + \phi)$$
+Where $w_d^2 = w_{dampened}^2 = \omega_0^2 - \frac{\gamma^2}{4}$
+
+You get this by solving for $r$ with the quadratic formula, plugging the two imaginary 
+roots in, then taking just the real components because you know that $x(t)$ is real.
+
+\subsubsection{Logarithmic Decrement}
+This quantity is the $ln$ of the ratio of 1 peak to the next.
+
+$$\frac{\gamma T_d}{2}$$
+
+Where $T_d$ is the period based on $w_d$.
+
+
+\subsection{Regieme 2: Heavily Dampened}
+In this case both roots are real. This occurs when $\gamma^2-4\omega_0^2 > 0$
+
+Let $r_p, r_m$ be the two real roots. Then the solution is:
+
+$$x(t) = a_pe^{r_pt} + a_me^{r_mt}$$
+
+You can solve for the a values at leisure with two initial conditions.
+
+\subsection{Regieme 3: Critically Dampened}
+When the discriminant of the quadratic is zero (i.e. $\gamma^2 = 4\omega_0^2 = $), you
+get an overconstrained problem because you have fewer unknowns than you have constraints.
+Therefore, the new solution for this exact case is:
+
+$$x(t) = (A + Bt)e^{-\gamma t/2}$$
+
+And it decays the fastest and is pretty cool. Yay.
+
+\section{Energy}
+$$E = K + U$$
+$$E = \frac{1}{2}mv^2 + \frac{1}{2}kx^2$$
+$$\frac{dE}{dt} = -bv^2$$
+
+\subsection{Underdampened Energy}
+The equations get really messy so we assume that $\omega_0 >> \gamma/2$ and $\omega_0 = \omega_d$. After 
+you sub everything in and use the pythagorean identity to cancel out the squared sine/cosine,
+you get:
+
+$$E = \frac{1}{2} kA_0^2e^{-\gamma t}$$
+
+\subsection{Critical and Overdampened Energy}
+These ones are really easy, they just decay and that's it. Just remember the equations for 
+energy and solve for the velocity equation.
+
+\section{Q-Factor}
+$Q$ is a measure of the tendency to oscillate dividied by the tendency to dampen.
+$$Q = \frac{\omega_0}{\gamma}$$
+Let $\tau = \frac{1}{gamma}$ be proportional to the lifetime of the oscillator. Then 
+$n = \frac{\tau}{T_0}$ is the number of cycles in a lifetime.
+$$Q = 2\pi n$$
+
+
+$Q$ is also proportional to the rate at which dampening removes energy from the system. Then
+$$E_n = E_0e^{-\gamma t}$$
+Represents the amount of mechanical energy in the system at time $t$.
+$$\frac{E_n - E_{n+1}}{E_n} = ... = \frac{2\pi}{Q}$$
+
+Therefore $Q$ is the energy in oscillator divided by the amount of energy lost at the
+following \textbf{radian}.
+
+\chapter{Forced Oscillators}
+\section{Equation of Motion ODE}
+$$\ddot{x} + \omega_0^2 x = F_0' cos(\omega t)$$
+Where $\omega_0^2 = k/m$, $F_0' = F_0/m$, $\omega$ is the driving frequency.
+
+\section{Solution: Undamped Forced Oscillator}
+$$x(t) = A(\omega) cos(\omega t - \delta(\omega))$$
+Where
+$$\delta(\omega_0) = 0 \,\,if\,\, \omega < \omega_0, else \pi$$
+If you shake it too fast, it'll vibrate in exactly opposite phase. 
+$$A(w) = |\frac{\omega_0^2}{\omega_0^2 - \omega^2}A_f|$$
+
+\subsection{$\omega = \omega_0$}
+Perfect resonance makes amplitude tend toward infinity.
+$$x(t) = \frac{A_f \omega_0}{\sqrt{2}} t cos(\omega_0t - \frac{pi}{4})$$
+
+\section{Solution: Forced Damped Oscillators}
+Equation of Motion: $\ddot{x} + \gamma \dot{x} + \omega_0^2 x = A_f w_0^2 cos(wt)$
+
+\paragraph{General Solution: } Same as before 
+$$x(t) = A(\omega) cos(\omega t - \delta(\omega))$$
+
+\paragraph{Updates to $A$ and $\delta(\omega)$: } 
+$$A(\omega) = \frac{\omega_0^2}{\sqrt{\gamma^2\omega^2+(\omega_0^2 - \omega)^2}}A_f$$
+$$tan[\delta(\omega)] = \frac{\gamma \omega}{\omega_0^2-\omega^2}$$
+
+\paragraph{Maximum $A(w)$} occurs when $\omega = \omega_0^2 - \frac{\gamma^2}{2}$. In other words, 
+$$\omega_{max} = \omega_0^2[1-\frac{1}{2Q^2}]$$
+
+$$\therefore A_{max} = \frac{Q}{\sqrt{1-\frac{1}{4Q^2}}}A_f$$
+
+\section{Transient Response}
+When you suddenly start a damped, forced oscillator, you have one mode that is the long-term response and one 
+that is the transient response (as if there is no forcing).
+
+$$x_{free} = A_{free} e^{-\gamma t / 2}cos(\omega_d t + \phi)$$
+$$x_{forced} = A(\omega) cos(\omega t - \delta(\omega))$$
+
+$x_{free}$ tend toward zero and only exists for the beginning, so it is the transient response. 
+
+\section{Power in FDHO's}
+$$\therefore -\dot{E}(w, t) = P(w, t) = bv^2 = bV^2(w)sin^2(wt-\delta)$$
+Where $V$ is the amplitude of the velocity.
+
+\subsection{Average Power Per Cycle}
+$$\bar{P}(w) = \frac{F_0^2}{2m} \frac{\gamma}{\gamma^2 + (\omega_0^2/\omega - \omega)^2}$$
+\paragraph{Maximizing Case: } $\bar{P}$ is maximized when $w = w_0$
+
+\subsection{Power vs. $\omega$}
+Let us plot $\bar{P}(w)$ vs. $\omega / \omega_0$. The $\omega_{full width half height} = \omega_{fwhh} = \gamma$
+
+\chapter{Coupled Oscillators}
+\paragraph{Main Takeaways}
+\begin{itemize}
+\item Motion of coupled systems is a linear combination of orthogonal forms of motion.
+\item Motion can be found via 2x2 matrix system
+\item Each normal mode has a unique frequency common to all elements. 
+\item `Eigen' = `normal'.
+\item \textbf{Beating} = when frequencies of modes are very close.
+\end{itemize}
+
+\subsection{How to Solve Coupled Systems}
+From tutorial note: 
+\subsubsection{Determine Equations of Motion}
+You must give each mass its own coordinate system where deviation in one direction adds to the zero 
+coordinate and deviation to the other subtracts from the zero coordinate.
+
+Implement $f = ma$ and $f = kx$ to create equations of motion of each mass depending on its position 
+and the position of its neighbouring masses.
+
+Now we have $$m\ddot{x_a} = ...$$ $$...$$ $$m\ddot{x_c} = ...$$
+
+\subsubsection{Assume $\exists$ a normal mode}
+This implies that $$x_a = A cos(wt)$$ $$...$$ $$x_c = C cos(wt)$$
+
+All we need to solve for now is $w$, and $A \to C$. To do so, we sub our definitions for $x_a, x_b, and x_c$ 
+into our initial EoM, which gives us relationships between $A, B, C, w$ (cosines cancel out!)
+
+Now we just have to put everything in a matrix equation of the form:
+$$[...][A, B, C] = [0, 0, 0]$$
+$$[M][A, B, C] = [0, 0, 0]$$
+
+which implies that $det(M) = 0$. This will give us $3$ different eigen frequencies (or however many degrees 
+of freedom we have). From there, we just have to solve for the coefficients $A, B, C$ via initial conditions, 
+remembering that $x_a = Acos(wt)$ and so on!
+
+\subsection{Review: Results from Linear Algebra}
+\begin{itemize}
+\item $Av = \lambda v$, $(A-\lambda I)v = 0$
+\item We get non-trivial solutions for $v$ if $det(A - \lambda I) = 0$
+\item A matrix is diagonizable if $\exists n$ eigen values $\lambda$ (sufficient, not necessary)
+\item Each solution to the initial $Ax = b$ is unique because the eigen vectors form a basis.
+\end{itemize}
+
+\paragraph{Connecting Eigen Things to Real Things}
+\begin{itemize}
+\item Each $\lambda_i = \omega_i^2$
+\end{itemize}
+
+\chapter{Standing Waves}
+\paragraph{travelling wave: } a travelling disturbance where no matter travels on average.
+\paragraph{Continuum: } infinite coupled oscillators $\to$ infinite modes can arise, characterized 
+by nodes and antinodes.
+
+Boundaries give rise to standing waves (think about boundaries on a plucked guitar string).
+
+\section{Expectations and Takeaways}
+\begin{enumerate}
+\item Wave equation is $$\frac{\partial^2 y}{\partial t^2} = v^2\frac{\partial^2y}{\partial x^2}$$
+\item Phase speed equation is $$v = \sqrt{\frac{T}{\mu}}$$
+\item \textbf{Seperation of variables} is when you
+\item Wavenumbers $k_n$ are basically the number of antinodes in the given mode and angular frequencies $\omega_n$ are frequency at which mode $n$ virbrates, 
+wavelengths $\lambda_n$ are the physical length of each wave in the mode $n$.
+\item Orthogonality relates how different modes of oscillations in standing waves don't interact.
+\item Total energy = sum of energy in each mode of oscillation.
+\end{enumerate}
+
+\section{The Taut String}
+Properties of a taut string:
+\begin{itemize}
+\item $tan\theta = \frac{dy}{dx} << 1$ where $x$ is along the string and $y$ is across the string.
+\item Vibrations occur in only one plane
+\item \textbf{Phase speed } is $v^2 = T/\mu$ with $T$ as \textbf{tension} and $\mu$ as \textbf{mass per unit length of string}.
+\end{itemize}
+
+\paragraph{WAVE EQUATION: } $$\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2y}{\partial x^2}$$
+
+\section{Solution to Wave Equation}
+We assume that the solution is of the form $$y(x, t) = f(x)h(t)$$ so that it is seperable and works nicely 
+with the wave equation. When we sub this into the wave equation, we get:
+
+Let $$\frac{1}{h(t)} \frac{d^2h(t)}{dt^2} = -w^2 = v^2 \frac{1}{f(x)} \frac{d^^2f(x)}{dx^2}$$
+
+So we can still have a $w^2$ that fits well into our SHO ODE:
+
+$$h(t) = H cos(wt + \phi)$$ $$f(x) = A cos(kx) + B sin(kx)$$ where $k = w/v$
+
+\subsection{Boundary Conditions}
+We know that $y(t, 0) = y(t, L) = 0$ because the string is secured on either end. This forces the $A$ term 
+in the equation $f(x) = A cos(kx) + B sin(kx)$ to be zero, so now $f(x) = B sin(kx)$. Now $f(kL) = 0$ for 
+any natural number $k$. 
+
+$$k_n = \frac{n \pi}{L} \,\,, \,\, n \in \mathbb{N}$$
+
+Recall that $k = w/v$ so now $w_n = \frac{n \pi v}{L}$. 
+
+\subsection{Final Solution}
+$$y_n(x, t) = C_n cos(w_n t + \phi_n)sin(k_n x)$$
+$$y(x, t) = \sum_{n=1}^{\infty} y_n(x, t)$$
+
+\subsection{Surrounding Math}
+We need some tools to do proofs and reasoning about these standing and travelling waves. 
+$$f \odot g = \frac{2}{L} \int_0^L f(x)g(x) dx$$
+which represents the inner product of the vector space and 
+$\delta_{mn}$ which is 1 when $m=n$.
+$$sin(k_n x) \odot sin(k_m x) = \delta_{mn}$$
+
+Because they are orthogonal to eachother.
+
+\subsection{Energy Considerations}
+$$E_n = \frac{1}{4} \mu L w_n^2 A_n^2$$
+
+\chapter{Travelling Waves}
+The real general solution to the wave equation: 
+$$\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2 y}{\partial x^2}$$
+$$y(x, t) = f(x-vt) + g(x+vt)$$
+
+It can be shown via trig sums that this is the same as the standing wave solution when you 
+put it between two boundaries.
+
+\paragraph{Most common travelling wave function: } $$y(x, t) = A sin(\frac{2 \pi}{\lambda} (x \pm vt))$$
+$$= A sin(k(x\pm vt))$$
+$$= A sin(kx \pm wt)$$
+\begin{itemize}
+\item $\lambda$ = wavelength
+\item $k$ = wavenumber
+\item $\omega^2 = v^2k^2$, k is the wave number.
+\item $\frac{2\pi}{w}$ = period
+\end{itemize}
+
+\section{Energy Considerations}
+$$K = \frac{1}{2} \mu (\frac{\partial y}{\partial t})^2$$
+$$U = \frac{1}{2} \mu v^2 (\frac{\partial y}{\partial x})^2$$
+
+$<>$ corresponds to integration over one wavelength, so $<f> = \int_0^{\lambda} f(x) dx$.
+
+To find $<E>$ we can apply the above formulae for $K$ and $U$ to the general solution 
+$y(x, t)=A cos(kx-wt)$.
+
+$$<E> = \frac{1}{2} \mu \lambda A^2 w^2$$
+
+\section{Power Considerations}
+Since these waves are unbounded travelling entites, it's useful to consider how much 
+energy they transport past a certain point per second.
+
+We start with instantaneous energy $E = \mu A^2 w^2 sin^2(kx - wt)$. Then 
+$$\bar{P} = \frac{w <E>}{2 \pi} = \frac{\mu \lambda A^2 w^3}{4 \pi} = \frac{\mu A^2 w^2 v}{2}$$
+
+\section{Reflection and Transmission}
+When medium changes discontinuously, you get reflection and transmission. The boundary conditions 
+at the discontinuity are 
+\paragraph{Boundary Condition 1: } matching frequency, amplitude, and phase.
+\paragraph{Boundary Condition 2: } transverse (across-string) forces must match.
+
+Therefore we know that 
+$$y_T(x, t) = A_T cos(wt - k_t x)$$ $$y_R = A_R cos (wt + k_r x)$$
+
+have the same $wt$ term, and $k_R, k_T > 0$ so they propagate in the right directions. The reflected 
+wave is in the same original medium, so its spatial frequency $k_R = k_I = w/v_1$ while $k_T = w/v_2$.
+
+Now the only numbers that aren't known are $A_R, A_T$. According to boundary condition 1, $A_I + A_R = A_T$. 
+Now we use boundary condition to solve for 
+$$\frac{A_T}{A_I} = \frac{2k_1}{k_1+k_2} = \pmb{\tau_{12}} = \frac{2 \sqrt{\mu_1}}{\sqrt{\mu_1} + \sqrt{\mu_2}} $$ 
+$$\frac{A_R}{A_I} = \frac{k_1 - k_2}{k_1 + k_2} = \pmb{\rho_{12}} = \frac{\sqrt{\mu_1} - \sqrt{\mu_2}}{\sqrt{\mu_1} + \sqrt{\mu_2}}$$
+
+\section{travelling Waves in Multiple Dimensions}
+The wave equation become: $$\frac{\partial^2 f}{\partial t^2} = v^2\nabla^2f = v^2[\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}]$$
+
+\chapter{Dispersion}
+For non-dispersive waves (the ones we have been talking about up to this point), the following relationship is true for angular 
+frequency, wave number $k$, and velocity $v$: $$\omega^2 = k^2v^2$$
+
+For dispersive waves, you have a non-linear relationship. Therefore different waves disperse at different rates. 
+
+Let's think about the phenomenon of beating: when you have similar frequency waves going past eachother, you get these ``beats'' from 
+interference patterns (look up a picture to solidify your understanding!).
+
+Since we have different frequencies going at different rates, the beats now move! Let's have an example: 
+
+\section{Example of Dispersive Waves}
+Let the following relationship hold for angular frequency and speed of a wave ($g$ is actually just gravity, this is a weird example)
+$$\omega = \sqrt{gk}$$
+$$v = \omega/k = \sqrt{g/k}$$
+
+The only thing you can really be asked on the exam is to find the group velocity (according to Shayne, at least): 
+$$v_g = \frac{d\omega}{dk} \approx \frac{\Delta \omega}{\Delta k}$$
+
+Group velocity is just the speed of the little wave packets. It's an absolute speed that a stationary observer would see. If you have
+two different waves interfereing at $\omega_1$ and $\omega_2$, use the $\Delta$ form to find the speed of the packets!
+
+\chapter{Special Relativity}
+\section{Introduction}
+An intuitive grasp of this stuff is pretty easy. Just watch the minute physics videos about it, they do a great job.
+
+The key points are that light speed is constant no matter your frame of reference. In other words, it looks like $v_1 + c = v_1$, 
+regardless of what $v_1$ is. Therefore, the way you would think to transform a spacetime diagram to be from another person's 
+reference frame is not correct. You use this cool Lorentz transformation thing:
+
+\section{Formulae}
+\paragraph{The Lorentz factor} comes up all the time: $$\gamma(v) = \frac{1}{\sqrt{1-v^2/c^2}}$$
+\subsection{Time Dilation}
+Let's say you pass by some dude on a planet at close to the speed of light. Both of you will see the other acting really slowly. In other 
+words, \textbf{the moving clock is always observed to be slower than the stationary clock}. Therefore, for this relationship, $\Delta t'$ 
+is just \textbf{the other clock}:
+$$\Delta t' = \gamma(v)\Delta t$$
+
+\subsection{Length Contraction}
+Same thing as above applies with \textbf{the moving object is always observed to be scrunched up more than the stationary object}: 
+$$L=\frac{L_0}{\gamma(v)}$$
+
+\subsection{Relativstic Events: Location and Time}
+Let's say you're watching a dude running close to the speed of light ($v$) who is about to detonate a cake. If the dude does so at 
+position $x$ and time $t$ from his perspective, the position $x_{new}$ and time $t_{new}$ that you observe are given by the following 
+equations.
+$$t_{new}=\gamma(t-\frac{v^2}{c^2}x)$$
+$$x_{new}=\gamma(x-vt)$$
+
+\subsection{Relativistic Energy and Momentum}
+$$p=\gamma(v)m_0v$$
+$$E = \gamma mc^2$$
+$$KE=E-mc^2=\gamma mc^2-mc^2=(\gamma-1)mc^2$$
+
+\paragraph{Invariant Energy: }
+$$m_0^2c^4=E-p^2c^2$$
+
+Apparently the doppler shift equation (relativistic) is given, so don't worry too much about that.
+
+\subsection{4-Vectors}
+In conventional 3-D space, you can have nice invariant properties of objects, like relative distances. In relatistic 4-D space 
+you can have nice invariant 4-vectors that tell you the relative distance of objects and events in 4-D space!
+
+$$\Delta x = (c\Delta t,\Delta x, \Delta y, \Delta z) = (c\Delta t, \pmb{r})$$
+
+\paragraph{The Inner Product} (the thing that is actually invariant) is given by: 
+$$A = (A_0, \pmb{A}); \, B = (B_0, \pmb{B})$$
+$$A\cdot B=A_0B_0 - \pmb{A}\cdot \pmb{B}$$
+
+Where the bolded A and B are a vector of the three spatial coordinates, the $A_0/B_0$ is the the $c\Delta t$ component of the 4-vector.
+
+The other form of 4-vector is as follows: 
+
+$$...$$
+
+
+
+\chapter{Quantum}
+\section{Particle Energy, Wave Energy}
+Here is a hodge podge of fun properties about waves (and particles, cause they're waves too). Shoutout to De Broglie.
+\begin{itemize}
+\item Energy of particle/wave with angular frequency: $E = \hslash \omega$
+\item Momentum of particle/wave with angular frequency: $p = \hslash \omega/c$. Now is as good a time as any to tell you that $k=\omega/c$, which is really annoying and confusing.
+\end{itemize}
+
+\section{Compton Scattering}
+When a high energy photon with wavelength $\lambda_0$ collides with an electron, the photon scatters of at angle $\theta$ with respect to its original direction. The wavelength of the photon 
+changes accordingly to $\lambda'$
+
+$$\lambda' - \lambda_0 = \frac{R}{mc}(1-\cos\theta)$$
+\begin{itemize}
+\item $\lambda'$ is the final wavelength of the photon.
+\item $\lambda_0$ is the initial wavelength of the photon.
+\item $R$ is some constant we're given.
+\item $m$ is the mass of the electron.
+\item $c$ is the speed of light.
+\item $\theta$ is the angle of deflection of the photon with respect to it's initial line of attack.
+\end{itemize}
+
+\section{Photoelectric Effect}
+If you yeet some photons at a piece of metal, the electrons get ejected if the energy of the light packets is high enough (if the frequency of light is high enough).
+$$E_x = \hslash \omega - \phi$$
+where $\omega$ is the frequency of light and $\phi$ is the binding energy of the electrons. $E_x$ is the energy of the ejected electrons.
+
+\section{Hydrogen Model}
+$$\omega_{mn}=2\pi R_0 c(\frac{1}{n^2} - \frac{1}{m^2})$$
+
+\section{De Broglie Waves}
+$$\lambda = \frac{h}{p} = \frac{h}{mv}$$
+$$E = \hslash \omega$$
+$$p = \hslash k; \,\,\,\,\,\, k = \omega/c$$
+
+\section{Wave-Particle Duality}
+\subsection{Uncertainty Principle}
+$$\Delta x\Delta p_x \geq 2\pi \hslash$$
+$$$$
+\subsection{Double Slit Experiment}
+If you shine a laser through two slits (or anything really), the two slits will act as sources of the exact same frequency light and they will 
+interfere with eachother to create some diffraction patterns on wall. Difference in path length being an integer multiple of the wavelength makes 
+constructive interference, difference in path length of half makes for destructive.
+
+$$m \lambda = d\sin \theta$$
+Where \begin{itemize}
+\item $m$ is some integer (0 is the central node, 1 is the next, etc.)
+\item $\lambda$ is the wavelength of light (or particles) coming through.
+\item $d$ is the distance between the slits.
+\item When the equation holds true for integer value of $m$, you get constructive point. If it's an integer and a half, it's a destructive point.
+\end{itemize}
+
+
+\section{Black Body Radiation}
+A body absorbs and emits radiation with the exact same efficiency for any given frequency. A black body is a perfect absorber and perfect emitter. 
+$$P=\sigma T^4$$
+$P$ is the power per square meter of the emitter surface, $\sigma$ is the emissivity/absorptivity constant, and $T$ is the temperature.
+
+$$f_{max} \propto T$$
+In other words, the frequency of radiation that is absorbed/emitted most is proportional to temperature.
+
+
+
+\chapter{Matter Waves and The Schrödinger Equation}
+This problem is basically just $\pmb{A}\vec{x} = \lambda \vec{x}$ as follows:
+$$(\frac{p^2}{2m} + V) \Psi = E\Psi$$
+\begin{itemize}
+\item $p$ is the momentum
+\item $m$ is the mass
+\item $V$ is a conservative field of potential energy..
+\item $E$ is the energy.
+\end{itemize}
+
+\section{Normalization and Probability}
+Solve for $N$ such that $$\int_{-\infty}^{\infty} |(N\psi(x))^2| dx = 1$$
+
+The probability of the particle being between two points is just the integral between those of $\int_a^b |\psi(x)^2| dx$ as long as $\psi$ is 
+normalized. 
+
+\section{Energy Considerations}
+\paragraph{Quantum Kinetic and Potential Energy} are given by: $$U = \frac{\hat{p}^2}{2m}\psi(x)$$
+$$K = \frac{\hslash^2}{2m}\nabla^2\psi(x)$$
+Where
+\begin{itemize}
+\item $\hat{p} = -i\hslash \frac{d^2}{dx^2}$
+\end{itemize}
+
+\section{Infinite Well}
+This is a pretty common question to ask. The high level explanation is as follows:
+\begin{itemize}
+\item There is a square well of potential energy with infinitely high side walls.
+\item The particle is trapped inside. It cannot tunnel out because of the infinitely high walls.
+\item At the edges of the well and beyond, the wave function must be 0
+\end{itemize}
+This is starting to sound a lot like the boundary conditions for standing waves! You can derive this relationship with a bunch
+of complicated math, but here's the final formula for the energy of each of the possible standing wave pattern that a particle 
+can occupy: 
+$$E_n = \frac{n^2\pi^2\hslash^2}{2mL^2}$$
+Where $n$ is any positive integer, $m$ is the mass of the particle, $L$ is the length of the well. 
+
+\paragraph{The actual equation} for the wave is as follows: $$\Psi(x) = C\sin(Ax)$$
+Where $AL = n\pi$.
+
+\subsection{Superposition}
+When you \textbf{measure} the particle, there is only one energy level $n$ that tells you the frequency of the standing wave and, by extension, 
+the energy at that level.
+
+Before you observe the particle, it has a superposition of a bunch of $n$ values. However, once you observe the particle, it becomes constrained 
+to one $n$ value. This is why the photoelectric effect still has discrete energy levels!
+
+\section{Expectation Values}
+Honestly you can get this from our vector calculus course pretty well. We know that the probability distribution is given by $P = |\psi^2|$. From vector calculus, 
+we also know how to get the expected values of things from probability distributions. They like to write this with annoying complex conjugates but it's the same thing.
+$$\langle x \rangle = \int_{-\infty}^{\infty}\psi^* x \psi dx = \int_{-\infty}^{\infty}|\psi^2| x dx = \int_{-\infty}^{\infty}P(x) x \psi dx$$
+
+So yeah, nothing really to worry about. Same stuff different variable names.
+
+\section{Operators}
+Operators are applied to the wave function $\Psi$ to get physical values out of the wave function. For some reason, those values are called eigenvalues. Whatever. 
+Here are the operators.
+\begin{enumerate}
+\item Position operator $\hat{x}$: $\hat{x}\Psi = x\Psi; \hat{r}\Psi=r\Psi$
+\item Momentum operator: $\hat{p}$: $\hat{p}_x=-i\hslash\frac{\partial}{\partial x}$
+\item Kinetic energy operator: $\hat{K}$: $\hat{K}=-\frac{\hslash^2}{2m}\nabla^2$
+\item Total energy operator: $\hat{H}$: $\hat{H} = \hat{K} + \hat{U}$
+\item Potential energy is just from any fields of potential energy the particle happens to be riding on.
+\end{enumerate}
+
+\section{Schrödinger's For Free Particle}
+Remember the general traveling wave equation? Yup, it's back baby!
+$$\Psi=Acos(kx-\omega t)+iAsin(kx-\omega t)$$
+And here's how you get all those parameter values:
+$$p=\hslash k; \,\,\,K=\frac{1}{2}mv^2;\,\,E=\hslash\omega$$
+Just remember that $k$ and $K$ are different things ($k$ is the spatial frequency, $K$ is the kinetic energy of the particle). 
+
+
+\end{document}
