@@ -1,85 +1,85 @@
-\contentsline {section}{\numberline {0.1}Introduction and Course Information}{1}{section.0.1}% 
-\contentsline {chapter}{\numberline {1}Efficiency and Complexity}{2}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Ideal vs. Real Computers}{2}{section.1.1}% 
-\contentsline {section}{\numberline {1.2}The RAM Model of Computation}{2}{section.1.2}% 
-\contentsline {subsection}{\numberline {1.2.1}Big Oh Notation}{2}{subsection.1.2.1}% 
-\contentsline {subsubsection}{Dominance Classes}{3}{section*.2}% 
-\contentsline {chapter}{\numberline {2}List ADT implementation in C}{4}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Stacks and Queues}{4}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Stacks}{4}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.1.2}Queues}{4}{subsection.2.1.2}% 
-\contentsline {subsection}{\numberline {2.1.3}Stack and Heap in C}{4}{subsection.2.1.3}% 
-\contentsline {chapter}{\numberline {3}Trees}{5}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Types of General Traversal:}{5}{section.3.1}% 
-\contentsline {subsubsection}{Breadth-First Traversal: }{5}{section*.3}% 
-\contentsline {subsubsection}{Depth-First Traversal: }{5}{section*.4}% 
-\contentsline {subsection}{\numberline {3.1.1}Using Stacks and Queues for Traversals}{5}{subsection.3.1.1}% 
-\contentsline {paragraph}{Remember: }{5}{section*.5}% 
-\contentsline {paragraph}{How does it work?}{5}{section*.6}% 
-\contentsline {section}{\numberline {3.2}Binary Trees: }{6}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Mathai's Weird Definition for Binary Trees vs. Normal Trees}{6}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Binary Search Trees: }{6}{subsection.3.2.2}% 
-\contentsline {subsection}{\numberline {3.2.3}Advantages/Disadvantages of Binary Search Trees: }{6}{subsection.3.2.3}% 
-\contentsline {subsection}{\numberline {3.2.4}Binary Tree Traversals}{6}{subsection.3.2.4}% 
-\contentsline {paragraph}{Mnemonic: }{6}{section*.7}% 
-\contentsline {section}{\numberline {3.3}Self-Balancing BST's (AVL Trees): }{6}{section.3.3}% 
-\contentsline {paragraph}{Level of imbalance: }{6}{section*.8}% 
-\contentsline {paragraph}{Printing Binary Trees in Order: }{7}{section*.9}% 
-\contentsline {subsubsection}{Types of Rotation: }{7}{section*.10}% 
-\contentsline {subsection}{\numberline {3.3.1}Right Rotation: }{7}{subsection.3.3.1}% 
-\contentsline {paragraph}{When to do this? }{7}{section*.11}% 
-\contentsline {subsection}{\numberline {3.3.2}Left Rotation: }{7}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}Major Right / Minor Left: }{7}{subsection.3.3.3}% 
-\contentsline {paragraph}{When to do this: }{7}{section*.12}% 
-\contentsline {subsection}{\numberline {3.3.4}Summary of Tree Rotations: }{8}{subsection.3.3.4}% 
-\contentsline {subsection}{\numberline {3.3.5}Inserting to a Binary Tree}{8}{subsection.3.3.5}% 
-\contentsline {subsection}{\numberline {3.3.6}Deleting from a Binary Tree}{10}{subsection.3.3.6}% 
-\contentsline {section}{\numberline {3.4}AVL Tree}{10}{section.3.4}% 
-\contentsline {subsection}{\numberline {3.4.1}When to use which rotation/HOW TO BALANCE: }{10}{subsection.3.4.1}% 
-\contentsline {subsection}{\numberline {3.4.2}Adding to AVL Trees: }{10}{subsection.3.4.2}% 
-\contentsline {subsection}{\numberline {3.4.3}Deleting from AVL Trees: }{10}{subsection.3.4.3}% 
-\contentsline {section}{\numberline {3.5}Priority Queues}{10}{section.3.5}% 
-\contentsline {section}{\numberline {3.6}Hashes and Strings}{10}{section.3.6}% 
-\contentsline {paragraph}{Example: }{11}{section*.16}% 
-\contentsline {paragraph}{Problem: }{11}{section*.17}% 
-\contentsline {paragraph}{Solution 1: Chaining }{11}{section*.18}% 
-\contentsline {paragraph}{Solution 2: Open Addressiong }{11}{section*.19}% 
-\contentsline {section}{\numberline {3.7}Heap}{11}{section.3.7}% 
-\contentsline {subsection}{\numberline {3.7.1}Implementation as List (0-indexed)}{11}{subsection.3.7.1}% 
-\contentsline {subsection}{\numberline {3.7.2}Adding to a Heap}{11}{subsection.3.7.2}% 
-\contentsline {subsection}{\numberline {3.7.3}Deleting from Heap}{11}{subsection.3.7.3}% 
-\contentsline {subsection}{\numberline {3.7.4}Searching a Heap}{12}{subsection.3.7.4}% 
-\contentsline {chapter}{\numberline {4}Graphs}{13}{chapter.4}% 
-\contentsline {paragraph}{What's a graph? }{13}{section*.20}% 
-\contentsline {paragraph}{What about notation? }{13}{section*.21}% 
-\contentsline {section}{\numberline {4.1}Types of Graphs}{13}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Paths}{13}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}Cycles}{13}{subsection.4.1.2}% 
-\contentsline {subsection}{\numberline {4.1.3}Strength of Connections}{14}{subsection.4.1.3}% 
-\contentsline {subsection}{\numberline {4.1.4}Articulation Vertex}{14}{subsection.4.1.4}% 
-\contentsline {section}{\numberline {4.2}Traversal of Graph: Prim's Algorithm}{14}{section.4.2}% 
-\contentsline {paragraph}{What it does: }{14}{section*.22}% 
-\contentsline {paragraph}{Steps in Prim's Algorithm: }{14}{section*.23}% 
-\contentsline {paragraph}{Topological Ordering in a Graph}{14}{section*.24}% 
-\contentsline {paragraph}{For the courses example:}{14}{section*.25}% 
-\contentsline {section}{\numberline {4.3}Representations of Graphs: Adjacency Matrices}{15}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Dijkstra's Algorithm: Pathfinding}{15}{section.4.4}% 
-\contentsline {paragraph}{Complexity of the Algorithm}{15}{section*.26}% 
-\contentsline {chapter}{\numberline {5}Bit Manipulation}{16}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Converting to and from Different Bases}{16}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Converting from base 10 $\to $ base 2}{16}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}Converting from base 2 $\to $ base 16}{16}{subsection.5.1.2}% 
-\contentsline {subsection}{\numberline {5.1.3}Converting from base 10 $\to $ base 16 (and vice versa)}{17}{subsection.5.1.3}% 
-\contentsline {section}{\numberline {5.2}Bitwise Operators}{17}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}How to print bits of a variable}{17}{subsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.2.2}Altering Bits}{17}{subsection.5.2.2}% 
-\contentsline {chapter}{\numberline {6}Sorting and Searching Algorithms}{18}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Selection Sort}{18}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Insertion Sort}{18}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Bubble Sort}{19}{section.6.3}% 
-\contentsline {section}{\numberline {6.4}Heap Sort}{19}{section.6.4}% 
-\contentsline {section}{\numberline {6.5}Merge Sort}{19}{section.6.5}% 
-\contentsline {section}{\numberline {6.6}Quick Sort}{20}{section.6.6}% 
-\contentsline {subsection}{\numberline {6.6.1}Partition}{20}{subsection.6.6.1}% 
-\contentsline {subsection}{\numberline {6.6.2}Quick Sort}{20}{subsection.6.6.2}% 
-\contentsline {section}{\numberline {6.7}Radix Sort}{20}{section.6.7}% 
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{3}{section.0.1}% 
+\contentsline {chapter}{\numberline {1}Efficiency and Complexity}{4}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Ideal vs. Real Computers}{4}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}The RAM Model of Computation}{4}{section.1.2}% 
+\contentsline {subsection}{\numberline {1.2.1}Big Oh Notation}{4}{subsection.1.2.1}% 
+\contentsline {subsubsection}{Dominance Classes}{5}{section*.2}% 
+\contentsline {chapter}{\numberline {2}List ADT implementation in C}{6}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Stacks and Queues}{6}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Stacks}{6}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Queues}{6}{subsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}Stack and Heap in C}{6}{subsection.2.1.3}% 
+\contentsline {chapter}{\numberline {3}Trees}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Types of General Traversal:}{7}{section.3.1}% 
+\contentsline {subsubsection}{Breadth-First Traversal: }{7}{section*.3}% 
+\contentsline {subsubsection}{Depth-First Traversal: }{7}{section*.4}% 
+\contentsline {subsection}{\numberline {3.1.1}Using Stacks and Queues for Traversals}{7}{subsection.3.1.1}% 
+\contentsline {paragraph}{Remember: }{7}{section*.5}% 
+\contentsline {paragraph}{How does it work?}{7}{section*.6}% 
+\contentsline {section}{\numberline {3.2}Binary Trees: }{8}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Mathai's Weird Definition for Binary Trees vs. Normal Trees}{8}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Binary Search Trees: }{8}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Advantages/Disadvantages of Binary Search Trees: }{8}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}Binary Tree Traversals}{8}{subsection.3.2.4}% 
+\contentsline {paragraph}{Mnemonic: }{8}{section*.7}% 
+\contentsline {section}{\numberline {3.3}Self-Balancing BST's (AVL Trees): }{8}{section.3.3}% 
+\contentsline {paragraph}{Level of imbalance: }{8}{section*.8}% 
+\contentsline {paragraph}{Printing Binary Trees in Order: }{9}{section*.9}% 
+\contentsline {subsubsection}{Types of Rotation: }{9}{section*.10}% 
+\contentsline {subsection}{\numberline {3.3.1}Right Rotation: }{9}{subsection.3.3.1}% 
+\contentsline {paragraph}{When to do this? }{9}{section*.11}% 
+\contentsline {subsection}{\numberline {3.3.2}Left Rotation: }{9}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}Major Right / Minor Left: }{9}{subsection.3.3.3}% 
+\contentsline {paragraph}{When to do this: }{9}{section*.12}% 
+\contentsline {subsection}{\numberline {3.3.4}Summary of Tree Rotations: }{10}{subsection.3.3.4}% 
+\contentsline {subsection}{\numberline {3.3.5}Inserting to a Binary Tree}{10}{subsection.3.3.5}% 
+\contentsline {subsection}{\numberline {3.3.6}Deleting from a Binary Tree}{12}{subsection.3.3.6}% 
+\contentsline {section}{\numberline {3.4}AVL Tree}{12}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}When to use which rotation/HOW TO BALANCE: }{12}{subsection.3.4.1}% 
+\contentsline {subsection}{\numberline {3.4.2}Adding to AVL Trees: }{12}{subsection.3.4.2}% 
+\contentsline {subsection}{\numberline {3.4.3}Deleting from AVL Trees: }{12}{subsection.3.4.3}% 
+\contentsline {section}{\numberline {3.5}Priority Queues}{12}{section.3.5}% 
+\contentsline {section}{\numberline {3.6}Hashes and Strings}{12}{section.3.6}% 
+\contentsline {paragraph}{Example: }{13}{section*.16}% 
+\contentsline {paragraph}{Problem: }{13}{section*.17}% 
+\contentsline {paragraph}{Solution 1: Chaining }{13}{section*.18}% 
+\contentsline {paragraph}{Solution 2: Open Addressiong }{13}{section*.19}% 
+\contentsline {section}{\numberline {3.7}Heap}{13}{section.3.7}% 
+\contentsline {subsection}{\numberline {3.7.1}Implementation as List (0-indexed)}{13}{subsection.3.7.1}% 
+\contentsline {subsection}{\numberline {3.7.2}Adding to a Heap}{13}{subsection.3.7.2}% 
+\contentsline {subsection}{\numberline {3.7.3}Deleting from Heap}{13}{subsection.3.7.3}% 
+\contentsline {subsection}{\numberline {3.7.4}Searching a Heap}{14}{subsection.3.7.4}% 
+\contentsline {chapter}{\numberline {4}Graphs}{15}{chapter.4}% 
+\contentsline {paragraph}{What's a graph? }{15}{section*.20}% 
+\contentsline {paragraph}{What about notation? }{15}{section*.21}% 
+\contentsline {section}{\numberline {4.1}Types of Graphs}{15}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Paths}{15}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Cycles}{15}{subsection.4.1.2}% 
+\contentsline {subsection}{\numberline {4.1.3}Strength of Connections}{16}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}Articulation Vertex}{16}{subsection.4.1.4}% 
+\contentsline {section}{\numberline {4.2}Traversal of Graph: Prim's Algorithm}{16}{section.4.2}% 
+\contentsline {paragraph}{What it does: }{16}{section*.22}% 
+\contentsline {paragraph}{Steps in Prim's Algorithm: }{16}{section*.23}% 
+\contentsline {paragraph}{Topological Ordering in a Graph}{16}{section*.24}% 
+\contentsline {paragraph}{For the courses example:}{16}{section*.25}% 
+\contentsline {section}{\numberline {4.3}Representations of Graphs: Adjacency Matrices}{17}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Dijkstra's Algorithm: Pathfinding}{17}{section.4.4}% 
+\contentsline {paragraph}{Complexity of the Algorithm}{17}{section*.26}% 
+\contentsline {chapter}{\numberline {5}Bit Manipulation}{18}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Converting to and from Different Bases}{18}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Converting from base 10 $\to $ base 2}{18}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Converting from base 2 $\to $ base 16}{18}{subsection.5.1.2}% 
+\contentsline {subsection}{\numberline {5.1.3}Converting from base 10 $\to $ base 16 (and vice versa)}{19}{subsection.5.1.3}% 
+\contentsline {section}{\numberline {5.2}Bitwise Operators}{19}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}How to print bits of a variable}{19}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}Altering Bits}{19}{subsection.5.2.2}% 
+\contentsline {chapter}{\numberline {6}Sorting and Searching Algorithms}{20}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Selection Sort}{20}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Insertion Sort}{20}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Bubble Sort}{21}{section.6.3}% 
+\contentsline {section}{\numberline {6.4}Heap Sort}{21}{section.6.4}% 
+\contentsline {section}{\numberline {6.5}Merge Sort}{21}{section.6.5}% 
+\contentsline {section}{\numberline {6.6}Quick Sort}{22}{section.6.6}% 
+\contentsline {subsection}{\numberline {6.6.1}Partition}{22}{subsection.6.6.1}% 
+\contentsline {subsection}{\numberline {6.6.2}Quick Sort}{22}{subsection.6.6.2}% 
+\contentsline {section}{\numberline {6.7}Radix Sort}{22}{section.6.7}% 

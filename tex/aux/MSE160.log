@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:24
 entering extended mode
 **./MSE160.tex
 (MSE160.tex
@@ -24,8 +24,7 @@ File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-No file MSE160.aux.
+) (MSE160.aux)
 \openout1 = `MSE160.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
@@ -44,7 +43,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 6.
-[1
+ [1
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
 pdftex.map}]
@@ -105,8 +104,8 @@ Chapter 3.
 
 ] (MSE160.aux) ) 
 Here is how much of TeX's memory you used:
- 271 strings out of 494866
- 3361 string characters out of 3176398
+ 273 strings out of 494866
+ 3428 string characters out of 3176398
  59999 words of memory out of 3000000
  3996 multiletter control sequences out of 15000+200000
  9414 words of font info for 33 fonts, out of 3000000 for 9000

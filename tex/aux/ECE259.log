@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:23
 entering extended mode
 **./ECE259.tex
 (ECE259.tex
@@ -267,8 +267,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip50
-)
-No file ECE259.aux.
+) (ECE259.aux)
 \openout1 = `ECE259.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -357,6 +356,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 8.
 LaTeX Info: Redefining \pageref on input line 8.
 LaTeX Info: Redefining \nameref on input line 8.
+ (ECE259.out) (ECE259.out)
 \@outlinefile=\write3
 \openout3 = `ECE259.out'.
 
@@ -374,7 +374,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
-pdftex.map}]
+pdftex.map}] (ECE259.toc)
 \tf@toc=\write4
 \openout4 = `ECE259.toc'.
 
@@ -473,22 +473,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 451.
  (ECE259.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 451.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 451.
-
-
-Package rerunfilecheck Warning: File `ECE259.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ECE259.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  92C1630EA44DB846318977B0793D5E95;2075.
+Package rerunfilecheck Info: File `ECE259.out' has not changed.
+(rerunfilecheck)             Checksum: 92C1630EA44DB846318977B0793D5E95;2075.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 451.
  ) 
 Here is how much of TeX's memory you used:
- 6536 strings out of 494866
- 98265 string characters out of 3176398
- 185225 words of memory out of 3000000
- 10047 multiletter control sequences out of 15000+200000
+ 6575 strings out of 494866
+ 98971 string characters out of 3176398
+ 186329 words of memory out of 3000000
+ 10078 multiletter control sequences out of 15000+200000
  14603 words of font info for 56 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  42i,8n,32p,418b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -511,9 +504,9 @@ onts/cm/cmsy6.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/i
 nstall/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Appli
 cation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 
-Output written on ECE259.pdf (16 pages, 201858 bytes).
+Output written on ECE259.pdf (16 pages, 216025 bytes).
 PDF statistics:
- 216 PDF objects out of 1000 (max. 8388607)
+ 337 PDF objects out of 1000 (max. 8388607)
  89 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

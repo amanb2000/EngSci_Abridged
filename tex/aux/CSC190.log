@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:22
 entering extended mode
 **./CSC190.tex
 (CSC190.tex
@@ -474,8 +474,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip54
+) (CSC190.aux
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
 )
-No file CSC190.aux.
 \openout1 = `CSC190.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -545,6 +548,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
+ (CSC190.out) (CSC190.out)
 \@outlinefile=\write3
 \openout3 = `CSC190.out'.
 
@@ -556,6 +560,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
 pdftex.map}]
+(CSC190.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.41 ...ine {3.5}Priority Queues}{10}{section.3.5}
+                                                  % [1
+
+])
 \tf@toc=\write4
 \openout4 = `CSC190.toc'.
 
@@ -567,80 +586,67 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.29 \chapter
-             {Efficiency and Complexity} [1
-
-]
+ [2] [3]
 Chapter 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 37.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 37.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 37.
-[2
-
-] [3]
-Chapter 2.
 [4
+
+] [5]
+Chapter 2.
+[6
 
 ]
 Chapter 3.
-[5
+[7
 
 ]
 Overfull \hbox (13.62622pt too wide) in paragraph at lines 118--118
 []\OT1/cmr/bx/n/14.4 Advantages/Disadvantages of Binary Search Trees: 
  []
 
-[6] [7]
-<media/tree-rotation-summary.png, id=96, 1281.78876pt x 905.3825pt>
+[8] [9]
+<media/tree-rotation-summary.png, id=398, 1281.78876pt x 905.3825pt>
 File: media/tree-rotation-summary.png Graphic file (type png)
 <use media/tree-rotation-summary.png>
 Package pdftex.def Info: media/tree-rotation-summary.png  used on input line 16
 2.
 (pdftex.def)             Requested size: 390.0pt x 275.47124pt.
-<media/left-rotation-1.png, id=98, 251.94125pt x 253.94875pt>
+<media/left-rotation-1.png, id=400, 251.94125pt x 253.94875pt>
 File: media/left-rotation-1.png Graphic file (type png)
 <use media/left-rotation-1.png>
 Package pdftex.def Info: media/left-rotation-1.png  used on input line 170.
 (pdftex.def)             Requested size: 142.26378pt x 143.39606pt.
-<media/left-rotation-2.png, id=99, 243.91125pt x 245.91875pt>
+<media/left-rotation-2.png, id=401, 243.91125pt x 245.91875pt>
 File: media/left-rotation-2.png Graphic file (type png)
 <use media/left-rotation-2.png>
 Package pdftex.def Info: media/left-rotation-2.png  used on input line 172.
 (pdftex.def)             Requested size: 142.26378pt x 143.43597pt.
-<media/right-rotation-1.png, id=100, 245.91875pt x 243.91125pt>
+<media/right-rotation-1.png, id=402, 245.91875pt x 243.91125pt>
 File: media/right-rotation-1.png Graphic file (type png)
 <use media/right-rotation-1.png>
 Package pdftex.def Info: media/right-rotation-1.png  used on input line 180.
 (pdftex.def)             Requested size: 142.26378pt x 141.1076pt.
-<media/right-rotation-2.png, id=101, 249.93375pt x 247.92625pt>
+<media/right-rotation-2.png, id=403, 249.93375pt x 247.92625pt>
 File: media/right-rotation-2.png Graphic file (type png)
 <use media/right-rotation-2.png>
 Package pdftex.def Info: media/right-rotation-2.png  used on input line 182.
 (pdftex.def)             Requested size: 142.26378pt x 141.1265pt.
- [8 <./media/tree-rotation-summary.png>] [9 <./media/left-rotation-1.png> <./me
-dia/left-rotation-2.png> <./media/right-rotation-1.png> <./media/right-rotation
--2.png>]
+ [10 <./media/tree-rotation-summary.png>] [11 <./media/left-rotation-1.png> <./
+media/left-rotation-2.png> <./media/right-rotation-1.png> <./media/right-rotati
+on-2.png>]
 Overfull \hbox (16.01102pt too wide) in paragraph at lines 201--201
 []\OT1/cmr/bx/n/14.4 When to use which rotation/HOW TO BALANCE: 
  []
 
-[10] [11] [12]
+[12] [13] [14]
 Chapter 4.
-[13
+[15
 
 ]
 Overfull \hbox (55.78185pt too wide) in paragraph at lines 303--303
 []\OT1/cmr/bx/n/17.28 Representations of Graphs: Adjacency Matrices 
  []
 
-[14] [15]
+[16] [17]
 Chapter 5.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -678,15 +684,15 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 334.
 
-[16
-
-] [17]
-Chapter 6.
 [18
 
 ] [19]
+Chapter 6.
+[20
+
+] [21]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 441.
- [20]
+ [22]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
  (CSC190.aux
 
@@ -695,25 +701,19 @@ Package pdfbase Warning: Rerun to get internal references right!
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
+Package rerunfilecheck Info: File `CSC190.out' has not changed.
+(rerunfilecheck)             Checksum: A35D28F23903DB4463295263BC14C1FE;4493.
 
 
-Package rerunfilecheck Warning: File `CSC190.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `CSC190.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  A35D28F23903DB4463295263BC14C1FE;4493.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 441.
  ) 
 Here is how much of TeX's memory you used:
- 18230 strings out of 494866
- 333573 string characters out of 3176398
- 381225 words of memory out of 3000000
- 21603 multiletter control sequences out of 15000+200000
+ 18304 strings out of 494866
+ 334829 string characters out of 3176398
+ 384507 words of memory out of 3000000
+ 21667 multiletter control sequences out of 15000+200000
  538628 words of font info for 45 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  44i,10n,63p,442b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -733,9 +733,9 @@ s/type1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Application Supp
 ort/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/abh
 argava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
 fonts/cm/cmtt12.pfb>
-Output written on CSC190.pdf (21 pages, 852952 bytes).
+Output written on CSC190.pdf (23 pages, 884063 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 193 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 622 PDF objects out of 1000 (max. 8388607)
+ 195 named destinations out of 1000 (max. 500000)
+ 530 words of extra memory for PDF output out of 10000 (max. 10000000)
 

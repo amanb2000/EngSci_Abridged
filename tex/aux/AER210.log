@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:21
 entering extended mode
-**AER210.tex CHE260.tex CSC190.tex ECE253.tex ECE259.tex ECE286.tex MAT195.tex 
-MAT292.tex MSE160-2.tex MSE160.tex PHY293.tex PHY294.tex
+**./AER210.tex
 (AER210.tex
 LaTeX2e <2018-12-01>
 
@@ -519,7 +518,7 @@ Here is how much of TeX's memory you used:
  9910 multiletter control sequences out of 15000+200000
  13356 words of font info for 51 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 42i,11n,31p,370b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,11n,31p,249b,409s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
 MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abharga

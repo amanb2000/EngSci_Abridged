@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:24
 entering extended mode
 **./MSE160-2.tex
 (MSE160-2.tex
@@ -155,8 +155,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip43
-)
-No file MSE160-2.aux.
+) (MSE160-2.aux)
 \openout1 = `MSE160-2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -189,6 +188,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 4.
 LaTeX Info: Redefining \pageref on input line 4.
 LaTeX Info: Redefining \nameref on input line 4.
+ (MSE160-2.out) (MSE160-2.out)
 \@outlinefile=\write3
 \openout3 = `MSE160-2.out'.
 
@@ -200,6 +200,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
 pdftex.map}]
+(MSE160-2.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+)
 \tf@toc=\write4
 \openout4 = `MSE160-2.toc'.
 
@@ -211,18 +219,13 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 17.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 17.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 17.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 \item C
-            ost parameter = material index/cost per kg [1
+l.18 \item \textbf
+                  {Polymorphism}: Ability to have more than one molecular st...
+[1
 
 ] [2]
 Overfull \hbox (6.74388pt too wide) in paragraph at lines 73--73
@@ -235,7 +238,7 @@ Overfull \hbox (5.0223pt too wide) in paragraph at lines 77--78
 at distortions
  []
 
-[3]
+[3] [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 139.
@@ -252,7 +255,6 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 139.
 
-[4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 145.
@@ -269,15 +271,16 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 145.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 150.
-
 [5]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 150.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 150.
+
+[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 177.
@@ -291,30 +294,23 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 177.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-[6]
+[7]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
  (MSE160-2.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
-
-
-Package rerunfilecheck Warning: File `MSE160-2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `MSE160-2.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  2D37DF5DFB22E7BA7A8317BCE9E3632D;1659.
+Package rerunfilecheck Info: File `MSE160-2.out' has not changed.
+(rerunfilecheck)             Checksum: 2D37DF5DFB22E7BA7A8317BCE9E3632D;1659.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
  ) 
 Here is how much of TeX's memory you used:
- 4316 strings out of 494866
- 66027 string characters out of 3176398
- 148320 words of memory out of 3000000
- 7926 multiletter control sequences out of 15000+200000
+ 4350 strings out of 494866
+ 66721 string characters out of 3176398
+ 150320 words of memory out of 3000000
+ 7951 multiletter control sequences out of 15000+200000
  9414 words of font info for 33 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 28i,6n,31p,251b,400s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,6n,31p,258b,400s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
 MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abharga
@@ -331,9 +327,9 @@ nts/type1/public/amsfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Sup
 port/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/ab
 hargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb>
-Output written on MSE160-2.pdf (7 pages, 149333 bytes).
+Output written on MSE160-2.pdf (8 pages, 162496 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

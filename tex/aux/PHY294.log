@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 01:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:25
 entering extended mode
 **./PHY294.tex
 (PHY294.tex
@@ -267,8 +267,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip50
-)
-No file PHY294.aux.
+) (PHY294.aux)
 \openout1 = `PHY294.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -357,6 +356,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 8.
 LaTeX Info: Redefining \pageref on input line 8.
 LaTeX Info: Redefining \nameref on input line 8.
+ (PHY294.out) (PHY294.out)
 \@outlinefile=\write3
 \openout3 = `PHY294.out'.
 
@@ -374,7 +374,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
-pdftex.map}]
+pdftex.map}] (PHY294.toc)
 \tf@toc=\write4
 \openout4 = `PHY294.toc'.
 
@@ -475,22 +475,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 339.
  (PHY294.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 339.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 339.
-
-
-Package rerunfilecheck Warning: File `PHY294.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `PHY294.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  32A733432B42521C3ED988F3CDAFA5F3;1707.
+Package rerunfilecheck Info: File `PHY294.out' has not changed.
+(rerunfilecheck)             Checksum: 32A733432B42521C3ED988F3CDAFA5F3;1707.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 339.
  ) 
 Here is how much of TeX's memory you used:
- 6510 strings out of 494866
- 97995 string characters out of 3176398
- 185225 words of memory out of 3000000
- 10042 multiletter control sequences out of 15000+200000
+ 6543 strings out of 494866
+ 98624 string characters out of 3176398
+ 185329 words of memory out of 3000000
+ 10067 multiletter control sequences out of 15000+200000
  13356 words of font info for 51 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  42i,6n,31p,487b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -515,9 +508,9 @@ cation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
 /Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/
 public/amsfonts/cm/cmti12.pfb></Users/abhargava/Library/Application Support/MiK
 TeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on PHY294.pdf (16 pages, 215367 bytes).
+Output written on PHY294.pdf (16 pages, 227248 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
+ 296 PDF objects out of 1000 (max. 8388607)
  68 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
