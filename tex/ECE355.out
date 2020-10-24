@@ -22,3 +22,7 @@
 \BOOKMARK [1][-]{section.2.5}{Discrete Case for LCCDE's}{chapter.2}% 22
 \BOOKMARK [0][-]{chapter.3}{Fourier Representations of Periodic Signals}{}% 23
 \BOOKMARK [1][-]{section.3.1}{LTI Response to Complex Exponentials}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.1.1}{Discrete Time Case}{section.3.1}% 25
+\BOOKMARK [1][-]{section.3.2}{Continuous Time Fourier Series}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{Calculating CT Fourier Series}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.2}{Convergence of Fourier Series}{section.3.2}% 28

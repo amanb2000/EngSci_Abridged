@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 05:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 05:57
 entering extended mode
 **./ECE355.tex
 (ECE355.tex
@@ -678,7 +678,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
 pdftex.map}] (ECE355.toc
-Overfull \hbox (4.91821pt too wide) in paragraph at lines 42--42
+Overfull \hbox (4.91821pt too wide) in paragraph at lines 41--41
  [][] [][]\OT1/cmr/m/n/12 Linear Constant-Coefficient Differential (Difference)
  Equations: 
  []
@@ -770,50 +770,52 @@ mr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n
 
 [12]
 Chapter 3.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 490.
 [13
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 490.
- (ECE355.aux
-
-Package pdfbase Warning: Rerun to get internal references right!
-
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 490.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 490.
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 417.
+ [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 574.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 574.
+ (ECE355.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 574.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 574.
 Package rerunfilecheck Info: File `ECE355.out' has not changed.
-(rerunfilecheck)             Checksum: 5277E83061B3C8C487F46496875D64CF;1746.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 490.
+(rerunfilecheck)             Checksum: C10807E9D0F7E7371440F9E09A708020;2061.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 574.
  ) 
 Here is how much of TeX's memory you used:
- 19567 strings out of 494866
- 353029 string characters out of 3176398
- 405565 words of memory out of 3000000
- 22979 multiletter control sequences out of 15000+200000
- 542054 words of font info for 61 fonts, out of 3000000 for 9000
+ 19597 strings out of 494866
+ 353401 string characters out of 3176398
+ 406565 words of memory out of 3000000
+ 22985 multiletter control sequences out of 15000+200000
+ 542413 words of font info for 62 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  44i,15n,63p,340b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
-MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abharga
-va/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/ins
-tall/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/abhargava/Library/Applica
-tion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></U
-sers/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb></Users/abhargava/Library/Application Support/MiKTeX
-/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/abhargava/Libra
-ry/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></Users/abhargava/Library/Application Supp
-ort/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/abha
-rgava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsf
-onts/cm/cmti12.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/
-install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ECE355.pdf (14 pages, 201375 bytes).
+MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></Users/abhar
+gava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfo
+nts/cm/cmex10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/i
+nstall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/abhargava/Library/Appl
+ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+</Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmr12.pfb></Users/abhargava/Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/abhargava/L
+ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
+/cmr6.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/f
+onts/type1/public/amsfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Su
+pport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/a
+bhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/abhargava/Library/A
+pplication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/ms
+bm10.pfb>
+Output written on ECE355.pdf (16 pages, 222055 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 380 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

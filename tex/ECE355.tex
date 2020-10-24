@@ -431,9 +431,56 @@ $y[n] = H[z]z^n$.
 \paragraph{Guiding Fact: } Almost all periodic signals are approximated by a sum of weighted \textbf{harmonically related} complex exponentials.
 
 \begin{equation}
-x(t) = \sum_{}^{<++>} <++>
+x(t) = \sum_{k=-\infty}^{\infty} a_k e^{jk\omega_0 t}
 \end{equation}
-<++>
+
+\paragraph{Note on utilizing frequency response with Fourier series signal representation: } If $x(t) = \sum_{k}^{} a_k e^{jk\omega_0 t}$: 
+
+\begin{equation}
+y(t) = \sum_{k=-\infty}^{\infty} a_k H(jk\omega_0) e^{jk\omega_0 t}
+\end{equation}
+
+\paragraph{Finding Laplace Transform for LTI: } If given the system in implicit form: \textbf{input the eigenfunction} $x(t) = e^{st}$
+
+\paragraph{Result of Passing Signal through LTI: } 
+\begin{enumerate}
+\item Frequency-dependent \textbf{amplification} 
+\item Frequency-dependent \textbf{phase shift} 
+\end{enumerate}
+
+\subsection{Calculating CT Fourier Series}
+
+\begin{equation}
+a_k = \frac{1}{T} \int_{T} x(t) e^{-jk\omega_0 t} dt
+\end{equation}
+
+Where $\int_{T}$ is integration over any period of length $T$.
+
+
+
+\subsection{Convergence of Fourier Series}
+
+\paragraph{Which periodic signals have Fourier series representations? } 
+
+\begin{theorem}
+We define the finite fourier series 
+\begin{equation}
+x_n(t) = \sum_{k=-N}^{N} a_k e^{j\omega_0 kt}
+\end{equation}
+where the error is $e_N(t) = x(t) - x_N(t)$, $E_N \int_{T}^{} |e_n(t)|^2 dt$. 
+
+\textbf{If $x(t)$} has finite energy in one period, then 
+\begin{equation}
+\lim_{N\to \infty} E_N = 0
+\end{equation}
+
+\end{theorem}
+
+If $x(t)$ satisfies \textbf{Dirchlet conditions} (nearly all signals), then $x(t) = FS(x(t))$ except at \textbf{isolated points}.
+
+\paragraph{Gibbs Phenomena: } Small oscillations about discontinuities in a signal (e.g. approximations of a square wave).
+
+
 
 
 
