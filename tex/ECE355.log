@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 02:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 05:20
 entering extended mode
 **./ECE355.tex
 (ECE355.tex
@@ -487,38 +487,140 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (ECE355.aux)
+))
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+mathtools/mathtools.sty"
+Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+tools/calc.sty"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count282
+\calc@Bcount=\count283
+\calc@Adimen=\dimen157
+\calc@Bdimen=\dimen158
+\calc@Askip=\skip55
+\calc@Bskip=\skip56
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count284
+\calc@Cskip=\skip57
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+mathtools/mhsetup.sty"
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+amsmath/amsmath.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip58
+
+For additional information on amsmath, use the `?' option.
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+amsmath/amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+amsmath/amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen159
+))
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+amsmath/amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen160
+)
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+amsmath/amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count285
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count286
+\leftroot@=\count287
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count288
+\DOTSCASE@=\count289
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box49
+\strutbox@=\box50
+\big@size=\dimen161
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count290
+\c@MaxMatrixCols=\count291
+\dotsspace@=\muskip17
+\c@parentequation=\count292
+\dspbrk@lvl=\count293
+\tag@help=\toks18
+\row@=\count294
+\column@=\count295
+\maxfields@=\count296
+\andhelp@=\toks19
+\eqnshift@=\dimen162
+\alignsep@=\dimen163
+\tagshift@=\dimen164
+\tagwidth@=\dimen165
+\totwidth@=\dimen166
+\lineht@=\dimen167
+\@envbody=\toks20
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count297
+\l_MT_multwidth_dim=\dimen168
+\origjot=\skip61
+\l_MT_shortvdotswithinadjustabove_dim=\dimen169
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen170
+\l_MT_above_intertext_sep=\dimen171
+\l_MT_below_intertext_sep=\dimen172
+\l_MT_above_shortintertext_sep=\dimen173
+\l_MT_below_shortintertext_sep=\dimen174
+)
+\c@theorem=\count298
+ (ECE355.aux)
 \openout1 = `ECE355.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/contex
 t/base/supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count282
-\scratchdimen=\dimen157
-\scratchbox=\box49
-\nofMPsegments=\count283
-\nofMParguments=\count284
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count285
-\MPscratchDim=\dimen158
-\MPnumerator=\count286
-\makeMPintoPDFobject=\count287
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count299
+\scratchdimen=\dimen175
+\scratchbox=\box51
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count302
+\MPscratchDim=\dimen176
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks23
 )
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 oberdiek/epstopdf-base.sty"
@@ -540,9 +642,9 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count288
-\AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring OFF on input line 18.
+\c@lstlisting=\count305
+\AtBeginShipoutBox=\box52
+Package hyperref Info: Link coloring OFF on input line 22.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 hyperref/nameref.sty"
@@ -552,22 +654,22 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 c/oberdiek/gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count289
+\c@section@level=\count306
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
  (ECE355.out) (ECE355.out)
 \@outlinefile=\write3
 \openout3 = `ECE355.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 amsfonts/umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 amsfonts/umsb.fd"
@@ -575,61 +677,123 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
-pdftex.map}] (ECE355.toc)
+pdftex.map}] (ECE355.toc
+Overfull \hbox (4.91821pt too wide) in paragraph at lines 42--42
+ [][] [][]\OT1/cmr/m/n/12 Linear Constant-Coefficient Differential (Difference)
+ Equations: 
+ []
+
+)
 \tf@toc=\write4
 \openout4 = `ECE355.toc'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.34 
+      [1
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 base/omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.50 \chapter
-             {Signal Basics} [1
-
-]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
+ [2]
 Chapter 1.
-[2
+[3
 
 ]
-Overfull \hbox (10.78564pt too wide) in paragraph at lines 88--89
+Overfull \hbox (10.78564pt too wide) in paragraph at lines 92--93
  []\OT1/cmr/bx/n/12 Discrete Time Scaling AND Shifting: [] \OT1/cmr/m/n/12 Reme
 mber to IGNORE fractional
  []
 
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
- (ECE355.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
+[4] [5]
+Overfull \hbox (9.18124pt too wide) in paragraph at lines 151--152
+[]\OT1/cmr/m/n/12 Which leads to two cases (`forced harmonic' when $\OML/cmm/m/
+it/12 r > \OT1/cmr/m/n/12 0$, `damped harmonic'
+ []
+
+[6]
+Overfull \hbox (0.23143pt too wide) in paragraph at lines 223--224
+[]\OT1/cmr/bx/n/12 Invertable \OT1/cmr/m/n/12 when you can recover input SIGNAL
+ given output SIGNAL
+ []
 
 
-Package rerunfilecheck Warning: File `ECE355.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+Overfull \hbox (3.69516pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/12 System is \OT1/cmr/bx/n/12 bounded-input-bounded-output \OT1/cm
+r/m/n/12 (BIBO) if bounded input
+ []
 
-Package rerunfilecheck Info: Checksums for `ECE355.out':
-(rerunfilecheck)             Before: 4F7518CBFE12CF23D5F2C3C4762A7A84;373
-(rerunfilecheck)             After:  457370DEFB5683F6ED5DD497B8F6BF84;438.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
+[7]
+Overfull \hbox (6.75417pt too wide) in paragraph at lines 243--244
+[]\OT1/cmr/m/n/12 Scaling then pushing through system is the same as pushing th
+rough
+ []
+
+[8]
+Chapter 2.
+[9
+
+]
+Overfull \hbox (91.15775pt too wide) in paragraph at lines 322--322
+[]\OT1/cmr/bx/n/17.28 Linear Constant-Coefficient Differential (Difference)
+ []
+
+[10]
+Overfull \hbox (9.68687pt too wide) in paragraph at lines 346--347
+[]\OT1/cmr/m/n/12 We guess $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/
+12 t\OT1/cmr/m/n/12 )$ is of the form $\OML/cmm/m/it/12 Ae[]$\OT1/cmr/m/n/12 . 
+We can substitute into the homogenous
+ []
+
+[11]
+Overfull \hbox (63.81783pt too wide) detected at line 364
+[]\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] + [] [
+](\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] \OMS/c
+msy/m/n/12   \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/
+n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n/12 ]) = []\OML/cmm/m/it/12 x\OT1/cmr/m/n/
+12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] + [] [](\OML/cmm/m/it/12 x\OT1/cmr/m/n/
+12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 x\O
+T1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr
+/m/n/12 ]) [] \OML/cmm/m/it/12 a[]y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cms
+y/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n/12 ] = [] \OML/cmm/m/it/12 b[]x\OT1/c
+mr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n
+/12 ]
+ []
+
+[12]
+Chapter 3.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 490.
+[13
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 490.
+ (ECE355.aux
+
+Package pdfbase Warning: Rerun to get internal references right!
+
+)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 490.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 490.
+Package rerunfilecheck Info: File `ECE355.out' has not changed.
+(rerunfilecheck)             Checksum: 5277E83061B3C8C487F46496875D64CF;1746.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 490.
  ) 
 Here is how much of TeX's memory you used:
- 18343 strings out of 494866
- 334977 string characters out of 3176398
- 381829 words of memory out of 3000000
- 21860 multiletter control sequences out of 15000+200000
- 541747 words of font info for 60 fonts, out of 3000000 for 9000
+ 19567 strings out of 494866
+ 353029 string characters out of 3176398
+ 405565 words of memory out of 3000000
+ 22979 multiletter control sequences out of 15000+200000
+ 542054 words of font info for 61 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 44i,6n,63p,340b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,15n,63p,340b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
 MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abharga
@@ -647,9 +811,9 @@ ort/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/abha
 rgava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsf
 onts/cm/cmti12.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/
 install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ECE355.pdf (5 pages, 140671 bytes).
+Output written on ECE355.pdf (14 pages, 201375 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

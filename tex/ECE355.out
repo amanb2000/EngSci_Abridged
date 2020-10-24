@@ -5,3 +5,20 @@
 \BOOKMARK [1][-]{section.1.3}{Periodic Signals}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.4}{Even and Odd Signals}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.5}{Complex Exponential}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.5.1}{Complex Number Review}{section.1.5}% 8
+\BOOKMARK [2][-]{subsection.1.5.2}{Useful Sinusoid Shortcuts}{section.1.5}% 9
+\BOOKMARK [2][-]{subsection.1.5.3}{Periodic Case}{section.1.5}% 10
+\BOOKMARK [2][-]{subsection.1.5.4}{Discrete Time Complex Exponential}{section.1.5}% 11
+\BOOKMARK [1][-]{section.1.6}{Unit Step and Impulse}{chapter.1}% 12
+\BOOKMARK [2][-]{subsection.1.6.1}{Discrete Time}{section.1.6}% 13
+\BOOKMARK [2][-]{subsection.1.6.2}{Continuous Time Case}{section.1.6}% 14
+\BOOKMARK [1][-]{section.1.7}{Basic System Properties}{chapter.1}% 15
+\BOOKMARK [0][-]{chapter.2}{Linear Time-Invariant Systems}{}% 16
+\BOOKMARK [1][-]{section.2.1}{Discrete Time LTI Properties}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.1.1}{Convolution in Discrete Time}{section.2.1}% 18
+\BOOKMARK [1][-]{section.2.2}{Continuous Time LTI Systems}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.3}{Properties of LTI Systems}{chapter.2}% 20
+\BOOKMARK [1][-]{section.2.4}{Linear Constant-Coefficient Differential \(Difference\) Equations: LCCDE's}{chapter.2}% 21
+\BOOKMARK [1][-]{section.2.5}{Discrete Case for LCCDE's}{chapter.2}% 22
+\BOOKMARK [0][-]{chapter.3}{Fourier Representations of Periodic Signals}{}% 23
+\BOOKMARK [1][-]{section.3.1}{LTI Response to Complex Exponentials}{chapter.3}% 24

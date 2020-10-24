@@ -6,10 +6,14 @@
 \usepackage{media9}
 \usepackage{hyperref}
 \usepackage{amssymb}
+\usepackage{mathtools} 
 
 % \def\reals{{\rm I\!R}}
 \def\reals{\mathbb{R}}
 \def\integers{\mathbb{Z}}
+
+
+\newtheorem{theorem}{Theorem}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -113,7 +117,402 @@ $$x(t) = x_{even}(t) + x_{odd}(t)$$
 \section{Complex Exponential}
 \paragraph{Function Family: } $x(t) = c e^{at}$, $c, a\in \mathbb{C}$
 
-\subsection{}
+\subsection{Complex Number Review}
+\begin{itemize}
+\item $z = a+jb$, $z\in\mathbb{C}$, $a, b \in \mathbb{R}$, $j = \sqrt{-1}$.
+\item Magnitude = $r=|z| = \sqrt{a^2 + b^2}$.
+\item Angle (phase) = $\theta = \arctan(\frac{b}{a})$.
+\item $z = re^{j\theta} = r(\cos\theta + j\sin\theta)$.
+\end{itemize}
+
+\subsection{Useful Sinusoid Shortcuts}
+$$\cos\theta = \frac{e^{j\theta} + e^{-j\theta}}{2}$$
+$$\sin\theta = \frac{e^{j\theta} - e^{-j\theta}}{2}$$
+
+\subsection{Periodic Case}
+Letting $c = 1$:
+$$x(t) = e^{j\omega_0 t} = cos(\omega_0 t) + j\sin(\omega_0 t)$$
+\begin{itemize}
+\item Combination of two \textbf{real} signals.
+\item $|x(t)| = 1$ $\forall t\in\reals$.
+\item \textbf{PERIOD: } $T=\frac{2\pi}{|\omega_0|}$.
+\end{itemize}
+
+
+For more general $c\in\mathbb{C}$: \textit{We let $c = |c|e^{j\phi}$} where $\phi$ is the phase. Then $x(t) = ce^{j\omega_0 t}$, then: 
+
+$$x(t) = |c|e^{j(\omega_0 t + \phi)}$$
+
+For fully general $c, a \in \mathbb{C}$: $x(t) = ce^{at} = ce^{(r+j\omega_0)t}$ where $a = (r+j\omega_0)$
+
+$$x(t) = |c|e^{rt} e^{j(\omega_0 t + \phi)}$$
+$$Re\{x(t)\} = |c|e^{rt} \cos(\omega_0 t + \phi)$$
+
+Which leads to two cases (`forced harmonic' when $r>0$, `damped harmonic' when $r < 0$).
+
+\subsection{Discrete Time Complex Exponential} 
+
+$$x[n] = e^{j\omega_0 n} = \cos(\omega_0 n) + j\sin(\omega_0 n)$$
+
+\begin{itemize}
+\item Signal 'hops' around the unit circle in \textbf{increments of} $\omega_0$.
+\item \textbf{NOT ALWAYS PERIODIC!} $\omega_0 \in a2\pi, a\in \mathbb{Q}$ for periodicity to hold.
+\item $c\in\mathbb{C}$ just changes magnitude and phase.
+\end{itemize}
+
+\section{Unit Step and Impulse}
+
+\subsection{Discrete Time}
+
+\begin{equation}
+	u[n] = 
+	\begin{cases}
+		0 & n < 0 \\
+		1 & n \geq 0 \\
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+	\delta[n] = 
+	\begin{cases}
+		0 & n \neq 0 \\
+		1 & n = 0 \\
+	\end{cases}
+\end{equation}
+
+
+\paragraph{Important Properties: } 
+\begin{itemize}
+\item $\delta[n] = u[n] - u[n-1]$
+\item $u[n] = \sum_{k=0}^\infty \delta[n-k]$
+\item $u[n] = \sum_{m=n}^{-\infty} \delta[m]$, if we let $m = n-k$
+\item $u[n] = \sum_{m=-\infty}^n \delta[m]$, if we let $m = n-k$
+\end{itemize}
+
+\textbf{Sampling property: } $x[n] \delta[n-n_0] = x[n_0] \delta[n-n_0]$
+
+\subsection{Continuous Time Case}
+
+\begin{equation}
+u(t) = 
+\begin{cases}
+	0 & t < 0 \\
+	1 & t > 0 \\
+\end{cases}
+\end{equation}
+
+\begin{equation}
+\delta(t) = \frac{d}{dt} u(t)
+\end{equation}
+
+There are some more formal definitions, but this will do for now. Consider it a finite amount of energy in an infinitely small period. 
+
+\paragraph{Important Properties: } 
+
+\begin{itemize}
+\item $\int_{\infty} \delta(t) dt = 1 = u(\infty) - u(-\infty)$
+\item $u(t) = \int_{\infty}^{t} \delta(\tau) d\tau$
+\item $u(t) = \int_{0}^{\infty} \delta(\sigma - t) d\sigma$
+\item Sampling still holds: $x(t_0) = \int_{\infty} x(t) \sigma(t-t_0) dt$
+\end{itemize}
+
+\section{Basic System Properties}
+
+\begin{enumerate}
+\item \textbf{Memoryless} if $y(t_0)$ depends ONLY on $x(t_0)$ $\forall t_0$.
+\item \textbf{Invertable} when you can recover input SIGNAL given output SIGNAL (not value).
+\item \textbf{Causal}:
+\begin{itemize}
+\item \textit{Discrete Time: } If $y[n_0]$ does not depend on \textit{future information}.
+\item \textit{Continuous Time: } If $y(t_0)$ does not depend on $x(t)$ for $t \geq t_0$.
+\item \textbf{Equivalently: } If two inputs are identical for $t < t_0$, the outputs are identical for $t < t_0$.
+\end{itemize}
+\item \textbf{Stability: } Small input does not lead to infinite output. \textit{Definition: } System is \textbf{bounded-input-bounded-output} (BIBO) if bounded input leads to bounded output.
+\item \textbf{Time Invariance: } Shifted input $\to$ shifted output with same time shift. If $y(t) = sin(x(t))$, then for input $x(t-t_0)$, the output is: 
+\begin{equation}
+\begin{split}
+y(t) &= sin(x(t-t_0)) \\
+&= y(t-t_0)
+\end{split}
+\end{equation}
+\item \textbf{Linearity: } Must satisfy \textit{additivity} and \textit{homogineity} (in other words: \textbf{superposition}).
+$$ax_1(t) + bx_2(t) \to_S ay_1(t) + by_t(t)$$
+Where $x_1 \to y_1$, $x_2 \to y_2$.
+\begin{itemize}
+\item Linear systems commute with scaling and addition. 
+\item Scaling then pushing through system is the same as pushing through system and scaling. 
+\item Adding signals together then pushing through the system is the same as pushing each individual signal through the system and then adding the outputs together.
+\end{itemize}
+\end{enumerate}
+
+
+\paragraph{Initial Rest Condition: } if $x(t) = 0$ $\forall t < t_0$, then the corresponding output $y(t) = 0$ $\forall t< t_0$.
+
+
+\chapter{Linear Time-Invariant Systems}
+
+\section{Discrete Time LTI Properties}
+
+The system's response to an impulse function $\delta[n]$ is called $h[n]$. \textbf{IF WE KNOW $h[n]$}, we can map any input to its respective output due to \textit{time invariance and linearity}!
+
+\begin{equation}
+y[n] = \sum_{k=-\infty}^{\infty} x[k] h[n-k]
+\end{equation}
+
+\subsection{Convolution in Discrete Time}
+
+\paragraph{Convolution of $x[n], h[n] \to y[n]$ } is defined as: 
+\begin{equation}
+y[n] = \sum_{k=-\infty}^{\infty} x[k] h[n-k] \equiv x[n] * h[n]
+\end{equation}
+
+
+Interpretations:
+\begin{enumerate}
+\item Weighted superposition of time shifted impulse responses (pretty clear).
+\item Sum over dimension $k$ of function $x[k]h[n-k]$.
+\begin{itemize}
+\item $h[n-k] = h[-k+n$ is \textbf{flipped} and shifted \textbf{right} by $n$.
+\item Multiply $h[n-k]$ by $x[k]$ and \textbf{sum} the result to get $y[n]$.
+\end{itemize}
+\end{enumerate}
+
+
+\section{Continuous Time LTI Systems}
+
+\paragraph{Unit Impulse Response: } $h(t)$ results from input $\delta(t)$. 
+
+\begin{theorem}
+\begin{equation}
+\begin{split}
+y(t) = \int_{-\infty}^{\infty} x(\tau)h(t-\tau) d\tau \\
+y(t) \equiv x(t) * h(t)
+\end{split}
+\end{equation}
+\end{theorem}
+
+
+
+\section{Properties of LTI Systems}
+
+\paragraph{Properties of Convolution: } 
+\begin{enumerate}
+\item \textbf{Convolution is Commutative: } $x(t)*h(t) = h(t)*x(t)$
+\item \textbf{Convolution is Associative: } $x(t)*[h_1(t)*h_2(t)] = [x(t)*h_1(t)]*h_2(t)$
+\item \textbf{Convolution is Distributive: } $x(t)*[h_1(t) + h_2(t)] = x(t)*h_1(t) + x(t)*h_2(t)$
+\end{enumerate}
+
+\paragraph{Identity System: } If the unit impulse response is $\delta(t)$, then the system is the \textbf{identity system} -- it will produce the same output as the input.
+
+\paragraph{Time shift note: } Shifting the input AND the step response yields double that shift. One must only shift one to shift the output correspondingly (time invariance property).
+
+\paragraph{Properties of LTI: } 
+\begin{enumerate}
+\item \textbf{Memory: } LTI is \textit{memoryless} iff $h(t) = K\delta(t)$ ($K\in\reals$), leading to $y(t) = Kx(t)$ being the \textbf{only memoryless LTI} family.
+\item \textbf{Invertibility: } If an LTI is invertible, \textit{its inverse is also an LTI}. 
+\item \textbf{Causality: } LTI is causal iff $h(t) = 0\,\,\,\forall t < 0$. \textit{Note that `causality' is interchangable for `initial rest condition'}.
+\item \textbf{Stability: } Conditions for LTI stability are as follows (tl;dr: bounded unit impulse response is the necessary and sufficient condition). 
+\begin{itemize}
+\item \textit{Absolutely Integrable: } $\int_{-\infty}^\infty |h(\tau)|d\tau < \infty$
+\item \textit{Absolutely Summable: } $\sum_{n=-\infty}^\infty |h[n]| < \infty$
+\end{itemize}
+\end{enumerate}
+
+
+\section{Linear Constant-Coefficient Differential (Difference) Equations: LCCDE's}
+
+\paragraph{General Form for Continuous Time: } 
+
+\begin{equation}
+\sum_{k=0}^N a_k \frac{d^k}{dt^k} y(t) = \sum_{k=0}^{M} b_k \frac{d^k}{dt^k} x(t) 
+\end{equation}
+
+\begin{itemize}
+\item Always assume \textit{initial rest} condition.
+\item LCCDE's are a subset of \textit{causal LTI systems}.
+\item LCCDE's provide a \textit{close approximation} of most LTI systems. \textit{This is because the ``transfer function'' is a rational function that can easily approximate most functions}.
+\end{itemize}
+
+\paragraph{Standard Solution: } We would normally use \textbf{method of undetermined coefficients} -- this is a relatively unsophisticated method, but it's important to keep in mind. 
+
+\begin{enumerate}
+\item We are given some $x(t)$ and are asked to solve for $y(t)$ given an LCCDE relationship (e.g. $A\frac{d}{dt}y(t) + B y(t) = x(t)$).
+\item Assume a solution $y(t) = y_h(t) + y_p(t)$ where 
+\begin{itemize} 
+\item $y_h$ is the solution for the case of $x(t) = 0\,\,\forall t$. This is the \textit{natural response} or the \textit{unforced response}.
+\item $y_p$ is the solution for the given $x(t)$.
+\end{itemize}
+
+\item We guess $y_h(t)$ is of the form $Ae^{st}$. We can substitute into the homogenous equation to solve a relationship between $A, s$ and initial conditions.
+\item For $y_p(t)$ we guess again (usually the same form as $x(t)$). We substitute in and solve for coefficients. 
+\item Finally, we solve for remaining unknown coefficients given some initial conditions.
+\end{enumerate}
+
+
+\paragraph{Better tools for solving LTI/LCCDES's: } Solve them in the frequency domain using the Fourier transform and Laplace transform! \textit{Will cover later in the course}.
+
+
+\section{Discrete Case for LCCDE's}
+
+\textit{Stands for Linear Constant Coefficient Difference Equations}: 
+
+\paragraph{General form for discrete LCCDE: } 
+
+\begin{equation}
+\hat{a}_0 y[n] + \sum_{k=1}^N \hat{a}_n (y[n] - y[n-k]) = \hat{b}_0 x[n] + \sum_{k=1}^M \hat{b}_n(x[n] - x[n-k])
+\sum_{k=0}^N a_k y[n-k] = \sum_{k=0}^M b_k x[n-k]
+\end{equation}
+
+\paragraph{Solution Options: } 
+\begin{enumerate}
+\item We could solve in a manner similar to the CT case: 
+\begin{equation}
+y[n] = y_h[n] + y_p[n]
+\end{equation}
+
+\item That said, there is a \textbf{more efficient} method that takes advantage of the discrete nature of this problem. By rearranging, we get: 
+\begin{equation}
+y[n] = \frac{1}{a_0} [\sum_{k=0}^M b_k x[n-k] - \sum_{k=1}^N a_k y[n-k]]
+\end{equation}
+\end{enumerate}
+
+
+
+\chapter{Fourier Representations of Periodic Signals}
+
+\section{LTI Response to Complex Exponentials}
+
+It turns out that the guess of $y_p(t) = Ae^{st}$ is \textbf{always} a good guess for LTI systems. In fact, it is \textbf{SCALED} every time! Given a system with an impulse reponse $h(t)$ that is fed an input of $e^{st}$: 
+
+\begin{equation}
+\begin{split}
+y(t) &= \int_{-\infty}^{\infty} h(\tau) e^{s(t-\tau)} d\tau \\
+&= e^{st} \int_{-\infty}^\infty h(\tau) e^{-s\tau} d\tau \\
+&= e^{st} H(s)
+\end{split}
+\end{equation}
+
+Where $H(s) \equiv \int_{-\infty}^\infty h(\tau) e^{-s\tau} d\tau$ is the \textbf{Laplace Transform} of $h$ (a.k.a. the \textbf{transfer function}).
+
+\begin{theorem}
+If $x(t) = e^{st}$ and $H(s)$ exists: 
+\begin{equation}
+y(t) = H(s)e^{st}
+\end{equation}
+In essence, the response of the LTI is a scaled version of the same complex exponential by factor $H(s)$ defined above.
+\end{theorem}
+
+\subsection{Discrete Time Case}
+
+Let $e^{sn} \equiv z^n$. $z^n \to h[n] \to y[n]$. We define
+
+\begin{equation}
+H(z) = \sum_{k=-\infty}^{\infty} h[k] z^{-k}
+\end{equation}
+As the \textbf{$z$-transform}. 
+
+\begin{theorem}
+$y[n] = H[z]z^n$. 
+\begin{itemize}
+\item $z^n$ is therefore an \textbf{eigenfunction} of any LTI.
+\item $H[z]$ is the corresponding \textbf{eigenvalue} of that eigenfunction.
+\end{itemize}
+\end{theorem}
+
+
+\paragraph{Cautionary Notes: } 
+\begin{itemize}
+\item $(e^x)^z$ does not hold in general for $x, y, \in \mathbb{C}$.
+\item $(e^x)^n$ DOES hold for $n\in \mathbb{Z}$.
+\end{itemize}
+
+\section{Continuous Time Fourier Series}
+
+\paragraph{Guiding Fact: } Almost all periodic signals are approximated by a sum of weighted \textbf{harmonically related} complex exponentials.
+
+\begin{equation}
+x(t) = \sum_{}^{<++>} <++>
+\end{equation}
+<++>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
