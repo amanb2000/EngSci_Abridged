@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  26 OCT 2020 00:34
 entering extended mode
 **./ECE355.tex
 (ECE355.tex
@@ -683,18 +683,17 @@ Overfull \hbox (4.91821pt too wide) in paragraph at lines 41--41
  Equations: 
  []
 
-)
-\tf@toc=\write4
-\openout4 = `ECE355.toc'.
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 
-      [1
+l.64 ...s Time Fourier Transform}{16}{section.3.4}
+                                                  % [1
 
-]
+])
+\tf@toc=\write4
+\openout4 = `ECE355.toc'.
+
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
@@ -775,47 +774,63 @@ Chapter 3.
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 417.
- [14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 518.
- [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 518.
- (ECE355.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 518.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 518.
+ [14] [15]
+Overfull \hbox (18.63698pt too wide) in paragraph at lines 525--526
+[]\OT1/cmr/bx/n/12 multiplication:  \OT1/cmr/m/n/12 Multiplication in one domai
+n corresponds to convolution
+ []
+
+[16]
+Overfull \hbox (5.24458pt too wide) in paragraph at lines 589--589
+[]\OT1/cmr/bx/n/14.4 Properties of Continuous Time Fourier Transform 
+ []
+
+[17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 670.
+ [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 670.
+ (ECE355.aux
+
+Package pdfbase Warning: Rerun to get internal references right!
+
+)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 670.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 670.
 Package rerunfilecheck Info: File `ECE355.out' has not changed.
-(rerunfilecheck)             Checksum: C10807E9D0F7E7371440F9E09A708020;2061.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 518.
+(rerunfilecheck)             Checksum: E74F928D818AD7CCD956D743AB0F8718;2420.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 670.
  ) 
 Here is how much of TeX's memory you used:
- 19597 strings out of 494866
- 353401 string characters out of 3176398
+ 19652 strings out of 494866
+ 354017 string characters out of 3176398
  406565 words of memory out of 3000000
- 22985 multiletter control sequences out of 15000+200000
+ 22989 multiletter control sequences out of 15000+200000
  542413 words of font info for 62 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 44i,15n,63p,340b,417s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,15n,63p,340b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
 MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></Users/abhar
 gava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/i
 nstall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/abhargava/Library/Appl
-ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></Users/abhargava/Library/Application Support/MiK
-TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/abhargava/L
+/public/amsfonts/cm/cmmi8.pfb></Users/abhargava/Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/abhargava/L
 ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
-/cmr6.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/f
-onts/type1/public/amsfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Su
-pport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/a
-bhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
-msfonts/cm/cmsy8.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/abhargava/Library/A
-pplication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb>
-Output written on ECE355.pdf (16 pages, 222055 bytes).
+/cmr17.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/
+fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/abhargava/Library/Application S
+upport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/ab
+hargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Ap
+plication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.p
+fb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ECE355.pdf (19 pages, 250367 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 472 PDF objects out of 1000 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

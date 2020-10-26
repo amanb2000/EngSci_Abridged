@@ -58,3 +58,11 @@
 \contentsline {subsection}{\numberline {3.2.2}Convergence of Fourier Series}{15}{subsection.3.2.2}% 
 \contentsline {paragraph}{Which periodic signals have Fourier series representations? }{15}{theorem.4}% 
 \contentsline {paragraph}{Gibbs Phenomena: }{15}{section*.33}% 
+\contentsline {section}{\numberline {3.3}Properties of Continuous Time Fourier Series}{15}{section.3.3}% 
+\contentsline {paragraph}{Setup: }{15}{section*.34}% 
+\contentsline {paragraph}{Properties: }{15}{section*.35}% 
+\contentsline {section}{\numberline {3.4}Continuous Time Fourier Transform}{17}{section.3.4}% 
+\contentsline {paragraph}{Important Notes on the Fourier Transform Properties: }{17}{section*.36}% 
+\contentsline {subsection}{\numberline {3.4.1}Periodic Signal Fourier Transform}{17}{subsection.3.4.1}% 
+\contentsline {paragraph}{Key struggle: }{17}{section*.37}% 
+\contentsline {subsection}{\numberline {3.4.2}Properties of Continuous Time Fourier Transform}{18}{subsection.3.4.2}% 

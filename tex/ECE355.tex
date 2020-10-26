@@ -127,7 +127,7 @@ $$x(t) = x_{even}(t) + x_{odd}(t)$$
 
 \subsection{Useful Sinusoid Shortcuts}
 $$\cos\theta = \frac{e^{j\theta} + e^{-j\theta}}{2}$$
-$$\sin\theta = \frac{e^{j\theta} - e^{-j\theta}}{2}$$
+$$\sin\theta = \frac{e^{j\theta} - e^{-j\theta}}{j2}$$
 
 \subsection{Periodic Case}
 Letting $c = 1$:
@@ -480,6 +480,158 @@ If $x(t)$ satisfies \textbf{Dirchlet conditions} (nearly all signals), then $x(t
 
 \paragraph{Gibbs Phenomena: } Small oscillations about discontinuities in a signal (e.g. approximations of a square wave).
 
+\section{Properties of Continuous Time Fourier Series}
+
+\paragraph{Setup: } Let $x(t)$ be periodic with fundamental period $T\to \omega_0 = \frac{2\pi}{T}$ that has Fourier series coefficients $a_k$.
+
+\paragraph{Properties: } 
+
+\begin{enumerate}
+\item \textbf{Linearity: } 
+\begin{equation}
+Ax(t) + By(t) \underrightarrow{\,\,\mathcal{F}\,\,} Aa_k + Bb_k
+\end{equation}
+
+\item \textbf{Time Shift: } 
+\begin{equation}
+x(t-t_0) \underrightarrow{\,\,\mathcal{F}\,\,} e^{-jk\omega_0 t_0} a_k
+\end{equation}
+
+
+\item \textbf{Time Scaling: } For $\alpha > 0$: 
+\begin{equation}
+x(\alpha t) \underrightarrow{\,\,\mathcal{F}\,\,} a_k
+\end{equation}
+
+Where $a_k$ now has fundamental period $\alpha \omega_0$
+
+\item \textbf{Time Reversal: } 
+\begin{equation}
+x(t) \underrightarrow{\,\,\mathcal{F}\,\,} a_{-k}
+\end{equation}
+Therefore even functions have $a_k = a_{-k}$ and odd functions have $-a_k = a_{-k}$.
+
+\item \textbf{Conjugation: } 
+\begin{equation}
+x^* (t) \underrightarrow{\,\,\mathcal{F}\,\,} a_{-k}^*
+\end{equation}
+\begin{itemize}
+\item Special case: $x(t)$ is a real signal so $x^*(t) = x(t)$. The we have $a_k = a_{-k}^*$
+\item Known as ``conjugate symmetric'' or ``Hermitian''.
+\item If you know $x(t)$ is real, then: $$x(t) = a_0 \sum_{k=1}^{\infty} 2 A_k \cos (k\omega_0 t + \theta)$$
+\textit{Where} $a_k = A_k e^{j\theta_k}$.
+\end{itemize}
+
+\item \textbf{multiplication: } Multiplication in one domain corresponds to convolution in the other!
+\begin{equation}
+x(t) y(t) \underrightarrow{\,\,\mathcal{F}\,\,} c_k = \sum_{l = -\infty}^{\infty} a_l b_{k-l}
+\end{equation}
+
+\item \textbf{Parsevel's Transform: } The average power of $x(t)$ is given by: 
+
+\begin{equation}
+\frac{1}{T} \int_{T}^{} |x(t)|^2 dt = \sum_{k=-\infty}^{\infty} |a_k|^2
+\end{equation}
+
+\end{enumerate}
+\textit{Other properties can be found in table 3.1}
+
+\section{Continuous Time Fourier Transform}
+
+\textit{Recap: } Fourier series can approximate nearly all periodic signals. we now introduce the Fourier Transform, a system to approximate aperiodic signals!
+
+\begin{theorem}
+
+We define the Fourier Transform as follows: 
+
+\begin{equation}
+X(j\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
+\end{equation}
+
+And its inverse operation as: 
+
+\begin{equation}
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) e^{j\omega t} d\omega
+\end{equation}
+\end{theorem}
+
+\paragraph{Important Notes on the Fourier Transform Properties: } 
+
+\begin{itemize}
+\item $\text{sinc}(x) \equiv \frac{\sin(\pi x)}{\pi x}$
+\item Wider signal in time domain leads to narrower signal in frequency domain.
+\item $x(t) = \delta(t) \to X(j\omega) = 1$
+\item $X(j\omega) = 2\pi \delta(\omega) \to x(t) = 1$
+\item $x(t) = u(t) \to X(j\omega) = \delta(\omega) \pi + \frac{1}{j\omega}$
+\end{itemize}
+
+\subsection{Periodic Signal Fourier Transform}
+
+\paragraph{Key struggle: } Periodic signals have infinite energy and therefore do not converge in the Fourier transform integral. 
+
+\begin{theorem}
+For an arbitrary periodic $x(t) = \sum_{k = -\infty}^{\infty} a_k e^{jk\omega_0 t}$:
+\begin{equation}
+X(j\omega) = \sum_{k = -\infty}^{\infty} 2\pi a_k \delta(\omega - k\omega_0)
+\end{equation}
+
+In other words, a periodic signal is simply a collection of delta functions in the frequency domain. 
+\end{theorem}
+
+Steps to find the Fourier Transform of periodic signal: 
+\begin{enumerate}
+\item Find Fourier Series version of $x(t)$.
+\item Use $a_k$ in the above formula $X(j\omega) = \sum_{k=-\infty}^{\infty} 2\pi a_k \delta(\omega - k\omega_0)$.
+\end{enumerate}
+
+
+
+\subsection{Properties of Continuous Time Fourier Transform}
+
+\begin{enumerate}
+\item \textbf{Linearity: } \begin{equation}
+ax(t) + by(t) \to aX(j\omega) + bY(j\omega)
+\end{equation}
+
+\item \textbf{Time Shift: } \begin{equation}
+x(t-t_0) \to e^{-j\omega t_0} X(j\omega)
+\end{equation}
+
+\item \textbf{Time + Frequency Scaling: } \begin{equation}
+x(at) \to \frac{1}{|a|} X(\frac{j\omega}{a})
+\end{equation}
+
+\item \textbf{Conjugation: } \begin{equation}
+x^*(t) \to X^*(-j\omega)
+\end{equation}
+
+\item \textbf{Differentiation and Integration: } \begin{equation}
+x'(t) \to j\omega X(j\omega) \\
+\int_{-\infty}^{t} x(\tau) d\tau \to \frac{1}{j\omega} X(j\omega)
+\end{equation}
+
+\item \textbf{Duality: } If $x(t) \to X(j\omega) = g(\omega)$ then $g(t) \to 2\pi x(-\omega)$.
+
+\item \textbf{Frequency Shifting: } \begin{equation}
+e^{j\omega_0 t} x(t) \to X(j(\omega-\omega_0))
+\end{equation}
+
+
+\item \textbf{Differentiation in Frequency Domain: } \begin{equation}
+-jtx(t) \to \frac{d}{d\omega} X(j\omega)
+\end{equation}
+
+
+
+\item \textbf{Integration in Frequency Domain: } \begin{equation}
+\frac{-1}{j\omega} x(t) + \pi x(0) \delta(t) \to \int_{-\infty}^{\omega} X(j\eta) d\eta
+\end{equation}
+
+\item \textbf{Parseval's Relation: } \begin{equation}
+\int_{-\infty}^{\infty} |x(t)|^2 dt = \frac{1}{2} \int_{-\infty}^{\infty} |X(j\omega)|^2 dw
+\end{equation}
+
+\end{enumerate}
 
 
 
