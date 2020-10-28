@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  26 OCT 2020 02:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  28 OCT 2020 05:50
 entering extended mode
-**./ECE355.tex
-(ECE355.tex
+**./ECE367.tex
+(ECE367.tex
 LaTeX2e <2018-12-01>
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
@@ -588,24 +588,32 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen173
 \l_MT_below_shortintertext_sep=\dimen174
 )
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+bbm/bbm.sty"
+Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
+LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
+(Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
+(Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
+)
 \c@theorem=\count298
- (ECE355.aux)
-\openout1 = `ECE355.aux'.
+ (ECE367.aux)
+\openout1 = `ECE367.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/contex
 t/base/supp-pdf.mkii"
@@ -644,7 +652,7 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count305
 \AtBeginShipoutBox=\box52
-Package hyperref Info: Link coloring OFF on input line 22.
+Package hyperref Info: Link coloring OFF on input line 27.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 hyperref/nameref.sty"
@@ -656,20 +664,20 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count306
 )
-LaTeX Info: Redefining \ref on input line 22.
-LaTeX Info: Redefining \pageref on input line 22.
-LaTeX Info: Redefining \nameref on input line 22.
- (ECE355.out) (ECE355.out)
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
+ (ECE367.out) (ECE367.out)
 \@outlinefile=\write3
-\openout3 = `ECE355.out'.
+\openout3 = `ECE367.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 33.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 amsfonts/umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 33.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 amsfonts/umsb.fd"
@@ -677,166 +685,98 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/
-pdftex.map}] (ECE355.toc
-Overfull \hbox (4.91821pt too wide) in paragraph at lines 41--41
- [][] [][]\OT1/cmr/m/n/12 Linear Constant-Coefficient Differential (Difference)
- Equations: 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.65 ...s Time Fourier Transform}{16}{section.3.4}
-                                                  % [1
-
-])
+pdftex.map}] (ECE367.toc)
 \tf@toc=\write4
-\openout4 = `ECE355.toc'.
+\openout4 = `ECE367.toc'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 base/omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
- [2]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.50 \chapter
+             {Vector Space Review} [1
+
+]
 Chapter 1.
-[3
+
+Overfull \hbox (1.53763pt too wide) in paragraph at lines 65--66
+[]$\OML/cmm/m/it/12 B$ \OT1/cmr/m/n/12 is linearly independent with $\OML/cmm/m
+/it/12 d$ \OT1/cmr/m/n/12 elements ($\OML/cmm/m/it/12 d$ \OT1/cmr/m/n/12 is the
+ number of dimensions
+ []
+
+[2
 
 ]
-Overfull \hbox (10.78564pt too wide) in paragraph at lines 92--93
- []\OT1/cmr/bx/n/12 Discrete Time Scaling AND Shifting: [] \OT1/cmr/m/n/12 Reme
-mber to IGNORE fractional
- []
+LaTeX Font Info:    Try loading font information for U+bbm on input line 104.
 
-[4] [5]
-Overfull \hbox (9.18124pt too wide) in paragraph at lines 151--152
-[]\OT1/cmr/m/n/12 Which leads to two cases (`forced harmonic' when $\OML/cmm/m/
-it/12 r > \OT1/cmr/m/n/12 0$, `damped harmonic'
- []
-
-[6]
-Overfull \hbox (0.23143pt too wide) in paragraph at lines 223--224
-[]\OT1/cmr/bx/n/12 Invertable \OT1/cmr/m/n/12 when you can recover input SIGNAL
- given output SIGNAL
- []
-
-
-Overfull \hbox (3.69516pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/12 System is \OT1/cmr/bx/n/12 bounded-input-bounded-output \OT1/cm
-r/m/n/12 (BIBO) if bounded input
- []
-
-[7]
-Overfull \hbox (6.75417pt too wide) in paragraph at lines 243--244
-[]\OT1/cmr/m/n/12 Scaling then pushing through system is the same as pushing th
-rough
- []
-
-[8]
-Chapter 2.
-[9
-
-]
-Overfull \hbox (91.15775pt too wide) in paragraph at lines 322--322
-[]\OT1/cmr/bx/n/17.28 Linear Constant-Coefficient Differential (Difference)
- []
-
-[10]
-Overfull \hbox (9.68687pt too wide) in paragraph at lines 346--347
-[]\OT1/cmr/m/n/12 We guess $\OML/cmm/m/it/12 y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 t\OT1/cmr/m/n/12 )$ is of the form $\OML/cmm/m/it/12 Ae[]$\OT1/cmr/m/n/12 . 
-We can substitute into the homogenous
- []
-
-
-Overfull \hbox (12.9873pt too wide) in paragraph at lines 355--356
- []\OT1/cmr/bx/n/12 How to solve LTI via Transfer Function Laplace Transform[] 
-Example:
- []
-
-[11]
-Overfull \hbox (63.81783pt too wide) detected at line 380
-[]\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] + [] [
-](\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] \OMS/c
-msy/m/n/12   \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/
-n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n/12 ]) = []\OML/cmm/m/it/12 x\OT1/cmr/m/n/
-12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] + [] [](\OML/cmm/m/it/12 x\OT1/cmr/m/n/
-12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 x\O
-T1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr
-/m/n/12 ]) [] \OML/cmm/m/it/12 a[]y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cms
-y/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n/12 ] = [] \OML/cmm/m/it/12 b[]x\OT1/c
-mr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 k\OT1/cmr/m/n
-/12 ]
- []
-
-[12]
-Chapter 3.
-[13
-
-]
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 433.
- [14] [15]
-Overfull \hbox (18.63698pt too wide) in paragraph at lines 541--542
-[]\OT1/cmr/bx/n/12 multiplication:  \OT1/cmr/m/n/12 Multiplication in one domai
-n corresponds to convolution
- []
-
-[16]
-Overfull \hbox (5.24458pt too wide) in paragraph at lines 605--605
-[]\OT1/cmr/bx/n/14.4 Properties of Continuous Time Fourier Transform 
- []
-
-[17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 686.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 686.
- (ECE355.aux
-
-Package pdfbase Warning: Rerun to get internal references right!
-
+("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
+bbm/ubbm.fd"
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 686.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 686.
-Package rerunfilecheck Info: File `ECE355.out' has not changed.
-(rerunfilecheck)             Checksum: E74F928D818AD7CCD956D743AB0F8718;2420.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 686.
+Overfull \hbox (0.55502pt too wide) in paragraph at lines 116--117
+ []\OT1/cmr/bx/n/12 Cauchy-Schwartz: [] $\OMS/cmsy/m/n/12 jh\OML/cmm/m/it/12 x;
+ y\OMS/cmsy/m/n/12 ij  k\OML/cmm/m/it/12 x\OMS/cmsy/m/n/12 k[]k\OML/cmm/m/it/1
+2 y\OMS/cmsy/m/n/12 k[]$ \OT1/cmr/m/n/12 holds for \OT1/cmr/bx/n/12 all \OT1/cm
+r/m/n/12 inner product spaces. 
+ []
+
+[3]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
+ [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
+ (ECE367.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
+Package rerunfilecheck Info: File `ECE367.out' has not changed.
+(rerunfilecheck)             Checksum: 8CDB75BFA6FDA477E9097E1B875B2E17;503.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 19659 strings out of 494866
- 354077 string characters out of 3176398
- 406565 words of memory out of 3000000
- 22989 multiletter control sequences out of 15000+200000
- 542413 words of font info for 62 fonts, out of 3000000 for 9000
+ 19567 strings out of 494866
+ 353942 string characters out of 3176398
+ 408786 words of memory out of 3000000
+ 23018 multiletter control sequences out of 15000+200000
+ 543509 words of font info for 67 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 44i,15n,63p,340b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></Users/abhargava/Library/Application Support/
-MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></Users/abhar
-gava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/i
-nstall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/abhargava/Library/Appl
-ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
+ 44i,9n,63p,340b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </Users/abhargava/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/lj
+four/public/bbm/dpi600/bbm12.pk></Users/abhargava/Library/Application Support/M
+iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/abhargav
+a/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts
+/cm/cmbxti10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/in
+stall/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/abhargava/Library/Appli
+cation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb></Users/abhargava/Library/Application Support/MiK
-TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/abhargava/L
+/public/amsfonts/cm/cmmi6.pfb></Users/abhargava/Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/abhargava/L
 ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
-/cmr17.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/
-fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/abhargava/Library/Application S
-upport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/ab
-hargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Ap
-plication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.p
-fb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ECE355.pdf (19 pages, 252424 bytes).
+/cmr12.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/abhargava/Library/Application 
+Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/a
+bhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></Users/abhargava/Library/Application Support/MiKTeX/texmfs
+/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/abhargava/Library/Ap
+plication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b></Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/fonts/typ
+e1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Application Support/M
+iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/abhargav
+a/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb>
+Output written on ECE367.pdf (6 pages, 186223 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
- 189 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

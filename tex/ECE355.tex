@@ -109,7 +109,7 @@ $$y(t) = x(at)$$
 \textbf{ANY SIGNAL} can be decomposed into an even and odd component.
 
 $$x_{even}(t) = \frac{1}{2} (x(t) + x(-t))$$
-$$x-{odd}(t) = \frac{1}{2} (x(t) - x(-t))$$
+$$x_{odd}(t) = \frac{1}{2} (x(t) - x(-t))$$
 
 $$x(t) = x_{even}(t) + x_{odd}(t)$$
 
@@ -155,7 +155,7 @@ Which leads to two cases (`forced harmonic' when $r>0$, `damped harmonic' when $
 $$x[n] = e^{j\omega_0 n} = \cos(\omega_0 n) + j\sin(\omega_0 n)$$
 
 \begin{itemize}
-\item Signal 'hops' around the unit circle in \textbf{increments of} $\omega_0$.
+\item Signal `hops' around the unit circle in \textbf{increments of} $\omega_0$.
 \item \textbf{NOT ALWAYS PERIODIC!} $\omega_0 \in a2\pi, a\in \mathbb{Q}$ for periodicity to hold.
 \item $c\in\mathbb{C}$ just changes magnitude and phase.
 \end{itemize}
@@ -272,7 +272,7 @@ Interpretations:
 \item Weighted superposition of time shifted impulse responses (pretty clear).
 \item Sum over dimension $k$ of function $x[k]h[n-k]$.
 \begin{itemize}
-\item $h[n-k] = h[-k+n$ is \textbf{flipped} and shifted \textbf{right} by $n$.
+\item $h[n-k] = h[-k+n]$ is \textbf{flipped} and shifted \textbf{right} by $n$.
 \item Multiply $h[n-k]$ by $x[k]$ and \textbf{sum} the result to get $y[n]$.
 \end{itemize}
 \end{enumerate}
@@ -349,7 +349,23 @@ y(t) \equiv x(t) * h(t)
 \end{enumerate}
 
 
-\paragraph{Better tools for solving LTI/LCCDES's: } Solve them in the frequency domain using the Fourier transform and Laplace transform! \textit{Will cover later in the course}.
+\paragraph{Better tools for solving LTI/LCCDES's: } Solve them in the frequency domain using the Fourier transform and Laplace transform! 
+
+\paragraph{How to solve LTI via Transfer Function Laplace Transform} 
+\textbf{Example: } $\frac{d}{dt} y(t) + 4y(t) = x(t)$. 
+
+\begin{enumerate}
+\item Assume there exists some $H(s)$ (eigenvalue of the eigenfunction family $e^{st}$). 
+\item Therefore, $H(s) [\frac{d}{dt} e^{st} = 4e^{st}] = e^{st}$
+\item We can now solve for $H(s) = \frac{1}{s+4}$
+\item If we can write the input $x(t)$ as the sum of complex exponentials, we can solve for $y(t)$!
+\item For the case $x(t) = \cos(\pi t) = 0.5 e^{j\pi t} + 0.5 e^{-j\pi t}$, the corresponding output would be: 
+\begin{equation}
+y(t) = \frac{1}{2} \frac{1}{(j\pi)+4} e^{(j\pi)t} + \frac{1}{2} \frac{1}{-j\pi+4} e^{-j\pi t}
+\end{equation}
+\end{enumerate}
+
+
 
 
 \section{Discrete Case for LCCDE's}

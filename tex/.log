@@ -1,31 +1,32 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  24 OCT 2020 06:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  26 OCT 2020 02:29
 entering extended mode
-**CSC190.tex.tex
+**"/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex
+/tools/.tex"
 
 ("/Users/abhargava/Library/Application Support/MiKTeX/texmfs/install/tex/latex/
 tools/.tex"
-! Interruption.
-<to be read again> 
-                   \begingroup 
-l.1 
-    %%
-? 
 LaTeX2e <2018-12-01>
 File ignored)
-*
-! Interruption.
-<*> 
-    
+*X
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> X
+     
 ? X
  
 Here is how much of TeX's memory you used:
  7 strings out of 494866
- 315 string characters out of 3176398
- 51827 words of memory out of 3000000
+ 438 string characters out of 3176398
+ 52272 words of memory out of 3000000
  3757 multiletter control sequences out of 15000+200000
  3640 words of font info for 14 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 5i,0n,1p,95b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 5i,0n,4p,170b,14s stack positions out of 5000i,500n,10000p,200000b,50000s
 No pages of output.
 PDF statistics:
  0 PDF objects out of 1000 (max. 8388607)

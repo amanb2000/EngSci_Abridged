@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{1}{section.0.1}% 
+\contentsline {paragraph}{Course Information}{1}{section*.2}% 
+\contentsline {chapter}{\numberline {1}Vector Space Review}{2}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Basic Terminology}{2}{section.1.1}% 
+\contentsline {paragraph}{Subspaces: }{2}{section*.3}% 
+\contentsline {paragraph}{Span: }{2}{section*.4}% 
+\contentsline {paragraph}{Linear Independence: }{2}{section*.5}% 
+\contentsline {paragraph}{Basis: }{2}{section*.6}% 
+\contentsline {paragraph}{Dimension: }{2}{section*.7}% 
+\contentsline {paragraph}{Direct Sum: }{2}{section*.8}% 
+\contentsline {section}{\numberline {1.2}Norms}{3}{section.1.2}% 
+\contentsline {paragraph}{Norm Definition: }{3}{section*.9}% 
+\contentsline {paragraph}{$l_p$ Norm Family: }{3}{equation.1.2.2}% 
+\contentsline {paragraph}{Norm Ball: }{3}{section*.11}% 
+\contentsline {paragraph}{Level Sets: }{3}{section*.12}% 
+\contentsline {paragraph}{Cadinality Function: }{3}{section*.13}% 
+\contentsline {section}{\numberline {1.3}Inner Products}{3}{section.1.3}% 
+\contentsline {paragraph}{Inner Product Definition: }{3}{section*.14}% 
+\contentsline {paragraph}{Cauchy-Schwartz: }{4}{section*.15}% 
+\contentsline {paragraph}{Holder's Inequality: }{4}{section*.16}% 
+\contentsline {paragraph}{Induced Norm: }{4}{section*.17}% 
+\contentsline {section}{\numberline {1.4}Projection}{4}{section.1.4}% 
+\contentsline {paragraph}{Goal: }{4}{section*.18}% 
+\contentsline {subsection}{\numberline {1.4.1}Projection onto Subspace}{4}{subsection.1.4.1}% 
+\contentsline {paragraph}{Gram-Schmidt Procedure: }{5}{section*.19}% 
+\contentsline {paragraph}{QR Decomposition: }{5}{section*.20}% 
+\contentsline {subsection}{\numberline {1.4.2}Affine Projection}{5}{subsection.1.4.2}% 
+\contentsline {paragraph}{Affine Set Definition: }{5}{section*.21}% 

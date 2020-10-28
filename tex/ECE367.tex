@@ -1,0 +1,248 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{media9}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{mathtools} 
+\usepackage{bbm}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\inpr{\langle}{\rangle}%
+
+% \def\reals{{\rm I\!R}}
+\def\reals{\mathbb{R}}
+\def\integers{\mathbb{Z}}
+
+
+\newtheorem{theorem}{Theorem}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\begin{document}
+
+\title{ECE367: Matrix Algebra and Optimization}
+\author{Aman Bhargava}
+\date{September-December 2020}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction and Course Information}
+
+This document offers an overview of the ECE355 course. They comprise my condensed course notes for the course. No promises are made relating to the correctness or completeness of the course notes. These notes are meant to highlight difficult concepts and explain them simply, not to comprehensively review the entire course.
+
+\paragraph{Course Information}
+\begin{itemize}
+\item Professor: Stark C. Draper
+\item Course: Engineering Science, Machine Intelligence Option
+\item Term: 2020 Fall
+\end{itemize}
+
+
+
+
+\chapter{Vector Space Review}
+
+\section{Basic Terminology}
+
+\paragraph{Subspaces: } Set of vectors closed under addition and scaling.
+\paragraph{Span: } $\text{span}(S)$ is the set of linear combinations of set $S$.
+\paragraph{Linear Independence: } You cannot express one element of a set as a linear combination of the others.
+\begin{equation}
+\sum \alpha_i v^{(i)} = 0\,\,\,\text{iff }\alpha_i =0 \forall i\in[m]
+\end{equation}
+
+$\exists \text{ unique representation for any vector } \in \text{ span}(V)$
+
+\paragraph{Basis: } Set $B$ is a basis iff: 
+\begin{enumerate}
+\item $B$ is linearly independent with $d$ elements ($d$ is the number of dimensions of the space).
+\item $\text{Span}(B) = V$.
+\end{enumerate}
+
+\paragraph{Dimension: } $\text{Dim}(V)$ is the \textit{cardinality} of any $\text{Basis}(V)$.
+
+\paragraph{Direct Sum: } 
+\begin{itemize}
+\item Let $W_1, W_2$ be subspaces of $V$.
+\item Let $U = W_1 + W_2 = \{w_1 + w_2 | w_1 \in W_1, w_2 \in W_2\}$.
+\item Then $\text{dim}(U) = \text{dim}(W_1) + \text{dim}(W_2) - \text{dim}(W_1 \cap W_2)$
+\item \textbf{Direct Sum: } $U = W_1 \bigoplus W_2$ iff $W_1 \cap W_2 = \{0\}$
+This implies that there is a \textbf{unique choice} for a representation of a vector in $U$.
+\end{itemize}
+
+\section{Norms}
+
+\paragraph{Norm Definition: } The norm function $\norm{\cdot}: V\to \reals$ with the conditions:
+\begin{enumerate}
+\item Norm is always greater than equal to zero, equalling zero only for the zero vector.
+\item $\norm{u+v} \leq \norm{u} + \norm{v}$
+\item $\norm{\alpha u} = \abs{\alpha} \cdot \norm{u}$
+\end{enumerate}
+
+\paragraph{$l_p$ Norm Family: } \begin{equation}
+\norm{x}_p = (\sum_{k=1}^{n} \abs{x_k}^p)^{\frac{1}{p}}
+\end{equation}
+For $1 \leq p \leq \infty$.
+
+\begin{itemize}
+\item \textbf{Euclidian Norm: } $l_2$ norm is our conventional measure of distance in Euclidian space.
+\item \textbf{$l_1$: } Is simply the sum of the absolute values in a vector.
+\item \textbf{$l_\infty$: } Is the maximum element in the vector.
+\end{itemize}
+
+\paragraph{Norm Ball: } $B_p = \{x\in V | \norm{x}_p \leq 1\}$.
+
+\paragraph{Level Sets: } $\{x\in V | \norm{x}_p = c, c\in\reals\}$
+
+\paragraph{Cadinality Function: } $\text{card}(x) = \sum_{k=1}^{n} \mathbbm{1}\{x_k \neq 0\}$
+
+
+
+\section{Inner Products}
+
+\paragraph{Inner Product Definition: } $\inpr{\cdot,\cdot}: x, y\in\mathbb{C}^n \to \mathbb{C}$, as \begin{equation}
+\inpr{x, y} = x^T\bar{y} = \sum_{k=1}^{n} x_k \bar{y}_k
+\end{equation}
+Where $\bar{y}$ is the complex conjugate of $y$.
+
+
+\paragraph{Cauchy-Schwartz: } $\abs{\inpr{x, y}} \leq \norm{x}_2 \norm{y}_2$ holds for \textbf{all} inner product spaces.
+
+\paragraph{Holder's Inequality: } $\abs{\inpr{x, y}} \leq \norm{x}_p \norm{y}_q$ under the conditions $p,q \geq 1$ AND $\frac{1}{p} + \frac{1}{q} = 1$.
+
+\paragraph{Induced Norm: } $\norm{x}_2 = \sqrt{\inpr{x,x}}$.
+
+
+
+\section{Projection}
+
+\paragraph{Goal: } Find vector $y^*$ for some vector $x$ such that \begin{equation}
+y^* = \Pi Y(x) = \text{argmin}_{y\in Y} \norm{y-x}
+\end{equation}
+Where 
+\begin{itemize}
+\item $Y$ is the set of vectors from which you choose your $y^*$.
+\item $\Pi$ is the projection operator.
+\item You are trying to choose optimal $y^*$.
+\end{itemize}
+
+\subsection{Projection onto Subspace}
+
+\begin{theorem} \textbf{Projection onto multidimensional subspaces: } Let $x\in V$ and $S \subseteq V$. Then there exists unique $y^* \in S$ such that
+
+\begin{equation}
+y^* = \text{argmin}_{y\in S} \norm{x-y}
+\end{equation}
+
+\begin{itemize}
+\item We let $S = \text{span}(\{v^{(1)}, ..., v^{(n)}\})$. 
+\item We can now write $y^* = \sum_{i=1}^{d} \alpha_i v^{(i)}$.
+\end{itemize}
+
+\begin{equation}
+\begin{bmatrix}
+\inpr{v^{(1)}, v^{(1)}} & ... & \inpr{v^{(1)}, v^{(d)}}\\
+\vdots & \ddots & \vdots \\
+\inpr{v^{(d)}, v^{(1)}} & ... & \inpr{v^{(d)}, v^{(d)}}
+\end{bmatrix}
+\begin{bmatrix}
+\alpha_1 \\
+\vdots \\
+\alpha_d
+\end{bmatrix} = 
+\begin{bmatrix}
+\inpr{v^{(1)}, x} \\
+\vdots \\
+\inpr{v^{(d)}, x}
+\end{bmatrix}
+\end{equation}
+
+
+\end{theorem}
+
+\paragraph{Gram-Schmidt Procedure: } How to make an orthonormal basis out of a set (go from $v^{(i)}$ to orthonormal $z^{(i)}$).
+
+\begin{enumerate}
+\item Normalize $v^{(1)} \to z^{(1)}$.
+\item Let $u^* = \inpr{v^{(2)}, z^{(1)}}z^{(1)}$.
+\item $z^{(2)} = \frac{v^{(2)} - u^*}{\norm{v^{(2)} - u^* }}$.
+\item For higher dimension: Repeat steps before where the $m$th vector $z^{(m)}$ is calculated as 
+$$z^{(m)} = \frac{w^{(m)}}{\norm{w^{(m)}}}$$
+Where $w^{(m)} = v^{(m)} - \sum_{i=1}^{m-1} \inpr{v^{(m)} , z^{(i)}} z^{(i)}$
+\end{enumerate}
+
+\paragraph{QR Decomposition: } When you write a matrix as the product of an orthonormal basis and an upper triangular matrix.
+
+\begin{equation}
+A = \begin{bmatrix}
+\vdots & & \vdots \\
+v^{(1)} & \dots & v^{(m)} \\
+\vdots & & \vdots
+\end{bmatrix} = 
+\begin{bmatrix}
+\vdots & & \vdots \\
+z^{(1)} & \dots & z^{(m)} \\
+\vdots & & \vdots
+\end{bmatrix}
+\begin{bmatrix}
+r_{11} & r_{12} & \dots & r_{1m} \\
+0 & r_{22} & & \vdots \\
+\vdots & & \ddots & \\
+0 & \dots & & r_{mm} \\
+\end{bmatrix}
+\end{equation}
+
+\subsection{Affine Projection}
+
+\paragraph{Affine Set Definition: } Affine set is a shift or translation of subspace $S \subseteq \reals^n$ by some vector $x^{(0)} \in \reals$. $$A = x^{(0)} + S = \{x^{(0)} + u | u\in S\}$$
+
+\begin{enumerate}
+\item Given $x,A, x^{(0)}$. You want to project $x$ onto affine set $A = S + x^{(0)}$
+\item Translate $x, A$ by $-x^{(0)}$.
+\item Project onto the conventional subspace.
+\item Translate the projection back using $+x^{(0)}$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
