@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  29 OCT 2020 03:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2019.1.7)  29 OCT 2020 04:28
 entering extended mode
 **./ECE367.tex
 (ECE367.tex
@@ -808,26 +808,37 @@ Overfull \hbox (69.0958pt too wide) in paragraph at lines 682--682
 []\OT1/cmr/bx/n/17.28 Matrix Square Root and Cholesky Decomposition 
  []
 
-[18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 816.
- [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 816.
+[18] [19]
+Chapter 6.
+[20
+
+]
+Overfull \hbox (18.57208pt too wide) in paragraph at lines 773--775
+ []\OT1/cmr/bx/n/12 First $\OML/cmm/m/it/12 r$ \OT1/cmr/bx/n/12 Right Singular 
+Values of $\OML/cmm/m/it/12 A$\OT1/cmr/bx/n/12 : [] \OT1/cmr/m/n/12 We take the
+ \OT1/cmr/bx/n/12 spectral decomposition
+ []
+
+[21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 956.
+ [22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 956.
  (ECE367.aux
 
 Package pdfbase Warning: Rerun to get internal references right!
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 816.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 816.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 956.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 956.
 Package rerunfilecheck Info: File `ECE367.out' has not changed.
-(rerunfilecheck)             Checksum: 310A2C4E7DB1E79BA5F5639FCA3DD5FB;1923.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 816.
+(rerunfilecheck)             Checksum: 169BE0762815A3EB6604DF0A09E22DD4;2330.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 956.
  ) 
 Here is how much of TeX's memory you used:
- 19742 strings out of 494866
- 355780 string characters out of 3176398
+ 19787 strings out of 494866
+ 356252 string characters out of 3176398
  408810 words of memory out of 3000000
- 23040 multiletter control sequences out of 15000+200000
+ 23046 multiletter control sequences out of 15000+200000
  543509 words of font info for 67 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  44i,17n,63p,340b,469s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -854,9 +865,9 @@ e1/public/amsfonts/cm/cmsy8.pfb></Users/abhargava/Library/Application Support/M
 iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/abhargav
 a/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb>
-Output written on ECE367.pdf (20 pages, 267709 bytes).
+Output written on ECE367.pdf (23 pages, 284589 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
- 209 named destinations out of 1000 (max. 500000)
- 233 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 584 PDF objects out of 1000 (max. 8388607)
+ 248 named destinations out of 1000 (max. 500000)
+ 281 words of extra memory for PDF output out of 10000 (max. 10000000)
 

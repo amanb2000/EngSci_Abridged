@@ -27,3 +27,9 @@
 \BOOKMARK [1][-]{section.5.2}{Spectral Theorem}{chapter.5}% 27
 \BOOKMARK [1][-]{section.5.3}{Ellipsoids}{chapter.5}% 28
 \BOOKMARK [1][-]{section.5.4}{Matrix Square Root and Cholesky Decomposition}{chapter.5}% 29
+\BOOKMARK [0][-]{chapter.6}{Singular Value Decomposition}{}% 30
+\BOOKMARK [1][-]{section.6.1}{Motivation}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.2}{Steps to Creating SVD}{chapter.6}% 32
+\BOOKMARK [1][-]{section.6.3}{Principal Component Analysis}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.4}{SVD Matrix Properties}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.5}{Moore-Penrose Pseudo-Inverse}{chapter.6}% 35

@@ -760,9 +760,113 @@ Where
 \paragraph{Key Starting Ideas: } For $m\times n$ real matrix $A$: 
 \begin{enumerate}
 \item $AA^T, A^TA$ are both PSD matrices. $x^T A^TAx = \norm{Ax}_2^2$.
-\item $\text{rank}(A^TA)
-
+\item $\text{rank}(A^TA) = \text{rank}(AA^T) = \text{rank}(A)$.
+\item $AA^T$ and $A^TA$ have the same $r$ eigenvalues with $r = \text{rank}(A)$.
 \end{enumerate}
+
+\paragraph{Singular Value Definition: } The singular values of $A$ are 
+\begin{equation}
+	\sigma_i = \sqrt{\lambda_i(A^TA)} = \sqrt{\lambda_i(AA^T)} > 0
+\end{equation}
+Where $\lambda_i(B)$ is the $i$th eigenvalue of matrix $B$.
+
+\paragraph{First $r$ Right Singular Values of $A$: } We take the \textbf{spectral decomposition} 
+of $A^TA = V\Lambda V^T$.
+\begin{equation}
+V = 
+\begin{bmatrix}
+	\vrule & & \vrule & \vrule & vrule & & \vrule \\
+	v^{(1)} & \dots & v^{(r)} & \vrule & v^{(r+1)} & \dots & v^{(n)} \\
+	\vrule & & \vrule & \vrule & vrule & & \vrule 
+\end{bmatrix}
+\end{equation}
+\begin{itemize}
+\item The first $r$ $v^{(i)}$ relate to $\lambda_i \neq 0$.
+\item \textbf{THESE ARE OUR RIGHT SINGULAR VECTORS}.
+\item They are all \textbf{mutually orthogonal}.
+\item The remaining vectors are associated with $\lambda_i = 0$.
+\end{itemize}
+
+\paragraph{First $r$ Left Singular Values of $A$: } The left singular vectors are denoted by $u^{(i)}$ and are given by
+
+\begin{equation}
+	u^{(i)} = Av^{(i)}
+\end{equation}
+
+You could also get them by taking the spectral decomposition of $AA^T$ but you run the risk of inverting the polarity (i.e. $u^{(i)} \to -u^{(i)}$ which would mess up the entire decomposition.
+
+Each $u^{(i)}$ are associated with the same singualr values $\sigma_i = \sqrt{\lambda_i}$.
+
+\paragraph{Compact SVD: } We can package our first $r$ right ($v$) and left ($u$) singular vectors into $V_r$ and $U_r$ respectively to decompose $A$ as follows:
+
+\begin{equation}
+	A = U_r \Sigma V_r^T
+\end{equation}
+Where $\Sigma = \text{diag}(\sigma_1, ..., \sigma_r)$. 
+
+\paragraph{Full SVD: } To get the `Full' SVD, we add vectors to $U_r, V_r$ such that they form bases for $\reals^m, \reals^n$ respectively.
+
+\begin{itemize}
+\item $u^{(i)} \in \mathcal{N}(A^T)$ for all $i \in \{r+1, ..., m\}$
+\item $v^{(i)} \in \mathcal{N}(A)$ for all $i\in \{r+1, ..., n\}$
+\item Each of the above sets are \textbf{orthonormal bases} for their respective null spaces.
+\end{itemize}
+
+Now we have full SVD: 
+\begin{equation}
+A = U\tilde{\Sigma}V^T
+\end{equation}
+Where $\tilde{\Sigma}$ is the original sigma padded with zeros such that it is an $m \times n$ matrix.
+\begin{equation}
+\tilde{\Sigma} = 
+\begin{bmatrix}
+\Sigma & \dots & 0 \\
+\vdots & \ddots & \vdots \\
+0 & \dots & 0
+\end{bmatrix}
+\in \reals^{m\times n}
+\end{equation}
+
+\section{Principal Component Analysis}
+
+\section{SVD Matrix Properties}
+
+\paragraph{Fundamental Subspaces from SVD: } Assuming that $A = U\tilde{\Sigma}V^T$, $U = [U_r, U_{nr}]$, $V = [V_r, V_{nr}]$: 
+\begin{enumerate}
+\item Basis of $\mathcal{R}(A)$: columns of $U_r$.
+\item Basis of $\mathcal{N}(A)$: columns of $V_{nr}$.
+\item Basis of $\mathcal{N}(A^T)$: columns of $U_{nr}$.
+\item Basis of $\mathcal{R}(A^T)$: columns of $V_r$.
+\end{enumerate}
+
+\section{Moore-Penrose Pseudo-Inverse}
+
+\paragraph{MP Pseudo-Inverse Definition: } For rank $r$ matrix $A\in \reals^{m\times n}$ with SVD $A = U\tilde{\Sigma}V^T$, 
+\begin{equation}
+	A^\dagger = V\tilde{\Sigma}^\dagger U^T = V_r\Sigma^{-1}U_r^T \in \reals^{n\times m}
+\end{equation}
+
+Where 
+
+\begin{equation}
+\tilde{\Sigma}^\dagger = 
+\begin{bmatrix}
+	\Sigma^-1 & \dots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \dots & 0 \\
+\end{bmatrix}
+\end{equation}
+
+And $\Sigma^{-1} = \text{diag}(\frac{1}{\sigma_1}, ..., \frac{1}{\sigma_r})$
+
+\textbf{Recall: } $B$ is a pseudo inverse of $A$ if $ABA = A$. Moore-Penrose gives proper inverse (true, left, right) given the dimensions of the matrix $A$.
+
+
+
+
+
+
+
 
 
 

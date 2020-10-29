@@ -87,3 +87,18 @@
 \contentsline {paragraph}{Matrix Square Root Definition: }{18}{section*.59}% 
 \contentsline {paragraph}{Cholesky Decomposition: }{19}{section*.60}% 
 \contentsline {paragraph}{Solving $Ax = b$ with Choleski Decomposition: }{19}{section*.61}% 
+\contentsline {chapter}{\numberline {6}Singular Value Decomposition}{20}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Motivation}{20}{section.6.1}% 
+\contentsline {paragraph}{Utility of SVD: }{20}{section*.62}% 
+\contentsline {section}{\numberline {6.2}Steps to Creating SVD}{20}{section.6.2}% 
+\contentsline {paragraph}{Key Starting Ideas: }{20}{section*.63}% 
+\contentsline {paragraph}{Singular Value Definition: }{21}{section*.64}% 
+\contentsline {paragraph}{First $r$ Right Singular Values of $A$: }{21}{section*.65}% 
+\contentsline {paragraph}{First $r$ Left Singular Values of $A$: }{21}{section*.66}% 
+\contentsline {paragraph}{Compact SVD: }{21}{section*.67}% 
+\contentsline {paragraph}{Full SVD: }{21}{section*.68}% 
+\contentsline {section}{\numberline {6.3}Principal Component Analysis}{22}{section.6.3}% 
+\contentsline {section}{\numberline {6.4}SVD Matrix Properties}{22}{section.6.4}% 
+\contentsline {paragraph}{Fundamental Subspaces from SVD: }{22}{section*.69}% 
+\contentsline {section}{\numberline {6.5}Moore-Penrose Pseudo-Inverse}{22}{section.6.5}% 
+\contentsline {paragraph}{MP Pseudo-Inverse Definition: }{22}{section*.70}% 
