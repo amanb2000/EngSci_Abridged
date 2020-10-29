@@ -6,3 +6,24 @@
 \BOOKMARK [1][-]{section.1.4}{Projection}{chapter.1}% 6
 \BOOKMARK [2][-]{subsection.1.4.1}{Projection onto Subspace}{section.1.4}% 7
 \BOOKMARK [2][-]{subsection.1.4.2}{Affine Projection}{section.1.4}% 8
+\BOOKMARK [0][-]{chapter.2}{Functions and Sets}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Basic Terminology}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{Linear and Affine Functions}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Affine Approximation}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.4}{Chain Rule on Gradients}{chapter.2}% 13
+\BOOKMARK [0][-]{chapter.3}{Matrices}{}% 14
+\BOOKMARK [1][-]{section.3.1}{Matrix Introduction}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.1.1}{Matrix Vector Spaces}{section.3.1}% 16
+\BOOKMARK [1][-]{section.3.2}{Function Approximations with Matrices}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.3}{Matrices as Linear Maps}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.1}{Matrix Inverse}{section.3.3}% 19
+\BOOKMARK [1][-]{section.3.4}{Orthogonal Matrices}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.5}{Rank, Range, and Null Space}{chapter.3}% 21
+\BOOKMARK [0][-]{chapter.4}{Eigendecomposition}{}% 22
+\BOOKMARK [1][-]{section.4.1}{How to Solve for Eigenthings}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.2}{Diagonalization}{chapter.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Symmetric Matrices}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Symmetric Matrices and Quadratic Functions}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{Spectral Theorem}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.3}{Ellipsoids}{chapter.5}% 28
+\BOOKMARK [1][-]{section.5.4}{Matrix Square Root and Cholesky Decomposition}{chapter.5}% 29

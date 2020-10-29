@@ -13,6 +13,8 @@
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 \DeclarePairedDelimiter\inpr{\langle}{\rangle}%
 
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
 % \def\reals{{\rm I\!R}}
 \def\reals{\mathbb{R}}
 \def\integers{\mathbb{Z}}
@@ -35,7 +37,7 @@
 
 \section{Introduction and Course Information}
 
-This document offers an overview of the ECE355 course. They comprise my condensed course notes for the course. No promises are made relating to the correctness or completeness of the course notes. These notes are meant to highlight difficult concepts and explain them simply, not to comprehensively review the entire course.
+This document offers an overview of the ECE367 course. They comprise my condensed course notes for the course. No promises are made relating to the correctness or completeness of the course notes. These notes are meant to highlight difficult concepts and explain them simply, not to comprehensively review the entire course.
 
 \paragraph{Course Information}
 \begin{itemize}
@@ -209,6 +211,608 @@ r_{11} & r_{12} & \dots & r_{1m} \\
 \item Project onto the conventional subspace.
 \item Translate the projection back using $+x^{(0)}$.
 \end{enumerate}
+
+
+\chapter{Functions and Sets}
+
+\section{Basic Terminology}
+
+\paragraph{Prototypical Function: } \begin{equation}
+f:X\to Y
+\end{equation}
+Means that $f$ is a function that maps members of set $X$ to members of set $Y$.
+
+\paragraph{Sets Related to Functions: } 
+\begin{itemize}
+\item graph $f = \{(x, f(x)) \in \reals^{n+1} | x \in \reals^n\}$
+\item epigraph $f = \{(x, t) \in \reals^{n+1} | x \in \reals^n, t \geq f(x)\}$
+\item level sets: $c_f(t) = \{x\in \reals^n | f(x) = t\}$
+\item sub level sets: $l_f(t) = \{x\in\reals^n | f(x) \leq t\}$
+\end{itemize}
+
+\section{Linear and Affine Functions}
+
+\paragraph{Linearity Conditions: } 
+\begin{enumerate}
+\item \textbf{Homogeneity: } $f(\alpha x) = \alpha f(x)$.
+\item \textbf{Additivity: } $f(x+y) = f(x) + f(y)$.
+\end{enumerate}
+
+\textbf{Resultant property: } Super position -- $f(\sum_{i=1}^{n} \alpha_i x^{(i)} ) = \sum_{i=1}^{n} \alpha_i f(x^{(i)})$.
+
+\paragraph{Affine Function: } $f: \reals^n \to \reals$ where \begin{equation}
+\tilde{f(x)} = f(x) - f(0)
+\end{equation}
+is a lineara function.
+
+\textbf{Useful property: } $f:\reals^n\to\reals$ is affine \textbf{iff} $\exists\, a,b \in \reals^n)$ such that\begin{equation}
+f(x) = a^T x + b
+\end{equation}
+
+Which also implies that all linear functions can be expressed as $f(x) = a^T x$.
+
+\section{Affine Approximation}
+
+\paragraph{Affine Approximation Definition: } The affine approximation for function $f:\reals^n\to\reals$ about point $\bar{x}$ is: \begin{equation}
+f(x) = f(\bar{x}) + \nabla f(\bar{x})^T(x-\bar{x}) + \epsilon(x)
+\end{equation}
+
+Where $\epsilon(x)$ is the error term.
+
+\begin{itemize}
+\item \textbf{First-order increment: } $\nabla f(\bar{x})(x-\bar{x})$.
+\item First-order increment equal to zero (or any value) results in a \textbf{hyperplane}.
+\end{itemize}
+
+\section{Chain Rule on Gradients}
+
+\textbf{Given } 
+\begin{enumerate}
+\item $g:\reals^n\to\reals^m$
+\item $f:\reals^m\to\reals$
+\item $\phi(x) = f(g(x)), x\in\reals^n$
+\end{enumerate}
+
+\textbf{Goal: } Find $\nabla\phi(x)$.
+
+\begin{equation}
+\nabla\phi(x) = 
+\begin{bmatrix}
+\frac{\partial \phi}{\partial x_1} \\
+\vdots \\
+\frac{\partial \phi}{\partial x_n} 
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{\partial g_1(x)}{\partial x_1} & \frac{\partial g_2(x)}{\partial x_1} & \dots & \frac{\partial g_m(x)}{\partial x_1} \\
+\vdots & \ddots & & \vdots \\
+\frac{\partial g_1(x)}{\partial x_n} & \dots & & \frac{\partial g_m(x)}{\partial x_n} \\
+\end{bmatrix} 
+\nabla f(g(x))
+\end{equation}
+
+
+
+\chapter{Matrices}
+
+\section{Matrix Introduction}
+
+\textit{This chapter began with a basic review of matrix algebra that will not be re-covered here.} 
+
+\paragraph{Outer Product View of Matrix Multiplication: } 
+
+\begin{equation}
+AB = 
+\begin{bmatrix}
+	\vrule & & \vrule \\
+	a^{(1)} & \dots & a^{(m)} \\
+	\vrule & & \vrule
+\end{bmatrix}
+\begin{bmatrix}
+	\horzbar & b^{(1)T} & \horzbar \\
+	 & \vdots & \\
+	\horzbar & b^{(m)T} & \horzbar
+\end{bmatrix} = 
+\sum_{k=1}^{m} a^{(k)} (b^{(k)})^T
+\end{equation}
+
+\paragraph{Important Matrices: } 
+\begin{itemize}
+\item \textbf{Square}
+\item \textbf{Symmetric: } $A_{ij} = A_{ji}$; $A = A^T$
+\item \textbf{Diagonal: } $A_{ij} = 0$ for $i \neq j$
+\item Identity.
+\item Upper Triangular: Square matrix with condition $A_{ij} = 0$ if $i > j$.
+\end{itemize}
+
+\subsection{Matrix Vector Spaces}
+
+\paragraph{Inner Product: } $A, B \in \mathbb{C}^{m\times n}$ 
+\begin{equation}
+	\inpr{A, B} = \text{trace}(A^T B) = \text{trace}(BA^T) = \sum_{i}^{} \sum_{j}^{} [A]_{ij} [B]_{ij}
+\end{equation}
+
+\paragraph{Frobenius Norm: } $\norm{\cdot}_F$ where
+\begin{equation}
+\norm{A}_F \equiv \sqrt{\inpr{A,A}}
+\end{equation}
+Which is the equivalent of the $l_2$ norm of the vector made by flattening $A$.
+
+
+
+\section{Function Approximations with Matrices}
+
+\paragraph{Second Order (Quadratic) Approximations: } For map $f:\reals^n\to \reals^m$, we can approximate by
+\begin{equation}
+f(x)\approx f(\bar{x}) + \nabla f(\bar{x})^T (x-\bar{x}) + \frac{1}{2} (x-\bar{x})^T \nabla^2 f(\bar{x}) (x-\bar{x})
+\end{equation}
+
+Where $\nabla^2 f(\bar{x})$ is the \textbf{Hessian} of $f$ about point $\bar{x}$ and is defined as: 
+\begin{equation}
+\nabla^2 f(\bar{x}) = 
+\begin{bmatrix}
+\frac{\partial^2 f}{\partial x_1^2} & \dots & \frac{\partial^2 f}{\partial x_1\partial x_n} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial^2 f}{\partial x_n\partial x_1} & \dots & \frac{\partial^2 f}{\partial x_n^2} \\
+\end{bmatrix}
+\end{equation}
+
+\section{Matrices as Linear Maps}
+
+\paragraph{Linear Map Definition: } $\text{map} f:V\to W$ is linear if
+\begin{equation}
+	f(\alpha_1 x^{(1)} + \alpha_2 x^{(2)} ) = \alpha_1 f(x^{(1)}) + \alpha_2 f(x^{(2)})
+\end{equation}
+
+\paragraph{Key Finding: } \textbf{ANY LINEAR MAP} can be represented by a matrix $\in \reals^{m\times n}$ for $\text{map} f : \reals^n \to \reals^m$
+
+\subsection{Matrix Inverse}
+
+A matrix is \textbf{NOT} invertable if $m < n$ for map represented by $A \in \reals^{m\times n}$ due to the many-to-one mapping. It is \textbf{POTENTIALLY} invertible if $m \geq n$.
+
+\paragraph{Square Matrix Invertability: } $A\in\reals^{n\times n}$ is invertible iff there exists $B\in\reals^{n\times n}$ such that \begin{equation}
+AB = BA = I
+\end{equation}
+If $B$ exists, it is unique and is equal to $A^{-1}$.
+
+
+\textbf{Invertability conditions: } If any of these hold true, then the matrix is invertable.
+\begin{enumerate}
+\item $\text{det}(A) \neq 0$
+\item None of $A$'s eigenvalues are equal to zero.
+\end{enumerate}
+
+\paragraph{Invertible Matrix Properties: } Let $A, B \in \reals^{n\times n}$ both be invertible. Then: 
+\begin{enumerate}
+\item $(AB)^{-1} = B^{-1} A^{-1}$.
+\item $(A^T)^{-1} = (A^{-1})^T$.
+\item $\det(A) = \det(A^T) = \frac{1}{\det(A^{-1})}$
+\end{enumerate}
+
+\paragraph{Pseudo Inverse: } For non-square matrix there is no inverse, though the pseudo inverse $A^{pi}$ satisfies: 
+\begin{equation}
+AA^{pi}A = A
+\end{equation}
+
+
+\textbf{Case I: } Tall and thin matrix $A$ with $m > n$
+\begin{itemize}
+\item The ``left inverse'' exists iff the columns of the matrix are \textbf{linearly independent}.
+\item $A^{li} A = I_n$.
+\item This only exists if the mapping of $A$ is unique (i.e. it is a full-rank matrix).
+\end{itemize}
+
+
+\textbf{Case II: } Wide and fat matrix $A$ with $m < n$
+\begin{itemize}
+\item The ``right inverse'' exists iff the rows of the matrix are linearly independent.
+\item $A A^{ri} = I_m$.
+\item If $A^{ri}$ exists then $A$ is ``right invertible''.
+\item $A^{ri} y$ gives one of \textit{infinitely many} $x\in \reals^n$ that satisfy $Ax = y$.
+\end{itemize}
+
+
+
+\section{Orthogonal Matrices}
+
+\paragraph{Orthogonality Conditions: } $A\in \reals^{n\times n}$ is orthogonal if:
+\begin{enumerate}
+\item Column vectors are all \textbf{mutually orthogonal}.
+\item Column vectors are all \textbf{normalized}.
+\end{enumerate}
+
+$A = [q^{(1)} ... q^{(n)}]$
+
+\begin{equation}
+\inpr{q^{(i)}, q^{(j)}} = \begin{split}
+0, & i \neq j \\
+1, & i = j 
+\end{split}
+\end{equation}
+
+It follows: 
+\begin{itemize}
+\item $A^TA = I$
+\item $AA^T = I$
+\item $A^T = A^{-1}$
+\end{itemize}
+
+\textbf{Necessary and sufficient condition for orthogonality: } $A^T = A^{-1}$.
+
+\paragraph{Unitary Matrix: } If $A\in \mathbb{C}^{n\times n}$ and all of the above apply, then: 
+
+$$U^H = \text{conjugate}(U^T)$$
+
+\paragraph{Geometric Implications of Orthogonality: } 
+If $Ax = y$ and $A\tilde{x} = \tilde{y}$: 
+\begin{itemize}
+\item $\norm{x} = \norm{y}$
+\item $\inpr{y, \tilde{y}} = \inpr{x, \tilde{x}}$
+\end{itemize}
+
+Which implies that the transformation of $A$ can \textbf{only} be composed of (1) rotation and (2) reflection.
+
+\section{Rank, Range, and Null Space}
+
+Let $A\in \reals^{m\times n}$. Then $A:\reals^n \to \reals^m$ and $A^T: \reals^m \to \reals^n$.
+
+\paragraph{Domain and Range: } 
+\begin{itemize}
+\item \textbf{Domain: } $\text{dom}(\cdot)$ is the vector space the operator acts on.
+\item \textbf{Range: } $\mathcal{R}\{\cdot\}$ is the \textbf{SPAN OF THE COLUMNS} of the matrix.
+\end{itemize}
+
+\paragraph{How to Find Basis of $\mathcal{R}(A)$: }
+\begin{enumerate}
+\item Manipulate $A$ into reduced row-echelon form.
+\item We define \textbf{pivots} as the first non-zero entries of each row in the reduced row-echelon form.
+\item Basis$(\mathcal{R}(A^T))$ are the \textbf{non-zero rows} of $A_{REF}$.
+\item Basis$(\mathcal{R}(A))$ are the columns of $A$ correspondinging to the columns of the \textbf{pivots}.
+\end{enumerate}
+
+Thus $\dim(\mathcal{R}(A^T)) = \dim(\mathcal{R}(A))$
+
+
+\paragraph{Nullspace of a Matrix} 
+
+\begin{equation}
+\mathcal{N}(A) = \{x|Ax = 0\}
+\end{equation}
+
+It is the \textbf{orthogonal compliment} of $\mathcal{R}(A^T)$. To solve for this, you must start with $Ax = 0$ and find the implied conditions on $x$.	
+
+\paragraph{Fundamental Theorem of Linear Algebra} 
+\begin{enumerate}
+\item $\mathcal{N}(A) \bigoplus \mathcal{R}(A^T) = \reals^n$
+\item $\dim(\mathcal{N}(A)) + \text{rank}(A) = n$
+\item $\mathcal{R}(A) \bigoplus \mathcal{N}(A^T) = \reals^m$
+\item $\text{rank}(A) + \dim(\mathcal{N}(A^T)) = m$
+\end{enumerate}
+
+\textbf{Consequence of the Fundamental Theorem}: We can express any $x\in\reals^n$ as \begin{equation}
+x = A^T y + z
+\end{equation}
+\begin{itemize}
+\item $z\in\mathcal{N}(A)$
+\item $y\in\mathcal{R}(A^T)$
+\end{itemize}
+
+
+\chapter{Eigendecomposition} 
+
+\section{How to Solve for Eigenthings}
+
+$$Av = \lambda v$$
+$$Av-I\lambda v = 0$$
+\begin{equation}
+\det(A - \lambda I) = 0
+\end{equation}
+
+Once you solve for the \textbf{characteristic polynomial roots}, you can plug them back into the initial formula and solve for the corresponding eigenvalue.
+
+\begin{theorem}
+\textbf{All} $A\in\reals^{n\times n}$ have $\geq 1$ eigenvalue.
+\begin{itemize}
+\item Full set of eigenvectors has the same number of eigenvectors as eigenvalues.
+\item Partial set (defective matrix) has fewer eigenvectors than eigenvalues.
+\end{itemize}
+\end{theorem}
+
+\paragraph{Multiplicity of Eigenvalues: } We have two types of multiplicity.
+\begin{enumerate}
+\item \textbf{Algebraic Multiplicity: } $AM(\lambda_i) = \mu_i$ -- number of times $\lambda_i$ is repeated in the \textbf{characteristic polynomial}.
+\item \textbf{Geometric Multiplicity: } $GM(\lambda_i) = \nu_i = \dim(\mathcal{N}(A-\lambda_i I)$ -- number of eigenvectors corresponding to the given eigenvalue.
+\end{enumerate}
+
+$$1 \leq \nu_i = GM(\lambda_i) \leq AM(\lambda_i) = \mu_i$$
+
+\paragraph{Eigenspace: } For each $\lambda$ there is a space $E_\lambda$: 
+\begin{equation}
+	E_{\lambda} = \text{span}\{u|Au = \lambda u\} = \mathcal{N}(A-I\lambda)
+\end{equation}
+The geometric multiplicity of $\lambda$ gives the dimensionality of the eigenspace. Each $E_\lambda$ is invariant to $A$.
+
+\section{Diagonalization}
+
+\paragraph{Condition for Diagonalizability: } If $A$ has a \textbf{full set} of eigenvalues (i.e. distinct $\lambda_i$ for $i\in[k]$, $k \leq n$) such that $\nu_i = GM(\lambda_i) = AM(\lambda_i) = \mu_i$ for all $i \in [k]$, then $A$ is diagonalizable.
+
+
+This means that we can create $n\times n$ matrix $U$ with columns equal to eigenvectors of $A$ and matrix $\Lambda= \text{diag}(\lambda_1, ..., \lambda_n)$ such that 
+\begin{equation}
+A = U\Lambda U^{-1}
+\end{equation}
+
+
+\paragraph{Utility of Diagonalization: } 
+\begin{itemize}
+\item We can take arbitrary powers of $A$ very easily now by cancelling $U$, $U^{-1}$.
+\end{itemize}
+
+
+\paragraph{Determinants of Diagonal Matrices}
+
+If we can write $A = U\lambda U^{-1}$, then 
+\begin{equation}
+|\det A| = |\prod_{i=1}^{n} \lambda_i|
+\end{equation}
+
+\chapter{Symmetric Matrices}
+
+\section{Symmetric Matrices and Quadratic Functions}
+
+\paragraph{Symmetric Matrix Definition: } $S^n$ is the set of all symmetric matrices and is defined as 
+\begin{equation}
+S^n = \{A \in \reals^{n\times n} | A = A^T\}
+\end{equation}
+
+\paragraph{Quadratic Function Definition: } $q:\reals^n\to \reals$ is a quadratic function if
+\begin{equation}
+q(x) = x^T A x + c^T x + d
+\end{equation}
+where $A\in \reals^{n\times n}$, $c\in \reals^n$, $d\in\reals$.
+
+\paragraph{Important Alternate Forms of Quadratics: } 
+\begin{equation}
+q(x) = \frac{1}{2}x^T(A+A^T)x + c^T x + d
+\end{equation}
+\begin{equation}
+q(x) = \frac{1}{2}
+\begin{bmatrix}
+	x^T & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+	A+A^T & c \\
+	c^T & 2d
+\end{bmatrix}
+\begin{bmatrix}
+	x \\
+	1 
+\end{bmatrix}
+\end{equation}
+
+\textbf{Important note: } The 2x2 matrix there is $\in S^{n+1\times n+1}$! This is the strong connection between quadratics and symmetric matrices.
+
+\section{Spectral Theorem}
+
+\textit{Tl;dr: Eigenthings are really nice and simple with symmetric matrices.} 
+
+\begin{theorem}
+\textbf{Nice things about symmetrical matrices: } 
+Let $A\in S^n$ have $n$ (potentially non-distinct) eigenvalues. Then
+\begin{enumerate}
+\item $\lambda_i \in \reals$ which means that the eigenvectors are \textbf{purely real}.
+\item $GM(\lambda_i) = AM(\lambda_i)$ which means there is a full set of eigenvalues $\to$ $A$ is diagonalizable!
+\item All eigen spaces are \textbf{mutually orthogonal} (not just linearly independent).
+\end{enumerate}
+\end{theorem}
+
+
+\paragraph{Spectral Decomposition: } If $A\in S^n$ then there are $n$ orthonormal eigenvectors. We let each eigenvector $u^{(i)}$ be a column in $U\in \reals^{n\times n}$. Then: 
+\begin{equation}
+A = U\Lambda U^T
+\end{equation}
+
+\paragraph{Rayleigh Quotients: } 
+\begin{equation}
+\lambda_{min} \leq \frac{x^T A x}{\norm{x}^2} \leq \lambda_{max}
+\end{equation}
+
+\begin{itemize}
+\item The Rayliegh quotient when $x = u^{(1)}$ (the maximum $\lambda$ eigenvector) is equal to $\lambda_{max}(A)$.
+\item Same goes for when $x = u^{(n)}$.
+\item \textbf{This connects eigenvectors and singular values.} 
+\end{itemize}
+
+\paragraph{Positive Semi-Definite Matrices: } if \begin{equation}
+x^T A x \geq 0
+\end{equation}
+For all $x\in \reals^n$, then $A\in S^n_+$ ($A$ is a positive semidefinite matrix).
+
+\paragraph{Positive Definite Matrices: } if \begin{equation}
+x^T A x > 0
+\end{equation}
+For all $x\in \reals^n$ then $A$ is a positive definite matrix ($A\in S^n_{++}$).
+
+\begin{theorem}
+\begin{itemize}
+\item $A\in S^n_+$ iff $\lambda_i \geq 0$ for all $i\in [n]$.
+\item $A\in S^n_{++}$ iff $\lambda_i > 0$ for all $i \in [n]$.
+\item Any positive definite matrix is invertible. \textit{Positive semi-definite matrices are invertible iff they are positive definite}. 
+\end{itemize}
+\end{theorem}
+
+\section{Ellipsoids}
+
+\paragraph{Ellipsoid definition: } An ellipsoid is a set \begin{equation}
+\varepsilon = \{x \in \reals^n | (x-x^{(0)})^T P^{-1} (x-x^{(0)}) \leq 1\}
+\end{equation}
+Where $P\in S^n_{++}$, $x^{(0)} \in \reals^n$
+\begin{itemize}
+\item The condition is a quadratic function!
+\item You can apply spectral decomposition to $P^{-1}$.
+\end{itemize}
+
+\paragraph{Plotting Ellipses: } 
+\begin{equation}
+\begin{split}
+1 \geq \bar{x}^T(U\Lambda U^T)^{-1} \bar{x} \\
+1 \geq \tilde{x}^T \lambda^{-1} \tilde{x} \\
+= \sum_{i=1}^{n} (\frac{\tilde{x}_i}{\sqrt{\lambda_i}})^2
+\end{split}
+\end{equation}
+
+Where $\bar{x} = (x-x^{(0)})$, $\tilde{x} = U^T\bar{x}$.
+
+To plot:
+\begin{enumerate}
+\item Generate 'plot' in $\tilde{x}$ space (note the key positions).
+\item Unrotate by multiplying key position vectors by $U$.
+\item Un-shift by adding $x^{(0)}$
+\end{enumerate}
+
+
+\paragraph{Sample Mean and Covariance: } for $m$ data vectors $x^{(i)}$, $i\in[m]$:
+\begin{enumerate}
+\item \textbf{Sample Mean: } $\hat{x} = \frac{1}{m} \sum_{i=1}^{m} x^{(i)}$
+\item \textbf{Sample Covariance: } $S = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \hat{x})(x^{(i)} -\hat{x})^T \in S^n$
+\end{enumerate}
+
+\textbf{Data ellipse: } $\varepsilon_\lambda = \{x\in \reals^n | (x-\hat{x})^T S^{-1} (x-\hat{x}) < \gamma\}$ where $\gamma$ is usually 1. This ellipse can help describe the geometry of the data.
+
+
+\section{Matrix Square Root and Cholesky Decomposition}
+
+\paragraph{Matrix Square Root Definition: } For any $A\in S_+^n$: 
+\begin{equation}
+	A^{\frac{1}{2}} = U\Lambda^{\frac{1}{2}} U
+\end{equation}
+
+Where $\lambda = \text{diag}(\sqrt{lambda_1}, ..., \sqrt{lambda_n})$.
+\begin{itemize}
+\item $A^\frac{1}{2}$ is a unique PSD matrix.
+\item $A$ is a PSD matrix \textbf{iff $A^{\frac{1}{2}}$ is PSD}.
+\end{itemize}
+
+\paragraph{Cholesky Decomposition: } Any PSD $A$ can be factored as 
+\begin{equation}
+	A = B^T B
+\end{equation}
+Where $B = \Lambda^{\frac{1}{2}} U$ and $B^T = U\Lambda^{\frac{1}{2}}$.
+
+
+$B$ also has a QR (orthogonal times upper triangular) decomposition, so: 
+\begin{equation}
+	A = B^T B = (QR)^T(QR) = R^TQ^TQR = R^TR
+\end{equation}
+
+\textbf{To create Choleski Decomposition: } 
+\begin{enumerate}
+\item Select $R$ such that diagonals $R_{ii} > 0$.
+\item If $A$ is PD, then \textbf{there exists unique $R$} which forms the Choleski Decomposition.
+\item There exist non-unique $R$ for $A$ is PSD.
+\end{enumerate}
+
+\paragraph{Solving $Ax = b$ with Choleski Decomposition: } 
+\begin{enumerate}
+\item $A = R^TR$
+\item $R^TRx = b$
+\item Let $y = Rx$
+\item \textbf{Forward Substitution: }
+\begin{enumerate}
+\item $y_1 R_{11} = b_1$ -- Everything but $y_1$ is known, so we solve for $y_1$!
+\item $y_1 R_{21} + y_2 R_{22} = b_2$ -- Everything but $y_2$ is known, so we can solve for $y_2$!
+\item We continue this until we know the entire $y$ vector!
+\end{enumerate}
+\item \textbf{Back Substitution: } 
+\begin{enumerate}
+\item We use a similar procedure to solve from the bottom up for $Rx = y$
+\end{enumerate}
+\end{enumerate}
+
+
+\chapter{Singular Value Decomposition}
+
+\section{Motivation}
+
+\begin{theorem} 
+We can write any linear map $A\in \reals^{m\times n}$ as 
+\begin{equation}
+	A = U\Sigma V^T
+\end{equation}
+Where 
+\begin{itemize}
+\item $U$ is $m\times m$ orthonormal matrix composed of \textbf{left singular vectors}.
+\item $V$ is $n\times n$ orthonormal matrix composed of \textbf{right singular vectors}.
+\item $\Sigma$ is $m\times n$ $\text{diag}(\sigma_1, ..., \sigma_r)$ singular values.
+\end{itemize}
+\end{theorem}
+
+\paragraph{Utility of SVD: } 
+\begin{enumerate}
+\item Understand rank of relevant spaces to $A$.
+\item Spectral norm (direction of maximum gain).
+\item Orthonormal basis for $\mathcal{N}(A), \mathcal{R}(A)$.
+\item Solve systems of linear equations relating to $A$.
+\end{enumerate}
+
+
+\section{Steps to Creating SVD}
+
+\paragraph{Key Starting Ideas: } For $m\times n$ real matrix $A$: 
+\begin{enumerate}
+\item $AA^T, A^TA$ are both PSD matrices. $x^T A^TAx = \norm{Ax}_2^2$.
+\item $\text{rank}(A^TA)
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
