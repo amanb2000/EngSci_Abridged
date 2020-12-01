@@ -98,7 +98,9 @@
 \contentsline {paragraph}{Compact SVD: }{21}{section*.67}% 
 \contentsline {paragraph}{Full SVD: }{21}{section*.68}% 
 \contentsline {section}{\numberline {6.3}Principal Component Analysis}{22}{section.6.3}% 
+\contentsline {paragraph}{Goal: }{22}{section*.69}% 
+\contentsline {paragraph}{Approach: }{22}{section*.70}% 
 \contentsline {section}{\numberline {6.4}SVD Matrix Properties}{22}{section.6.4}% 
-\contentsline {paragraph}{Fundamental Subspaces from SVD: }{22}{section*.69}% 
+\contentsline {paragraph}{Fundamental Subspaces from SVD: }{22}{section*.71}% 
 \contentsline {section}{\numberline {6.5}Moore-Penrose Pseudo-Inverse}{22}{section.6.5}% 
-\contentsline {paragraph}{MP Pseudo-Inverse Definition: }{22}{section*.70}% 
+\contentsline {paragraph}{MP Pseudo-Inverse Definition: }{22}{section*.72}% 

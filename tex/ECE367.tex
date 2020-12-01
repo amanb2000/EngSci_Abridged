@@ -829,6 +829,11 @@ Where $\tilde{\Sigma}$ is the original sigma padded with zeros such that it is a
 
 \section{Principal Component Analysis}
 
+\paragraph{Goal: } Get minimum error when you project data vectors onto some affine set.
+\paragraph{Approach: } We can optimize the variance of projected data points onto a unit vector by aligning it such that it is an \textbf{eignevalue} of the covariance matrix $\frac{1}{m} X^TX$
+
+
+
 \section{SVD Matrix Properties}
 
 \paragraph{Fundamental Subspaces from SVD: } Assuming that $A = U\tilde{\Sigma}V^T$, $U = [U_r, U_{nr}]$, $V = [V_r, V_{nr}]$: 
