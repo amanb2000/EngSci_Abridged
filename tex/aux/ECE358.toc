@@ -1,37 +1,86 @@
-\contentsline {section}{\numberline {0.1}Introduction and Course Information}{1}{section.0.1}%
-\contentsline {paragraph}{Course Information}{1}{section*.2}%
-\contentsline {chapter}{\numberline {1}Math Review}{3}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Logarithms}{3}{section.1.1}%
-\contentsline {paragraph}{Logarithm Rules: }{3}{section*.3}%
-\contentsline {paragraph}{Variations on Logarithm}{3}{equation.1.1.1}%
-\contentsline {section}{\numberline {1.2}Sequences and Series}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Combinatorics}{4}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Asymptotics}{5}{chapter.2}%
-\contentsline {paragraph}{What are Asymptotics? }{5}{section*.5}%
-\contentsline {paragraph}{Useful Facts}{5}{section*.6}%
-\contentsline {paragraph}{``Lower Bound'' Big $\Omega $ Definition: }{6}{section*.7}%
-\contentsline {paragraph}{``Tight Bound'' Big $\Theta $ Definition: }{6}{section*.8}%
-\contentsline {chapter}{\numberline {3}Graphs}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Definitions}{7}{section.3.1}%
-\contentsline {paragraph}{Path: }{7}{section*.9}%
-\contentsline {paragraph}{Bipartite Graphs: }{7}{section*.10}%
-\contentsline {paragraph}{Vertex Degree }{8}{section*.11}%
-\contentsline {paragraph}{Clique: }{8}{section*.12}%
-\contentsline {paragraph}{Representations for Graphs: }{8}{section*.13}%
-\contentsline {chapter}{\numberline {4}Trees}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Definitions}{9}{section.4.1}%
-\contentsline {chapter}{\numberline {5}Proof Methods}{11}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Induction}{11}{section.5.1}%
-\contentsline {paragraph}{Basic Idea: }{11}{section*.14}%
-\contentsline {paragraph}{Basis: }{11}{section*.15}%
-\contentsline {paragraph}{Hypothesis: }{11}{section*.16}%
-\contentsline {paragraph}{Inductive Step: }{11}{section*.17}%
-\contentsline {section}{\numberline {5.2}Contradiction}{11}{section.5.2}%
-\contentsline {paragraph}{Basic Idea: }{11}{section*.18}%
-\contentsline {paragraph}{Illustrative Example: }{11}{section*.19}%
-\contentsline {section}{\numberline {5.3}Master Theorem}{12}{section.5.3}%
-\contentsline {paragraph}{Case 1: }{12}{section*.20}%
-\contentsline {paragraph}{Case 2: }{12}{section*.21}%
-\contentsline {paragraph}{Case 3: }{12}{section*.22}%
-\contentsline {section}{\numberline {5.4}Substitution}{12}{section.5.4}%
-\contentsline {paragraph}{Example -- Mergesort: }{12}{section*.23}%
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{2}%
+\contentsline {paragraph}{Course Information}{2}%
+\contentsline {chapter}{\numberline {1}Math Review}{3}%
+\contentsline {section}{\numberline {1.1}Logarithms}{3}%
+\contentsline {paragraph}{Logarithm Rules: }{3}%
+\contentsline {paragraph}{Variations on Logarithm}{3}%
+\contentsline {section}{\numberline {1.2}Sequences and Series}{4}%
+\contentsline {section}{\numberline {1.3}Combinatorics}{4}%
+\contentsline {chapter}{\numberline {2}Asymptotics}{5}%
+\contentsline {paragraph}{What are Asymptotics? }{5}%
+\contentsline {paragraph}{Useful Facts}{5}%
+\contentsline {paragraph}{``Lower Bound'' Big $\Omega $ Definition: }{6}%
+\contentsline {paragraph}{``Tight Bound'' Big $\Theta $ Definition: }{6}%
+\contentsline {chapter}{\numberline {3}Graphs}{7}%
+\contentsline {section}{\numberline {3.1}Definitions}{7}%
+\contentsline {paragraph}{Path: }{7}%
+\contentsline {paragraph}{Bipartite Graphs: }{7}%
+\contentsline {paragraph}{Vertex Degree }{8}%
+\contentsline {paragraph}{Clique: }{8}%
+\contentsline {paragraph}{Representations for Graphs: }{8}%
+\contentsline {chapter}{\numberline {4}Trees}{9}%
+\contentsline {section}{\numberline {4.1}Definitions}{9}%
+\contentsline {section}{\numberline {4.2}Binary Search Trees}{10}%
+\contentsline {paragraph}{Traversals: }{10}%
+\contentsline {subsection}{\numberline {4.2.1}Querying Binary Search Trees}{10}%
+\contentsline {paragraph}{Tree Search: }{10}%
+\contentsline {paragraph}{Iterative Tree Search: }{10}%
+\contentsline {paragraph}{Minimum Tree Search: }{11}%
+\contentsline {paragraph}{Tree Successor: }{11}%
+\contentsline {paragraph}{Tree Insert: }{11}%
+\contentsline {paragraph}{Tree Deletion: }{11}%
+\contentsline {section}{\numberline {4.3}Red-Black Trees}{11}%
+\contentsline {paragraph}{Properties of Red-Black Tree}{12}%
+\contentsline {paragraph}{Resultant Properties}{12}%
+\contentsline {paragraph}{Easy Red-black Tree Operations: }{12}%
+\contentsline {paragraph}{Rotations: }{12}%
+\contentsline {paragraph}{Red-Black Insert Fixup: }{12}%
+\contentsline {paragraph}{Red-Black Insertion: }{13}%
+\contentsline {paragraph}{Red-Black Transplant: }{13}%
+\contentsline {paragraph}{Red-Black Deletion: }{13}%
+\contentsline {chapter}{\numberline {5}Proof Methods}{14}%
+\contentsline {section}{\numberline {5.1}Induction}{14}%
+\contentsline {paragraph}{Basic Idea: }{14}%
+\contentsline {paragraph}{Basis: }{14}%
+\contentsline {paragraph}{Hypothesis: }{14}%
+\contentsline {paragraph}{Inductive Step: }{14}%
+\contentsline {section}{\numberline {5.2}Contradiction}{14}%
+\contentsline {paragraph}{Basic Idea: }{14}%
+\contentsline {paragraph}{Illustrative Example: }{14}%
+\contentsline {section}{\numberline {5.3}Master Theorem}{15}%
+\contentsline {paragraph}{Case 1: }{15}%
+\contentsline {paragraph}{Case 2: }{15}%
+\contentsline {paragraph}{Case 3: }{15}%
+\contentsline {section}{\numberline {5.4}Substitution}{15}%
+\contentsline {paragraph}{Example -- Mergesort: }{15}%
+\contentsline {chapter}{\numberline {6}Sorting Algorithms}{17}%
+\contentsline {section}{\numberline {6.1}Mergesort}{17}%
+\contentsline {section}{\numberline {6.2}Heapsort}{17}%
+\contentsline {subsection}{\numberline {6.2.1}Heaps}{17}%
+\contentsline {subsection}{\numberline {6.2.2}Heap Algorithms}{18}%
+\contentsline {paragraph}{Algorithm Complexity: }{18}%
+\contentsline {paragraph}{Build Heap }{18}%
+\contentsline {paragraph}{Algorithm Complexity: }{18}%
+\contentsline {paragraph}{Heap Sort }{18}%
+\contentsline {paragraph}{Algorithm Complexity: }{19}%
+\contentsline {section}{\numberline {6.3}Quicksort}{19}%
+\contentsline {paragraph}{Key Facts: }{19}%
+\contentsline {paragraph}{Algorithm Description: }{19}%
+\contentsline {paragraph}{Algorithm Complexity: }{20}%
+\contentsline {section}{\numberline {6.4}Linear Time Sort}{20}%
+\contentsline {subsection}{\numberline {6.4.1}Counting Sort}{20}%
+\contentsline {paragraph}{Key Idea: }{20}%
+\contentsline {paragraph}{Time Complexity: }{21}%
+\contentsline {paragraph}{Stability: }{21}%
+\contentsline {subsection}{\numberline {6.4.2}Radix Sort}{21}%
+\contentsline {paragraph}{Algorithm Idea: }{21}%
+\contentsline {paragraph}{Algorithm Complexity: }{21}%
+\contentsline {section}{\numberline {6.5}Order Statistics}{22}%
+\contentsline {subsection}{\numberline {6.5.1}Minimum and Maximum Algorithms}{22}%
+\contentsline {paragraph}{Finding minimum and maximum efficiently: }{22}%
+\contentsline {subsection}{\numberline {6.5.2}Selection in Average Linear Time}{22}%
+\contentsline {paragraph}{Outcome: }{22}%
+\contentsline {subsection}{\numberline {6.5.3}Selection in Worst Case Linear Time}{23}%
+\contentsline {paragraph}{Outcome: }{23}%
+\contentsline {paragraph}{Algorithm: }{23}%
+\contentsline {chapter}{\numberline {7}Hash Tables}{24}%

@@ -4,10 +4,13 @@
 \usepackage{subfig}
 \usepackage{listings}
 \usepackage{media9}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{amssymb}
 \usepackage{mathtools} 
 \usepackage{bbm}
+% \usepackage{algorithm2e}
+% \usepackage[ruled,vlined]{algorithm2e}
+\usepackage[vlined,ruled,commentsnumbered]{algorithm2e}
 
 % Some nice shortcuts.
 \newtheorem{theorem}{Theorem}
@@ -286,6 +289,138 @@ A \textbf{tree} is a \textbf{connected, acyclic, undirected} graph.
 
 
 
+\section{Binary Search Trees}
+
+\begin{theorem}{Binary Search Tree Definition}
+For any node $x$ of a binary search tree: 
+\begin{itemize}
+\item If $y\in $ left sub-tree: $y.key \leq x.key$.
+\item If $y\in $ right sub-tree: $y.key \geq x.key$.
+\end{itemize}
+\end{theorem}
+
+
+\paragraph{Traversals: } 
+\begin{enumerate}
+\item \textbf{In-Order: } LNR -- Actually prints them from least to greatest.
+\item \textbf{Pre-Order: } NLR
+\item \textbf{Post-Order: } LRN
+\end{enumerate}
+
+
+\subsection{Querying Binary Search Trees}
+
+We can perform minimum, maximum, successor, predecessor in $O(h)$ time where $h$ is the height of the tree.
+
+\paragraph{Tree Search: } Given a node $x$ and value we are looking for $k$:
+\begin{enumerate}
+\item If $x$.key is $k$ or $x$ is NIL: return $x$. \textit{We either found it or it wasn't there}.
+\item If $x$.key $< k$: Run \textbf{Tree Search} on the left sub-tree.
+\item Otherwise, run \textbf{Tree Search} on the right sub-tree.
+\end{enumerate}
+
+\paragraph{Iterative Tree Search: } Same input/output as above: \textbf{Repeat while $x$.key is not $k$ and NIL} 
+\begin{enumerate}
+\item If $x$.key $<k$: $x = x$.left.
+\item Else, $x = x$.right.
+\item After break condition above, return $x$.
+\end{enumerate}
+
+
+\paragraph{Minimum Tree Search: } To find the minimum, keep setting $x = x$.left while $x$.left isn't NIL.
+
+
+\paragraph{Tree Successor: } To find the successor of node $x$: 
+\begin{enumerate}
+\item If $x$ has a right child: Call \textbf{Tree Minimum} on $x$.right.
+\item Else: 
+\begin{enumerate}
+\item $y = x$.parent
+\item While $y \neq$ NIL and $x == y$.right:
+\begin{enumerate}
+\item $x = y$
+\item $y = y.parent$
+\end{enumerate}
+\item return $y$
+\end{enumerate}
+\end{enumerate}
+
+
+\paragraph{Tree Insert: } To insert $z$ into BST $x$, repeatedly compare $z$ to nodes of $x$, moving right/left according to result of comparison. Eventually, you will add $z$ as a leaf node. 
+
+\paragraph{Tree Deletion: } To delete node from $z$ from BST: 
+\begin{enumerate}
+\item $z$ has \textbf{no children} $\to$ modify $z$.parent.child = NIL.
+\item $z$ has \textbf{one child} $\to$ modify z.parent.child $\leftarrow$ $z$.child.
+\item $z$ has \textbf{two children}:
+\begin{enumerate}
+\item Let $y$ = Tree Successor($z$) [must be from right sub-tree of $z$]
+\item Convenient case: $y = z$.right. In this case, just replace $z$ with $y$.
+\item Replace $z \leftarrow y$, ensuring $y$ keeps its right sub-tree.
+\item $z$.right $\to$ $y$.right.
+\item $z$.left $\to$ $y$.left.
+\end{enumerate}
+\end{enumerate}
+
+
+\section{Red-Black Trees}
+
+\begin{theorem}{Red Black Tree Definition}
+A red-black tree is a \textbf{binary search tree} where each node has a ``color'' of either \textbf{red or black}.Each BST operation has additional rules that relate to color, with the end results being:
+\begin{itemize}
+\item No path from the \textbf{root} to a \textbf{leaf} is more than \textbf{two times the shortest path}.
+\item The tree is approximately balanced and therefore is efficient.
+\end{itemize}
+
+\paragraph{Properties of Red-Black Tree} 
+\begin{enumerate}
+\item All nodes are either \textbf{red or black}.
+\item The root node is black.
+\item All leaves are black.
+\item Red nodes have black children.
+\item All simple paths from a node to descendant leaves have \textbf{the same numberof black nodes}.
+\end{enumerate}
+
+\paragraph{Resultant Properties} 
+\begin{enumerate}
+\item bh$(x)$ is the \textbf{``black height''} of node $x$ (numberof black nodes from (but not including) $x$ to a leaf.
+\item Red-black tree with $n$ internal nodes has height $\leq 2\log(n+1)$.
+\item All leaves are set to $T$.nil values instead of regular NIL.
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Easy Red-black Tree Operations: } These are exactly the same as BST operations. They all run in $O(\log n)$ time, too.
+\begin{enumerate}
+\item Search.
+\item Minimum.
+\item Maximum.
+\item Successor.
+\item Predecessor. 
+\end{enumerate}
+
+
+\paragraph{Rotations: } Rotations swap two nodes while maintaining the BST properties. You can visualize or ``feel'' it as taking the edge connecting two nodes and physically \textbf{twisting} it either right or left for their respective rotation.
+
+\paragraph{Red-Black Insert Fixup: } This algorithm reinstates the red-black properties of the tree around a given recently-inserted node $z$. 
+
+\paragraph{Red-Black Insertion: } To insert node $z$...
+\begin{enumerate}
+\item Perform conventional BST insertion of $z$, setting the new node's children to $T$.nil instead of NIL.
+\item Set $z$'s color to RED.
+\item Call \textbf{Red-Black Insert Fixup}$(T, z)$.
+\end{enumerate}
+
+\paragraph{Red-Black Transplant: } Same function as before, just replace 'NIL' with $T$.nil.
+
+\paragraph{Red-Black Deletion: } Deletion is substantially more involved and uses a particular \textbf{Red-Black Delete Fixup} function. 
+
+
+
+
+
+
+
+
 
 
 \chapter{Proof Methods}
@@ -358,6 +493,312 @@ T(n) = aT(\frac{n}{b}) + f(n)
 $$T(n/2) \leq c \floor{n/2}\log \floor{n/2}$$
 \item \textbf{Inductive step:} We prove that $$T(n) \leq cn\log n$$ Which is pretty obvious from there. 
 \end{enumerate}
+
+
+
+\chapter{Sorting Algorithms}
+
+\section{Mergesort}
+df
+% TODO: Add pseudocode for heapsort.
+
+\section{Heapsort}
+df
+\subsection{Heaps}
+
+\begin{theorem}{Heap Definition}
+A heap is an \textbf{array} representing a \textbf{binary tree} with the following properties:
+\begin{itemize}
+\item For \textbf{max heap}: $A[\text{parent}(i)] \geq A[i]$.
+\item For \textbf{min heap}: $A[\text{parent}(i)] \leq A[i]$.
+\item \textbf{Height} of tree is $\Theta(\log n)$ \textit{(i.e. number of edges to get from root to leaf node)}. 
+\end{itemize}
+
+Parent-child relationships are as follows:
+\begin{itemize}
+\item $\text{Parent}(i) = \floor{i/2}$ (Parent node of $i$).
+\item $\text{Left}(i) = 2i$ (Left child).
+\item $\text{Right}(i) = 2i+1$ (Right child).
+\end{itemize}
+\end{theorem}
+
+\subsection{Heap Algorithms}
+
+\textbf{Max-Heapify} is an algorithm that sorts array $A$ into a heap at index $i$, assuming that right and left sub-trees satisfy the heap property at $i$. 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Array $A$, index $i$. Left and right sub-trees of $i$ should already satisfy heap property.}
+\Output{$A$ is sorted in place to satisfy heap property.}
+    \BlankLine
+    \BlankLine
+    %\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+    $l$ = left($i$)\;
+    $r$ = right($i$)\;
+
+    Let largest = $\max(l,r,i)$.
+    
+    \eIf{$i \neq$ largest}{
+        Exchange $i$, largest\;
+        MaxHeapify($A$, largest)\;
+    }{}
+    \caption{Max Heapify}
+\end{algorithm}
+
+\paragraph{Algorithm Complexity: } $O(1)$ Space complexity (sorts in place), $O(\log n)$ time complexity.
+
+
+\paragraph{Build Heap } is an algorithm that sorts a completely unsorted array $A$ into a heap. 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Unsorted list $A$}
+\Output{Heap $A$}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\For{$i = \floor{|A|/2}:1$}{
+		MaxHeapify($A,i$)\;	
+	}
+	
+	\caption{Build Heap}
+\end{algorithm}
+
+\paragraph{Algorithm Complexity: } $O(1)$ Space Complexity, $O(n)$ time complexity.
+
+
+
+\paragraph{Heap Sort } is a sorting algorithm that runs in $O(n\log n)$ time. 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Unsorted array $A$}
+\Output{Sorted array $A$}
+	\BlankLine
+	\BlankLine
+	\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	%\nlset{\color{blue}$O(n)$} BuildMaxHeap(A)
+	\For{$i = |A|:2$}{
+		exchange $A[i]$, $A[1]$\;
+		$A$.heapsize -= 1\;
+ 		MaxHeapify($A,1$)\;
+	}
+	\caption{Heap Sort Algorithm}
+\end{algorithm}
+
+\paragraph{Algorithm Complexity: } $O(1)$ Space Complexity, $O(n)$ time complexity.
+
+
+
+\section{Quicksort}
+
+\paragraph{Key Facts: } Quick sort sorts in $\Theta(n^2)$ in the worst case and $\Theta(n\lg n)$ in the average case. The factors on the average case are small, so it ends up being very practical.
+
+\paragraph{Algorithm Description: } Given algorithm $A$, we: 
+\begin{enumerate}
+\item Divide $A$ into two \textbf{partitions}. We usually select the last element as the partition. 
+\item We call the partition function to put all values less than or equal to the pivot before the pivot and all values greater than the pivot after the pivot in $\Theta(n)$ time. 
+\item Then we call the partition function on the two remaining partitions recursively.
+\item We end with a sorted list.
+\end{enumerate}
+
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Array $A$, partition start index $r$, partition end index $r$.} 
+\Output{$A$ partitioned about $A[r]$, index of partition returned.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$x = A[r]$
+	$i = p-1$
+	\For{$j = p:r-1$}{
+		\If{$A[j] \leq x$}{
+			i = i+1
+			exchange $A[i], A[j]$
+		}
+	}
+	exchange $A[i+1], A[r]$
+	return i+1
+	\caption{Partition Subroutine for Quicksort ($\Theta(n)$)}
+\end{algorithm}
+
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Unsorted $A$, partition start index $p$, end index $r$}
+\Output{Sorted $A$}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\If{$p < r$}{
+		q = Partition($A, p, r$)\;
+		Quicksort($A, p, q-1$)\;
+		Quicksort($A, q+1, r$)\;
+	}	
+	\caption{Quicksort Algorithm.}
+\end{algorithm}
+
+\paragraph{Algorithm Complexity: } $\Theta(n^2)$ worst case, $O(n\log n)$ average case with small coefficients. 
+
+
+\section{Linear Time Sort}
+
+\subsection{Counting Sort}
+
+\paragraph{Key Idea: } If we know that the input are integers and can be used as the address in an array, we can go through one-by-one and count the number of each possible element. This requires a lot of space, though, if the range of integers is high. 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Input array $A$, output array $B$, upper bound on integers $k$}
+\Output{}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$C$ = array of zeros of size $k+1$\;
+
+	\For{$j = 1:|A|$}{
+		$C[A[j]]$++\;
+	}
+
+	\For{$i = 1:k$}{
+		$C[i]$ += $C[i] + C[i-1]$\;
+	}
+
+	\For{$j = |A|:1$}{
+		$B[C[A_j]] = A[j]$\;
+		$C[A_j]$--\;
+	}
+	\caption{Counting Sort Algorithm.}
+\end{algorithm}
+\paragraph{Time Complexity: } $\Theta(k+n)$.
+
+\paragraph{Stability: } The order of the entries with the same values is maintained from input to output. Relevant for \textbf{radix sort}, and for when ``satellite'' data is carried with ``keys'' used in sort.
+
+
+
+\subsection{Radix Sort}
+
+\paragraph{Algorithm Idea: } Start by sorting based on least significant digit then the most. This, again, only works for integer sorting or similar. We make use of a \textbf{stable sort} (usually \textbf{counting sort}). 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Integer array $A$, number of digits in each number $d$}
+\Output{Sorted array $A$}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\For{$i = 1:d$}{
+		StableSort $A$ based on digit $i$\;
+	}
+
+	\caption{Radix Sorting Algorithm.}
+\end{algorithm}
+
+\paragraph{Algorithm Complexity: } $O(d(n+k))$ time complexity, assuming that StableSort is $O(n+k)$.
+
+
+For $b$-bit numbers and any $r\in [0,b]$: 
+$$\text{Radix Sort} = \Theta((\frac{b}{r} (n+2^r)))$$
+
+
+\section{Order Statistics}
+
+\begin{theorem}{Order Statistic Definition}
+The \textbf{Order Statistic} of set $A$ is the $i$th smallest element of the set. So,
+\begin{itemize}
+\item $\max A$ is the $n$th order statistic of $A$.
+\item $\min A$ is the $1$st order statistic of $A$.
+\item Median $A$ is the $\floor{\frac{n+1}{2}}$ order statistic. 
+\end{itemize}
+\end{theorem}
+
+
+\subsection{Minimum and Maximum Algorithms}
+
+Minimum and maximum algorithms just iterate through to find min or max. 
+
+\paragraph{Finding minimum and maximum efficiently: } Iterate through, but compare \textbf{next two elements} at a time. Compare the larger element to the current maximum and the smaller of the two to the current minimum.
+\begin{itemize}
+\item \textbf{Even length array: } $3n/2-2$ comparisons.
+\item \textbf{Odd length array: } $3\floor{n/2}$ comparisons.
+\end{itemize}
+
+\subsection{Selection in Average Linear Time}
+
+\paragraph{Outcome: } It is possible to find the $i$th smallest element in average case $O(n)$ time (worst case $\Theta(n^2)$).
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Array $A$, partition bounds $p,r$, desired order statistic $i$}
+\Output{The $i$th order statistic of $A$}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\If{$p = r$}{
+		return $A[p]$\;
+	}
+
+	$q$ = RandomizedPartition($A,p,r$)\;
+	$k = q-p+1$\;
+	
+	\eIf{$i=k$}{
+		return $A[q]$\;
+	}{$i < k$}{
+		return RandomizedSelect($A,p,q-1,i$)\;
+	}{
+		return RandomizedSelect($A,q+1,r,i-k$)\;
+	}
+	\caption{Randomized Select Algorithm}
+\end{algorithm}
+
+\subsection{Selection in Worst Case Linear Time}
+
+\paragraph{Outcome: } This algorithm can select the $i$th order statistic in $O(n)$ time.
+
+\paragraph{Algorithm: } 
+\begin{enumerate}
+\item Partition $A$ into $\floor{n/5}$ groups of 5 and one ``extras'' group.
+\item Find median of each group of find using \textbf{insertion sort}.
+\item Let $x = $ \textbf{Select}(medians, $\floor{number of groups/2}$).
+\item Let $k = $ \textbf{Partition}($A, 0, |A|, \text{pivot}=x$). $k$ is now the number of elements larger than $x$.
+\item If $i=k$ then return $x$. Else, if $i < k$ then return \textbf{Select}($A[0:k],i$). Otherwise, return \textbf{Select}(A[k:],i-k).
+\end{enumerate}
+
+
+By substitution, we can show that the algorithm runs in $O(n)$.
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Hash Tables}
+
+
+
+
+
+
+
+
+
+
 
 
 
