@@ -11,6 +11,8 @@
 
 % Some nice shortcuts.
 \newtheorem{theorem}{Theorem}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -36,10 +38,381 @@ This document offers an overview of the ECE358 course. They comprise my condense
 \item Term: 2020 Fall
 \end{itemize}
 
+\chapter{Math Review}
 
+\section{Logarithms}
+
+\paragraph{Logarithm Rules: } 
+\begin{itemize}
+\item \textbf{Definition: } $a = b^c$ iff $log_b a = c$.
+\item $a = b^{\log_b a}$.
+\item $\log_c(ab) = \log_c a + log_c b$.
+\item $\log_c(a^n) = n\log_c(a)$.
+\item $\log_b(a) = \log_a(b)$.
+\item $\log(1/a) = -\log a$.
+\item $\log(a/c) = \log a - \log c$.
+\item $a^{\log n} = n^{\log a}$.
+\end{itemize}
+
+\paragraph{Variations on Logarithm} 
+
+\begin{equation}
+\log^{(i)} n = \begin{cases}
+n & \text{iff } i = 0 \\
+\log(\log^{(i)} n) & \text{otherwise}
+\end{cases}
+\end{equation}
+
+\begin{equation}
+\log^* n = \begin{cases}
+0 & \text{if } n \leq 1 \\
+1 + log^*(\log n) & \text{otherwise}
+\end{cases}
+\end{equation}
+
+
+\section{Sequences and Series}
+
+\begin{theorem}{Fibonnaci Definition}
+\begin{equation}
+F_i = F_{i-1} + F_{i-2}
+\end{equation}
+
+Where $F_0 = 0$, $F_1 = 1$.
+
+\begin{equation}
+F_i = \frac{\phi^i - \hat \phi^i}{\sqrt{5}}
+\end{equation}
+
+Where $\phi = \frac{1+\sqrt{5}}{2}$, $\hat \phi = \frac{1-\sqrt 5}{2}$
+\end{theorem}
+
+
+\begin{theorem}{Arithmetic Series}
+\begin{equation}
+\sum_{i=1}^{n} = \frac{n(n+1)}{2} = \Theta(n^2)
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{Geometric Series}
+\begin{equation}
+\sum_{k=0}^{n} x^k = \frac{x^{n+1}-1}{x-1} 
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{Infinite Series}
+\begin{equation}
+\sum_{k=0}^{\infty} x^k = \frac{1}{1-x} \text{ iff } |x| < 1
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{Telescoping Series}
+\begin{equation}
+\sum_{i=1}^{n} a_i - a_{i-1} = a_n - a_0 \\
+\sum_{i = 1}^{n} a_i - a_{i+1} = a_0 - a_n
+\end{equation}
+\end{theorem}
+
+
+\section{Combinatorics}
+
+\begin{theorem}{Binomial Coefficient}
+\begin{equation}
+(x+y)^r = \sum_{i = 0}^{r} {r\choose i} x^i y^{r-i}
+\end{equation}
+
+Where $r\choose i$ is the binomial coefficient which equals $$\frac{r!}{i!(r-i)!}$$
+
+\end{theorem}
+
+
+% TODO: Get the rest of the information from ECE286 notes. 
 
 
 \chapter{Asymptotics}
+
+\paragraph{What are Asymptotics? } Analysis method for performance and complexity of an algorithm (space/memory, time/clock cycle complexity).
+
+\begin{itemize}
+\item Tight Bound: $\Theta()$.
+\item Worst Case: $O()$.
+\item Best Case: $\Omega()$
+\item Average \& Expected Case: \textit{Randomized + probabilistic analysis. Not a focus for the course.} 
+\item Amortized Case: Discused later on. ``Average worst case''.
+\end{itemize}
+
+
+\paragraph{Useful Facts} 
+\begin{itemize}
+\item $\Theta$ bound is not always possible to find. 
+\item \textbf{Transitivity: } if $f(n) = \Theta(g(n))$ and $g(n) = \Theta(h(n))$, then $f(n) = \Theta(h(n))$.
+\item \textbf{Symmetry: } $f(n) = \Theta(g(n))$ if and only if $g(n) = \Theta(f(n))$.
+\item \textbf{Transpose: } $f(n) = O(g(n))$ if and only if $g(n) \Omega(f(n))$.
+\item $n^a \in O(n^b)$ iff $a \leq b$.
+\item $\log_a(n) \in O(\log_b(n)) \, \forall a, b$.
+\item $c^n \in O(d^n)$ iff $c\leq d$.
+\item If $f(n) \in O(f'(n))$ and $g(n) \in O(g'(n))$ then $$f(n)\cdot g(n) \in O(f'(n)\cdot g'(n))$$
+$$f(n) + g(n) \in O(\max(f'(n), g'(n))$$
+\end{itemize}
+
+
+
+
+\begin{theorem}{Big O Definition}
+$f(n) = O(g(n))$ if and only if: 
+There exists $c > 0$ and $n_0 > 0$ such that
+\begin{equation}
+0 \leq f(n) \leq cg(n)\,\forall n \geq n_0 
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{Big $\Omega$ Definition}
+\paragraph{``Lower Bound'' Big $\Omega$ Definition: } $f(n) = \Omega(h(n))$ if and only if:
+There exists $c_1, n_1 > 0$ such that 
+\begin{equation}
+0 \leq c_1 h(n) \leq f(n)\, \forall n \geq n_1
+\end{equation}
+\end{theorem}
+
+
+
+\begin{theorem}{Big $\Theta$ Definition}
+\paragraph{``Tight Bound'' Big $\Theta$ Definition: } $f(n) = \Theta(g(n))$ if and only if:
+
+There exists $c_1, c_2, n_0 > 0$ such that 
+
+\begin{equation}
+0 \leq c_1 g(n) \leq f(n) \leq c_2 g(n) \, \forall n > n_0
+\end{equation}
+\end{theorem}
+
+
+\chapter{Graphs}
+
+\section{Definitions}
+
+\begin{theorem}{Graph Definition}
+A \textbf{graph} is a collection of \textbf{vertices} and \textbf{edges} represented by 
+\begin{equation}
+G = (V,E)
+\end{equation}
+Graphs can be:
+\begin{itemize}
+\item Directed or Undirected.
+\item Weighted or Unweighted.
+\end{itemize}
+
+\end{theorem}
+
+
+\paragraph{Path: } A sequence of \textbf{edges} between adjacent vertices. 
+\begin{itemize}
+\item \textbf{Simple Path: } No vertex is repeated in the path.
+\item \textbf{Cycle: } A path that starts and ends with the same vertex.
+\item A \textbf{connected} graph has a path between any two vertices (else it is \textbf{disconnected})
+\end{itemize}
+
+
+\paragraph{Bipartite Graphs: } A graph is \textbf{bipartite} if and only if vertices $V$ can be divided into $V_1, V_2$ such that:
+\begin{enumerate}
+\item $V_1 \cap V_2 = \emptyset$.
+\item $V_1 \cup V_2 = V$.
+\item Adjacencies exist only between elements and $V_1$ and $V_2$ (i.e., vertices within each set are disconnected from eachother, but are connected to elements from the other set).
+\end{enumerate}
+
+
+
+\paragraph{Vertex Degree } is the number of \textbf{edges} adjacent to a vertex (includes incoming and outgoing edges).
+\begin{itemize}
+\item \textbf{In-degree} is the number of incoming edges.
+\item \textbf{Out-degree} is the number of outgoing edges. 
+\end{itemize}
+
+\paragraph{Clique: } For all $v_1, v_2\in V$, there exists an edge connecting them (i.e. a fully-connected set of vertices). 
+
+
+\paragraph{Representations for Graphs: } We either use an \textbf{adjacency matrix} or an \textbf{adjacency matrix}.
+
+\begin{itemize}
+\item \textbf{Adjacency List: } Each element in the list represents a vertex and ``has'' a collection of \textbf{pointers} connecting them to other elements of the list. 
+\begin{itemize}
+\item \textbf{Time Complexity: } $O(n)$ -- Determining if $E_{v_1,v_2}$ exists would, at worst, require you to check $n$ pointers arising from vertex $v_1$ and/or $v_2$. 
+\item \textbf{Space Complexity: } $O(|E|)$ -- with worst case that $|E| = n^2$ for clique. 
+\end{itemize}
+
+\item \textbf{Adjacency Matrix: } Matrix contains weights connecting $v_i$ to $v_j$ at index $M_{i,j}$.
+\begin{itemize}
+\item \textbf{Time Complexity: } $O(1)$ -- Just check address $M_{i,j}$ and $M_{j,i}$.
+\item \textbf{Space Complexity: } $O(n^2$ every time. 
+\end{itemize}
+\end{itemize}
+
+
+
+
+\chapter{Trees}
+
+\section{Definitions}
+
+\begin{theorem}{Tree Definition}
+A \textbf{tree} is a \textbf{connected, acyclic, undirected} graph.
+\begin{itemize}
+\item \textbf{Root node} is usually defined.
+\item \textbf{Parent node} is the `next node up' going toward the root.
+\item \textbf{Child node} is one of the `next node(s) down' going away from the root.
+\item \textbf{Binary tree: } $\leq 2$ children per node.
+\item \textbf{Depth of node: } Length of path from \textbf{root $\to$ node}.
+\item \textbf{Height of node: } Number of edges on the \textbf{longest path} from the node $\to$ leaf. 
+\item \textbf{Complete $k$-ary tree: } Every \textit{internal node} has $k$ children and all leaves are at the same depth.
+\end{itemize}
+\end{theorem}
+
+
+\begin{theorem}{One-for-all Tree Theorem}
+\textbf{If one of these is true, they all are: } 
+\begin{itemize}
+\item $G$ is a tree.
+\item Every pair of vertices $v_1, v_2\in G$ is connected by a \textbf{unique, simple path}.
+\item $G$ is disconnected, but becomes disconnected when one edge is removed.
+\item $G$ is connected with $|E| = |V|-1$.
+\item $G$ is acyclic.
+\item If an edge is added $G$ \textbf{becomes cyclic}.
+\end{itemize}
+\end{theorem}
+
+
+
+
+
+\chapter{Proof Methods}
+
+\section{Induction}
+
+\paragraph{Basic Idea: } To prove by induction, we show that the statement holds for some base case $n = 1$, then show that the statement holding for aritrary $n$ implies that the statement holds for $n+1$. That concludes the proof. 
+
+\paragraph{Basis: } We prove that the statement holds for some set values of $n$ (usually $n = 1$ or $n = 0,1,...,4$).
+
+\paragraph{Hypothesis: } We hypothesize that the thing we are trying to prove is true. 
+
+\paragraph{Inductive Step: } We ``plug in'' the $n+1$ case to the hypothesis and show that it boils down to the $n$ case and some algebraic equivalence. Then you can make the claim that it holds for all $n$.
+
+
+% TODO: Add an illustrative example. 
+
+
+\section{Contradiction}
+
+\paragraph{Basic Idea: } Given a true or false proposition $P$, we assume that $\neg P$ (``not $P$'') holds. After some clever algebra and symbol-shunting, we get a contradiction. This implies that $P$ must hold instead. 
+
+\paragraph{Illustrative Example: } $P$: If $x^2 - 5x + 4 < 0$, then $x > 0$.
+\begin{itemize}
+\item To prove $P$, we \textbf{assume towards a contradiction} (ATaC) that $\neg P$ holds. That is, we assume that if $x^2 - 5x + 4 < 0$ then $x \leq 0$. 
+\item But then: 
+\begin{equation}
+\begin{split}
+x^2 &< 5x-4 \\
+x^2 &< 0 \\ 
+\end{split}
+\end{equation}
+Results in a contradiction! Therefore $P$ must hold. 
+\end{itemize}
+
+
+
+\section{Master Theorem}
+
+This provides a ``hammer'' to prove the time complexity of recurrent functions.
+\begin{theorem}{The Master Theorem}
+Let $a \geq 1$ and $b \geq 1$ and $f(n)$ be some function.
+\begin{equation}
+T(n) = aT(\frac{n}{b}) + f(n)
+\end{equation}
+
+\paragraph{Case 1: } $f(n) = O(n^{\log_b a - \epsilon})$ for some $\epsilon > 0$. Then $$T(n) = \Theta(n^{\log_b a})$$
+
+\paragraph{Case 2: } $f(n) = \Theta(n^{\log_b a})$. Then $$T(n) = \Theta(n^{\log_b a} \log n)$$
+
+\paragraph{Case 3: } $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some $\epsilon > 0$ \textbf{AND} $af(n/b) \leq c f(n)$ for $0 < c < 1$. Then $$T(n) = \Theta(f(n))$$.
+\end{theorem}
+
+
+% TODO: Add notes on merge sort.
+
+
+
+
+
+
+\section{Substitution}
+
+\textbf{Substitution} is a method for determining the \textbf{closed from} runtime of an algorithm via induction.
+
+\paragraph{Example -- Mergesort: } The runtime for mergesort is recursively defined as $T(n) = 2T(\ceil{n/2}) + n$.
+\begin{enumerate}
+\item We start by \textbf{guessing} $T(n) = O(n\log n)$. 
+\item We \textbf{hypothesize} that $T(n) = O(n\log n)$ for all cases $\leq n$, meaning that
+$$T(n/2) \leq c \floor{n/2}\log \floor{n/2}$$
+\item \textbf{Inductive step:} We prove that $$T(n) \leq cn\log n$$ Which is pretty obvious from there. 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
