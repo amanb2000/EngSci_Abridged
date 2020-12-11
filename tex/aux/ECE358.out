@@ -8,12 +8,47 @@
 \BOOKMARK [1][-]{section.3.1}{Definitions}{chapter.3}% 8
 \BOOKMARK [0][-]{chapter.4}{Trees}{}% 9
 \BOOKMARK [1][-]{section.4.1}{Definitions}{chapter.4}% 10
-\BOOKMARK [0][-]{chapter.5}{Proof Methods}{}% 11
-\BOOKMARK [1][-]{section.5.1}{Induction}{chapter.5}% 12
-\BOOKMARK [1][-]{section.5.2}{Contradiction}{chapter.5}% 13
-\BOOKMARK [1][-]{section.5.3}{Master Theorem}{chapter.5}% 14
-\BOOKMARK [1][-]{section.5.4}{Substitution}{chapter.5}% 15
-\BOOKMARK [0][-]{chapter.6}{Sorting Algorithms}{}% 16
-\BOOKMARK [1][-]{section.6.1}{Mergesort}{chapter.6}% 17
-\BOOKMARK [1][-]{section.6.2}{Heapsort}{chapter.6}% 18
-\BOOKMARK [2][-]{subsection.6.2.1}{Heaps}{section.6.2}% 19
+\BOOKMARK [1][-]{section.4.2}{Binary Search Trees}{chapter.4}% 11
+\BOOKMARK [2][-]{subsection.4.2.1}{Querying Binary Search Trees}{section.4.2}% 12
+\BOOKMARK [1][-]{section.4.3}{Red-Black Trees}{chapter.4}% 13
+\BOOKMARK [0][-]{chapter.5}{Proof Methods}{}% 14
+\BOOKMARK [1][-]{section.5.1}{Induction}{chapter.5}% 15
+\BOOKMARK [1][-]{section.5.2}{Contradiction}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.3}{Master Theorem}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.4}{Substitution}{chapter.5}% 18
+\BOOKMARK [0][-]{chapter.6}{Sorting Algorithms}{}% 19
+\BOOKMARK [1][-]{section.6.1}{Mergesort}{chapter.6}% 20
+\BOOKMARK [1][-]{section.6.2}{Heapsort}{chapter.6}% 21
+\BOOKMARK [2][-]{subsection.6.2.1}{Heaps}{section.6.2}% 22
+\BOOKMARK [2][-]{subsection.6.2.2}{Heap Algorithms}{section.6.2}% 23
+\BOOKMARK [1][-]{section.6.3}{Quicksort}{chapter.6}% 24
+\BOOKMARK [1][-]{section.6.4}{Linear Time Sort}{chapter.6}% 25
+\BOOKMARK [2][-]{subsection.6.4.1}{Counting Sort}{section.6.4}% 26
+\BOOKMARK [2][-]{subsection.6.4.2}{Radix Sort}{section.6.4}% 27
+\BOOKMARK [1][-]{section.6.5}{Order Statistics}{chapter.6}% 28
+\BOOKMARK [2][-]{subsection.6.5.1}{Minimum and Maximum Algorithms}{section.6.5}% 29
+\BOOKMARK [2][-]{subsection.6.5.2}{Selection in Average Linear Time}{section.6.5}% 30
+\BOOKMARK [2][-]{subsection.6.5.3}{Selection in Worst Case Linear Time}{section.6.5}% 31
+\BOOKMARK [0][-]{chapter.7}{Hash Tables}{}% 32
+\BOOKMARK [1][-]{section.7.1}{Direct Addressing}{chapter.7}% 33
+\BOOKMARK [1][-]{section.7.2}{Hash tables}{chapter.7}% 34
+\BOOKMARK [1][-]{section.7.3}{Hash Functions}{chapter.7}% 35
+\BOOKMARK [2][-]{subsection.7.3.1}{Divisision Method}{section.7.3}% 36
+\BOOKMARK [2][-]{subsection.7.3.2}{Multiplication Method}{section.7.3}% 37
+\BOOKMARK [2][-]{subsection.7.3.3}{Open Addressing}{section.7.3}% 38
+\BOOKMARK [0][-]{chapter.8}{Dynamic Programming}{}% 39
+\BOOKMARK [1][-]{section.8.1}{Elements of Dynamic Programming}{chapter.8}% 40
+\BOOKMARK [1][-]{section.8.2}{Examples}{chapter.8}% 41
+\BOOKMARK [2][-]{subsection.8.2.1}{Rod Cutting}{section.8.2}% 42
+\BOOKMARK [2][-]{subsection.8.2.2}{Matrix Chain Multiplication}{section.8.2}% 43
+\BOOKMARK [2][-]{subsection.8.2.3}{Longest Common Subsequence}{section.8.2}% 44
+\BOOKMARK [2][-]{subsection.8.2.4}{Knapsack Problem}{section.8.2}% 45
+\BOOKMARK [2][-]{subsection.8.2.5}{Huffman Codes}{section.8.2}% 46
+\BOOKMARK [0][-]{chapter.9}{Greedy Algorithms}{}% 47
+\BOOKMARK [1][-]{section.9.1}{Introduction}{chapter.9}% 48
+\BOOKMARK [1][-]{section.9.2}{Examples}{chapter.9}% 49
+\BOOKMARK [2][-]{subsection.9.2.1}{Class Scheduling}{section.9.2}% 50
+\BOOKMARK [0][-]{chapter.10}{Amortized Analysis}{}% 51
+\BOOKMARK [1][-]{section.10.1}{Aggregate Method}{chapter.10}% 52
+\BOOKMARK [1][-]{section.10.2}{Accounting Method}{chapter.10}% 53
+\BOOKMARK [1][-]{section.10.3}{Splay Trees}{chapter.10}% 54

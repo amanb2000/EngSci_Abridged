@@ -4,7 +4,7 @@
 \usepackage{subfig}
 \usepackage{listings}
 \usepackage{media9}
-%\usepackage{hyperref}
+\usepackage{hyperref}
 \usepackage{amssymb}
 \usepackage{mathtools} 
 \usepackage{bbm}
@@ -76,7 +76,7 @@ n & \text{iff } i = 0 \\
 
 \section{Sequences and Series}
 
-\begin{theorem}{Fibonnaci Definition}
+\begin{theorem}{Fibonnaci Definition:}
 \begin{equation}
 F_i = F_{i-1} + F_{i-2}
 \end{equation}
@@ -91,28 +91,28 @@ Where $\phi = \frac{1+\sqrt{5}}{2}$, $\hat \phi = \frac{1-\sqrt 5}{2}$
 \end{theorem}
 
 
-\begin{theorem}{Arithmetic Series}
+\begin{theorem}{Arithmetic Series:}
 \begin{equation}
 \sum_{i=1}^{n} = \frac{n(n+1)}{2} = \Theta(n^2)
 \end{equation}
 \end{theorem}
 
 
-\begin{theorem}{Geometric Series}
+\begin{theorem}{Geometric Series:}
 \begin{equation}
 \sum_{k=0}^{n} x^k = \frac{x^{n+1}-1}{x-1} 
 \end{equation}
 \end{theorem}
 
 
-\begin{theorem}{Infinite Series}
+\begin{theorem}{Infinite Series:}
 \begin{equation}
 \sum_{k=0}^{\infty} x^k = \frac{1}{1-x} \text{ iff } |x| < 1
 \end{equation}
 \end{theorem}
 
 
-\begin{theorem}{Telescoping Series}
+\begin{theorem}{Telescoping Series:}
 \begin{equation}
 \sum_{i=1}^{n} a_i - a_{i-1} = a_n - a_0 \\
 \sum_{i = 1}^{n} a_i - a_{i+1} = a_0 - a_n
@@ -122,7 +122,7 @@ Where $\phi = \frac{1+\sqrt{5}}{2}$, $\hat \phi = \frac{1-\sqrt 5}{2}$
 
 \section{Combinatorics}
 
-\begin{theorem}{Binomial Coefficient}
+\begin{theorem}{Binomial Coefficient:}
 \begin{equation}
 (x+y)^r = \sum_{i = 0}^{r} {r\choose i} x^i y^{r-i}
 \end{equation}
@@ -164,7 +164,7 @@ $$f(n) + g(n) \in O(\max(f'(n), g'(n))$$
 
 
 
-\begin{theorem}{Big O Definition}
+\begin{theorem}{Big O Definition:}
 $f(n) = O(g(n))$ if and only if: 
 There exists $c > 0$ and $n_0 > 0$ such that
 \begin{equation}
@@ -173,7 +173,7 @@ There exists $c > 0$ and $n_0 > 0$ such that
 \end{theorem}
 
 
-\begin{theorem}{Big $\Omega$ Definition}
+\begin{theorem}{Big $\Omega$ Definition:}
 \paragraph{``Lower Bound'' Big $\Omega$ Definition: } $f(n) = \Omega(h(n))$ if and only if:
 There exists $c_1, n_1 > 0$ such that 
 \begin{equation}
@@ -183,7 +183,7 @@ There exists $c_1, n_1 > 0$ such that
 
 
 
-\begin{theorem}{Big $\Theta$ Definition}
+\begin{theorem}{Big $\Theta$ Definition:}
 \paragraph{``Tight Bound'' Big $\Theta$ Definition: } $f(n) = \Theta(g(n))$ if and only if:
 
 There exists $c_1, c_2, n_0 > 0$ such that 
@@ -198,7 +198,7 @@ There exists $c_1, c_2, n_0 > 0$ such that
 
 \section{Definitions}
 
-\begin{theorem}{Graph Definition}
+\begin{theorem}{Graph Definition:}
 A \textbf{graph} is a collection of \textbf{vertices} and \textbf{edges} represented by 
 \begin{equation}
 G = (V,E)
@@ -261,7 +261,7 @@ Graphs can be:
 
 \section{Definitions}
 
-\begin{theorem}{Tree Definition}
+\begin{theorem}{Tree Definition:}
 A \textbf{tree} is a \textbf{connected, acyclic, undirected} graph.
 \begin{itemize}
 \item \textbf{Root node} is usually defined.
@@ -275,7 +275,7 @@ A \textbf{tree} is a \textbf{connected, acyclic, undirected} graph.
 \end{theorem}
 
 
-\begin{theorem}{One-for-all Tree Theorem}
+\begin{theorem}{One-for-all Tree Theorem:}
 \textbf{If one of these is true, they all are: } 
 \begin{itemize}
 \item $G$ is a tree.
@@ -291,7 +291,7 @@ A \textbf{tree} is a \textbf{connected, acyclic, undirected} graph.
 
 \section{Binary Search Trees}
 
-\begin{theorem}{Binary Search Tree Definition}
+\begin{theorem}{Binary Search Tree Definition:}
 For any node $x$ of a binary search tree: 
 \begin{itemize}
 \item If $y\in $ left sub-tree: $y.key \leq x.key$.
@@ -365,7 +365,7 @@ We can perform minimum, maximum, successor, predecessor in $O(h)$ time where $h$
 
 \section{Red-Black Trees}
 
-\begin{theorem}{Red Black Tree Definition}
+\begin{theorem}{Red Black Tree Definition:}
 A red-black tree is a \textbf{binary search tree} where each node has a ``color'' of either \textbf{red or black}.Each BST operation has additional rules that relate to color, with the end results being:
 \begin{itemize}
 \item No path from the \textbf{root} to a \textbf{leaf} is more than \textbf{two times the shortest path}.
@@ -461,7 +461,7 @@ Results in a contradiction! Therefore $P$ must hold.
 \section{Master Theorem}
 
 This provides a ``hammer'' to prove the time complexity of recurrent functions.
-\begin{theorem}{The Master Theorem}
+\begin{theorem}{The Master Theorem:}
 Let $a \geq 1$ and $b \geq 1$ and $f(n)$ be some function.
 \begin{equation}
 T(n) = aT(\frac{n}{b}) + f(n)
@@ -506,7 +506,7 @@ df
 df
 \subsection{Heaps}
 
-\begin{theorem}{Heap Definition}
+\begin{theorem}{Heap Definition:}
 A heap is an \textbf{array} representing a \textbf{binary tree} with the following properties:
 \begin{itemize}
 \item For \textbf{max heap}: $A[\text{parent}(i)] \geq A[i]$.
@@ -579,7 +579,7 @@ Parent-child relationships are as follows:
 \Output{Sorted array $A$}
 	\BlankLine
 	\BlankLine
-	\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
 	%\nlset{\color{blue}$O(n)$} BuildMaxHeap(A)
 	\For{$i = |A|:2$}{
 		exchange $A[i]$, $A[1]$\;
@@ -713,7 +713,7 @@ $$\text{Radix Sort} = \Theta((\frac{b}{r} (n+2^r)))$$
 
 \section{Order Statistics}
 
-\begin{theorem}{Order Statistic Definition}
+\begin{theorem}{Order Statistic Definition:}
 The \textbf{Order Statistic} of set $A$ is the $i$th smallest element of the set. So,
 \begin{itemize}
 \item $\max A$ is the $n$th order statistic of $A$.
@@ -811,7 +811,7 @@ The problem arises when the universe $U$ gets large. This happens when you have 
 
 \section{Hash tables}
 
-\begin{theorem}{Hash Function Definition}
+\begin{theorem}{Hash Function Definition:}
 A hash function $h$ maps the latent universe of keys $U$ to a universe of some specific size $m$. That is,
 \begin{equation}
 h:U\to \{0,..., m-1\}
@@ -1067,6 +1067,105 @@ The essence of a greedy algorithm is to select the \textbf{locally optimal} deci
 
 
 \section{Splay Trees}
+
+\paragraph{Motivation: } We need efficient insertion, deletion, search, and sorting.
+\begin{itemize}
+\item If key access frequencies are known, we can use \textbf{dynamic programming}.
+\item if the key frequencies are unknown, we use \textbf{splay trees}.
+\end{itemize}
+
+\textbf{Splay trees are theoretically optimal} in the amortized case. 
+
+\paragraph{Key Idea: } We simply use a conventional BST, but introduce a \textbf{splay} operation.
+\begin{itemize}
+\item An unbalanced tree is \textbf{credit rich}.
+\item A balanced tree is not credit rich.
+\item Credit is spent to make the tree more balanced, generally.
+\end{itemize}
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Node $x$ of splay tree.}
+\Output{Tree is splayed (re-balanced) in place.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\While{$x\neq \text{root}$}{
+		\If{$P(x) = \text{root}$}{
+			rotate $P(x)$\;
+		}
+		\eIf{$P(x)$ and $x$ are both (left or right) children}{
+			rotate $P(P(x))$\;
+			rotate $P(x)$\;
+		}{
+			rotate $P(x)$\;
+			rotate new $P(x)$\;
+		}
+	
+	}
+	\caption{Splay Algorithm}
+\end{algorithm}
+
+
+\paragraph{Cost of Splay: } 
+\begin{itemize}
+\item $wt(x)$ is defined as the \textbf{number of nodes} in the sub-tree rooted at $x$ (descendants of $x$ including $x$).
+\item $\text{rank}(x) = \ceil{\log wt(x)}$ is the \textbf{height} of sub-tree rooted at $x$.
+\item \textbf{Credit Invariant: } Node $x$ has \$ $\text{rank}(x)$ in credit. 
+\item Therefore, each \{zig, zig-zig, zig-zag\} costs $$3[\text{new rank}(x) - \text{old rank}(x)]$$
+\item The amortized cost of \textbf{splay} is therefore $$O(\log n)$$
+\end{itemize}
+
+
+\paragraph{Splay Tree Operations: } 
+\begin{enumerate}
+\item \textbf{Search: } 
+\begin{enumerate}
+\item BST Search for $x$.
+\item \textbf{Splay}$(x)$.
+\item \textit{Cost: } $O(\log n)$
+\end{enumerate}
+
+\item \textbf{Insert: } 
+\begin{enumerate}
+\item BST Insert $x$ ($x$ is now a leaf).
+\item \textbf{Splay}$(x)$.
+\item \textit{Cost: } $O(\log n)$
+\end{enumerate}
+
+\item \textbf{Delete} 
+\begin{enumerate}
+\item BST Delete $x$.
+\item \textbf{Splay}$(P(x))$.
+\item \textit{Cost: } $O(\log n)$
+\end{enumerate}
+
+\item \textbf{Split: } If you want to create two new sub-BST's, one with all values less than $x$ and one with values greater than $x$,
+\begin{enumerate}
+\item Perform \textbf{Splay Search}($x$) -- $x$ is now the root.
+\item Split off the right and left trees.
+\item \textit{Cost: } $O(\log n)$
+\end{enumerate}
+
+
+\item \textbf{Join: } Basically the reverse operation of \textbf{split}. Given two splay trees, one with values $\leq x$ and one with values $> x$,
+\begin{enumerate}
+\item Make the $\leq x$ tree the left child of $x$, the $> x$ the right child of $x$.
+\item \textbf{Credit the tree} $O(\log n)$ dollars so that $x$ satisfies the credit invariant.
+\item \textit{Cost: } $O(\log n)$
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
 
 
 
