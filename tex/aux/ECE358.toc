@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{1}{section.0.1}%
+\contentsline {paragraph}{Course Information}{1}{section*.2}%
+\contentsline {chapter}{\numberline {1}Vector Space Review}{2}{chapter.1}%

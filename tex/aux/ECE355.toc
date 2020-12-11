@@ -1,69 +1,69 @@
-\contentsline {section}{\numberline {0.1}Introduction and Course Information}{2}{section.0.1}% 
-\contentsline {paragraph}{Course Information}{2}{section*.2}% 
-\contentsline {chapter}{\numberline {1}Signal Basics}{3}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Definitions}{3}{section.1.1}% 
-\contentsline {paragraph}{Two types of signals: }{3}{section*.3}% 
-\contentsline {paragraph}{Power and Energy of a signal: }{3}{section*.4}% 
-\contentsline {section}{\numberline {1.2}Signal Transformations}{4}{section.1.2}% 
-\contentsline {paragraph}{Time Shifting: }{4}{section*.5}% 
-\contentsline {paragraph}{Time Scaling: }{4}{section*.6}% 
-\contentsline {paragraph}{Continuous Scaling AND Shifting: }{4}{section*.7}% 
-\contentsline {paragraph}{Discrete Time Scaling AND Shifting: }{4}{section*.8}% 
-\contentsline {section}{\numberline {1.3}Periodic Signals}{4}{section.1.3}% 
-\contentsline {paragraph}{Definition: }{4}{section*.9}% 
-\contentsline {section}{\numberline {1.4}Even and Odd Signals}{4}{section.1.4}% 
-\contentsline {paragraph}{Even: }{4}{section*.10}% 
-\contentsline {paragraph}{Odd: }{5}{section*.11}% 
-\contentsline {section}{\numberline {1.5}Complex Exponential}{5}{section.1.5}% 
-\contentsline {paragraph}{Function Family: }{5}{section*.12}% 
-\contentsline {subsection}{\numberline {1.5.1}Complex Number Review}{5}{subsection.1.5.1}% 
-\contentsline {subsection}{\numberline {1.5.2}Useful Sinusoid Shortcuts}{5}{subsection.1.5.2}% 
-\contentsline {subsection}{\numberline {1.5.3}Periodic Case}{5}{subsection.1.5.3}% 
-\contentsline {subsection}{\numberline {1.5.4}Discrete Time Complex Exponential}{6}{subsection.1.5.4}% 
-\contentsline {section}{\numberline {1.6}Unit Step and Impulse}{6}{section.1.6}% 
-\contentsline {subsection}{\numberline {1.6.1}Discrete Time}{6}{subsection.1.6.1}% 
-\contentsline {paragraph}{Important Properties: }{6}{section*.13}% 
-\contentsline {subsection}{\numberline {1.6.2}Continuous Time Case}{7}{subsection.1.6.2}% 
-\contentsline {paragraph}{Important Properties: }{7}{section*.14}% 
-\contentsline {section}{\numberline {1.7}Basic System Properties}{7}{section.1.7}% 
-\contentsline {paragraph}{Initial Rest Condition: }{8}{section*.15}% 
-\contentsline {chapter}{\numberline {2}Linear Time-Invariant Systems}{9}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Discrete Time LTI Properties}{9}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Convolution in Discrete Time}{9}{subsection.2.1.1}% 
-\contentsline {paragraph}{Convolution of $x[n], h[n] \to y[n]$ }{9}{section*.16}% 
-\contentsline {section}{\numberline {2.2}Continuous Time LTI Systems}{9}{section.2.2}% 
-\contentsline {paragraph}{Unit Impulse Response: }{9}{section*.17}% 
-\contentsline {section}{\numberline {2.3}Properties of LTI Systems}{10}{section.2.3}% 
-\contentsline {paragraph}{Properties of Convolution: }{10}{section*.18}% 
-\contentsline {paragraph}{Identity System: }{10}{section*.19}% 
-\contentsline {paragraph}{Time shift note: }{10}{section*.20}% 
-\contentsline {paragraph}{Properties of LTI: }{10}{section*.21}% 
-\contentsline {section}{\numberline {2.4}Linear Constant-Coefficient Differential (Difference) Equations: LCCDE's}{11}{section.2.4}% 
-\contentsline {paragraph}{General Form for Continuous Time: }{11}{equation.2.4.4}% 
-\contentsline {paragraph}{Standard Solution: }{11}{section*.23}% 
-\contentsline {paragraph}{Better tools for solving LTI/LCCDES's: }{11}{section*.24}% 
-\contentsline {paragraph}{How to solve LTI via Transfer Function Laplace Transform}{12}{section*.25}% 
-\contentsline {section}{\numberline {2.5}Discrete Case for LCCDE's}{12}{section.2.5}% 
-\contentsline {paragraph}{General form for discrete LCCDE: }{12}{equation.2.5.6}% 
-\contentsline {paragraph}{Solution Options: }{12}{section*.27}% 
-\contentsline {chapter}{\numberline {3}Fourier Representations of Periodic Signals}{13}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}LTI Response to Complex Exponentials}{13}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Discrete Time Case}{14}{subsection.3.1.1}% 
-\contentsline {paragraph}{Cautionary Notes: }{14}{section*.28}% 
-\contentsline {section}{\numberline {3.2}Continuous Time Fourier Series}{14}{section.3.2}% 
-\contentsline {paragraph}{Guiding Fact: }{14}{section*.29}% 
-\contentsline {paragraph}{Note on utilizing frequency response with Fourier series signal representation: }{14}{section*.30}% 
-\contentsline {paragraph}{Finding Laplace Transform for LTI: }{14}{section*.31}% 
-\contentsline {paragraph}{Result of Passing Signal through LTI: }{14}{section*.32}% 
-\contentsline {subsection}{\numberline {3.2.1}Calculating CT Fourier Series}{15}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Convergence of Fourier Series}{15}{subsection.3.2.2}% 
-\contentsline {paragraph}{Which periodic signals have Fourier series representations? }{15}{theorem.4}% 
-\contentsline {paragraph}{Gibbs Phenomena: }{15}{section*.34}% 
-\contentsline {section}{\numberline {3.3}Properties of Continuous Time Fourier Series}{15}{section.3.3}% 
-\contentsline {paragraph}{Setup: }{15}{section*.35}% 
-\contentsline {paragraph}{Properties: }{15}{section*.36}% 
-\contentsline {section}{\numberline {3.4}Continuous Time Fourier Transform}{17}{section.3.4}% 
-\contentsline {paragraph}{Important Notes on the Fourier Transform Properties: }{17}{section*.37}% 
-\contentsline {subsection}{\numberline {3.4.1}Periodic Signal Fourier Transform}{17}{subsection.3.4.1}% 
-\contentsline {paragraph}{Key struggle: }{17}{section*.38}% 
-\contentsline {subsection}{\numberline {3.4.2}Properties of Continuous Time Fourier Transform}{18}{subsection.3.4.2}% 
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{2}{section.0.1}%
+\contentsline {paragraph}{Course Information}{2}{section*.2}%
+\contentsline {chapter}{\numberline {1}Signal Basics}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Definitions}{3}{section.1.1}%
+\contentsline {paragraph}{Two types of signals: }{3}{section*.3}%
+\contentsline {paragraph}{Power and Energy of a signal: }{3}{section*.4}%
+\contentsline {section}{\numberline {1.2}Signal Transformations}{4}{section.1.2}%
+\contentsline {paragraph}{Time Shifting: }{4}{section*.5}%
+\contentsline {paragraph}{Time Scaling: }{4}{section*.6}%
+\contentsline {paragraph}{Continuous Scaling AND Shifting: }{4}{section*.7}%
+\contentsline {paragraph}{Discrete Time Scaling AND Shifting: }{4}{section*.8}%
+\contentsline {section}{\numberline {1.3}Periodic Signals}{4}{section.1.3}%
+\contentsline {paragraph}{Definition: }{4}{section*.9}%
+\contentsline {section}{\numberline {1.4}Even and Odd Signals}{4}{section.1.4}%
+\contentsline {paragraph}{Even: }{4}{section*.10}%
+\contentsline {paragraph}{Odd: }{5}{section*.11}%
+\contentsline {section}{\numberline {1.5}Complex Exponential}{5}{section.1.5}%
+\contentsline {paragraph}{Function Family: }{5}{section*.12}%
+\contentsline {subsection}{\numberline {1.5.1}Complex Number Review}{5}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Useful Sinusoid Shortcuts}{5}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Periodic Case}{5}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Discrete Time Complex Exponential}{6}{subsection.1.5.4}%
+\contentsline {section}{\numberline {1.6}Unit Step and Impulse}{6}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Discrete Time}{6}{subsection.1.6.1}%
+\contentsline {paragraph}{Important Properties: }{6}{section*.13}%
+\contentsline {subsection}{\numberline {1.6.2}Continuous Time Case}{7}{subsection.1.6.2}%
+\contentsline {paragraph}{Important Properties: }{7}{section*.14}%
+\contentsline {section}{\numberline {1.7}Basic System Properties}{7}{section.1.7}%
+\contentsline {paragraph}{Initial Rest Condition: }{8}{section*.15}%
+\contentsline {chapter}{\numberline {2}Linear Time-Invariant Systems}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Discrete Time LTI Properties}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Convolution in Discrete Time}{9}{subsection.2.1.1}%
+\contentsline {paragraph}{Convolution of $x[n], h[n] \to y[n]$ }{9}{section*.16}%
+\contentsline {section}{\numberline {2.2}Continuous Time LTI Systems}{9}{section.2.2}%
+\contentsline {paragraph}{Unit Impulse Response: }{9}{section*.17}%
+\contentsline {section}{\numberline {2.3}Properties of LTI Systems}{10}{section.2.3}%
+\contentsline {paragraph}{Properties of Convolution: }{10}{section*.18}%
+\contentsline {paragraph}{Identity System: }{10}{section*.19}%
+\contentsline {paragraph}{Time shift note: }{10}{section*.20}%
+\contentsline {paragraph}{Properties of LTI: }{10}{section*.21}%
+\contentsline {section}{\numberline {2.4}Linear Constant-Coefficient Differential (Difference) Equations: LCCDE's}{11}{section.2.4}%
+\contentsline {paragraph}{General Form for Continuous Time: }{11}{equation.2.4.4}%
+\contentsline {paragraph}{Standard Solution: }{11}{section*.23}%
+\contentsline {paragraph}{Better tools for solving LTI/LCCDES's: }{11}{section*.24}%
+\contentsline {paragraph}{How to solve LTI via Transfer Function Laplace Transform}{12}{section*.25}%
+\contentsline {section}{\numberline {2.5}Discrete Case for LCCDE's}{12}{section.2.5}%
+\contentsline {paragraph}{General form for discrete LCCDE: }{12}{equation.2.5.6}%
+\contentsline {paragraph}{Solution Options: }{12}{section*.27}%
+\contentsline {chapter}{\numberline {3}Fourier Representations of Periodic Signals}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}LTI Response to Complex Exponentials}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Discrete Time Case}{14}{subsection.3.1.1}%
+\contentsline {paragraph}{Cautionary Notes: }{14}{section*.28}%
+\contentsline {section}{\numberline {3.2}Continuous Time Fourier Series}{14}{section.3.2}%
+\contentsline {paragraph}{Guiding Fact: }{14}{section*.29}%
+\contentsline {paragraph}{Note on utilizing frequency response with Fourier series signal representation: }{14}{section*.30}%
+\contentsline {paragraph}{Finding Laplace Transform for LTI: }{14}{section*.31}%
+\contentsline {paragraph}{Result of Passing Signal through LTI: }{14}{section*.32}%
+\contentsline {subsection}{\numberline {3.2.1}Calculating CT Fourier Series}{15}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Convergence of Fourier Series}{15}{subsection.3.2.2}%
+\contentsline {paragraph}{Which periodic signals have Fourier series representations? }{15}{theorem.4}%
+\contentsline {paragraph}{Gibbs Phenomena: }{15}{section*.34}%
+\contentsline {section}{\numberline {3.3}Properties of Continuous Time Fourier Series}{15}{section.3.3}%
+\contentsline {paragraph}{Setup: }{15}{section*.35}%
+\contentsline {paragraph}{Properties: }{15}{section*.36}%
+\contentsline {section}{\numberline {3.4}Continuous Time Fourier Transform}{17}{section.3.4}%
+\contentsline {paragraph}{Important Notes on the Fourier Transform Properties: }{17}{section*.37}%
+\contentsline {subsection}{\numberline {3.4.1}Periodic Signal Fourier Transform}{17}{subsection.3.4.1}%
+\contentsline {paragraph}{Key struggle: }{17}{section*.38}%
+\contentsline {subsection}{\numberline {3.4.2}Properties of Continuous Time Fourier Transform}{18}{subsection.3.4.2}%
