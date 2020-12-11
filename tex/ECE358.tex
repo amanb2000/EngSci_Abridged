@@ -790,65 +790,196 @@ By substitution, we can show that the algorithm runs in $O(n)$.
 
 \chapter{Hash Tables}
 
+Perform well for tasks like \textbf{insert, search, and delete}. $\Theta(n)$ worst case for search, $O(1)$ is the practical average. 
 
+\section{Direct Addressing}
 
+\begin{itemize}
+\item Each element we want to store has a \textbf{key} k in \textbf{universe} $U$.
+\item $|U| = m$, $U = \{0, 1, ..., m-1\}$.
+\item $T[0,...,m-1]$ is the \textbf{direct address table}.
+\end{itemize}
 
+\paragraph{Direct Address Search}$(T,k)$: return $T[k]$. 
 
+\paragraph{Direct Address Insert}$(T,x)$: $T[x$.key$]=x$.
 
+\paragraph{Direct Address Delete}$(T, x)$: $T[x.\text{key}] =$ NIL.
 
+The problem arises when the universe $U$ gets large. This happens when you have a ton of unique elements. 
 
 
+\section{Hash tables}
 
+\begin{theorem}{Hash Function Definition}
+A hash function $h$ maps the latent universe of keys $U$ to a universe of some specific size $m$. That is,
+\begin{equation}
+h:U\to \{0,..., m-1\}
+\end{equation}
+\end{theorem}
 
 
+\paragraph{Collision Resoution with Chaining: } Just add to a linked list. 
+\begin{enumerate}
+\item \textbf{Insertion: } $x$ is added to the \textbf{head} of the linked list.
+\item \textbf{Search: } Search for element in the linked list that it hashes to.
+\item \textbf{Delete: } Delete from linked list as usual.
+\end{enumerate}
 
+\paragraph{Performance: } If the number of elements $n = O(m)$, you'll get, on average, $O(1)$ performance. 
 
+\paragraph{Simple Uniform Hashing: } Each element has same probability of hashing to given value. 
 
 
+\section{Hash Functions}
 
+Here are a few types of commonly-used hash functions. Note that most datatypes (strings, characters, etc.) can be converted to natural numbers by place value. They just might be very large. 
 
+\subsection{Divisision Method}
 
+To map key $k$ to one of $m$ slots, we can let 
+\begin{equation}
+h(k) = k \% m
+\end{equation}
 
+\paragraph{Considerations: } 
+\begin{itemize}
+\item $m$ should not be $2^n$ because then it'd just extract bottom $n$ bits. 
+\item Usually good to pick prime number $m$.
+\end{itemize}
 
+\subsection{Multiplication Method}
 
+We multiply $k$ by some $A\in [0,1]$ then use division method.
+\begin{equation}
+h(k) = \floor{m(kA\% 1)}
+\end{equation}
 
+\paragraph{Considerations: } 
+\begin{itemize}
+\item Value of $m$ does not matter any more ($2^n$ makes for easy hardware implementation.
+\item $A \approx \frac{\sqrt 5 - 1}{2}$ tends to work well.
+\end{itemize}
 
+\subsection{Open Addressing}
 
+The key idea is to let $h()$ take in a ``probe number'' $i$. We increment this number to make sure hash table gets filled without doubling up on a single slot. 
 
+\begin{itemize}
+\item \textbf{Probe sequence} of $k$ is $\langle h(k,0), ..., h(k, m-1) \rangle$.
+\item The probe sequence for each $k$ is a \textbf{permutation of} $\langle 0,...,m-1  \rangle$.
+\item Because of this property, we can always fill up the table perfectly.
+\end{itemize}
 
+\paragraph{Insertion: } Probe table, incrementing $i$ until you reach an empty slot. Add the element there. 
+\paragraph{Search: } Keep probing until you either find the element \textbf{or you find NIL}. 
+\paragraph{Deletion: } When you find value, set it to DELETED -- NIL would stop searches that would have to traverse. 
 
 
+\paragraph{Performance of Open Addressing: } 
+\begin{itemize}
+\item If $n/m \leq 1$: The expected number of probes for an \textbf{unsuccessful} search is $$\gamma \leq \frac{1}{1-\frac{n}{m}}$$
+\item Inserting to open address table also takes $\gamma$ probes on average.
+\item Number of probes for a successful search is $$\leq \frac{1}{\alpha} \ln \frac{1}{1-\alpha}$$
+Where $\alpha = n/m \leq 1$.
+\end{itemize}
 
+\paragraph{Linear Probing: } If $h'(k)$ is single-variable hash function, we can make a probing hash function via: 
+\begin{equation}
+h_{lin}(k,i) = (h'(k) + i)\% m
+\end{equation}
 
+\textbf{Drawback:} Long strings of filled slots build up one after another.
 
+\paragraph{Quadratic Probing: } $h'(k)$ is a single-variable hash function:
+\begin{equation}
+h(k,i) = (h'(k) + c_1 i + c_2 i^2)\% m
+\end{equation}
 
+\textit{Where $c_1, c_2 \geq 0$, $i\in [m-1]$}.
+\begin{itemize}
+\item Better performance than linear.
+\item We still struggle with \textbf{secondary clustering} -- if $h'(k_1) = h'(k_2)$, we still have the same hash sequences.  
+\end{itemize}
 
 
+\paragraph{Double Hashing}
 
+\begin{equation}
+h(k,i) = (h_1(k) + ih_2(k)) \% m)
+\end{equation}
+Now probe sequences are highly unlikely to overlap for different keys. \textbf{CONDITIONS: } 
+\begin{itemize}
+\item $h_2(k)$ should be ``relatively prime'' to $m$. The entire should be searched by multiples of each $h_2$. 
+\item \textbf{Method 1: } $m = 2^x$, make sure $h_2(k)$ maps to an odd number.
+\item \textbf{Method 2: } $m$ is prime, make sure $h_2(k)$ maps to positive inteer less than $m$.
+\end{itemize}
 
 
 
+\chapter{Dynamic Programming}
 
+\paragraph{Motivation: } We often solve the same sub-problem many times, particularly during recursive optimization algorithms. 
 
+\paragraph{Solution: } Memorize the intermediate optimization answers. 
 
+\section{Elements of Dynamic Programming}
 
+\begin{enumerate}
+\item Optimal Substructure. 
+\item Overlapping sub-problems. 
+\end{enumerate}
 
+\paragraph{Optimal sub-structure: } Optimal solution is $f(\text{input}, \text{optimal solutions to sub-problem})$. A common pattern is: 
+\begin{enumerate}
+\item Make some choice (hopefully optimal choice).
+\item Realize you need to solve basically the same problem (but smaller).
+\item Observer recurrence.
+\item Prove \textbf{by contradiction} that optimal sub-solution leads to the optimal solution.
+\end{enumerate}
 
+\paragraph{Tips and Tricks} 
+\begin{itemize}
+\item Keep sub-problem space as simple as possible. 
+\item Think through sequential alternatives you might try to make things countable.
+\item You can try to create a sub-problem graph, too. 
+\item \textbf{PRACTICE}.
+\end{itemize}
 
+\section{Examples}
+\textit{High-level descriptions of dynamic programming algorithms.} It seems that most problems are variations on a smaller set of dynamic programming problems. 
 
+\subsection{Rod Cutting}
+\paragraph{Given: } A rod of length $n$ and a vector $p = [15, 20, 31, ..., 100]$ representing selling price for different lengths of rod. 
 
+\paragraph{Wanted: } Maximum price to sell the rod for given optimal cutting.
 
+\paragraph{Dynamic Programming Solution: } 
+\begin{itemize}
+\item The first step is to determine where to place your first cut. 
+\item To decide between a 1-unit long cut and a $p[10]$ unit long cut, you would want to know the reward from each possible cut AND the maximum possible reward for what remains. 
+\item Therefore, \begin{equation}
+\text{optim}(n, p) = \max\{p_n, p_{n-1} + \text{optim}(1,p), ..., p_1+\text{optim}(n-1,p)\}
+\end{equation}
+\item With a general recursive strategy, we would end up calculating the same $\text{optim}(n,p)$ many time. 
+\item Therefore, as soon as we calculate some $\text{optim}(n,p)$, we store it in a hash table (called \textbf{memoization}. 
+\end{itemize}
 
+\subsection{Matrix Chain Multiplication}
 
 
+\subsection{Longest Common Subsequence}
+%TODO: Get this together.
 
 
 
+\subsection{Knapsack Problem}
 
 
 
 
 
+\subsection{Huffman Codes}
 
 
 
@@ -861,11 +992,17 @@ By substitution, we can show that the algorithm runs in $O(n)$.
 
 
 
+\chapter{Greedy Algorithms}
 
+\section{Introduction}
 
+The essence of a greedy algorithm is to select the \textbf{locally optimal} decision at every opportunity. It is generally efficient, and when it is optimal, is a very convenient choice. Greedy algorithms approximate NP-complete problems well.
 
+\section{Examples}
 
+\subsection{Class Scheduling}
 
+%TODO: Populate this section.
 
 
 
@@ -873,19 +1010,63 @@ By substitution, we can show that the algorithm runs in $O(n)$.
 
 
 
+\chapter{Amortized Analysis}
 
+\paragraph{What is amortized analysis? } 
+\begin{itemize}
+\item We are often interested in the \textbf{aggregate} cost over a sequence of operations.
+\item There are often connections between the number of one operation and another. 
+\begin{itemize}
+\item For instance, you can only pop as many items as you have pushed to a stack. 
+\end{itemize}
+\item Amortized analysis guarantees the \textbf{average performance for the worst case} via \textit{deterministic analysis}. 
+\end{itemize}
 
 
+\section{Aggregate Method}
+\begin{enumerate}
+\item Define an $O(1)$ operation for the problem.
+\item Observe the worst-case number of operations for $n$ executions of a process.
+\item Divide the cost for $n$ executions by $n$ to get amortized cost.
+\end{enumerate}
 
 
+\paragraph{Example: Stack } 
+\begin{itemize}
+\item Push and pop are $O(1)$.
+\item Multipop is $O(n)$ -- this is when you pop every element. 
+\item Therefore, for $n$ operations, we have at most $n\cdot O(n)$, or $n$ multipops.
+\item \textbf{Aggregate:} 
+\begin{itemize}
+\item We cannot pop more items than have been pushed.
+\item The maximum number of items pushed is $n$. 
+\item Therefore the average worst case cost for $n$ operations is $O(n)$, meaning that we have average $O(1)$ for each operation.
+\end{itemize}
+\end{itemize}
 
 
 
 
+\section{Accounting Method}
 
+\paragraph{Central Ideas:} 
+\begin{itemize}
+\item We charge some number of \textbf{dollars} for each operation. This is the \textbf{amortized cost}.
+\item The datastructure gets those \textbf{dollars} to complete the operation.
+\item We define some ``real cost'' of each operation. The exact dollar value doesn't matter, the important thing is \textbf{whether it is a function of $n$ or just constant}.
+\item If our imposed \textbf{amortized cost} is more than the ``real cost'', the data structure gets \textbf{credit}.
+\begin{itemize}
+\item Else, the data structure \textbf{uses credit} it has stored to complete the operation.
+\item \textbf{NEGATIVE BALANCE MEANS A WRONG CREDIT ALLOCATION}.
+\end{itemize}
+\end{itemize}
 
 
 
+
+
+
+\section{Splay Trees}
 
 
 
