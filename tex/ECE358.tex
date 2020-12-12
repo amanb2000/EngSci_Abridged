@@ -257,6 +257,265 @@ Graphs can be:
 
 
 
+
+\section{Graph Traversals}
+
+\textit{How do we choose an order to traverse all nodes in a graph?} 
+
+\subsection{Breadth First Search}
+
+\paragraph{Key Ideas: } 
+\begin{itemize}
+\item From a given point, we traverse all immediate neighbours. 
+\item Only then do we go to second-order neighbours of the original point.
+\item Implemented with a \textbf{Queue} (first-in-first-out).
+\end{itemize}
+
+\paragraph{Breadth First Search Algorithm: } Given $G=(V,E,s$) where $s$ is the starting vertex,
+\begin{enumerate}
+\item Initialize $d[u] = \infty\,\forall u\in V$. This is the \textbf{distance} for each vertex.
+\item Let $Q$ be an empty queue, and \textbf{enqueue} vertex $s$.
+\item While $Q$ is not empty:
+\begin{enumerate}
+\item $u = $ dequeue$(Q)$.
+\item For $v\in adj(u)$:
+\begin{enumerate}
+\item if $d[v] = \infty$, let $d[v] = d[u]+1$ and \textbf{enqueue} $v\to Q$.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+\paragraph{Performance: } Time complexity is $O(|V|+|E|)$.
+
+
+
+\subsection{Depth First Search}
+
+\paragraph{Key Ideas: } 
+\begin{itemize}
+\item \textbf{Input: } $G = (V,E)$ (no source vertex this time).
+\item \textbf{Output: } 
+\begin{enumerate}
+\item $d[v]$: Time taken to \textbf{discover} vertex $v$ (in number of algorithm ``steps'').
+\item $f[v]$: Time taken to \textbf{finish} with vertex $v$ (meaning to exhaust all `down stream' vertices).
+\item $\Pi[v]$: Predecessor of $v$ (i.e. the vertex immediately before it in the search).
+\end{enumerate}
+\end{itemize}
+
+\paragraph{Color Coding: } 
+\begin{itemize}
+\item \textbf{White: } Node is as of yet undiscovered.
+\item \textbf{Gray: } Node has been discovered, but the descendants have not all been discovered (node is not ``exhausted'').
+\item \textbf{Black: } The algorithm has traversed the node AND all its descendants. 
+\end{itemize}
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{$G = (V,E)$}
+\Output{List of discovery times, finishing times, and predecessors for each $v\in V$.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$\text{color}[u] = \text{White}\,\forall u\in V$\;
+	$\text{time} = 0$\;
+	\For{each $u\in V$}{
+		\If{$\text{color}[u] = \text{White}$}{
+			$\text{DFS-Visit}(u)$\;
+		}
+	}	
+	\caption{Depth First Search Algorithm.}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Vertex $u$}
+\Output{Recursively traverses nodes depth-first.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$\text{color}[u] \leftarrow \text{Gray}$\;
+	$\text{time} += 1$\;
+	$d[u] = \text{time}$\;
+
+	\For{each $v\in \text{adj}(u)$}{
+		\If{$v = \text{White}$}{
+			$\text{DFS-Visit}(v)$\;
+		}
+	}
+	
+	$\text{color}[u] \leftarrow \text{Black}$\;
+	$\text{time} += 1$\;
+	$f[u] \leftarrow \text{time}$\;
+
+	\caption{DFS-Visit Algorithm (subroutine for DFS Search)}
+\end{algorithm}
+
+
+\paragraph{Edge Classification: } \textbf{DFS} Produces one or more \textbf{trees}, leading to the following classification.
+\begin{enumerate}
+\item \textbf{Tree Edges: } Edges found during DFS exploration.
+\item \textbf{Back Edge: } $(u,v)$ when $u$ is a descendant of $v$.
+\item \textbf{Forward Edge: } $(u,v)$ when $v$ is a descendant of $u$ \textbf{but} $(u,v)$ is not a tree edge.
+\item \textbf{Cross Edge: } Any other type of edge. 
+\end{enumerate}
+
+
+\begin{theorem}{White Path Theorem: }
+$v$ is a descendant of $u$ if, and only if: At time $d[u]$, there exists a \textbf{white-only} path from $v\to u$.
+\end{theorem}
+
+\begin{theorem}{Parenthesis Theorem: }
+For all $u, v\in V$: Exactly \textbf{one} of the following holds:
+\begin{enumerate}
+\item $d[u] < f[u] < d[v] < f[v]$ or $d[v] < f[v] < d[u] < f[u]$. That is, \textbf{neither $u, v$ are descended from eachother}.
+\item $d[u]< d[v] < f[v] < f[u]$. That is, $v$ is a descendant of $u$.
+\item $d[v] < d[u] < f[u] < f[v]$. That is, $u$ is a descendant of $v$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}{Depth First Search Edge Types: }
+The depth-first search of \textbf{undirected graph} $G$ yields only \textit{tree edges} and \textit{back edges} .
+\end{theorem}
+
+
+\subsection{Topological Sort}
+
+\paragraph{Key Idea: } All DAG (directed, acyclic graphs) have \textit{some} amount of \textbf{implied order}. Think of it like a dependency graph. We use topological sort to turn \textbf{partial order} $\to$ \textbf{total order} (that is, an absolute list).
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{DAG $G = (V,E)$}
+\Output{Total ordering of elements of graph.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	Call $\text{Depth First Traversal}(V,E)$\;
+	Return the vertices in \textbf{decreasing order} of \textbf{finish time}\;
+	\caption{Topological Sorting Algorithm.}
+\end{algorithm}
+
+
+
+
+\section{Minimum Spanning Trees}
+
+\paragraph{Key Idea: } Given a weighted graph $G = (V, E)$, we want a tree $G' = (E', V)$ where $E' \subseteq E$ such that there is a path between all vertices \textbf{and} $\sum_{e\in E'} e$ is minimized.
+\begin{itemize}
+\item $|E'| = |V|-1$.
+\item There are \textbf{no cycles} (hence ``tree'').
+\item It may or may not be a \textbf{unique} solution.
+\end{itemize}
+
+\subsection{Generic Minimum Spanning Tree Approach}
+
+\paragraph{High-Level Description: } 
+\begin{itemize}
+\item Set $A$ is instantiated as empty.
+\item Edges from the graph are added to $A$, ensuring \textbf{loop invariant} $A\subset\text{Some Minimum Spanning Tree}$. 
+\item Edge $(u,v)$ is \textbf{safe} iff $A \cup \{(u,v)\}$ is also a subset of some minimum spanning tree.
+\end{itemize}
+
+\paragraph{Generic MST Algorithm: } Given graph $G$ with weights $w$,
+\begin{enumerate}
+\item Let $A$ be an empty set. 
+\item While $A$ is not a spanning tree: 
+\begin{enumerate}
+\item Find a \textbf{safe} edge $(u,v)$.
+\item $A \leftarrow A \cup (u,v)$.
+\end{enumerate}
+\end{enumerate}
+
+\paragraph{Terminology: } Relating to how to pick a \textbf{safe} edge.
+\begin{itemize}
+\item Let $S$ represent the set of vertices currently ``covered'' by edges in $A$, our current working minimum spanning tree.
+\item We can partition $V$ into set $S$ and $V-S$.
+\item Edge $(u,v)$ \textbf{crosses} the \textbf{cut} $(S,V-S)$ if one of $u,v$ is in $S$ and the other is in $V-S$.
+\item A cut \textbf{respects} $A$ iff no edge in $A$ \textbf{crosses} the cut. 
+\item The \textbf{light edge} with respect to cut $(S,V-S)$ is the lowest weight edge that \textbf{crosses} the cut. 
+\item \textbf{The light edge is the safe edge}.
+\end{itemize}
+
+
+
+\subsection{Prims Algorithm}
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Graph $G=(V,E)$, weights $w$, root node $r$.}
+\Output{Minimum spanning tree of $G$.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$Q \leftarrow \{\emptyset\}$\;
+	\For{each $u\in V$}{
+		$\text{key}[u] \leftarrow \infty$\;
+		$\Pi[u] \leftarrow \text{NIL}$\;
+		$\text{Insert} u\to Q$\;
+	}
+
+	Set key of root node $r$ to $0$ in $Q$.
+
+	\While{$Q \neq \{\emptyset\}$}{
+		$u\leftarrow \text{Pop-Minimum}(Q)$\;
+		\For{each $v\in \text{Adj}(u)$}{
+			\If{$v\in Q$ and $w(u,v) \leq \text{key}(v)$}{
+				$\Pi[v] \leftarrow u$\;
+				Set the key of $v$ in $Q$ to $w(u, v)$\;
+			}
+		}
+	}
+
+	\caption{Prim's Algorithm}
+\end{algorithm}
+
+\paragraph{Complexity: } Time complexity is $O(|E| + |V|\log |V|)$ when using Fibonnaci heaps. 
+
+
+
+
+
+
+
+
+\section{Shortest Paths}
+
+\paragraph{Goal: } Find path of minimum total weight between two vertices in a graph.
+
+\paragraph{Variants of Shortest Paths Problem: } 
+\begin{enumerate}
+\item Single Source Shortest Paths (SSSP).
+\item Single Destination Shortest Paths.
+\item Single Pair -- \textit{most efficient method is to just run SSSP}.
+\item All Pairs Shortest Paths.
+\end{enumerate}
+
+\paragraph{Key Algorithms: } 
+\begin{enumerate}
+\item Dijkstra's -- for no negative weights.
+\item Bellman-Ford -- when there are negative weights.
+\item Difference Constraints -- a surprising application of shortest paths. 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Trees}
 
 \section{Definitions}

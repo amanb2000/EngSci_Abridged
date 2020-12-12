@@ -1,4 +1,4 @@
-\contentsline {section}{\numberline {0.1}Introduction and Course Information}{2}{section.0.1}%
+\contentsline {section}{\numberline {0.1}Introduction and Course Information}{3}{section.0.1}%
 \contentsline {paragraph}{Course Information}{3}{section*.2}%
 \contentsline {chapter}{\numberline {1}Math Review}{4}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Logarithms}{4}{section.1.1}%
@@ -18,120 +18,143 @@
 \contentsline {paragraph}{Vertex Degree }{9}{section*.11}%
 \contentsline {paragraph}{Clique: }{9}{section*.12}%
 \contentsline {paragraph}{Representations for Graphs: }{9}{section*.13}%
-\contentsline {chapter}{\numberline {4}Trees}{10}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Definitions}{10}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Binary Search Trees}{11}{section.4.2}%
-\contentsline {paragraph}{Traversals: }{11}{section*.14}%
-\contentsline {subsection}{\numberline {4.2.1}Querying Binary Search Trees}{11}{subsection.4.2.1}%
-\contentsline {paragraph}{Tree Search: }{11}{section*.15}%
-\contentsline {paragraph}{Iterative Tree Search: }{11}{section*.16}%
-\contentsline {paragraph}{Minimum Tree Search: }{12}{section*.17}%
-\contentsline {paragraph}{Tree Successor: }{12}{section*.18}%
-\contentsline {paragraph}{Tree Insert: }{12}{section*.19}%
-\contentsline {paragraph}{Tree Deletion: }{12}{section*.20}%
-\contentsline {section}{\numberline {4.3}Red-Black Trees}{12}{section.4.3}%
-\contentsline {paragraph}{Properties of Red-Black Tree}{13}{section*.21}%
-\contentsline {paragraph}{Resultant Properties}{13}{section*.22}%
-\contentsline {paragraph}{Easy Red-black Tree Operations: }{13}{section*.23}%
-\contentsline {paragraph}{Rotations: }{13}{section*.24}%
-\contentsline {paragraph}{Red-Black Insert Fixup: }{13}{section*.25}%
-\contentsline {paragraph}{Red-Black Insertion: }{14}{section*.26}%
-\contentsline {paragraph}{Red-Black Transplant: }{14}{section*.27}%
-\contentsline {paragraph}{Red-Black Deletion: }{14}{section*.28}%
-\contentsline {chapter}{\numberline {5}Proof Methods}{15}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Induction}{15}{section.5.1}%
-\contentsline {paragraph}{Basic Idea: }{15}{section*.29}%
-\contentsline {paragraph}{Basis: }{15}{section*.30}%
-\contentsline {paragraph}{Hypothesis: }{15}{section*.31}%
-\contentsline {paragraph}{Inductive Step: }{15}{section*.32}%
-\contentsline {section}{\numberline {5.2}Contradiction}{15}{section.5.2}%
-\contentsline {paragraph}{Basic Idea: }{15}{section*.33}%
-\contentsline {paragraph}{Illustrative Example: }{15}{section*.34}%
-\contentsline {section}{\numberline {5.3}Master Theorem}{16}{section.5.3}%
-\contentsline {paragraph}{Case 1: }{16}{section*.35}%
-\contentsline {paragraph}{Case 2: }{16}{section*.36}%
-\contentsline {paragraph}{Case 3: }{16}{section*.37}%
-\contentsline {section}{\numberline {5.4}Substitution}{16}{section.5.4}%
-\contentsline {paragraph}{Example -- Mergesort: }{16}{section*.38}%
-\contentsline {chapter}{\numberline {6}Sorting Algorithms}{18}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Mergesort}{18}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Heapsort}{18}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Heaps}{18}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Heap Algorithms}{19}{subsection.6.2.2}%
-\contentsline {paragraph}{Algorithm Complexity: }{19}{section*.39}%
-\contentsline {paragraph}{Build Heap }{19}{section*.40}%
-\contentsline {paragraph}{Algorithm Complexity: }{19}{section*.41}%
-\contentsline {paragraph}{Heap Sort }{20}{section*.42}%
-\contentsline {paragraph}{Algorithm Complexity: }{20}{section*.43}%
-\contentsline {section}{\numberline {6.3}Quicksort}{20}{section.6.3}%
-\contentsline {paragraph}{Key Facts: }{20}{section*.44}%
-\contentsline {paragraph}{Algorithm Description: }{20}{section*.45}%
-\contentsline {paragraph}{Algorithm Complexity: }{21}{section*.46}%
-\contentsline {section}{\numberline {6.4}Linear Time Sort}{21}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Counting Sort}{21}{subsection.6.4.1}%
-\contentsline {paragraph}{Key Idea: }{21}{section*.47}%
-\contentsline {paragraph}{Time Complexity: }{22}{section*.48}%
-\contentsline {paragraph}{Stability: }{22}{section*.49}%
-\contentsline {subsection}{\numberline {6.4.2}Radix Sort}{22}{subsection.6.4.2}%
-\contentsline {paragraph}{Algorithm Idea: }{22}{section*.50}%
-\contentsline {paragraph}{Algorithm Complexity: }{22}{section*.51}%
-\contentsline {section}{\numberline {6.5}Order Statistics}{23}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Minimum and Maximum Algorithms}{23}{subsection.6.5.1}%
-\contentsline {paragraph}{Finding minimum and maximum efficiently: }{23}{section*.52}%
-\contentsline {subsection}{\numberline {6.5.2}Selection in Average Linear Time}{24}{subsection.6.5.2}%
-\contentsline {paragraph}{Outcome: }{24}{section*.53}%
-\contentsline {subsection}{\numberline {6.5.3}Selection in Worst Case Linear Time}{24}{subsection.6.5.3}%
-\contentsline {paragraph}{Outcome: }{24}{section*.54}%
-\contentsline {paragraph}{Algorithm: }{24}{section*.55}%
-\contentsline {chapter}{\numberline {7}Hash Tables}{25}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Direct Addressing}{25}{section.7.1}%
-\contentsline {paragraph}{Direct Address Search}{25}{section*.56}%
-\contentsline {paragraph}{Direct Address Insert}{25}{section*.57}%
-\contentsline {paragraph}{Direct Address Delete}{25}{section*.58}%
-\contentsline {section}{\numberline {7.2}Hash tables}{25}{section.7.2}%
-\contentsline {paragraph}{Collision Resoution with Chaining: }{26}{section*.59}%
-\contentsline {paragraph}{Performance: }{26}{section*.60}%
-\contentsline {paragraph}{Simple Uniform Hashing: }{26}{section*.61}%
-\contentsline {section}{\numberline {7.3}Hash Functions}{26}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Divisision Method}{26}{subsection.7.3.1}%
-\contentsline {paragraph}{Considerations: }{26}{section*.62}%
-\contentsline {subsection}{\numberline {7.3.2}Multiplication Method}{26}{subsection.7.3.2}%
-\contentsline {paragraph}{Considerations: }{26}{section*.63}%
-\contentsline {subsection}{\numberline {7.3.3}Open Addressing}{27}{subsection.7.3.3}%
-\contentsline {paragraph}{Insertion: }{27}{section*.64}%
-\contentsline {paragraph}{Search: }{27}{section*.65}%
-\contentsline {paragraph}{Deletion: }{27}{section*.66}%
-\contentsline {paragraph}{Performance of Open Addressing: }{27}{section*.67}%
-\contentsline {paragraph}{Linear Probing: }{27}{section*.68}%
-\contentsline {paragraph}{Quadratic Probing: }{28}{section*.69}%
-\contentsline {paragraph}{Double Hashing}{28}{equation.7.3.6}%
-\contentsline {chapter}{\numberline {8}Dynamic Programming}{29}{chapter.8}%
-\contentsline {paragraph}{Motivation: }{29}{section*.71}%
-\contentsline {paragraph}{Solution: }{29}{section*.72}%
-\contentsline {section}{\numberline {8.1}Elements of Dynamic Programming}{29}{section.8.1}%
-\contentsline {paragraph}{Optimal sub-structure: }{29}{section*.73}%
-\contentsline {paragraph}{Tips and Tricks}{29}{section*.74}%
-\contentsline {section}{\numberline {8.2}Examples}{30}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Rod Cutting}{30}{subsection.8.2.1}%
-\contentsline {paragraph}{Given: }{30}{section*.75}%
-\contentsline {paragraph}{Wanted: }{30}{section*.76}%
-\contentsline {paragraph}{Dynamic Programming Solution: }{30}{section*.77}%
-\contentsline {subsection}{\numberline {8.2.2}Matrix Chain Multiplication}{30}{subsection.8.2.2}%
-\contentsline {subsection}{\numberline {8.2.3}Longest Common Subsequence}{30}{subsection.8.2.3}%
-\contentsline {subsection}{\numberline {8.2.4}Knapsack Problem}{30}{subsection.8.2.4}%
-\contentsline {subsection}{\numberline {8.2.5}Huffman Codes}{30}{subsection.8.2.5}%
-\contentsline {chapter}{\numberline {9}Greedy Algorithms}{31}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Introduction}{31}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Examples}{31}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}Class Scheduling}{31}{subsection.9.2.1}%
-\contentsline {chapter}{\numberline {10}Amortized Analysis}{32}{chapter.10}%
-\contentsline {paragraph}{What is amortized analysis? }{32}{section*.78}%
-\contentsline {section}{\numberline {10.1}Aggregate Method}{32}{section.10.1}%
-\contentsline {paragraph}{Example: Stack }{32}{section*.79}%
-\contentsline {section}{\numberline {10.2}Accounting Method}{33}{section.10.2}%
-\contentsline {paragraph}{Central Ideas:}{33}{section*.80}%
-\contentsline {section}{\numberline {10.3}Splay Trees}{33}{section.10.3}%
-\contentsline {paragraph}{Motivation: }{33}{section*.81}%
-\contentsline {paragraph}{Key Idea: }{34}{section*.82}%
-\contentsline {paragraph}{Cost of Splay: }{34}{section*.83}%
-\contentsline {paragraph}{Splay Tree Operations: }{35}{section*.84}%
+\contentsline {section}{\numberline {3.2}Graph Traversals}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Breadth First Search}{9}{subsection.3.2.1}%
+\contentsline {paragraph}{Key Ideas: }{9}{section*.14}%
+\contentsline {paragraph}{Breadth First Search Algorithm: }{10}{section*.15}%
+\contentsline {paragraph}{Performance: }{10}{section*.16}%
+\contentsline {subsection}{\numberline {3.2.2}Depth First Search}{10}{subsection.3.2.2}%
+\contentsline {paragraph}{Key Ideas: }{10}{section*.17}%
+\contentsline {paragraph}{Color Coding: }{10}{section*.18}%
+\contentsline {paragraph}{Edge Classification: }{11}{section*.19}%
+\contentsline {subsection}{\numberline {3.2.3}Topological Sort}{12}{subsection.3.2.3}%
+\contentsline {paragraph}{Key Idea: }{12}{section*.20}%
+\contentsline {section}{\numberline {3.3}Minimum Spanning Trees}{12}{section.3.3}%
+\contentsline {paragraph}{Key Idea: }{12}{section*.21}%
+\contentsline {subsection}{\numberline {3.3.1}Generic Minimum Spanning Tree Approach}{12}{subsection.3.3.1}%
+\contentsline {paragraph}{High-Level Description: }{12}{section*.22}%
+\contentsline {paragraph}{Generic MST Algorithm: }{13}{section*.23}%
+\contentsline {paragraph}{Terminology: }{13}{section*.24}%
+\contentsline {subsection}{\numberline {3.3.2}Prims Algorithm}{14}{subsection.3.3.2}%
+\contentsline {paragraph}{Complexity: }{14}{section*.25}%
+\contentsline {section}{\numberline {3.4}Shortest Paths}{14}{section.3.4}%
+\contentsline {paragraph}{Goal: }{14}{section*.26}%
+\contentsline {paragraph}{Variants of Shortest Paths Problem: }{14}{section*.27}%
+\contentsline {paragraph}{Key Algorithms: }{15}{section*.28}%
+\contentsline {chapter}{\numberline {4}Trees}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Definitions}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Binary Search Trees}{17}{section.4.2}%
+\contentsline {paragraph}{Traversals: }{17}{section*.29}%
+\contentsline {subsection}{\numberline {4.2.1}Querying Binary Search Trees}{17}{subsection.4.2.1}%
+\contentsline {paragraph}{Tree Search: }{17}{section*.30}%
+\contentsline {paragraph}{Iterative Tree Search: }{17}{section*.31}%
+\contentsline {paragraph}{Minimum Tree Search: }{18}{section*.32}%
+\contentsline {paragraph}{Tree Successor: }{18}{section*.33}%
+\contentsline {paragraph}{Tree Insert: }{18}{section*.34}%
+\contentsline {paragraph}{Tree Deletion: }{18}{section*.35}%
+\contentsline {section}{\numberline {4.3}Red-Black Trees}{18}{section.4.3}%
+\contentsline {paragraph}{Properties of Red-Black Tree}{19}{section*.36}%
+\contentsline {paragraph}{Resultant Properties}{19}{section*.37}%
+\contentsline {paragraph}{Easy Red-black Tree Operations: }{19}{section*.38}%
+\contentsline {paragraph}{Rotations: }{19}{section*.39}%
+\contentsline {paragraph}{Red-Black Insert Fixup: }{19}{section*.40}%
+\contentsline {paragraph}{Red-Black Insertion: }{20}{section*.41}%
+\contentsline {paragraph}{Red-Black Transplant: }{20}{section*.42}%
+\contentsline {paragraph}{Red-Black Deletion: }{20}{section*.43}%
+\contentsline {chapter}{\numberline {5}Proof Methods}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Induction}{21}{section.5.1}%
+\contentsline {paragraph}{Basic Idea: }{21}{section*.44}%
+\contentsline {paragraph}{Basis: }{21}{section*.45}%
+\contentsline {paragraph}{Hypothesis: }{21}{section*.46}%
+\contentsline {paragraph}{Inductive Step: }{21}{section*.47}%
+\contentsline {section}{\numberline {5.2}Contradiction}{21}{section.5.2}%
+\contentsline {paragraph}{Basic Idea: }{21}{section*.48}%
+\contentsline {paragraph}{Illustrative Example: }{21}{section*.49}%
+\contentsline {section}{\numberline {5.3}Master Theorem}{22}{section.5.3}%
+\contentsline {paragraph}{Case 1: }{22}{section*.50}%
+\contentsline {paragraph}{Case 2: }{22}{section*.51}%
+\contentsline {paragraph}{Case 3: }{22}{section*.52}%
+\contentsline {section}{\numberline {5.4}Substitution}{22}{section.5.4}%
+\contentsline {paragraph}{Example -- Mergesort: }{22}{section*.53}%
+\contentsline {chapter}{\numberline {6}Sorting Algorithms}{24}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Mergesort}{24}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Heapsort}{24}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Heaps}{24}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Heap Algorithms}{25}{subsection.6.2.2}%
+\contentsline {paragraph}{Algorithm Complexity: }{25}{section*.54}%
+\contentsline {paragraph}{Build Heap }{25}{section*.55}%
+\contentsline {paragraph}{Algorithm Complexity: }{25}{section*.56}%
+\contentsline {paragraph}{Heap Sort }{26}{section*.57}%
+\contentsline {paragraph}{Algorithm Complexity: }{26}{section*.58}%
+\contentsline {section}{\numberline {6.3}Quicksort}{26}{section.6.3}%
+\contentsline {paragraph}{Key Facts: }{26}{section*.59}%
+\contentsline {paragraph}{Algorithm Description: }{26}{section*.60}%
+\contentsline {paragraph}{Algorithm Complexity: }{27}{section*.61}%
+\contentsline {section}{\numberline {6.4}Linear Time Sort}{27}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Counting Sort}{27}{subsection.6.4.1}%
+\contentsline {paragraph}{Key Idea: }{27}{section*.62}%
+\contentsline {paragraph}{Time Complexity: }{28}{section*.63}%
+\contentsline {paragraph}{Stability: }{28}{section*.64}%
+\contentsline {subsection}{\numberline {6.4.2}Radix Sort}{28}{subsection.6.4.2}%
+\contentsline {paragraph}{Algorithm Idea: }{28}{section*.65}%
+\contentsline {paragraph}{Algorithm Complexity: }{28}{section*.66}%
+\contentsline {section}{\numberline {6.5}Order Statistics}{29}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Minimum and Maximum Algorithms}{29}{subsection.6.5.1}%
+\contentsline {paragraph}{Finding minimum and maximum efficiently: }{29}{section*.67}%
+\contentsline {subsection}{\numberline {6.5.2}Selection in Average Linear Time}{30}{subsection.6.5.2}%
+\contentsline {paragraph}{Outcome: }{30}{section*.68}%
+\contentsline {subsection}{\numberline {6.5.3}Selection in Worst Case Linear Time}{30}{subsection.6.5.3}%
+\contentsline {paragraph}{Outcome: }{30}{section*.69}%
+\contentsline {paragraph}{Algorithm: }{30}{section*.70}%
+\contentsline {chapter}{\numberline {7}Hash Tables}{31}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Direct Addressing}{31}{section.7.1}%
+\contentsline {paragraph}{Direct Address Search}{31}{section*.71}%
+\contentsline {paragraph}{Direct Address Insert}{31}{section*.72}%
+\contentsline {paragraph}{Direct Address Delete}{31}{section*.73}%
+\contentsline {section}{\numberline {7.2}Hash tables}{31}{section.7.2}%
+\contentsline {paragraph}{Collision Resoution with Chaining: }{32}{section*.74}%
+\contentsline {paragraph}{Performance: }{32}{section*.75}%
+\contentsline {paragraph}{Simple Uniform Hashing: }{32}{section*.76}%
+\contentsline {section}{\numberline {7.3}Hash Functions}{32}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Divisision Method}{32}{subsection.7.3.1}%
+\contentsline {paragraph}{Considerations: }{32}{section*.77}%
+\contentsline {subsection}{\numberline {7.3.2}Multiplication Method}{32}{subsection.7.3.2}%
+\contentsline {paragraph}{Considerations: }{32}{section*.78}%
+\contentsline {subsection}{\numberline {7.3.3}Open Addressing}{33}{subsection.7.3.3}%
+\contentsline {paragraph}{Insertion: }{33}{section*.79}%
+\contentsline {paragraph}{Search: }{33}{section*.80}%
+\contentsline {paragraph}{Deletion: }{33}{section*.81}%
+\contentsline {paragraph}{Performance of Open Addressing: }{33}{section*.82}%
+\contentsline {paragraph}{Linear Probing: }{33}{section*.83}%
+\contentsline {paragraph}{Quadratic Probing: }{34}{section*.84}%
+\contentsline {paragraph}{Double Hashing}{34}{equation.7.3.6}%
+\contentsline {chapter}{\numberline {8}Dynamic Programming}{35}{chapter.8}%
+\contentsline {paragraph}{Motivation: }{35}{section*.86}%
+\contentsline {paragraph}{Solution: }{35}{section*.87}%
+\contentsline {section}{\numberline {8.1}Elements of Dynamic Programming}{35}{section.8.1}%
+\contentsline {paragraph}{Optimal sub-structure: }{35}{section*.88}%
+\contentsline {paragraph}{Tips and Tricks}{35}{section*.89}%
+\contentsline {section}{\numberline {8.2}Examples}{36}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Rod Cutting}{36}{subsection.8.2.1}%
+\contentsline {paragraph}{Given: }{36}{section*.90}%
+\contentsline {paragraph}{Wanted: }{36}{section*.91}%
+\contentsline {paragraph}{Dynamic Programming Solution: }{36}{section*.92}%
+\contentsline {subsection}{\numberline {8.2.2}Matrix Chain Multiplication}{36}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Longest Common Subsequence}{36}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Knapsack Problem}{36}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Huffman Codes}{36}{subsection.8.2.5}%
+\contentsline {chapter}{\numberline {9}Greedy Algorithms}{37}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Introduction}{37}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Examples}{37}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Class Scheduling}{37}{subsection.9.2.1}%
+\contentsline {chapter}{\numberline {10}Amortized Analysis}{38}{chapter.10}%
+\contentsline {paragraph}{What is amortized analysis? }{38}{section*.93}%
+\contentsline {section}{\numberline {10.1}Aggregate Method}{38}{section.10.1}%
+\contentsline {paragraph}{Example: Stack }{38}{section*.94}%
+\contentsline {section}{\numberline {10.2}Accounting Method}{39}{section.10.2}%
+\contentsline {paragraph}{Central Ideas:}{39}{section*.95}%
+\contentsline {section}{\numberline {10.3}Splay Trees}{39}{section.10.3}%
+\contentsline {paragraph}{Motivation: }{39}{section*.96}%
+\contentsline {paragraph}{Key Idea: }{40}{section*.97}%
+\contentsline {paragraph}{Cost of Splay: }{40}{section*.98}%
+\contentsline {paragraph}{Splay Tree Operations: }{41}{section*.99}%
