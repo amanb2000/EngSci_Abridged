@@ -485,7 +485,7 @@ The depth-first search of \textbf{undirected graph} $G$ yields only \textit{tree
 
 \section{Shortest Paths}
 
-\paragraph{Goal: } Find path of minimum total weight between two vertices in a graph.
+\paragraph{Goal: } Find path of minimum total weight between two vertices in a graph. Shortest path from $u\to v$ is represented by $\delta(u,v)$. It's the set of vertices from one to the other. 
 
 \paragraph{Variants of Shortest Paths Problem: } 
 \begin{enumerate}
@@ -501,6 +501,83 @@ The depth-first search of \textbf{undirected graph} $G$ yields only \textit{tree
 \item Bellman-Ford -- when there are negative weights.
 \item Difference Constraints -- a surprising application of shortest paths. 
 \end{enumerate}
+
+
+\paragraph{Properties and Assumptions of Shortest Paths: } 
+\begin{enumerate}
+\item No negative weight cycles allowed accessible from source node. 
+\item \textbf{Optimal Substructure: } If $p$ is in the optimal path from $u\to v$ $\delta(u,v)$, then sub-path $u\to p$ is the optimal path $\delta(u,p)$.
+\item A shortest path will \textbf{never contain a cycle}.
+\begin{itemize}
+\item Negative weight cycles aren't allowed (per above).
+\item Positive weight cycles would be a pointless cost expenditure. 
+\item 0-value cycles are redundant (by convention, we just skip them). 
+\end{itemize}
+\end{enumerate}
+
+\subsection{Djikstra's Algorithm}
+
+\paragraph{Key Points: } 
+\begin{itemize}
+\item No negative weight edges allowed.
+\item We let $S$ be the set of vertices with known shortest path weight. 
+\item Priority queue $Q$ is the remaining set $V-S$ of vertices. 
+\item Priority is dictated by $d[v]$.
+\item \textbf{Time Complexity: } If we use a binary heap, we get $$O(|E| \log |V|)$$ though Fibbonacci heap is faster. 
+\end{itemize}
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Graph $G = (V, E)$, weights $w$ and starting node $s$.}
+\Output{Shortest paths for each $v\in V$ starting at $s$.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$\text{Init-Single-Source}(V, s)$\;
+	$S\leftarrow \{\emptyset\}$\;
+	$Q\leftarrow V$\;
+	
+	\While{$Q\neq \{\emptyset\}$}{
+		$u\leftarrow \text{Extract-Min}(Q)$\;
+		$S \leftarrow S \cup \{u\}$\;
+		\For{each $v\in \text{adj}(u)$}{
+			$\text{Relax}(u, v, w)$;
+		}
+	}
+
+	\caption{Dijkstra's Algorithm}
+\end{algorithm}
+
+\paragraph{Subroutines: } 
+\begin{enumerate}
+\item \textbf{Init-Single-Source}$V,s$: Let $d[s] = 0$. Then, for each vertex $v\in V$,
+\begin{itemize}
+\item $d[v] \leftarrow \infty$.
+\item $\Pi[v] \leftarrow \text{NIL}$.
+\end{itemize}
+
+\item \textbf{Relax}$(u,v,w)$:
+\begin{itemize}
+\item If $d[v] > d[u] + w(u,v)$, that means that it's more efficient to reach $v$ through $u$ than what it's currently using.
+\item We set $d[v] \leftarrow d[u] + w(u,v)$.
+\item We set $\Pi[v] \leftarrow u$.
+\end{itemize}
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
 
 
 
