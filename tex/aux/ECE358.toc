@@ -201,9 +201,11 @@
 \contentsline {paragraph}{Set of all Strings: }{50}{section*.135}%
 \contentsline {paragraph}{Reverse: }{50}{section*.136}%
 \contentsline {paragraph}{Operations on Languages: }{50}{section*.137}%
-\contentsline {section}{\numberline {11.2}Regular Languages}{51}{section.11.2}%
+\contentsline {section}{\numberline {11.2}Regular Languages}{50}{section.11.2}%
+\contentsline {paragraph}{Regular Expressions: }{51}{section*.138}%
+\contentsline {paragraph}{Regular Language: }{51}{section*.139}%
 \contentsline {section}{\numberline {11.3}Complexity Classes P, NP}{51}{section.11.3}%
-\contentsline {paragraph}{Open Questions in the Field: }{51}{section*.138}%
+\contentsline {paragraph}{Open Questions in the Field: }{52}{section*.140}%
 \contentsline {section}{\numberline {11.4}NP-Completeness}{52}{section.11.4}%
 \contentsline {subsection}{\numberline {11.4.1}Methodology to Prove NP-Completeness}{52}{subsection.11.4.1}%
-\contentsline {paragraph}{Given language $L$, we show it is NP-Complete by:}{52}{section*.139}%
+\contentsline {paragraph}{Given language $L$, we show it is NP-Complete by:}{52}{section*.141}%

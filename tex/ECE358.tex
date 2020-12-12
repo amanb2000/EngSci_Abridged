@@ -1785,6 +1785,38 @@ We think of languages as \textbf{problems}. The decision problem for language $L
 
 \section{Regular Languages}
 
+Regular languages are a ``stepping stone'' for getting to more advanced languages. They're pretty powerful, and we still see them today in \textbf{regular expressions}.
+
+\paragraph{Regular Expressions: } Regular expressions are defined over an alphabet. They are a way to represent sets of strings as combinations of other strings and other regular expressions. For alphabet $\Sigma$:
+\begin{enumerate}
+\item $\varepsilon$ is a regular expression.
+\item All $\alpha \in \Sigma$ are regular expressions.
+\item Let R and S be valid regular expressions. 
+\begin{itemize}
+\item Then ``R+S'' is a regular expression meaning \textbf{either R or S}.
+\item then ``RS'' (concatenation) is a regular expression that searches for R followed by S.
+\item R* is a regular expression looking for the \textbf{Kleene Closure} of the set of strings described by R.
+\item (R) is also a regular expression.
+\end{itemize}
+\end{enumerate}
+
+\paragraph{Regular Language: } All the strings that a given \textbf{regular expressions} $R$ defines. Represented by $L(R)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Complexity Classes P, NP}
 
 \begin{theorem}{Complexity Class $P$ Definition: }
