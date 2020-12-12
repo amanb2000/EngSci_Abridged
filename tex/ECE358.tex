@@ -549,35 +549,287 @@ The depth-first search of \textbf{undirected graph} $G$ yields only \textit{tree
 	\caption{Dijkstra's Algorithm}
 \end{algorithm}
 
-\paragraph{Subroutines: } 
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Graph $G = (V,E)$ and source node node $s$}
+\Output{Initialized Graph for starting Single Source Shortest Paths.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\For{each vertex $v\in V$}{
+		$v.d \leftarrow \infty$\;
+		$v.\pi \leftarrow \text{NIL}$\;
+	}
+	$s.d \leftarrow 0$\;
+	\caption{Initialize Single Source}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Edges $u,v$ and weight function $w:V\times V \to \mathbb{R}$}
+\Output{Corrects the path to $v$ from the source, using neighbour $w$ if necessary.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	\If{$v.d > u.d + w(u,v)$}{
+		$v.d \leftarrow u.d + w(u,v)$\;
+		$v.\pi \leftarrow u$\;
+	}
+	\caption{Relax Algorithm}
+\end{algorithm}
+
+
+
+
+\subsection{Bellman-Ford Algorithm}
+
+\paragraph{Key Points:} 
+\begin{itemize}
+\item Solves single-source shortest paths (allowing for \textbf{negative edges}, unlike Dijkstra's). 
+\item Returns \textbf{False} if there is a negative weight edge. 
+\item \textbf{Time Complexity: } $O(|V|\cdot|E|)$. 
+\end{itemize}
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Graph $G = (V,E)$, weight function $w:E\to \mathbb{R}$, source node $s$}
+\Output{Boolean indicating if the question is valid, single-source shortest path result if possible.}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	$\text{Initialize-Single-Source}(G,s)$\;
+	\For{$i = 1 \text{ to } |V|-1$}{
+		\For{each $(u, v) \in E$}{
+			$\text{Relax}(u,v,w)$\;
+		}
+	}
+	\For{each $(u,v) \in E$}{
+		\If{$v.d > u.d + w(u,v)$}{		
+			return FALSE\;
+		}
+	}
+	return TRUE;
+	\caption{Bellman-Ford Algorithm.}
+\end{algorithm}
+
+
+\subsection{Application: Difference Constraints}
+
+\paragraph{Key Points: } 
+\begin{itemize}
+\item Under specific conditions, we can convert Linear Programs into graph problems. 
+\item We can then use \textbf{Bellman-Ford} to solve for a feasible solution to the linear program.
+\end{itemize}
+
+\paragraph{Requirements for Conversion to Graph Problem: } Within $Ax \leq b$,
+\begin{itemize}
+\item Each row of a must have all zeros except for one $-1$ and one $+1$ entry.
+\item The graph approach only gives \textbf{a single feasible point}, if any.
+\item No additional cost optimization is done in this method.
+\end{itemize}
+
+\paragraph{Conversion to Graph Problem: } 
 \begin{enumerate}
-\item \textbf{Init-Single-Source}$V,s$: Let $d[s] = 0$. Then, for each vertex $v\in V$,
+\item Vertices $V = \{v_0, v_1, ..., v_n\}$. Each $v_i, \, i\in \{1,..., n\}$ represents an index of vector $x$, our feasible point. $v_0$ is a special additional point. 
+\item $E = \{(v_i, v_j) = x_i-x_j \leq b_k\}\cup \{(v_0, v_i):0 \forall i\in [n]\}$. In other words,
 \begin{itemize}
-\item $d[v] \leftarrow \infty$.
-\item $\Pi[v] \leftarrow \text{NIL}$.
+\item Each connection from $v_i$ to $v_j$ is directed with weight $b_k$, the difference constraint $b_k$ that $x_i-x_j \leq b_k$.
+\item We also have 0-weight edges connecting $v_0 \to v_i$ for all $i\in [n]$.
+\end{itemize}
+\end{enumerate}
+
+\paragraph{Solution: } 
+\begin{equation}
+x^* = \begin{bmatrix}
+\delta(v_0, v_1) \\
+\delta(v_0, v_2) \\ 
+\vdots \\
+\delta(v_0, v_n) \\
+\end{bmatrix}
+\end{equation}
+
+As determined by \textbf{Bellman-Ford} with $v_0$ as the source node. 
+
+
+
+
+% 26.1-2 without proofs. 
+\section{Maximum Flow}
+
+\paragraph{Key Idea: } Directed graphs can represent \textbf{flow} of resources. If we add properties of \textbf{conservation} and a few others, we can come up with the hard problem of how to allocate flow through the network to get the maximum total transmission from one side to the other, but not exceed the limit of each `pipe' or overflow at a juncture. 
+
+\subsection{Formal Definition}
+
+\begin{theorem}{Flow Network Definition: }
+Flow network $G = (V,E)$ is a \textbf{directed} graph where: 
+\begin{itemize}
+\item Edges represent \textbf{capacity} $c$, and $c(u,v)\geq 0$.
+\item If $E$ has edge $(u,v)$, then $(v,u)$ \textbf{cannot exist}.
+\item $c(u,v) = 0$ when $(u,v)\notin E$.
+\item \textbf{Two important vertices: } Source $s$ and sink $t$. 
+\item It is assumed that each vertex is on a path between $s$ and $t$. 
+\item Therefore, $|E| \geq |V|-1$.
 \end{itemize}
 
-\item \textbf{Relax}$(u,v,w)$:
-\begin{itemize}
-\item If $d[v] > d[u] + w(u,v)$, that means that it's more efficient to reach $v$ through $u$ than what it's currently using.
-\item We set $d[v] \leftarrow d[u] + w(u,v)$.
-\item We set $\Pi[v] \leftarrow u$.
-\end{itemize}
-
-
-
-
+\paragraph{Flow: } \textbf{flow} in $G$ is a function mapping two vertices to a real number ($f:V\times V \to \mathbb{R}$) under the constraints:
+\begin{enumerate}
+\item \textbf{Capacity: } $u \leq f(u,v) \leq c(u,v)$ for all $u,v\in V$.
+\item \textbf{Conservation: } $\sum_{v\in V} f(v,u) = \sum_{v\in V} f(u,v)$ for all $u,v\in V$ except for the source $s$ and sink $t$.
 \end{enumerate}
 
 
+The \textbf{value} of a flow is the total flow through the system. It is given by 
+\begin{equation}
+|f| = \sum_{v\in V}^{} f(s,v) - \sum_{v\in V}^{} f(v,s)
+\end{equation}
+
+In other words, it's the total flow out of the source minus any flow coming into the source. 
+\end{theorem}
+
+
+\paragraph{Maximum Flow Problem: } Given graph $G$ with defined $s$, $t$: What is the maximum possible value for $|f|$?
+
+\paragraph{Dealing with ``antiparallel edges'': } Originally we said we couldn't have edges from $v\to u$ if we have one from $u\to v$. We get around this by \textbf{transforming} an antiparallel graph to one with no problematic edges: 
+\begin{itemize}
+\item For each antiparallel edge $(v_1, v_2)$: 
+\item Split into two edges $(v_1, v')$ and $(v', v_2)$.
+\item Set capacity of both to be the same as the original.
+\item End behavior is \textbf{exactly identical}.
+\end{itemize}
+
+
+\paragraph{Multiple Sources and Sinks: } 
+\begin{itemize}
+\item For $m$ sources and $n$ sinks:
+\item Create a super source $s$ with edges leading to each $s_i$ (i.e. $(s,s_i) \forall i\in [m]$).
+\item Make the capacity $c(s,s_i) = \infty$. 
+\item Do the same, with a super sink $t$ leading from each of the $n$ sinks. Should also have infinite capacity.
+\item End behavior is the same. 
+\end{itemize}
+
+\subsection{Ford-Fulkerson Method}
+
+\paragraph{Residual Capacity of Edge: } Amount of additional flow allowable through an edge $(u,v)$ given an existing flow $f(u,v)$.
+\begin{equation}
+c_f(u,v) = c(u,v) - f(u,v)
+\end{equation}
+
+\paragraph{Residual Network: } Residual network is represented by $G_f = (V, E_f)$. $E_f$ is given by 
+\begin{equation}
+E_f = \{(u,v)\in V^2: c_f(u,v) > 0\}
+\end{equation}
+Note that $G_f$ depends on the specific flow $f$ at a given time. 
+\begin{itemize}
+\item \textbf{Key Point: } Every edge ALSO has a residual edge doubling back on it with $c_f(v,u) = f(u,v)$. 
+\end{itemize}
+
+\begin{equation}
+c_f(u,v) = \begin{cases}
+c(u,v) - f(u,v) & \text{if } (u,v)\in E,\\
+f(v,u) & \text{if } (u,v) \in E,\\
+0 & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+\textit{This is a very clever definition.} 
+
+\paragraph{Using Residual Network: } If we can find a path from source $\to$ sink in $G_f$, then we can increase flow along that path in real graph $G$ by the \textbf{minimum value in the path in the residual graph}. 
+
+\paragraph{Augmenting Path: } Is a simple path from source to sink $s\to t$ in $G_f$.
+
+\paragraph{Residual Capacity of Augmenting Path $p$: } $c_f(p) = \min\{c_f(u,v):(u,v)\in p\}$.
+
+
+\begin{algorithm}[H]
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\SetAlgoLined
+\Input{Directed flow graph $G$, source $s$, sink $t$}
+\Output{Optimal flow $f$}
+	\BlankLine
+	\BlankLine
+	%\nlset{\color{blue}$O(n)$}Some order $n$ operation\;
+	Initialize flow $f(u,v) \leftarrow 0$ $\forall (u,v)\in E$\;
+	\While{$\exists$ augmenting path $p$ in residual graph $G_f$}{
+		augment flow $f$ along $p$ (see above)\;
+	}
+	\caption{Ford Fulkerson Method}
+\end{algorithm}
+
+
+\paragraph{Importance of $0$ weight $\to$ Non-Existence: } Once a residual is reduced to zero, the edge no longer exists. This is what enables the algorithm to terminate. 
+
+\paragraph{Cut of Flow Network: } \textbf{cut} $(S,T)$ of $G = (V,E)$ partitions $V\to S,T=V-S$. Net flow from $S\to T$ is given by 
+\begin{equation}
+f(S,T) = \sum_{u\in S}^{} \sum_{v\in T}^{} f(u,v) - \sum_{u\in S}^{} \sum_{v\in T}^{} f(v,u)
+\end{equation}
+
+\paragraph{Capacity of Cut: } 
+\begin{equation}
+c(S,T) = \sum_{u\in S}^{} \sum_{v\in T}^{} c(u,v)
+\end{equation}
+
+\paragraph{Minimum Cut: } Cut with minimum capacity relative to all cuts of the network. 
+
+\paragraph{Why does Ford-Fulkerson Terminate? } 
+
+\begin{theorem}{Maximum Flow Minimum Cut Theorem: }
+For any flow $f$ on graph $G$, all of these statements are equivalent: 
+\begin{itemize}
+\item $f$ is a maximum flow of $G$.
+\item $G_f$ has no augmenting path. 
+\item $|f| = c(S,T)$ for some cut (the \textbf{minimum cut}).
+\end{itemize}
+\end{theorem}
+
+\paragraph{Runtime of Ford-Fulkerson: } $O(|f_{\max}|\cdot E)$.
+\begin{itemize}
+\item Using Breadth-First Search to search for Augmenting Paths ($O(E)$).
+\item We have to repeat this, at most, $f_{\max}$ times. 
+\end{itemize}
+
+
+\subsection{Edmond-Karp's Algorithm}
+
+More efficient version of Ford-Fulkerson.
+\begin{itemize}
+\item \textbf{Always} choose the augmenting path with \textbf{minimum number of edges}.
+\item Find this by running shortest paths on the graph but using edges of uniform weight $1$. 
+\end{itemize}
+
+\paragraph{Runtime of Edmond-Karp: } $O(VE^2)$ (vast improvement from $O(|f_{\max}|E)$).
 
 
 
 
 
 
+\subsection{Maximum Bipartite Matching}
 
+\paragraph{Bipartite Graph Review: } You can split vertices into two disjoint sets. All edges must have one end in set 1 and the other in set 2. 
 
+\paragraph{Bipartite Matching: } Find $M\subseteq E$ for bipartite graph $G$ such that: 
+\begin{equation}
+\forall v\in V \exists \text{ at most one edge from } M \text{incident on } V
+\end{equation}
+
+\paragraph{Maximal Matching: } You cannot increase the size of $M$ without violating the constraint.
+
+\paragraph{Maximum Matching: } Greatest possible $|M|$. This is what we are interested in solving for.
+
+\paragraph{Reduction to Maximum Flow: } 
+\begin{enumerate}
+\item Introduce \textbf{super source} $s$ that connects to each vertex in set 1 with \textbf{infinite connectivity} from $s$ outward.
+\item Introduce \textbf{super sink} $t$ that connects to each vertex in set 2 with \textbf{infinite connectivity} in direction of $t$.
+\item Let each connection between two sets have weight $1$.
+\item Run \textbf{Edmond-Karp} Algorithm. 
+\end{enumerate}
+
+After this process, $|f| = |M_{maximum}|$.
 
 
 
@@ -811,13 +1063,6 @@ T(n) = aT(\frac{n}{b}) + f(n)
 \end{theorem}
 
 
-% TODO: Add notes on merge sort.
-
-
-
-
-
-
 \section{Substitution}
 
 \textbf{Substitution} is a method for determining the \textbf{closed from} runtime of an algorithm via induction.
@@ -834,12 +1079,10 @@ $$T(n/2) \leq c \floor{n/2}\log \floor{n/2}$$
 
 \chapter{Sorting Algorithms}
 
-\section{Mergesort}
-df
-% TODO: Add pseudocode for heapsort.
+% \section{Mergesort}
+% TODO: Add pseudocode for mergesort
 
 \section{Heapsort}
-df
 \subsection{Heaps}
 
 \begin{theorem}{Heap Definition:}
@@ -1301,28 +1544,19 @@ Now probe sequences are highly unlikely to overlap for different keys. \textbf{C
 \item Therefore, as soon as we calculate some $\text{optim}(n,p)$, we store it in a hash table (called \textbf{memoization}. 
 \end{itemize}
 
-\subsection{Matrix Chain Multiplication}
+% \subsection{Matrix Chain Multiplication}
 
 
-\subsection{Longest Common Subsequence}
-%TODO: Get this together.
-
-
-
-\subsection{Knapsack Problem}
+%\subsection{Longest Common Subsequence}
+%TODO: Add notes (or at least study in detail) examples for dynamic programming.
 
 
 
-
-
-\subsection{Huffman Codes}
-
+% \subsection{Knapsack Problem}
 
 
 
-
-
-
+% \subsection{Huffman Codes}
 
 
 
@@ -1334,16 +1568,11 @@ Now probe sequences are highly unlikely to overlap for different keys. \textbf{C
 
 The essence of a greedy algorithm is to select the \textbf{locally optimal} decision at every opportunity. It is generally efficient, and when it is optimal, is a very convenient choice. Greedy algorithms approximate NP-complete problems well.
 
-\section{Examples}
+% \section{Examples}
 
-\subsection{Class Scheduling}
+% \subsection{Class Scheduling}
 
 %TODO: Populate this section.
-
-
-
-
-
 
 
 \chapter{Amortized Analysis}
@@ -1495,6 +1724,146 @@ The essence of a greedy algorithm is to select the \textbf{locally optimal} deci
 \end{enumerate}
 
 
+
+
+
+\chapter{Theory of Computation and Automata}
+
+\section{Definitions and Preliminaries}
+
+\subsection{Framing}
+
+\paragraph{Course Focus: } Decision problems (i.e. problems with ``yes'' and ``no'') answers. E.g. `does this graph have a clique of size 5 or more?''
+
+\paragraph{Measure of Difficulty: } A problem is more difficult if it takes \textbf{more computational steps} for a machine to solve. The key factor is whether it takes \textbf{polynomial time} or \textbf{non-polynomial time} (e.g., exponential time).
+
+\paragraph{Motivation: } We utilize an extra layer of abstraction to answer questions about \textbf{classes of problems} (e.g. shortest paths, finding cliques, etc.). It is infeasible to go through the (literally infinite) potential \textbf{instances} of a problem class. 
+
+\subsection{Definitions}
+
+\paragraph{Alphabet: } Finite, ordered set of symbols used to convey meaning. All alphabets are \textbf{reducible} to the binary alphabet, so we stick to that for the most part. 
+
+\paragraph{String: } A \textit{string over alphabet $A$} is a sequence of symbols from a given alphabet $A$. 
+\begin{itemize}
+\item Strings with no characters are represented by $\varepsilon$.
+\item Union between alphabets is possible, but you need to define some order.
+\end{itemize}
+
+
+\paragraph{Concatenation: } We represent concatenation of string $\alpha$ and $\beta$ as $\alpha\beta$.
+\begin{itemize}
+\item $\alpha^i$ means concatenating $i$ copies of string $\alpha$.
+\item $\alpha^0 = \varepsilon$.
+\end{itemize}
+
+\paragraph{Set of all Strings: } $\Sigma^*$ is the set of all possible strings over alphabet $\Sigma$.
+
+\paragraph{Reverse: } $\alpha^R$ is the reverse string of $\alpha$.
+
+\begin{theorem}{Definition of a Language:}
+A language is a \textbf{set of strings} over an alphabet. $L$ is a \textbf{language} over alphabet $\Sigma$ if
+\begin{equation}
+L\subseteq \Sigma^*
+\end{equation}
+
+Each element of $L$ is a \textbf{string over the language}.
+
+\paragraph{Operations on Languages: } 
+\begin{enumerate}
+\item $L_1 \cup L_2$: Union of two languages
+\item $L_1 \cap L_2$: Intersection of two languages
+\item $\bar L$: Compliment of language $L$.
+\item $L_1 - L_2$: Strings in $L_1$ not contained in $L_2$. 
+\item $L^i$: Concatenating $i$ copies of \textbf{each string} in language $L$.
+\item $L^* = L^0 \cup L^1 \cup L^2 \cup ...$: \textbf{Kleene Closure} of $L$ -- taking all possible concatenations of strings in the language. 
+\end{enumerate}
+\end{theorem}
+
+
+We think of languages as \textbf{problems}. The decision problem for language $L$ is: ``Does string $\alpha$ belong in $L$ or not?''.
+
+
+\section{Regular Languages}
+
+\section{Complexity Classes P, NP}
+
+\begin{theorem}{Complexity Class $P$ Definition: }
+All languages for which there exists an algorithm $A$ that \textbf{decides} $L$ in \textbf{polynomial time} belong to class $P$.
+\end{theorem}
+
+
+\begin{theorem}{Complexity Class $NP$ Definition: }
+$NP$ is the set of languages $L$ where: 
+\begin{itemize}
+\item There exists a \textbf{polynomial time} algorithm $A$ and constant $c$
+\item such that, given a ``certificate'' (\textbf{candidate solution}) $y$ of size $|y| = O(|x|^c)$
+\item $A(x,y) = 1$. 
+\item That is, $A$ can \textbf{verify} a candidate solution for an instance of the problem in polynomial time with respect to the size of the initial problem. 
+\end{itemize}
+\end{theorem}
+
+
+\begin{theorem}{Relationship between class $P$ and $NP$}
+\begin{equation}
+P\subseteq NP
+\end{equation}
+Therefore, if we have a polynomial-time algorithm $A$ that can decide $L$, then $L$ is definitely a member of both $P$ and $NP$. 
+\end{theorem}
+
+
+\begin{theorem}{P is Closed under Compliment}
+If $L\in P$, then $\bar L \in P$. Simply flip the output of the algorithm that can decide $L$ in polynomial time to decide $\bar L$ in polynomial time. 
+\end{theorem}
+
+
+
+\paragraph{Open Questions in the Field: } 
+\begin{itemize}
+\item $NP = co-NP$?
+\item $P=NP\cap co-NP$?
+\item $NP = P$?
+\end{itemize}
+
+
+\begin{theorem}{Reducibility: }
+Language $L_1$ is \textbf{polynomially reducible} to $L_2$ (i.e. $L_1 \leq_P L_2$) iff $\exists$ polynomial-time algorithm $f()$ such that 
+\begin{equation}
+x\in L_1 \text{ iff } f(x) \in L_2
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{Reducibility implication: }
+If $L_1 \leq_P L_2$ and $L_2\in P$, then $L_1\in P$.
+\end{theorem}
+
+
+\section{NP-Completeness}
+
+\begin{theorem}{NP-Completeness Definition: }
+$L\in NP-\text{Complete}$ iff:
+\begin{itemize}
+\item $L\in NP$ ($L$ can be decided in polynomial time).
+\item For every $L'\in NP$, $L'\leq_P L$. (Any problem in NP can be transformed into $L$ in polynomial time). 
+\end{itemize}
+\end{theorem}
+
+
+\subsection{Methodology to Prove NP-Completeness}
+
+\paragraph{Given language $L$, we show it is NP-Complete by:} 
+\begin{enumerate}
+\item Prove that the language can be verified in polynomial time ($L\in NP$) \textit{(5/15 marks, easy)}.
+\item Select known $L'\in NPC$.
+\begin{enumerate}
+\item Describe algorithm $f()$ that converts instances of $L'$ into instances of $L$ such that 
+\begin{equation}
+[x\in L'] \leq_P [f(x)\in L]
+\end{equation}
+\item Prove that $x\in L'$ iff $f(x)\in L$ (be sure to prove this both ways).
+\item Show that $f()$ takes polynomial time to solve. Usually, this means saying ``we introduce polynomial objects for $L$ for each object in $L'$.''. 
+\end{enumerate}
+\end{enumerate}
 
 
 
