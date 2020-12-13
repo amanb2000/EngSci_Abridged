@@ -67,3 +67,31 @@
 \contentsline {subsection}{\numberline {3.4.1}Periodic Signal Fourier Transform}{17}{subsection.3.4.1}%
 \contentsline {paragraph}{Key struggle: }{17}{section*.38}%
 \contentsline {subsection}{\numberline {3.4.2}Properties of Continuous Time Fourier Transform}{18}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Special Properties: Multiplication and Convolution}{19}{subsection.3.4.3}%
+\contentsline {paragraph}{Convolution: }{19}{equation.3.4.29}%
+\contentsline {paragraph}{Multiplication: }{19}{equation.3.4.30}%
+\contentsline {section}{\numberline {3.5}Solving LCCDE's with Fourier Transform}{19}{section.3.5}%
+\contentsline {paragraph}{Recall: }{19}{section*.41}%
+\contentsline {paragraph}{Frequency Response for an LCCDE: }{20}{equation.3.5.32}%
+\contentsline {section}{\numberline {3.6}Discrete Time Fourier Series}{20}{section.3.6}%
+\contentsline {paragraph}{Synthesis Equation: }{20}{equation.3.6.33}%
+\contentsline {paragraph}{Analysis Equation: }{20}{equation.3.6.34}%
+\contentsline {section}{\numberline {3.7}Discrete Time Fourier Transform}{20}{section.3.7}%
+\contentsline {paragraph}{Synthesis Equation: }{21}{equation.3.7.35}%
+\contentsline {paragraph}{Transform/Analysis Equation: }{21}{equation.3.7.36}%
+\contentsline {paragraph}{Notes on DTFT: }{21}{section*.47}%
+\contentsline {subsection}{\numberline {3.7.1}Properties of Discrete Time Fourier Transform}{21}{subsection.3.7.1}%
+\contentsline {section}{\numberline {3.8}LCCDE in Discrete Time}{23}{section.3.8}%
+\contentsline {paragraph}{Form of LCCDE: }{23}{equation.3.8.57}%
+\contentsline {chapter}{\numberline {4}Communications Theory}{24}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Reconstruction from Samples}{24}{section.4.1}%
+\contentsline {paragraph}{Recall: Impulse Train Sampling -- }{24}{section*.49}%
+\contentsline {paragraph}{Guiding Question: }{24}{section*.50}%
+\contentsline {paragraph}{Answer: }{24}{section*.51}%
+\contentsline {paragraph}{Signal Reconstruction -- Key Facts and Equations: }{25}{section*.52}%
+\contentsline {subsection}{\numberline {4.1.1}Practical Interpolation Strategies}{25}{subsection.4.1.1}%
+\contentsline {paragraph}{Zero-Order Hold: }{25}{section*.53}%
+\contentsline {paragraph}{First-Order Hold: }{26}{section*.54}%
+\contentsline {subsection}{\numberline {4.1.2}Under Sampling and Aliasing}{26}{subsection.4.1.2}%
+\contentsline {paragraph}{Under Sampling: }{26}{section*.55}%
+\contentsline {section}{\numberline {4.2}Discrete Time Sampling}{26}{section.4.2}%

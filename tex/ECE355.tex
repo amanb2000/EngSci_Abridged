@@ -7,10 +7,14 @@
 \usepackage{hyperref}
 \usepackage{amssymb}
 \usepackage{mathtools} 
+\usepackage{amsmath}
+\usepackage{extarrows} 
 
 % \def\reals{{\rm I\!R}}
 \def\reals{\mathbb{R}}
 \def\integers{\mathbb{Z}}
+\def\fft{\xlongleftrightarrow{\mathcal{F}}}
+\def\fs{\xlongleftrightarrow{\mathcal{FS}}}
 
 
 \newtheorem{theorem}{Theorem}
@@ -606,41 +610,42 @@ Steps to find the Fourier Transform of periodic signal:
 
 \begin{enumerate}
 \item \textbf{Linearity: } \begin{equation}
-ax(t) + by(t) \to aX(j\omega) + bY(j\omega)
+ax(t) + by(t) \fft aX(j\omega) + bY(j\omega)
 \end{equation}
 
 \item \textbf{Time Shift: } \begin{equation}
-x(t-t_0) \to e^{-j\omega t_0} X(j\omega)
+x(t-t_0) \fft e^{-j\omega t_0} X(j\omega)
 \end{equation}
 
 \item \textbf{Time + Frequency Scaling: } \begin{equation}
-x(at) \to \frac{1}{|a|} X(\frac{j\omega}{a})
+x(at) \fft \frac{1}{|a|} X(\frac{j\omega}{a})
 \end{equation}
 
 \item \textbf{Conjugation: } \begin{equation}
-x^*(t) \to X^*(-j\omega)
+x^*(t) \fft X^*(-j\omega)
 \end{equation}
 
-\item \textbf{Differentiation and Integration: } \begin{equation}
-x'(t) \to j\omega X(j\omega) \\
-\int_{-\infty}^{t} x(\tau) d\tau \to \frac{1}{j\omega} X(j\omega)
-\end{equation}
+\item \textbf{Differentiation and Integration: } 
+\begin{align}
+x'(t) \fft j\omega X(j\omega) \\
+\int_{-\infty}^{t} x(\tau) d\tau \fft \frac{1}{j\omega} X(j\omega)
+\end{align}
 
-\item \textbf{Duality: } If $x(t) \to X(j\omega) = g(\omega)$ then $g(t) \to 2\pi x(-\omega)$.
+\item \textbf{Duality: } If $x(t) \fft X(j\omega) = g(\omega)$ then $g(t) \fft 2\pi x(-\omega)$.
 
 \item \textbf{Frequency Shifting: } \begin{equation}
-e^{j\omega_0 t} x(t) \to X(j(\omega-\omega_0))
+e^{j\omega_0 t} x(t) \fft X(j(\omega-\omega_0))
 \end{equation}
 
 
 \item \textbf{Differentiation in Frequency Domain: } \begin{equation}
--jtx(t) \to \frac{d}{d\omega} X(j\omega)
+-jtx(t) \fft \frac{d}{d\omega} X(j\omega)
 \end{equation}
 
 
 
 \item \textbf{Integration in Frequency Domain: } \begin{equation}
-\frac{-1}{j\omega} x(t) + \pi x(0) \delta(t) \to \int_{-\infty}^{\omega} X(j\eta) d\eta
+\frac{-1}{j\omega} x(t) + \pi x(0) \delta(t) \fft \int_{-\infty}^{\omega} X(j\eta) d\eta
 \end{equation}
 
 \item \textbf{Parseval's Relation: } \begin{equation}
@@ -649,18 +654,316 @@ e^{j\omega_0 t} x(t) \to X(j(\omega-\omega_0))
 
 \end{enumerate}
 
+\subsection{Special Properties: Multiplication and Convolution}
+
+Convolution and multiplication are the two most important properties to deeply understand about Fourier Transform. They let you use $\mathcal{F}(h(t)) = H(s)$ as you might use the laplace transform of $H$, but this time, you get more information about the \textbf{steady-state} harmonic response. 
+
+\paragraph{Convolution: } \begin{equation}
+x(t)*h(t) \fft X(jw)H(jw)
+\end{equation}
+\begin{itemize}
+\item \textbf{Eigen function:} $e^{st} \to \text{any LTI with }h(t) \to H(s)e^{st}$
+\begin{itemize}
+\item Since we can break down any signal into the weighted sums of $e^{st}$ terms with $s=j\omega$, we can determine frequency response for any function by multiplying to $H(s)$ in the frequency domain. 
+\end{itemize}
+\item \textbf{Key point:} System with impulse reponse $h(t)$ and input $x(t)$ has output $\mathcal{F}^{-1}(H(jw)X(jw)) = \mathcal{F}(Y(jw)) = y(t)$.
+\item An idealized low-pass filter is therefore a ``box'' in the frequency domain and a $sinc$ function in the time domain. 
+\end{itemize}
 
 
 
+\paragraph{Multiplication: } \begin{equation}
+x_1(t)x_2(t) \fft \frac{1}{2\pi} (X_1*X_2)(jw) 
+\end{equation}
+
+%&= \frac{1}{2\pi} \int_{-\infty}^{\infty} X_1(j\theta) X_2(jw-j\theta)d\theta
 
 
 
+\section{Solving LCCDE's with Fourier Transform}
+
+\textit{This was high-key on the midterm before it was taught, so I put it in section 2.4 as well.} 
+
+\paragraph{Recall: } LCCDE's relate some output $y(t)$ to an input $x(t)$ in the following form: 
+\begin{equation}
+\sum_{k=0}^{N} a_k \frac{d^k}{dt^k} y(t) = \sum_{k=0}^{M} b_k \frac{d^k}{dt^k} x(t)
+\end{equation}
+
+\paragraph{Frequency Response for an LCCDE: } 
+\begin{equation}
+H(s) = \frac{\sum_{k=0}^{M} b_k s^k}{\sum_{k=0}^{N} a_k s^k} 
+\end{equation}
+
+Since it's a rational function, you can approximate any $H(s)$ well. To get the \textbf{impulse response} $h(t)$, just compute $\mathcal{F}^{-1}(H(s))$.
+
+You should probably use partial fractions to do that, it makes life a lot easier. 
+
+
+\section{Discrete Time Fourier Series}
+
+\begin{itemize}
+\item $x[n]$ has period $N$ $\to$ $w_0 = \frac{2\pi}{N}$
+\item $e^{jk\omega_0 n}$ is \textbf{harmonically related} for $k\in \mathbb{N}$.
+\end{itemize}
+
+\begin{theorem}{Discrete Time Fourier Series: }
+\paragraph{Synthesis Equation: } 
+\begin{equation}
+x[n] = \sum_{k\in \langle N \rangle}^{} a_k e^{jk\omega_0 n}
+\end{equation}
+
+\paragraph{Analysis Equation: } 
+\begin{equation}
+a_k = \frac{1}{N} \sum_{n\in \langle N \rangle}^{} x[n] e^{-jk\omega_0 n}
+\end{equation}
+
+\begin{itemize}
+\item $n\in \langle N \rangle$ just means $n$ in any \textbf{continguous set} of $N$ integers. 
+\item \textbf{DTFS always converges!} It's basically projecting the vector of size $N$ (that repeats, but whatever) onto $N$ linearly independent basis vectors $e^{jk\omega_0 n}$. The linear algebra checks out (this is an extention of course content). 
+\item $a_k$ is \textbf{periodic} with period $N$ (it therefore makes little difference to represent $k$ for all integers). 
+\end{itemize}
+\end{theorem}
+
+\section{Discrete Time Fourier Transform}
+
+\textit{Intuition: Like for the continuous time case, we take the limit as $N\to \infty$}.
+
+\begin{theorem}{Discrete Time Fourier Series}
+\paragraph{Synthesis Equation: } 
+\begin{equation}
+x[n] = \frac{1}{2\pi} \int_{2\pi}^{} X(e^{j\omega}) e^{j\omega n} d\omega
+\end{equation}
+
+\paragraph{Transform/Analysis Equation: } 
+\begin{equation}
+X(e^{j\omega} = \sum_{n=-\infty}^{\infty} x[n] e^{-j\omega n}
+\end{equation}
+
+\end{theorem}
+
+\paragraph{Notes on DTFT: } 
+\begin{itemize}
+\item Note that $e^{j\omega}$ is only allowable as the argument for $X$ because $e^{j\omega n} = (e^{j\omega})^n$.
+\item $X(e^{j\omega})$ is periodic with $T=2\pi$.
+\item Convergence does have some conditions, but they can be assumed for all problems in this class. 
+\item Values at $0, 2\pi$ correspond to \textbf{lower frequencies} while values at $\pi$ correspond to the highest possible frequency in discrete time. 
+\end{itemize}
+
+\begin{theorem}{DTFT For Periodic Signals}
+For any periodic signal $x[n]$ \begin{equation}
+x[n] = \sum_{k\in \langle N \rangle}^{} a_k e^{jk\omega_0 n}
+\end{equation}
+Where $\omega_0 = \frac{2\pi}{N}$, we have DTFT 
+\begin{equation}
+X(e^{j\omega} = \sum_{k = -\infty}^{\infty} 2\pi a_k \delta(\omega-k\omega_0)
+\end{equation}
+\end{theorem}
+
+
+\subsection{Properties of Discrete Time Fourier Transform}
+
+\begin{enumerate}
+\item Periodic on $2\pi$: \begin{equation}
+X(e^{j(\omega+2\pi)} = X(e^{j\omega})
+\end{equation}
+
+\item Linearity: 
+\begin{equation}
+a_1 x_1[n] + a_2 x_2[n] \fft a_1 X_1(e^{j\omega}) + a_2 X_2(e^{j\omega})
+\end{equation}
+
+\item Time and Frequency Shift: 
+\begin{align}
+x[n-n_0] \fft e^{-j\omega n_0} X(e^{j\omega}) \\ 
+e^{j\omega_0 n} x[n] \fft X(e^{j(\omega-\omega_0)})
+\end{align}
+
+\item Conjugation: 
+\begin{equation}
+x^*[n] \fft X^*(e^{-j\omega})
+\end{equation}
+\begin{itemize}
+\item $x[n] \in \mathbb{R} \to X(e^{j\omega}) = X^*(e^{j\omega})$ (``Conjugate Symmetry'').
+\item $\text{Even}(x[n]) \fft \Re\{X(e^{j\omega})\}$
+\item $\text{Odd}(x[n]) \fft j\Im\{X(e^{j\omega})\}$
+\end{itemize}
+
+
+\item Differencing and Accumulation
+\begin{itemize}
+\item Difference: 
+\begin{equation}
+x[n] - x[n-1] \fft (1-e^{-j\omega})X(e^{j\omega})
+\end{equation}
+\begin{equation}
+x[n] - x[n-k] \fft (1-e^{-j\omega k}X(e^{j\omega}))
+\end{equation}
+
+\item Accumulation: 
+\begin{equation}
+\sum_{m=-\infty}^{n} x[m] = x[n] * u[n] \fft X(e^{j\omega})U(e^{j\omega}) 
+\end{equation}
+
+\begin{equation}
+= \frac{1}{1-e^{-j\omega}} X(e^{j\omega}) + \pi X(e^{(j\theta)}) \sum_{k=-\infty}^{\infty} \delta(\omega - 2\pi k)
+\end{equation}
+\end{itemize}
+
+\item Time Reversal:
+\begin{equation}
+x[-n] \fft X(e^{-j\omega} )
+\end{equation}
+
+\item Time Scaling: $x[an]$ is not defined for all $a\notin \mathbb{Z}$. 
+\begin{itemize}
+\item Time Contraction: $|a| > 1, a\in \mathbb{Z}$ has \textbf{no general formula}.
+\item Time Expansion: 
+\begin{equation}
+x_{(k)}[n] \equiv \begin{cases}
+x[n/k], & \text{if }n\text{ is a multiple of } k \\
+0, & \text{else}
+\end{cases}
+\end{equation}
+\begin{equation}
+X_{(k)}(e^{j\omega}) = X(e^{jk\omega})
+\end{equation}
+\end{itemize}
+
+
+\item Differentiating in Frequency: 
+\begin{equation}
+-jn x[n] \fft \frac{d}{d\omega} X(e^{j\omega})
+\end{equation}
+
+
+\item Parseval's Relation: 
+\begin{equation}
+\sum_{n=-\infty}^{\infty} |x[n]|^2 = \frac{1}{2\pi} |X(e^{j\omega})|^2 d\omega
+\end{equation}
+
+
+\item Convolution in Time: 
+\begin{equation}
+x[n] * h[n] \fft X(e^{j\omega})H(e^{j\omega})
+\end{equation}
+
+
+\item Multiplication in Time: 
+\begin{align}
+x_1[n]x_2[n] \fft (X_1 *_p X_2)(e^{j\omega}) \\
+= \frac{1}{2\pi} \frac{2\pi}{} X_1(e^{j\theta})X_2(e^{j(\omega - \theta)}) d\theta
+\end{align}
+
+
+\item Duality -- From CTFT to DTFT
+\begin{equation}
+x[n] \fft X(e^{j\omega}) \fs x[-n]
+\end{equation}
+\end{enumerate}
 
 
 
+\section{LCCDE in Discrete Time}
+
+\paragraph{Form of LCCDE: } 
+\begin{equation}
+\sum_{k = 0}^{N} a_k y[n-k] = \sum_{k=0}^{M} b_k x[n-k]
+\end{equation}
+
+\begin{equation}
+H(e^{j\omega}) = \frac{Y(e^{j\omega})}{X(e^{j\omega})} = \frac{\sum_{k=0}^{M} e^{-j\omega k}}{\sum_{k=0}^{N} a_k e^{-j\omega k}}
+\end{equation}
+
+Then simply use the resulting rational function $\to$ partial fraction $\to$ inverse DTFT. 
+
+
+\chapter{Communications Theory}
 
 
 
+\section{Reconstruction from Samples}
+
+\paragraph{Recall: Impulse Train Sampling -- } We multiply $x(t)$ with $p(t)$ (the ``picket fence'' function $p(t) = \sum_{n=-\infty}^{\infty} \delta(t-nT)$) to get $x_p(t)$ -- the sampled version of $x(t)$. It looks like a bunch of delta functions that match the ``value'' of $x(t)$ at each instance $t = nT$ where one exits. 
+
+\paragraph{Guiding Question: } How do we \textbf{interpolate} between discrete points recorded for a continuous waveform? 
+
+\paragraph{Answer: } Use an \textbf{ideal low-pass filter}. Make sure you visually understand the following things first.
+\begin{itemize}
+\item $x_p$ is $X(j\omega)*P(j\omega)$, which corresponds to \textbf{a bunch of copies of $X(e^{j\omega})$} spaced $w_s = \frac{2\pi}{T}$ apart. 
+\item To prevent \textbf{overlap in the frequency domain (aliasing)}, the \textbf{band limit} of the signal must be $w_c \leq w_s/2$ (draw it out to visualize it). This is the Nyquist rate.
+\item We can recover $X(jw)$ by low-pass filtering $x_p(t)$ under $w_c \leq w_s/2 = \pi/T$. 
+\end{itemize}
+
+
+
+And honestly, that's the central idea of the communications theory we learn in this course! For the theoretically perfect case, just convolve the sampled $x_p(t)$ with an idealized low-pass filter $sinc$ function: 
+
+\begin{align}
+x_r(t) &= x_p(t) * h(t) \\ 
+&= \sum_{n=-\infty}^{\infty} x(nT)\delta(t-nT)*h(t) \\
+x_r(t) = x(t) &= \sum_{n=-\infty}^{\infty} x(nT)h(t-nT)
+\end{align}
+
+Which is pretty wild. Literally it just boils down to multiplying a bunch of $sinc$ functions \textbf{by the value of $x_p(t)$} at each sampled point. The only problem is that it is not \textbf{causal} and is therefore not practical in real time to perform idealized low-pass filtering. 
+
+
+\paragraph{Signal Reconstruction -- Key Facts and Equations: } In summary,
+\begin{itemize}
+\item Input signal is band limited by $\omega_m$.
+\item Sampling occurs with period $T$ and frequency $\omega_s$ using function $p(t)$, a bunch of delta functions spaced $T$ distance apart in time. 
+\item \textbf{Nyquist Rate: } $w_s \geq 2\omega_m$.
+\item To reconstruct $x(t)$, we \textbf{low-pass filter} $x_p(t)$ with an ideal low-pass filter with bounds $\omega_c$ which must be between $\omega_m$ and $\omega_s/2$. By default, we use $\omega_c = \frac{\omega_s}{2} = \frac{\pi}{T}$.
+\end{itemize}
+
+\subsection{Practical Interpolation Strategies}
+
+Since an ideal low pass filter is, well, \textit{ideal}, we have a few methods to approximate the original signal in real time. 
+
+\paragraph{Zero-Order Hold: } Literally just keep the reconstruction constant as new samples are received.
+\begin{equation}
+x_r(t) = x(kT) \text{ for }kT \leq t \leq (k+1)T
+\end{equation}
+\begin{itemize}
+\item Frequency response: $x_r(t) = \sum_{n=-\infty}^{\infty} x(nT) h_0(t-nT)$, where $h_0(t)$ is 
+\begin{align}
+h_0(t) &= \begin{cases}
+1 & \text{ if } t\in [0,T]  \\
+0 & \text{ otherwise}
+\end{cases} \\
+H_0(jw) &= e^{-j\omega\frac{T}{2}} (\frac{2\sin(\omega\frac{T}{2})}{\omega}) \\
+\end{align}
+
+\item \textbf{Limits on Error: } You get a bit of high-frequency distortion from the left and right lobes of the $X_p$ signal.
+\end{itemize}
+
+\paragraph{First-Order Hold: } Simply applying linear interpolation ($x_r(t)$ is weighted average of two closest samples).
+\begin{equation}
+x_r(t) = \frac{(k+1)T-t}{T} x(kT) + \frac{t-kT}{T} x((k+1)T)\,\,\forall kT\leq t\leq (k+1)T
+\end{equation}
+\begin{itemize}
+\item Frequency response: $x_r(t) = \sum_{n=-\infty}^{\infty} x(nT)h_1(t-nT)$ where 
+\begin{align}
+h_1(t) &= \begin{cases}
+\frac{t}{T} +1 & \text{ for } t\in [-T,0] \\
+\frac{-t}{T} +1 & \text{ for } t\in [0, T] \\
+0 & \text{elsewhere.}
+\end{cases} \\
+H_1(jw) &= \frac{1}{T} (\frac{2\sin(\omega\frac{T}{2})}{\omega})^2 
+\end{align}
+\item Limits on Error: Reduces the error seen in the 0-order hold approximation, as one would expect from increasing... the order... of the approximation.
+\end{itemize}
+
+\subsection{Under Sampling and Aliasing}
+
+\paragraph{Under Sampling: } When the sampling rate results in overlapping `lobes' for $X_p(j\omega)$. That is, when $\omega_s < 2\omega_m$.
+\begin{itemize}
+\item High frequency energy is added from the tails of the left and right `lobes'. 
+\item It is visible in the time domain that information is being lost.
+\item Due to overlap, you can get \textbf{much lower frequencies} in the reconstructed signals, due to overlap of lobes in time domain. 
+\item Same phenomena as the wagon wheel effect.
+\end{itemize}
+
+\section{Discrete Time Sampling}
 
 
 

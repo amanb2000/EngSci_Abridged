@@ -30,3 +30,14 @@
 \BOOKMARK [1][-]{section.3.4}{Continuous Time Fourier Transform}{chapter.3}% 30
 \BOOKMARK [2][-]{subsection.3.4.1}{Periodic Signal Fourier Transform}{section.3.4}% 31
 \BOOKMARK [2][-]{subsection.3.4.2}{Properties of Continuous Time Fourier Transform}{section.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.4.3}{Special Properties: Multiplication and Convolution}{section.3.4}% 33
+\BOOKMARK [1][-]{section.3.5}{Solving LCCDE's with Fourier Transform}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.6}{Discrete Time Fourier Series}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.7}{Discrete Time Fourier Transform}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.7.1}{Properties of Discrete Time Fourier Transform}{section.3.7}% 37
+\BOOKMARK [1][-]{section.3.8}{LCCDE in Discrete Time}{chapter.3}% 38
+\BOOKMARK [0][-]{chapter.4}{Communications Theory}{}% 39
+\BOOKMARK [1][-]{section.4.1}{Reconstruction from Samples}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.1.1}{Practical Interpolation Strategies}{section.4.1}% 41
+\BOOKMARK [2][-]{subsection.4.1.2}{Under Sampling and Aliasing}{section.4.1}% 42
+\BOOKMARK [1][-]{section.4.2}{Discrete Time Sampling}{chapter.4}% 43
