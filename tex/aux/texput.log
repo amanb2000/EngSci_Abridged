@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  12 DEC 2020 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 DEC 2020 04:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ECE35.tex
+**ECE355.tex.tex
 
 ! Emergency stop.
-<*> ECE35.tex
-             
+<*> ECE355.tex.tex
+                  
 End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
  3 strings out of 480608
- 100 string characters out of 5903631
+ 105 string characters out of 5903631
  239610 words of memory out of 5000000
  15998 multiletter control sequences out of 15000+600000
  532338 words of font info for 24 fonts, out of 8000000 for 9000

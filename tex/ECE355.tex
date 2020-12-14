@@ -1199,6 +1199,87 @@ Supposing that all $x_i(t) \in \vec{x}(t)$ are band limited by $\pm \omega_m$ an
 
 \section{Single-Sideband Sinusoidal AM}
 
+\textit{Recall:} In our AM-modulated signals, we have two ``lobes'' in $Y(j\omega)$ centered at $\pm \omega_c$. In other words, we are sending \textbf{one redundant copy of the signal!}
+
+\paragraph{Leveraging Extra Information: } We use a \textbf{low-pass filter} with cutoff $\omega_c$ (i.e. the frequency at which the two lobes are centered) BEFORE TRANSMISSION.
+\begin{itemize}
+\item When the convolution is done on the receiving side, we still end up with a \textbf{complete central lobe}, it's just not two times the size of the left and right lobes.
+\item No information is lost!
+\item We can utilize less bandwidth per signal and encode \textbf{more information in frequency-division multiplexing}!
+\end{itemize}
+
+\section{AM Pulse-Train Carrier}
+
+\paragraph{Key Idea: } We aren't stuck with using sinusoidal carriers. It's a pain to create sinusoidal signals -- much easier to create a \textbf{pulse train}.
+
+\begin{equation}
+c_T(t) = \begin{cases}
+1 & \text{, for } |t-kT| \leq \Delta, k\in \mathbb{Z} \\
+0 & \text{, elsewhere.}
+\end{cases}
+\end{equation}
+
+\paragraph{Frequency Domain Representation for $c(t)$: } Since $c$ is periodic, we calculate its Fourier series where $\omega_c = 2\pi/T$:
+\begin{equation}
+C(j\omega) = 2\pi \sum_{k=-\infty}^{\infty} a_k \delta(\omega-k\omega_c) 
+\end{equation}
+
+\begin{align}
+a_k &= \frac{1}{T} \int_{T}^{} c(t) e^{(-jk\omega_c t)} dt \\
+a_k &= \frac{\sin(k\omega_c \frac{\Delta}{2})}{k\pi} \\
+\end{align}
+
+Once convolved with $X(j\omega)$, we end up with a bunch of $sinc$-scaled copies of $X(j\omega)$ at multiples of $\omega_c$. 
+
+To demodulate the signal, we apply the same techniques as before to capture the $\pm \omega_c$ signals. The main benefit of the method is the \textbf{low complexity for encoding} a signal.
+
+\begin{itemize}
+\item $\Delta$ only relates to the amplitude of the final signal -- it doesn't affect things otherwise. 
+\item $\lim_{\Delta \to 0^+}$ is just sampling. 
+\item \textbf{Time division multiplexing: } With pulse-train carriers, there's some empty space between pulses you can fill with other signals if you're clever .
+\end{itemize}
+
+\section{Angle Modulation}
+
+Tbh this part was kind of half-assed. Here are some of the key points.
+
+\paragraph{Angle Modulation: } Instead of $y(t) = c(t) x(t)$, put $x(t)$ INSIDE $c(t)$ 
+\begin{equation}
+y(t) = A_c \cos(\theta(t))
+\end{equation}
+Where $\theta(t)$ is a function of $x(t)$. The angle argument of the cosine is modulated by $x(t)$.
+
+\paragraph{Phase Modulation: } 
+\begin{equation}
+\theta(t) = \omega_c t + k_p x(t)
+\end{equation}
+
+\paragraph{Frequency Modulation: } 
+\begin{equation}
+\theta(t) = \omega_c t + k_f \int_{0}^{t} x(\tau) d\tau
+\end{equation}
+
+\paragraph{Connection: }
+\begin{itemize}
+\item In frequency modulation, we use an integral because the instantaneous frequency is given by $\frac{d\theta}{dt}$. Solving for the derivative, we get that frequency is $\frac{d\theta}{d t} = w_c + k_f x(t)$, which is exactly what frequency modulation sounds like in the first place.
+\item Instantaneous frequency in phase modulation is $\frac{d \theta}{dt} = \omega_c + k_p \frac{dx(t)}{dt}$.
+\end{itemize}
+
+\paragraph{Benefits and Detriments: } 
+\begin{itemize}
+\item Transmission power is constant (i.e. not a function of the signal being communicated) -- makes it more reliable and higher quality (this is why all my homies listen to FM radio).
+\item Non-linear modulation process makes it kind of hard to analyze, though.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
 
 
 
