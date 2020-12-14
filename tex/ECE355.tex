@@ -877,11 +877,10 @@ H(e^{j\omega}) = \frac{Y(e^{j\omega})}{X(e^{j\omega})} = \frac{\sum_{k=0}^{M} e^
 Then simply use the resulting rational function $\to$ partial fraction $\to$ inverse DTFT. 
 
 
-\chapter{Communications Theory}
+\chapter{Reconstruction from Samples}
 
 
-
-\section{Reconstruction from Samples}
+\section{Continuous Time Sampling}
 
 \paragraph{Recall: Impulse Train Sampling -- } We multiply $x(t)$ with $p(t)$ (the ``picket fence'' function $p(t) = \sum_{n=-\infty}^{\infty} \delta(t-nT)$) to get $x_p(t)$ -- the sampled version of $x(t)$. It looks like a bunch of delta functions that match the ``value'' of $x(t)$ at each instance $t = nT$ where one exits. 
 
@@ -964,6 +963,268 @@ H_1(jw) &= \frac{1}{T} (\frac{2\sin(\omega\frac{T}{2})}{\omega})^2
 \end{itemize}
 
 \section{Discrete Time Sampling}
+
+\paragraph{Core Idea: } 
+\begin{itemize}
+\item Given some discrete time signal $x[n]$, we \textbf{sample} it by taking the $k$th samples. 
+\item To reconstruct the original signal, we use similar principles to before: Low-pass filter the signal in the frequency domain. 
+\item Like in Continuous Time, we have a Nyquist rate and a similar ``picture'' in the frequency domain. 
+\item \textbf{Difference to Deeply Understand: } How do frequency domain representations differ for DT?
+\end{itemize}
+
+\paragraph{Sampling: } Our sampling function is the same as before, just with \textbf{unit impulse functions}. 
+\begin{align}
+p[n] &= \sum_{k=-\infty}^{\infty} \delta[n-kN] \\ 
+P(e^{j\omega}) &= \frac{2\pi}{N} \sum_{k=-\infty}^{\infty} \delta(\omega-k\omega_w) \\
+\end{align}
+
+Where $\omega_s = \frac{2\pi}{N}$. $N$ takes the place of sampling period $T$ from the continuous time case. \textbf{Recall:} $P(e^{j\omega})$ is periodic in $\omega$ with period $2\pi$.
+
+We can determine the \textbf{frequency domain representation} of our sampled $x_p[n] = x[n]p[n]$ by convolving their DTFT conterparts: 
+
+\begin{align}
+X_p(e^{j\omega}) &= \frac{1}{2\pi} \int_{2\pi}^{} X(e^{j(\omega-\theta)})P(e^{j\omega})d\theta \\
+&= \frac{1}{N} \sum_{k=0}^{N-1} X(e^{j(\omega-k\omega_s)}) 
+\end{align}
+
+\paragraph{End Result: } Try to visualize the above equation. It's just a bunch of translated copies of $X(e^{j\omega})$, spaces $\omega_s$ apart. But remember that DTFT is \textbf{periodic with period $2\pi$!} So you have `genuine' copies of $X(e^{j\omega} )$ at intervals of $2\pi$, too.
+
+\paragraph{Information Loss Conditions: } Like before, we only lose information if there is overlap between the aforementioned copies of $X(e^{j\omega})$. That is, \textbf{we lose information if $\omega_s = \frac{2\pi}{N} < \omega_m$} (where $\omega_m$ is the band limit of the original signal $x[n]$).
+
+\paragraph{Signal Reconstruction via Ideal Low-Pass Filter: } Our low pass filter is defined similarly to before.
+\begin{align}
+H(e^{j\omega}) &= \begin{cases}
+N & \text{, for } |\omega| < \omega_c \\
+0 & \text{, else. Periodic on } 2\pi.
+\end{cases}
+h[n] = N\frac{\omega_c}{\pi} \frac{\sin(\omega_c n)}{\omega_c n} \\
+\end{align}
+
+We reconstruct $x[n]$ to form $x_r[n]$ by convolving the sampled version with the low-pass filter $h[n]$ in the time domain (or multiplying in the frequency domain):
+
+\begin{align}
+x_r[n] &= x_p[n] * h[n] \\
+x_r[n] &= \sum_{k=-\infty}^{\infty} x_p[kN] \cdot N \frac{\omega_c}{\pi} \frac{\sin(\omega_c(n-kN))}{\omega_c(n-kN)} \\
+\end{align}
+
+And that's pretty much it for discrete time sampling and reconstruction (at its core).
+
+
+
+\section{Downsampling (a.k.a. ``Decimation'')}
+
+\begin{theorem}{Decimation Definition: }
+We define decimation (or ``downsampling'') as follows: The downsampled version of $x[n]$ with downsampling period $N$ is $x_b[n]$, given by 
+\begin{align}
+x_b[n] &= x[nN] \\
+\end{align}
+\end{theorem}
+
+
+\paragraph{Frequency Domain Representation of Decimated Signal: } We begin by observing that $x_b[n] = x[nN] = x_p[nN]$ if $x_p$ is sampled with period $n$. Therefore, 
+\begin{align}
+X_b(e^{j\omega}) &= \sum_{k=-\infty}^{\infty} x_b[n] e^{(-j\omega k)} \\
+&= \sum_{n=-\infty}^{\infty} x_p[n] e^{(-j\omega n/N)}  \\
+X_b(e^{j\omega}) &= X_p(e^{(j\frac{\omega}{N})}) 
+\end{align}
+
+Therefore the frequency domain representation for $x_b[n]$ is the \textbf{exact same} as that of $x_p[n]$ but \textbf{stretched by factor} $N$.
+
+\subsection{Upsampling and Resampling}
+
+\paragraph{Upsampling} is the inverse of downsampling. In our context, it means transforming $x_b[n] \to x[n]$. 
+\begin{enumerate}
+\item Add $N-1$ zeros between samples of $x_b[n]$ to create $x_p[n]$.
+\item Perform same low-pass filtering from conventional discrete-time sampling to create the interpolated version and recover $x[n]$. 
+\begin{itemize}
+\item Note that the same limitations on reconstruction hold as for the case of $x_p[n] \to x[n]$. 
+\end{itemize}
+\end{enumerate}
+
+\paragraph{Resampling} is how we ``speed up'' or ``slow down'' a discrete-time signal by a \textbf{fractional value}. For rational re-sampling rate $r = \frac{a}{b} | a,b\in \mathbb{R}$:
+\begin{enumerate}
+\item Up-sample by factor $a$.
+\item Down-sample by factor $b$. 
+\end{enumerate}
+
+
+\chapter{Communications Systems}
+
+\section{Basic Components and Facts}
+
+\paragraph{Problem with Regular Sampling: } To transmit human voices directly as electromagnetic waves, you would need a giant antenna. 
+
+\paragraph{General Solution: } We ``shift up'' the frequency representation of the original voice signal, send it, then shift it backdown, and play it. 
+\begin{enumerate}
+\item $x(t)$: \textbf{``Base band''}, our original signal to transmit (generally low frequency relative to other parts). Also known as the ``modulat\textbf{ed}  signal''.
+\item $\omega_c$: \textbf{Carrier frequency,} the frequency about which the transmitted signal is centered. 
+\item $y(t)$: \textbf{``Pass-band''} or \textbf{``modulated''} signal. This is what we send through the air (or channel) to be received, demodulated, and played back as $x(t)$. 
+\end{enumerate}
+
+\section{Amplitude Modulation}
+
+\begin{equation}
+y(t) = x(t)c(t)
+\end{equation}
+Where $c(t)$ is the carrier signal.
+
+\subsection{Form 1: Complex Exponential Carrier}
+\begin{equation}
+c(t) = e^{j(\omega_c t + \theta_c)} 
+\end{equation}
+For now, we assume $\theta_c = 0$.
+\begin{align}
+y(t) &= e^{j(\omega_c t)} x(t) \\
+Y(j\omega) &= X(j(\omega-\omega_c)) 
+\end{align}
+
+So $Y(jw)$ is literally just $X(jw)$ shifted up to center on $\omega_c$.
+
+\paragraph{Demodulation: } Just shift back with another complex exponential.
+\begin{equation}
+x(t) = y(t) e^{-j\omega_c t} 
+\end{equation}
+
+\paragraph{PROBLEM: } It's a pain to send real AND imaginary components (remember imaginary stuff is a convenient fabrication, so we would need to literally have two signals broadcasted and received independently). To solve this problem, we use different systems.
+
+
+
+\subsection{Form 2: Sinusoidal Carrier}
+
+\begin{equation}
+c(t) = cos(\omega_c t + \theta_c)
+\end{equation}
+
+Again, we assume that $\theta_c = 0$ for convenience. The fourier series representation of $c(t)$ is just two delta functions at $\pm \omega_c$, so convolving that with $X(j\omega)$ yields two copies of $X(j\omega)$ centered at $\pm \omega_c$.
+
+\begin{equation}
+C(j\omega) = \pi [\delta(\omega-\omega_c) + \delta(\omega+\omega+c)]
+\end{equation}
+
+\begin{equation}
+Y(j\omega) = \frac{1}{2\pi} [X(j(\omega-\omega_c)) + X(j(\omega+\omega_c))]
+\end{equation}
+
+\paragraph{Reconstructing: } Conveniently, re-convolving $Y(j\omega)$ with the same two delta functions in $C(j\omega)$ yields one larger ``lobe'' (copy of $X(j\omega)$) centered at 0 and two smaller ones centered at $\pm 2\omega_c$. We can then \textbf{low-pass filter} to extract the central lobe and get $X(j\omega)$.
+
+\paragraph{Time Domain Representation: } We can also see this process algebraically in the time domain.
+\begin{align}
+y(t) &= x(t)\cos(\omega_c t) \\
+w(t) &= y(t)\cos(\omega_c t) \\
+&= x(t) \cos^2 (\omega_c t) \\
+&= \frac{1}{2} x(t) + \frac{1}{2} x(t) \cos(2\omega_c t)
+\end{align}
+
+And we filter out the second term in the final expression with the low-pass filter.
+
+\section{Non-Ideal Demodulation}
+
+\subsection{Problems with Synthronous Demodulation}
+
+\textit{Previously: We assumed that $\omega_c, \theta_c$ were shared perfectly between transmitter and receiver. This isn't true in practice and is known as \textbf{synchronous demodulation}}.
+\begin{itemize}
+\item Non-zero $\theta_c$ is incorporated fairly easily into equations from before for modulation/demodulation.
+\end{itemize}
+
+\paragraph{Phase Mis-Synchronization: } If the receiver thinks the phase of $\phi_c \neq \theta_c$, you can do a bunch of algebra to figure out that
+\begin{equation}
+x_{out}(t) = x_{in}(t) \cos(\theta_c - \phi_c)
+\end{equation}
+
+While you could just amplify the reconstruction for when $\phi_c \neq \theta_c$, you might run into $\phi_c - \theta_c = \pi/2 + k\pi$, leading to $\cos(\theta_c + \phi_c)$ being zero. Pretty bad situation overall.
+
+\paragraph{Carrier Frequency Mis-Synchronization: } If the modulator has carrier frequency $\omega_c$ but the demodulator has frequency $\omega_d$, then 
+\begin{equation}
+x_{out} = x_{in}(t) \cos((\omega_c-\omega_d) t)
+\end{equation}
+
+Leading to an oscillating envelope on the gain of the signal. Pretty bad for the \textit{audiophile experience}.
+
+\paragraph{Solution: } Don't use synchronous modulation lmao
+
+
+
+
+\subsection{Asynchronous Modulation}
+
+\paragraph{Envelope Detector: } A relatively simple circuit that performs ``half wave rectification'' on an incoming modulated signal with high frequency carrier and low frequency base band. The circuit follows the wave on the positive derivative portion and then has a slow exponential discharge on the downward portion.
+
+\begin{itemize}
+\item When $\omega_c >> \omega_m$, $x_{reconstructed}(t) \approx x(t)$.
+\item Usually is sent through a low-pass filter to get rid of noise afterward.
+\item \textbf{Non-linearity} is introduced by the diode $\to$ harder to analyze.
+\begin{itemize}
+\item $X_{reconstructed}(j\omega)$ is harder to find.
+\end{itemize}
+\item \textbf{Assumes} $x(t) \geq 0$. If this is not true by default, we add \textbf{offset} $x(t) := x(t) + a, a\in \mathbb{R}$.
+\begin{itemize}
+\item Results in a delta function of amplitude $\pi a$ at $\pm \omega_c$ in the frequency domain representation of 
+\begin{equation}
+y(t) = (x(t) + a)\cos(\omega_c t)
+\end{equation}
+\item \textbf{Transmitted carrier mode: } $x(t)$ has offset and therefore has aforementioned delta function spikes. \textbf{This enables envelope detection}. Corresponds to signal being greater than 0.
+\item \textbf{Suppressed carrier mode: } no offset on $x(t)$ $\to$ no delta function spikes in frequency domain.
+\item Transmitting the carrier takes \textbf{more energy}.
+\item Tradeoff: More energy/work on the transmitter side OR more energy/work on receiver side. 
+\end{itemize}
+\end{itemize}
+
+\section{Frequency Division Multiplexing}
+
+\paragraph{Goal: } Simultaneously transmit multiple signals through one channel (``wideband'' channel).
+
+\paragraph{Solution: } Given 
+\begin{equation}
+\vec{x}(t) = \begin{bmatrix}
+x_1(t) \\
+x_2(t) \\
+\vdots \\
+x_n(t) \\
+\end{bmatrix};\,\,\,\,
+\vec{c}(t) = \begin{bmatrix}
+cos(\omega_1 t) \\
+cos(\omega_2 t) \\
+\vdots \\
+cos(\omega_n t) \\
+\end{bmatrix}
+\end{equation}
+
+We let 
+\begin{equation}
+w(t) = \vec{x}(t)^T \vec{c}(t)
+\end{equation}
+
+Supposing that all $x_i(t) \in \vec{x}(t)$ are band limited by $\pm \omega_m$ and $\omega_i - \omega_j > 2\omega_m$, we would have $2n$ separated ``lobes'' representing each signal in the frequency domain that can be band-pass filtered and demodulated to reconstruct the original! This is basically how AM radio works. How bout that. 
+
+
+\section{Single-Sideband Sinusoidal AM}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

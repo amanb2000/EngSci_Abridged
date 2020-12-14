@@ -36,8 +36,20 @@
 \BOOKMARK [1][-]{section.3.7}{Discrete Time Fourier Transform}{chapter.3}% 36
 \BOOKMARK [2][-]{subsection.3.7.1}{Properties of Discrete Time Fourier Transform}{section.3.7}% 37
 \BOOKMARK [1][-]{section.3.8}{LCCDE in Discrete Time}{chapter.3}% 38
-\BOOKMARK [0][-]{chapter.4}{Communications Theory}{}% 39
-\BOOKMARK [1][-]{section.4.1}{Reconstruction from Samples}{chapter.4}% 40
+\BOOKMARK [0][-]{chapter.4}{Reconstruction from Samples}{}% 39
+\BOOKMARK [1][-]{section.4.1}{Continuous Time Sampling}{chapter.4}% 40
 \BOOKMARK [2][-]{subsection.4.1.1}{Practical Interpolation Strategies}{section.4.1}% 41
 \BOOKMARK [2][-]{subsection.4.1.2}{Under Sampling and Aliasing}{section.4.1}% 42
 \BOOKMARK [1][-]{section.4.2}{Discrete Time Sampling}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.3}{Downsampling \(a.k.a. ``Decimation''\)}{chapter.4}% 44
+\BOOKMARK [2][-]{subsection.4.3.1}{Upsampling and Resampling}{section.4.3}% 45
+\BOOKMARK [0][-]{chapter.5}{Communications Systems}{}% 46
+\BOOKMARK [1][-]{section.5.1}{Basic Components and Facts}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.2}{Amplitude Modulation}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.2.1}{Form 1: Complex Exponential Carrier}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.2}{Form 2: Sinusoidal Carrier}{section.5.2}% 50
+\BOOKMARK [1][-]{section.5.3}{Non-Ideal Demodulation}{chapter.5}% 51
+\BOOKMARK [2][-]{subsection.5.3.1}{Problems with Synthronous Demodulation}{section.5.3}% 52
+\BOOKMARK [2][-]{subsection.5.3.2}{Asynchronous Modulation}{section.5.3}% 53
+\BOOKMARK [1][-]{section.5.4}{Frequency Division Multiplexing}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.5}{Single-Sideband Sinusoidal AM}{chapter.5}% 55
