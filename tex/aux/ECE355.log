@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 DEC 2020 05:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  14 DEC 2020 05:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -496,7 +496,7 @@ Chapter 1.
 [5
 
 ] [6] [7] [8] [9]
-Overfull \hbox (6.75417pt too wide) in paragraph at lines 270--271
+Overfull \hbox (6.75417pt too wide) in paragraph at lines 271--272
 []\OT1/cmr/m/n/12 Scaling then push-ing through sys-tem is the same as push-ing
  through
  []
@@ -506,12 +506,12 @@ Chapter 2.
 [11
 
 ]
-Overfull \hbox (30.68776pt too wide) in paragraph at lines 349--349
+Overfull \hbox (30.68776pt too wide) in paragraph at lines 350--350
 []\OT1/cmr/bx/n/17.28 Linear Constant-Coefficient Dif-fer-en-tial (Dif-
  []
 
 [12] [13]
-Overfull \hbox (63.81783pt too wide) detected at line 407
+Overfull \hbox (63.81783pt too wide) detected at line 408
 []\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] + [] [
 ](\OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 ] \OMS/c
 msy/m/n/12 ^^@ \OML/cmm/m/it/12 y\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n \OMS/cmsy/
@@ -530,7 +530,7 @@ Chapter 3.
 [15
 
 ] [16] [17] [18] [19] [20]
-Overfull \hbox (0.77577pt too wide) in paragraph at lines 706--706
+Overfull \hbox (0.77577pt too wide) in paragraph at lines 707--707
 []\OT1/cmr/bx/n/17.28 Solving LC-CDE's with Fourier Trans-form 
  []
 
@@ -539,7 +539,7 @@ Chapter 4.
 [26
 
 ] [27]
-Overfull \hbox (2.053pt too wide) in paragraph at lines 961--962
+Overfull \hbox (2.053pt too wide) in paragraph at lines 962--963
  []\OT1/cmr/bx/n/12 First-Order Hold: [] \OT1/cmr/m/n/12 Sim-ply ap-ply-ing lin
 -ear in-ter-po-la-tion ($\OML/cmm/m/it/12 x[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
 t\OT1/cmr/m/n/12 )$ is weighted
@@ -550,40 +550,40 @@ Chapter 5.
 [32
 
 ] [33] [34]
-Overfull \hbox (9.22261pt too wide) in paragraph at lines 1197--1198
+Overfull \hbox (9.22261pt too wide) in paragraph at lines 1198--1199
  []\OT1/cmr/bx/n/12 Goal: [] \OT1/cmr/m/n/12 Si-mul-ta-ne-ously trans-mit mul-t
 i-ple sig-nals through one chan-nel (``wide-
  []
 
 [35] [36] [37]
-Overfull \hbox (0.80983pt too wide) in paragraph at lines 1294--1295
+Overfull \hbox (0.80983pt too wide) in paragraph at lines 1295--1296
 []\OT1/cmr/m/n/12 Non-linear mod-u-la-tion pro-cess makes it kind of hard to an
 -a-lyze, though. 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1354.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1355.
 [38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1354.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1355.
  (./ECE355.aux
 
 Package pdfbase Warning: Rerun to get internal references right!
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1354.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1355.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1355.
 
 Package rerunfilecheck Info: File `ECE355.out' has not changed.
 (rerunfilecheck)             Checksum: 165A50CE0FB64F6554DCBE9CE5FF7CD2;4413.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1354.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1355.
  ) 
 Here is how much of TeX's memory you used:
  11278 strings out of 480608
  186363 string characters out of 5903631
- 454780 words of memory out of 5000000
+ 453780 words of memory out of 5000000
  26617 multiletter control sequences out of 15000+600000
  542750 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,18n,48p,369b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,18n,48p,369b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
@@ -600,10 +600,10 @@ ive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
 e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on ECE355.pdf (39 pages, 276792 bytes).
+Output written on ECE355.pdf (39 pages, 277010 bytes).
 PDF statistics:
- 937 PDF objects out of 1000 (max. 8388607)
- 872 compressed objects within 9 object streams
+ 938 PDF objects out of 1000 (max. 8388607)
+ 873 compressed objects within 9 object streams
  384 named destinations out of 1000 (max. 500000)
  465 words of extra memory for PDF output out of 10000 (max. 10000000)
 
