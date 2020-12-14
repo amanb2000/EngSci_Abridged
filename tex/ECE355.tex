@@ -53,6 +53,29 @@ Primary course topics include:
 \end{itemize}
 
 
+\section{Useful Connections}
+
+Lots of the stuff we learn here is deeply connected to linear algebra, differential equations, and more. Here are a few connections I find useful when thinking about signal processing problems. 
+
+\begin{itemize}
+\item Continuous time signals are an \textbf{infinite-dimensional vector space}, complete with inner products, projection, norms, etc.
+\item Most signal transforms (including Fourier transform) is the \textbf{projection} (in the linear algebraic sense) of a signal onto a set of basis vectors. For equality to the original signal, you need infinite basis vectors (hence why the Fourier transform is an integral operation and why the Fourier series is an infinite sum).
+\begin{itemize}
+\item There are multiple options for basis vectors/spanning sets of vectors to project onto -- see Wavelet transform, Chirplet transform, etc.
+\end{itemize}
+\item Fourier transform is Laplace transform's little brother.
+\item Discrete time signals are countably infinite-dimensional vector spaces. 
+\begin{itemize}
+\item The reason you need any only $n\in \langle N \rangle$ discrete-time Fourier series components to \textbf{perfectly reconstruct} a signal with period $N$ is because those $N$ signals are linearly independent (and orthonormal). Since you know the period is $N$, you can think of them all as just $N$-long vectors repeated infinte times. 
+\item Since the $n\in \langle N \rangle$ discrete-time vectors are orthonormal, you can project an arbitrary signal onto them just by taking inner products (which is exactly the operation we do) and reconstruct it perfectly. 
+\end{itemize}
+\end{itemize}
+
+Signal processing is a pretty fascinating (and inescapable) field, so making these connections can be very helpful for thinking deeply about problems. 
+
+
+
+
 
 
 \chapter{Signal Basics}
