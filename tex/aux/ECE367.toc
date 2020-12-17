@@ -11,7 +11,7 @@
 \contentsline {paragraph}{Direct Sum: }{3}{section*.9}%
 \contentsline {section}{\numberline {1.2}Norms}{4}{section.1.2}%
 \contentsline {paragraph}{Norm Definition: }{4}{section*.10}%
-\contentsline {paragraph}{$l_p$ Norm Family: }{4}{equation.1.2.2}%
+\contentsline {paragraph}{$\ell _p$ Norm Family: }{4}{equation.1.2.2}%
 \contentsline {paragraph}{Norm Ball: }{4}{section*.12}%
 \contentsline {paragraph}{Level Sets: }{4}{section*.13}%
 \contentsline {paragraph}{Cardinality Function: }{4}{section*.14}%
@@ -122,3 +122,12 @@
 \contentsline {subsection}{\numberline {7.2.3}Underdetermined}{27}{subsection.7.2.3}%
 \contentsline {paragraph}{Convention:}{27}{section*.83}%
 \contentsline {paragraph}{Solution to Underdetermined Case: }{27}{equation.7.2.11}%
+\contentsline {section}{\numberline {7.3}Regularized Least Squares}{28}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}$\ell _2$ Regularization}{28}{subsection.7.3.1}%
+\contentsline {paragraph}{Solving $\ell _2$ Regularized Least Squares:}{28}{section*.85}%
+\contentsline {section}{\numberline {7.4}Tikhonov Regularization}{28}{section.7.4}%
+\contentsline {paragraph}{Governing Formula: }{28}{section*.86}%
+\contentsline {paragraph}{Solution: }{29}{section*.87}%
+\contentsline {section}{\numberline {7.5}Theoretical Aspects of Least Squares}{29}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}$\ell _1$ Regularization}{29}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}SVD Connection}{29}{subsection.7.5.2}%

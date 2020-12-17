@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.11)  17 DEC 2020 04:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.11)  17 DEC 2020 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,30 +548,63 @@ bx/n/12 pro-jec-tion \OT1/cmr/m/n/12 of $\OML/cmm/m/it/12 y \OMS/cmsy/m/n/12 !
 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 )$.
  []
 
-[26]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1127.
- [27]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1127.
+[26] [27]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1022.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\ell' on input line 1022.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 1022.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1022.
+
+[28]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1112.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\ell' on input line 1112.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 1112.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1112.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1231.
+[29]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1231.
  (./ECE367.aux
 
 Package pdfbase Warning: Rerun to get internal references right!
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1127.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1127.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1231.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1231.
 
 Package rerunfilecheck Info: File `ECE367.out' has not changed.
-(rerunfilecheck)             Checksum: E89E500AA421AD0B0A9AB5458443FBDC;2765.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1127.
+(rerunfilecheck)             Checksum: C4BC51BCAEAA6192B06B4BB794BEF3C6;3198.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1231.
  ) 
 Here is how much of TeX's memory you used:
- 11189 strings out of 483183
- 184302 string characters out of 5966292
+ 11225 strings out of 483183
+ 184763 string characters out of 5966292
  448115 words of memory out of 5000000
- 25739 multiletter control sequences out of 15000+600000
- 543846 words of font info for 68 fonts, out of 8000000 for 9000
+ 25748 multiletter control sequences out of 15000+600000
+ 544241 words of font info for 71 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 50i,17n,48p,337b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,17n,48p,458b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/aman/.texlive2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk> <
 /home/aman/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sh
@@ -580,18 +613,19 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ECE367.pdf (28 pages, 243745 bytes).
+ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ECE367.pdf (30 pages, 258745 bytes).
 PDF statistics:
- 715 PDF objects out of 1000 (max. 8388607)
- 661 compressed objects within 7 object streams
- 289 named destinations out of 1000 (max. 500000)
- 329 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 781 PDF objects out of 1000 (max. 8388607)
+ 723 compressed objects within 8 object streams
+ 314 named destinations out of 1000 (max. 500000)
+ 377 words of extra memory for PDF output out of 10000 (max. 10000000)
 

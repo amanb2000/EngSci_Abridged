@@ -90,13 +90,13 @@ This implies that there is a \textbf{unique choice} for a representation of a ve
 \item $\norm{\alpha u} = \abs{\alpha} \cdot \norm{u}$
 \end{enumerate}
 
-\paragraph{$\ell_p$ Norm Family: } \begin{equation}
+\paragraph{$l_p$ Norm Family: } \begin{equation}
 \norm{x}_p = (\sum_{k=1}^{n} \abs{x_k}^p)^{\frac{1}{p}}
 \end{equation}
 For $1 \leq p \leq \infty$.
 
 \begin{itemize}
-\item \textbf{Euclidian Norm: } $\ell_2$ norm is our conventional measure of distance in Euclidian space.
+\item \textbf{Euclidian Norm: } $l_2$ norm is our conventional measure of distance in Euclidian space.
 \item \textbf{$l_1$: } Is simply the sum of the absolute values in a vector.
 \item \textbf{$l_\infty$: } Is the absolute value of the maximum magnitude element in the vector.
 \end{itemize}
@@ -349,7 +349,7 @@ AB =
 \begin{equation}
 \norm{A}_F \equiv \sqrt{\inpr{A,A}}
 \end{equation}
-Which is the equivalent of the $\ell_2$ norm of the vector made by flattening $A$.
+Which is the equivalent of the $l_2$ norm of the vector made by flattening $A$.
 
 
 These definitions and properties make proofs a lot easier when you deeply understand them. 
@@ -1017,15 +1017,15 @@ Where $A = U_r \Sigma V_r^T$ is the SVD of $A$.
 
 \section{Regularized Least Squares}
 
-The idea is to introduce another term to the ``cost function'' for least squares. We \textit{penalize} the solution $x^*$, generally based on some measure of its magnitude (e.g. an $\ell_p$ norm, a weighted sum, etc.) 
+The idea is to introduce another term to the ``cost function'' for least squares. We \textit{penalize} the solution $x^*$, generally based on some measure of its magnitude (e.g. an $l_p$ norm, a weighted sum, etc.) 
 
-\subsection{$\ell_2$ Regularization}
+\subsection{$\mathcal{l}_2$ Regularization}
 
 \begin{equation}
 x^* = \text{arg min}_{x\in \mathbb{R}^n} \norm{y-Ax}_2^2 + \gamma \norm{x}_2^2
 \end{equation}
 
-\paragraph{Solving $\ell_2$ Regularized Least Squares:} 
+\paragraph{Solving $\mathcal{l}_2$ Regularized Least Squares:} 
 \begin{enumerate}
 \item Let 
 \begin{equation}
@@ -1036,89 +1036,19 @@ x^* = \text{arg min}_{x\in \mathbb{R}^n} \norm{y-Ax}_2^2 + \gamma \norm{x}_2^2
 	\end{bmatrix}
 \end{equation}
 \begin{equation}
-\bar y \in \mathbb{R}^n = \begin{bmatrix}
+\bar y = \begin{bmatrix}
 y \\
 0 \\
 0 \\
 \vdots 
-0 \\
+0\\
 \end{bmatrix}
 \end{equation}
-
-\item Solve as before, knowing that 
-\begin{equation}
-\norm{Ax-y}_2^2 + \gamma \norm{x}_2^2 \equiv \norm{\bar A x - \bar y}_2^2
-\end{equation}
-\begin{equation}
-x^* = (\bar A^T \bar A)^{-1} \bar A^T \bar y = (A^T A + \gamma I)^{-1} A^T y
-\end{equation}
+<++>
 \end{enumerate}
 
 
-\section{Tikhonov Regularization}
 
-\textit{Also known as ridge regression, weight decay.} 
-
-\paragraph{Governing Formula: } We introduces matrices $W_1, W_2$ to indicate ``priority'' of minimizing different error terms (and linear combinations of error terms) and variable $x^{(0)}$ to represent the ``zero effort point'' as follows:
-\begin{equation}
-\min_x \norm{W_1(Ax-y)}_2^2 + \norm{W_2 (x-x^{(0)})}_2^2
-\end{equation}
-\begin{itemize}
-\item $W_1 \in S_{++}^n$: How much do we weigh residuals (i.e. indices of $Ax-y$)?
-\item $W_2$: How much do we weigh deviations of $x^*$ from the \textbf{zero effort point} $x^{(0)}$?
-\end{itemize}
-
-
-
-\paragraph{Solution: } 
-We find algebraic equivalence to the following unregularized least squares problem:
-\begin{equation}
-\min_x \norm{\bar A x - \bar y}_2^2
-\end{equation}
-
-Where
-\begin{equation}
-\bar A = \begin{bmatrix}
-W_1 A \\
-W_2 \\
-\end{bmatrix}
-\end{equation}
-
-\begin{equation}
-\bar y = \begin{bmatrix}
-W_1 y \\
-W_2 x^{(0)} \\
-\end{bmatrix}
-\end{equation}
-
-
-
-
-
-\section{Theoretical Aspects of Least Squares}
-
-For the solution of regularized least squares, 
-\begin{equation}
-\min_x \norm{Ax - y}_2^2 + \gamma \norm{x}_2^2
-\end{equation}
-
-Our objective function can be re-written w.r.t. $x$ as the following sum of constants and quadratics:
-\begin{equation}
-\norm{Ax^*_{LS} - y}_2^2 + (x - x_{LS}^*)^T A^T A (x - x_{ls}^*) + \gamma x^T x
-\end{equation}
-
-One can think of it as two ``gravity wells'' or ``potential energy wells'' that pull the optimal solution $x^*$ towards them. One is centered at the solution to the un-regularized least squares problem and the other at the \textbf{zero effort point} (in the above equations, that is the origin). Since they are quadratic cost surfaces, they actually do have very similar to shape as gravity wells (other than their eccentricity).
-
-\subsection{$\ell_1$ Regularization}
-
-LASSO = ``Least Absolute Shrinkage and Selection Operator'' is the term for $\ell_1$ regularization. It generally produces sparsity in approximations.
-
-\subsection{SVD Connection}
-
-\textit{After much symbol-shunting of $\ell_2$ regularized least squares,} 
-\begin{equation}
-y^* = \sum_{i=1}^{r} \frac{\sigma_i^2}{\sigma_i^2 + \gamma} \inpr{u^{(i)}, y} u^{(i)}
-\end{equation}
 
 
 

@@ -39,3 +39,9 @@
 \BOOKMARK [2][-]{subsection.7.2.1}{Overdetermined}{section.7.2}% 39
 \BOOKMARK [2][-]{subsection.7.2.2}{Uniquely Determined}{section.7.2}% 40
 \BOOKMARK [2][-]{subsection.7.2.3}{Underdetermined}{section.7.2}% 41
+\BOOKMARK [1][-]{section.7.3}{Regularized Least Squares}{chapter.7}% 42
+\BOOKMARK [2][-]{subsection.7.3.1}{2 Regularization}{section.7.3}% 43
+\BOOKMARK [1][-]{section.7.4}{Tikhonov Regularization}{chapter.7}% 44
+\BOOKMARK [1][-]{section.7.5}{Theoretical Aspects of Least Squares}{chapter.7}% 45
+\BOOKMARK [2][-]{subsection.7.5.1}{1 Regularization}{section.7.5}% 46
+\BOOKMARK [2][-]{subsection.7.5.2}{SVD Connection}{section.7.5}% 47
