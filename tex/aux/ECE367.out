@@ -35,3 +35,7 @@
 \BOOKMARK [1][-]{section.6.5}{Moore-Penrose Pseudo-Inverse}{chapter.6}% 35
 \BOOKMARK [0][-]{chapter.7}{Systems of Linear Equations}{}% 36
 \BOOKMARK [1][-]{section.7.1}{Mathematical Setup}{chapter.7}% 37
+\BOOKMARK [1][-]{section.7.2}{Over, Under, and Uniquely Determined Least Squares}{chapter.7}% 38
+\BOOKMARK [2][-]{subsection.7.2.1}{Overdetermined}{section.7.2}% 39
+\BOOKMARK [2][-]{subsection.7.2.2}{Uniquely Determined}{section.7.2}% 40
+\BOOKMARK [2][-]{subsection.7.2.3}{Underdetermined}{section.7.2}% 41

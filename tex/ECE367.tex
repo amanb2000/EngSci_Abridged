@@ -922,6 +922,109 @@ It is possible that there are no solutions, one solution, or infinite solutions.
 Then the solution exists. Otherwise, it doesn't (in this case, $y$ adds to the column space and is therefore not in $\
 mathcal{R}(A)$).
 
+\paragraph{Simple Test for Uniqueness: } If $\mathcal{N}(A) = \{\emptyset\}$, then the solution is unique.
+
+\paragraph{Consistent Solution to Least Squares: } Using the \textbf{Moore-Penrose pseudo inverse} $A^\dagger$, we have 
+\begin{equation}
+x^* = A^\dagger y
+\end{equation}
+
+This will always work, and in the underdetermined case, will produce the solution that minimizes $\norm{x^*}_2$.
+
+
+
+\section{Over, Under, and Uniquely Determined Least Squares}
+
+\begin{theorem}{Normal Equation:}
+The optimal solution $x^*$ to any (unconstrained) least squares problem satisfies
+\begin{equation}
+A^T A x^* = A^T y
+\end{equation}
+\end{theorem}
+
+
+
+\subsection{Overdetermined}
+
+For ``tall and thin'' matrix $A\in \mathbb{R}^{m\times n}$ with $m > n$, we have the dimension of the column space of $A$ (or $\mathcal{R}(A)$) limited by $n$. Since the output of $Ax$ is in $\mathbb{R}^n$, \textbf{most of the possible $y$ vectors will not be in $\mathcal{R}(A)$}.
+
+
+Therefore, we are forced to search for the \textbf{best solution:} 
+\begin{equation}
+x^* = \text{arg min}_{x\in \mathbb{R}^n} \norm{Ax-y}
+\end{equation}
+
+Which looks an awful lot like the definition of \textbf{projection} of $y \to \text{column span}(A)$. We use the \textbf{normal equation} (seen above) to solve for this.
+
+\paragraph{Solving the Normal Equation} 
+
+To solve $A^T A x^* = A^T y$ we have several cases:
+
+\begin{enumerate}
+\item $A^T A$ is invertible (i.e. $A$ is full rank). In this case, 
+\begin{equation}
+x^* = (A^T A)^{-1} A^T y
+\end{equation}
+and we can project $y$ onto the columns of $A$ to get the \textit{approximation of $y$} we achieve.
+\begin{equation}
+\hat y^* = A x^*
+\end{equation}
+
+\item $A^T A$ is \textbf{degenerate} (i.e. not full rank). In this case,
+\begin{itemize}
+\item One or more ccolumns of $A$ can be removed without detracting from $\mathcal{R}(A)$ since columns are not linearly independent due to degeneracy.
+\item \textbf{Procedure:} Remove redundant columns from $A$ and follow case 1 to generate $x^*$ and $\hat y^*$.
+\end{itemize}
+\end{enumerate}
+
+\paragraph{Using SVD to Solve Over Determined Least Squares: } $A = U_r \Sigma V_r^T$ where $U_r$ is a basis for the column space of $A$. Then
+
+\begin{equation}
+\hat y^* = \sum_{i=1}^{r} \inpr{u^{(i)}, y} u^{(i)} 
+\end{equation}
+
+\subsection{Uniquely Determined}
+
+If the solution is uniquely determined, $A$ has full rank, is square, and therefore has an inverse. 
+\begin{equation}
+x^* = A^{-1} y
+\end{equation}
+
+\subsection{Underdetermined}
+
+For $A\in \mathbb{R}^{m\times n}$, we have a ``short and fat'' matrix. In other words, $m < n$. Therefore, we have fewer constraints than we have manipulable variables. We have a \textbf{choice} between infinite $x^*$. 
+
+\paragraph{Convention:} We use the \textit{shortest} $x^*$ vector (i.e. we minimize $\norm{x^*}_2$.)
+
+Our infinite set of possible $x^*$ can be represented by the affine set where $\bar x$ satisfies $A\bar x = y$.
+\begin{equation}
+\mathcal{A} = \bar x + \mathcal{N}(A)
+\end{equation}
+
+We can then project $y\to A$.
+
+\paragraph{Solution to Underdetermined Case: } 
+\begin{equation}
+x^* = A^T(AA^T)^{-1} y
+\end{equation}
+
+With the norm of $x^*$ given by the following
+\begin{equation}
+\norm{x^*}_2^2 = \sum_{i=1}^{r} \frac{1}{\sigma_i^2} \inpr{u^{(i)}, y}^2
+\end{equation}
+
+Where $A = U_r \Sigma V_r^T$. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
