@@ -107,3 +107,8 @@
 \contentsline {paragraph}{Fundamental Subspaces from SVD: }{23}{section*.74}%
 \contentsline {section}{\numberline {6.5}Moore-Penrose Pseudo-Inverse}{24}{section.6.5}%
 \contentsline {paragraph}{MP Pseudo-Inverse Definition: }{24}{section*.75}%
+\contentsline {chapter}{\numberline {7}Systems of Linear Equations}{25}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Mathematical Setup}{25}{section.7.1}%
+\contentsline {paragraph}{General Form:}{25}{equation.7.1.1}%
+\contentsline {paragraph}{Existence of Solutions: }{25}{section*.77}%
+\contentsline {paragraph}{Simple Test for Existence: }{25}{section*.78}%

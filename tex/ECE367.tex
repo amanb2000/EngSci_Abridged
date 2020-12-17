@@ -896,6 +896,39 @@ And $\Sigma^{-1} = \text{diag}(\frac{1}{\sigma_1}, ..., \frac{1}{\sigma_r})$
 
 \textbf{Recall: } $B$ is a pseudo inverse of $A$ if $ABA = A$. Moore-Penrose gives proper inverse (true, left, right) given the dimensions of the matrix $A$.
 
+\chapter{Systems of Linear Equations}
+
+\section{Mathematical Setup}
+
+\paragraph{General Form:} 
+\begin{equation}
+		Ax = y
+\end{equation}
+
+\begin{itemize}
+\item $A\in \mathbb{R}^{m\times n}$ is a set of \textbf{known} matrix coefficients.
+\item $x\in \mathbb{R}^n$ is the \textbf{unknown} vector we want to solve for. 
+\item $y\in \mathbb{R}^m$ is the \textbf{known} constraint vector.
+\end{itemize}
+
+It is possible that there are no solutions, one solution, or infinite solutions.
+
+\paragraph{Existence of Solutions: } Since $Ax \in \mathcal{R}(A)$, the solution only exists for $y\in \mathcal{R}(A)$.
+
+\paragraph{Simple Test for Existence: } If 
+\begin{equation}
+\text{Rank}([A\,\,y]) = \text{Rank}(A)
+\end{equation}
+Then the solution exists. Otherwise, it doesn't (in this case, $y$ adds to the column space and is therefore not in $\
+mathcal{R}(A)$).
+
+
+
+
+
+
+
+
 
 
 

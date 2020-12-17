@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.11)  17 DEC 2020 03:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.6.11)  17 DEC 2020 04:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -531,26 +531,30 @@ Overfull \hbox (0.40784pt too wide) in paragraph at lines 580--580
 Chapter 6.
 [21
 
-] [22] [23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 991.
- [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 991.
+] [22] [23] [24]
+Chapter 7.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1024.
+[25
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1024.
  (./ECE367.aux
 
 Package pdfbase Warning: Rerun to get internal references right!
 
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 991.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 991.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1024.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1024.
+
 Package rerunfilecheck Info: File `ECE367.out' has not changed.
-(rerunfilecheck)             Checksum: 169BE0762815A3EB6604DF0A09E22DD4;2330.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 991.
+(rerunfilecheck)             Checksum: EDE97C17B07AD604AC218332B1754D3E;2458.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1024.
  ) 
 Here is how much of TeX's memory you used:
- 11150 strings out of 483183
- 183818 string characters out of 5966292
+ 11160 strings out of 483183
+ 183930 string characters out of 5966292
  448115 words of memory out of 5000000
- 25733 multiletter control sequences out of 15000+600000
+ 25735 multiletter control sequences out of 15000+600000
  543846 words of font info for 68 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  50i,17n,48p,337b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -570,10 +574,10 @@ m/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ECE367.pdf (25 pages, 235263 bytes).
+Output written on ECE367.pdf (26 pages, 237334 bytes).
 PDF statistics:
- 638 PDF objects out of 1000 (max. 8388607)
- 588 compressed objects within 6 object streams
- 256 named destinations out of 1000 (max. 500000)
- 281 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 660 PDF objects out of 1000 (max. 8388607)
+ 608 compressed objects within 7 object streams
+ 264 named destinations out of 1000 (max. 500000)
+ 297 words of extra memory for PDF output out of 10000 (max. 10000000)
 
