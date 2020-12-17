@@ -68,7 +68,9 @@ $\exists \text{ unique representation for any vector } \in \text{ span}(V)$
 \item $\text{Span}(B) = V$.
 \end{enumerate}
 
-\paragraph{Dimension: } $\text{Dim}(V)$ is the \textit{cardinality} of any $\text{Basis}(V)$.
+\paragraph{Dimension: } $\text{Dim}(V)$ is the \textit{cardinality} of any $\text{Basis}(V)$. 
+
+\paragraph{Cardinality: } $\text{cardinality}(S)$ is the \textbf{number of elements} in set $S$.
 
 \paragraph{Direct Sum: } 
 \begin{itemize}
@@ -84,7 +86,7 @@ This implies that there is a \textbf{unique choice} for a representation of a ve
 \paragraph{Norm Definition: } The norm function $\norm{\cdot}: V\to \reals$ with the conditions:
 \begin{enumerate}
 \item Norm is always greater than equal to zero, equalling zero only for the zero vector.
-\item $\norm{u+v} \leq \norm{u} + \norm{v}$
+\item $\norm{u+v} \leq \norm{u} + \norm{v}$ -- \textit{Triangle inequality}, very useful in proofs. 
 \item $\norm{\alpha u} = \abs{\alpha} \cdot \norm{u}$
 \end{enumerate}
 
@@ -96,14 +98,14 @@ For $1 \leq p \leq \infty$.
 \begin{itemize}
 \item \textbf{Euclidian Norm: } $l_2$ norm is our conventional measure of distance in Euclidian space.
 \item \textbf{$l_1$: } Is simply the sum of the absolute values in a vector.
-\item \textbf{$l_\infty$: } Is the maximum element in the vector.
+\item \textbf{$l_\infty$: } Is the absolute value of the maximum magnitude element in the vector.
 \end{itemize}
 
 \paragraph{Norm Ball: } $B_p = \{x\in V | \norm{x}_p \leq 1\}$.
 
 \paragraph{Level Sets: } $\{x\in V | \norm{x}_p = c, c\in\reals\}$
 
-\paragraph{Cadinality Function: } $\text{card}(x) = \sum_{k=1}^{n} \mathbbm{1}\{x_k \neq 0\}$
+\paragraph{Cardinality Function: } $\text{card}(x) = \sum_{k=1}^{n} \mathbbm{1}\{x_k \neq 0\}$ \textit{i.e. the number of non-zero elements}.
 
 
 
@@ -117,9 +119,12 @@ Where $\bar{y}$ is the complex conjugate of $y$.
 
 \paragraph{Cauchy-Schwartz: } $\abs{\inpr{x, y}} \leq \norm{x}_2 \norm{y}_2$ holds for \textbf{all} inner product spaces.
 
+
 \paragraph{Holder's Inequality: } $\abs{\inpr{x, y}} \leq \norm{x}_p \norm{y}_q$ under the conditions $p,q \geq 1$ AND $\frac{1}{p} + \frac{1}{q} = 1$.
 
-\paragraph{Induced Norm: } $\norm{x}_2 = \sqrt{\inpr{x,x}}$.
+\paragraph{Inner Product Space: } Space where the inner product \textbf{induces} a norm (somewhat hand-wavey definition).
+
+\paragraph{Induced Norm: } For vector space $\mathbb{C}^n$: $\norm{x}_2 = \sqrt{\inpr{x,x}}$.
 
 
 
@@ -169,6 +174,8 @@ y^* = \text{argmin}_{y\in S} \norm{x-y}
 
 \end{theorem}
 
+Note that for an orthonormal set of vectors $V$, the lefthand matrix becomes the identity matrix. Therefore, one can project onto an othonormal set by taking the inner products between the set elements and the vector in question.
+
 \paragraph{Gram-Schmidt Procedure: } How to make an orthonormal basis out of a set (go from $v^{(i)}$ to orthonormal $z^{(i)}$).
 
 \begin{enumerate}
@@ -201,6 +208,8 @@ r_{11} & r_{12} & \dots & r_{1m} \\
 \end{bmatrix}
 \end{equation}
 
+Note that this is a representation of taking the Gram-Schmidt procedure in reverse (i.e. the inverse of the $R$ matrix corresponds to the process described above).
+
 \subsection{Affine Projection}
 
 \paragraph{Affine Set Definition: } Affine set is a shift or translation of subspace $S \subseteq \reals^n$ by some vector $x^{(0)} \in \reals$. $$A = x^{(0)} + S = \{x^{(0)} + u | u\in S\}$$
@@ -208,7 +217,7 @@ r_{11} & r_{12} & \dots & r_{1m} \\
 \begin{enumerate}
 \item Given $x,A, x^{(0)}$. You want to project $x$ onto affine set $A = S + x^{(0)}$
 \item Translate $x, A$ by $-x^{(0)}$.
-\item Project onto the conventional subspace.
+\item Project onto the conventional subspace using the procedure above.
 \item Translate the projection back using $+x^{(0)}$.
 \end{enumerate}
 
@@ -238,12 +247,13 @@ Means that $f$ is a function that maps members of set $X$ to members of set $Y$.
 \item \textbf{Additivity: } $f(x+y) = f(x) + f(y)$.
 \end{enumerate}
 
-\textbf{Resultant property: } Super position -- $f(\sum_{i=1}^{n} \alpha_i x^{(i)} ) = \sum_{i=1}^{n} \alpha_i f(x^{(i)})$.
+\textbf{Resultant property: } Super position; $f(\sum_{i=1}^{n} \alpha_i x^{(i)} ) = \sum_{i=1}^{n} \alpha_i f(x^{(i)})$.
 
-\paragraph{Affine Function: } $f: \reals^n \to \reals$ where \begin{equation}
-\tilde{f(x)} = f(x) - f(0)
+\paragraph{Affine Function: } $f: \reals^n \to \reals$ is affine if $\tilde f(x)$ (defined below) is linear
+
+\begin{equation}
+\tilde f(x) = f(x) - f(0)
 \end{equation}
-is a lineara function.
 
 \textbf{Useful property: } $f:\reals^n\to\reals$ is affine \textbf{iff} $\exists\, a,b \in \reals^n)$ such that\begin{equation}
 f(x) = a^T x + b
@@ -254,14 +264,12 @@ Which also implies that all linear functions can be expressed as $f(x) = a^T x$.
 \section{Affine Approximation}
 
 \paragraph{Affine Approximation Definition: } The affine approximation for function $f:\reals^n\to\reals$ about point $\bar{x}$ is: \begin{equation}
-f(x) = f(\bar{x}) + \nabla f(\bar{x})^T(x-\bar{x}) + \epsilon(x)
+f(x) \approx f(\bar{x}) + \nabla f(\bar{x})^T(x-\bar{x}) 
 \end{equation}
-
-Where $\epsilon(x)$ is the error term.
 
 \begin{itemize}
 \item \textbf{First-order increment: } $\nabla f(\bar{x})(x-\bar{x})$.
-\item First-order increment equal to zero (or any value) results in a \textbf{hyperplane}.
+\item First-order increment equal to zero (or any constant value value) results in a \textbf{hyperplane}.
 \end{itemize}
 
 \section{Chain Rule on Gradients}
@@ -320,8 +328,8 @@ AB =
 \item \textbf{Square}
 \item \textbf{Symmetric: } $A_{ij} = A_{ji}$; $A = A^T$
 \item \textbf{Diagonal: } $A_{ij} = 0$ for $i \neq j$
-\item Identity.
-\item Upper Triangular: Square matrix with condition $A_{ij} = 0$ if $i > j$.
+\item \textbf{Identity}.
+\item \textbf{Upper Triangular:} Square matrix with condition $A_{ij} = 0$ if $i > j$.
 \end{itemize}
 
 \subsection{Matrix Vector Spaces}
@@ -331,12 +339,20 @@ AB =
 	\inpr{A, B} = \text{trace}(A^T B) = \text{trace}(BA^T) = \sum_{i}^{} \sum_{j}^{} [A]_{ij} [B]_{ij}
 \end{equation}
 
+\paragraph{Trace Operator: } For matrix $A\in \mathbb{C}^{n\times n}$:
+
+\begin{equation}
+		\text{tr}(A) = \sum_{i=1}^{n} [A]_{ii} = [A]_{11} + ... + [A]_{nn}
+\end{equation}
+
 \paragraph{Frobenius Norm: } $\norm{\cdot}_F$ where
 \begin{equation}
 \norm{A}_F \equiv \sqrt{\inpr{A,A}}
 \end{equation}
 Which is the equivalent of the $l_2$ norm of the vector made by flattening $A$.
 
+
+These definitions and properties make proofs a lot easier when you deeply understand them. 
 
 
 \section{Function Approximations with Matrices}
