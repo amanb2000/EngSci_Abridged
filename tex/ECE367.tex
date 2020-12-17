@@ -372,9 +372,11 @@ Where $\nabla^2 f(\bar{x})$ is the \textbf{Hessian} of $f$ about point $\bar{x}$
 \end{bmatrix}
 \end{equation}
 
+Conveniently, the Hessian matrix is also symmetric. 
+
 \section{Matrices as Linear Maps}
 
-\paragraph{Linear Map Definition: } $\text{map} f:V\to W$ is linear if
+\paragraph{Linear Map Definition: } $\text{map } f:V\to W$ is linear if
 \begin{equation}
 	f(\alpha_1 x^{(1)} + \alpha_2 x^{(2)} ) = \alpha_1 f(x^{(1)}) + \alpha_2 f(x^{(2)})
 \end{equation}
@@ -409,10 +411,12 @@ If $B$ exists, it is unique and is equal to $A^{-1}$.
 AA^{pi}A = A
 \end{equation}
 
+That is, either $AA^{pi} = I_m$ or $A^{pi}A = I_n$.
+
 
 \textbf{Case I: } Tall and thin matrix $A$ with $m > n$
 \begin{itemize}
-\item The ``left inverse'' exists iff the columns of the matrix are \textbf{linearly independent}.
+\item The ``left inverse'' exists iff the \textbf{columns} of the matrix are \textbf{linearly independent}.
 \item $A^{li} A = I_n$.
 \item This only exists if the mapping of $A$ is unique (i.e. it is a full-rank matrix).
 \end{itemize}
@@ -420,7 +424,7 @@ AA^{pi}A = A
 
 \textbf{Case II: } Wide and fat matrix $A$ with $m < n$
 \begin{itemize}
-\item The ``right inverse'' exists iff the rows of the matrix are linearly independent.
+\item The ``right inverse'' exists iff the \textbf{rows} of the matrix are linearly independent.
 \item $A A^{ri} = I_m$.
 \item If $A^{ri}$ exists then $A$ is ``right invertible''.
 \item $A^{ri} y$ gives one of \textit{infinitely many} $x\in \reals^n$ that satisfy $Ax = y$.
@@ -436,13 +440,13 @@ AA^{pi}A = A
 \item Column vectors are all \textbf{normalized}.
 \end{enumerate}
 
-$A = [q^{(1)} ... q^{(n)}]$
+If we let $A$ have columns $q^{(i)}$ such that $A = [q^{(1)} ... q^{(n)}]$, then
 
 \begin{equation}
-\inpr{q^{(i)}, q^{(j)}} = \begin{split}
+\inpr{q^{(i)}, q^{(j)}} = \begin{cases}
 0, & i \neq j \\
 1, & i = j 
-\end{split}
+\end{cases}
 \end{equation}
 
 It follows: 
@@ -461,8 +465,8 @@ $$U^H = \text{conjugate}(U^T)$$
 \paragraph{Geometric Implications of Orthogonality: } 
 If $Ax = y$ and $A\tilde{x} = \tilde{y}$: 
 \begin{itemize}
-\item $\norm{x} = \norm{y}$
-\item $\inpr{y, \tilde{y}} = \inpr{x, \tilde{x}}$
+		\item $\norm{x} = \norm{y}$ -- That is, there is no \textbf{scaling} because all the columns of $A$ are normalized.
+		\item $\inpr{y, \tilde{y}} = \inpr{x, \tilde{x}}$ -- that is, the \textbf{angles} between vectors are maintained.
 \end{itemize}
 
 Which implies that the transformation of $A$ can \textbf{only} be composed of (1) rotation and (2) reflection.
@@ -536,7 +540,7 @@ Once you solve for the \textbf{characteristic polynomial roots}, you can plug th
 \paragraph{Multiplicity of Eigenvalues: } We have two types of multiplicity.
 \begin{enumerate}
 \item \textbf{Algebraic Multiplicity: } $AM(\lambda_i) = \mu_i$ -- number of times $\lambda_i$ is repeated in the \textbf{characteristic polynomial}.
-\item \textbf{Geometric Multiplicity: } $GM(\lambda_i) = \nu_i = \dim(\mathcal{N}(A-\lambda_i I)$ -- number of eigenvectors corresponding to the given eigenvalue.
+\item \textbf{Geometric Multiplicity: } $GM(\lambda_i) = \nu_i = \dim(\mathcal{N}(A-\lambda_i I)$ -- number of eigen\textbf{vectors} corresponding to the given eigenvalue.
 \end{enumerate}
 
 $$1 \leq \nu_i = GM(\lambda_i) \leq AM(\lambda_i) = \mu_i$$
@@ -634,7 +638,8 @@ A = U\Lambda U^T
 
 \begin{itemize}
 \item The Rayliegh quotient when $x = u^{(1)}$ (the maximum $\lambda$ eigenvector) is equal to $\lambda_{max}(A)$.
-\item Same goes for when $x = u^{(n)}$.
+\item Same goes for when $x = u^{(n)}$ with respect to the smallest eigenvalue $\lambda_n$.
+
 \item \textbf{This connects eigenvectors and singular values.} 
 \end{itemize}
 
@@ -643,12 +648,13 @@ x^T A x \geq 0
 \end{equation}
 For all $x\in \reals^n$, then $A\in S^n_+$ ($A$ is a positive semidefinite matrix).
 
-\paragraph{Positive Definite Matrices: } if \begin{equation}
+\paragraph{Positive Definite Matrices: } if strict inequality holds such that 
+\begin{equation}
 x^T A x > 0
 \end{equation}
-For all $x\in \reals^n$ then $A$ is a positive definite matrix ($A\in S^n_{++}$).
+for all $x\in \reals^n$, then $A$ is a positive definite matrix ($A\in S^n_{++}$).
 
-\begin{theorem}
+\begin{theorem}{Convenient things about $S_+^n$, $S_{++}^n$: }
 \begin{itemize}
 \item $A\in S^n_+$ iff $\lambda_i \geq 0$ for all $i\in [n]$.
 \item $A\in S^n_{++}$ iff $\lambda_i > 0$ for all $i \in [n]$.
@@ -680,7 +686,7 @@ Where $\bar{x} = (x-x^{(0)})$, $\tilde{x} = U^T\bar{x}$.
 
 To plot:
 \begin{enumerate}
-\item Generate 'plot' in $\tilde{x}$ space (note the key positions).
+\item Generate `plot' in $\tilde{x}$ space (note the key positions).
 \item Unrotate by multiplying key position vectors by $U$.
 \item Un-shift by adding $x^{(0)}$
 \end{enumerate}
@@ -702,7 +708,7 @@ To plot:
 	A^{\frac{1}{2}} = U\Lambda^{\frac{1}{2}} U
 \end{equation}
 
-Where $\lambda = \text{diag}(\sqrt{lambda_1}, ..., \sqrt{lambda_n})$.
+Where $\lambda = \text{diag}(\sqrt{\lambda_1}, ..., \sqrt{\lambda_n})$.
 \begin{itemize}
 \item $A^\frac{1}{2}$ is a unique PSD matrix.
 \item $A$ is a PSD matrix \textbf{iff $A^{\frac{1}{2}}$ is PSD}.
@@ -798,9 +804,17 @@ V =
 \end{equation}
 \begin{itemize}
 \item The first $r$ $v^{(i)}$ relate to $\lambda_i \neq 0$.
-\item \textbf{THESE ARE OUR RIGHT SINGULAR VECTORS}.
+\begin{itemize}
+	\item \textbf{THESE ARE OUR RIGHT SINGULAR VECTORS}.
+\end{itemize}
+
 \item They are all \textbf{mutually orthogonal}.
 \item The remaining vectors are associated with $\lambda_i = 0$.
+\begin{itemize} 
+		\item We get to choose our own arbitrary basis for $\mathcal{N}(A)$.
+\end{itemize}
+
+
 \end{itemize}
 
 \paragraph{First $r$ Left Singular Values of $A$: } The left singular vectors are denoted by $u^{(i)}$ and are given by
@@ -809,9 +823,9 @@ V =
 	u^{(i)} = Av^{(i)}
 \end{equation}
 
-You could also get them by taking the spectral decomposition of $AA^T$ but you run the risk of inverting the polarity (i.e. $u^{(i)} \to -u^{(i)}$ which would mess up the entire decomposition.
+You could also get them by taking the spectral decomposition of $AA^T$ but you run the risk of inverting the polarity (i.e. $u^{(i)} \to -u^{(i)}$ which would mess up the entire decomposition. Just use the above formula to be safe and efficient.
 
-Each $u^{(i)}$ are associated with the same singualr values $\sigma_i = \sqrt{\lambda_i}$.
+Each $u^{(i)}$ are associated with the same singular values $\sigma_i = \sqrt{\lambda_i}$.
 
 \paragraph{Compact SVD: } We can package our first $r$ right ($v$) and left ($u$) singular vectors into $V_r$ and $U_r$ respectively to decompose $A$ as follows:
 

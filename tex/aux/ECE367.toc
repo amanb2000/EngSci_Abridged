@@ -99,11 +99,11 @@
 \contentsline {paragraph}{First $r$ Right Singular Values of $A$: }{22}{section*.68}%
 \contentsline {paragraph}{First $r$ Left Singular Values of $A$: }{22}{section*.69}%
 \contentsline {paragraph}{Compact SVD: }{22}{section*.70}%
-\contentsline {paragraph}{Full SVD: }{22}{section*.71}%
+\contentsline {paragraph}{Full SVD: }{23}{section*.71}%
 \contentsline {section}{\numberline {6.3}Principal Component Analysis}{23}{section.6.3}%
 \contentsline {paragraph}{Goal: }{23}{section*.72}%
 \contentsline {paragraph}{Approach: }{23}{section*.73}%
 \contentsline {section}{\numberline {6.4}SVD Matrix Properties}{23}{section.6.4}%
 \contentsline {paragraph}{Fundamental Subspaces from SVD: }{23}{section*.74}%
-\contentsline {section}{\numberline {6.5}Moore-Penrose Pseudo-Inverse}{23}{section.6.5}%
-\contentsline {paragraph}{MP Pseudo-Inverse Definition: }{23}{section*.75}%
+\contentsline {section}{\numberline {6.5}Moore-Penrose Pseudo-Inverse}{24}{section.6.5}%
+\contentsline {paragraph}{MP Pseudo-Inverse Definition: }{24}{section*.75}%
