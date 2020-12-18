@@ -163,3 +163,7 @@
 \contentsline {paragraph}{Concavity: }{39}{section*.100}%
 \contentsline {paragraph}{Facts about Convex Functions: }{40}{section*.101}%
 \contentsline {section}{\numberline {10.5}Convexity by Restriction to Line}{40}{section.10.5}%
+\contentsline {chapter}{\numberline {11}Convex Optimization}{41}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Convex Optimization Definitions}{41}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Theorems on Convex Optimization}{41}{section.11.2}%
+\contentsline {paragraph}{Gradients on Inequality Constraints: }{42}{section*.102}%

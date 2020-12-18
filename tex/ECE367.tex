@@ -1493,17 +1493,86 @@ For \textbf{all possible choices} of $x^{(0)} \in \text{dom }f$, $v\in \reals^n$
 
 
 \begin{theorem}{First Order Condition: }
-<++>
+Differentiable function $f:\reals^n\to \reals$ is convex iff $\forall$ $x,y\in \text{dom }f$,
+\begin{equation}
+f(y) \geq f(x) + \nabla f(x)^T (y-x)
+\end{equation}
+With strict convexity for strict inequality.
 \end{theorem}
-<++>
+\begin{itemize}
+\item This can be connected to the ``line connecting two points is in the set'' point.
+\item The linear approximation of a convex function is \textbf{always underestimating}.
+\end{itemize}
 
 
 \begin{theorem}{Second Order Condition: }
-<++>
+Twice differentiable function $f:\reals^n \to \reals$ if convex iff the \textbf{Hessian} 
+\begin{equation}
+\nabla^2 f(x) \in S_{+}^n \,\, \forall x\in \text{dom }f
+\end{equation}
+In other words, the quadratic approximation is a bowl facing upward. 
 \end{theorem}
-<++>
 
 
+
+\chapter{Convex Optimization}
+
+\textit{This section was cut short by the reduced term length.} 
+
+\section{Convex Optimization Definitions}
+
+\begin{theorem}{Convex Optimization Problem Form: }
+\begin{align}
+\text{(arg) min}_{x\in \reals^n} \, & f_0 (x) \\
+\text{such that } & f_i(x) \leq 0 & \forall i\in [m] \\
+& h_i(x) = 0 & \forall i \in [q]
+\end{align} 
+Where 
+\begin{itemize}
+\item Objective $f_0:\reals^n \to \reals$ is convex.
+\item Inequality constraints $f_1:\reals^n \to \reals$ are convex.
+\item Equality constraints $h_i(x):\reals^n\to \reals$ are \textbf{affine}.
+\begin{itemize}
+\item Can be written as $Ax = b$ because $a^{(i)T} x - b_i = 0$ is the form of an affine constraint.
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\section{Theorems on Convex Optimization}
+
+\begin{theorem}{Local Minimum Definition: }
+$z$ is a local minimum if $\exists \, r > 0$ such that 
+\begin{equation}
+f(x) \geq f(z) \forall x \in \{x | \norm{x-z} < r\}
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Global Minimum Definition: }
+$z$ is a global minimum if 
+\begin{equation}
+f(x) \geq f(z) \, \forall x\in \text{dom }f
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Convex Minima: }
+If $f_0$ is convex and $\mathcal F$ is convex, then \textbf{any local minimum is the global minimum}.
+\end{theorem}
+
+
+\begin{theorem}{Convex Optimization Solution Uniqueness: }
+If $f_0$ is strictly convex and $\mathcal F$ is strictly convex and the set of optimizing $x$ $X_{opt}$ is non-empty, then \textbf{there is a unique solution}.
+\end{theorem}
+
+
+\begin{theorem}{Up Hill Point Theorem: }
+Given a convex function $f_0(x)$ optimization with convex feasible fest $\mathcal F$, the point $x^*\in \mathcal F$ is optimal iff, for all $y\in \mathcal F$, 
+\begin{equation}
+\nabla f_0(x^*)^T (y-x^*) \geq 0
+\end{equation}
+\end{theorem}
+Think of this in terms of $\nabla f_0(x^*)$ pointing uphill from the optimal point. The product is the inner product between the uphill vector and the vector from $x$ to $y$, so it intuitively makes sense that it would be an acute angle. 
+
+\paragraph{Gradients on Inequality Constraints: } All gradients on inequality constraints $\nabla f_i(x)$ point \textbf{outward} from the feasible set. 
 
 
 
