@@ -236,7 +236,7 @@ Means that $f$ is a function that maps members of set $X$ to members of set $Y$.
 \item graph $f = \{(x, f(x)) \in \reals^{n+1} | x \in \reals^n\}$
 \item epigraph $f = \{(x, t) \in \reals^{n+1} | x \in \reals^n, t \geq f(x)\}$
 \item level sets: $c_f(t) = \{x\in \reals^n | f(x) = t\}$
-\item sub level sets: $l_f(t) = \{x\in\reals^n | f(x) \leq t\}$
+\item sublevel sets: $l_f(t) = \{x\in\reals^n | f(x) \leq t\}$
 \end{itemize}
 
 \section{Linear and Affine Functions}
@@ -1455,6 +1455,11 @@ With strict inequality indicating strict convexity.
 \end{theorem}
 
 \paragraph{Concavity: } When $-f$ is convex, $f$ is concave.
+
+\begin{theorem}{Quasi-Convex Function Definition: }
+If all \textbf{sublevel sets} are convex, then $f$ if quasi-convex.
+\end{theorem}
+
 
 \paragraph{Facts about Convex Functions: } \textit{Not proven here for ease of access.} 
 \begin{itemize}
