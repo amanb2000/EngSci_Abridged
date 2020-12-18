@@ -1123,6 +1123,401 @@ y^* = \sum_{i=1}^{r} \frac{\sigma_i^2}{\sigma_i^2 + \gamma} \inpr{u^{(i)}, y} u^
 
 
 
+\chapter{Linear Programming}
+
+While linear and quadratic programs are numerical problems (i.e. there are no closed form solutions), they are such nice, well developed fields of study that any problem you can formulate as an LP or QP can be broadly considered ``solved''.
+
+\section{Definition and Notation}
+
+\begin{theorem}{Linear Program Form: }
+\begin{align}
+\text{arg min}_{x\in \mathbb{R}^n} \,& c^T x + d \\
+\text{such that } & Gx \leq h \\
+& Ax = b
+\end{align}
+\begin{itemize}
+\item $f_0(x) = c^T x + d$ is the scalar linear objective function.
+\item $Gx \leq h$ and $Ax = b$ are inequality and equality constraints respectively and lead to the \textbf{feasible set}.
+\end{itemize}
+\begin{equation}
+p^* = \min_{x\in \mathbb{R}^n} c^T x + d
+\end{equation}
+Where constraints are satisfied is the minimum cost. If the feasible set is empty, we have $p^* = \infty$. If you can make it arbitrarily small, then $p^*$ DNE. 
+\end{theorem}
+
+
+\section{Objective Function}
+
+\begin{equation}
+f_0(x) = c^T x + d
+\end{equation}
+
+This is simply a hyperplane. Therefore, we can minimize to $-\infty$ by taking taking $x = \lim_{\alpha\to\infty} \alpha(-c)$. 
+If $c=\vec 0$, then $x$ does not matter and the arg min is the entirety of $\mathbb{R}^n$.
+
+\paragraph{Key Lesson: } To minimize the objective, we want to move $x$ in the $-c$ direction.
+
+
+\section{Feasible Set}
+
+\paragraph{Equality Constraints: } $Ax = b$ boils down to a bunch of intersecting hyperplanes. If we let the rows of $A$ be $\alpha^{(i)}$, then
+\begin{equation}
+x\in \bigcup\limits_{i=1}^{q}\{x | \inpr{\alpha^{(i)}, x} = b_i \}
+\end{equation}
+
+
+\section{Inequality Constraint} $Gx \leq h$ boils down to a bunch of intersecting \textbf{half spaces}. Letting rows  of $G$ be $g^{(i)}$, then
+\begin{equation}
+x\in \bigcup\limits_{i=1}^q \{ x | \inpr{g^{(i)}, x} \leq h_i \}
+\end{equation}
+Note that the normal vectors to the half space boundaries contained as rows of $G$ point \textbf{outward} from the feasible set. 
+
+\paragraph{Feasible Set: } The intersection of the sets described by the two constraints if $\mathcal{F}$, the \textbf{feasible set}. It is a \textbf{polytope} (i.e. $n$-dimensional polygon/polyhedron generalization).
+
+
+\section{Solutions to Linear Programs}
+
+\paragraph{Solution Possibilities: } 
+\begin{enumerate}
+\item $x^*$ is unique and $p^*$ is finite. \textbf{The optimum is at a vertex} of the polytope.
+\item $x^*$ is not unique and $p^*$ is finite. \textbf{The optimum is at an edge of facet} of the polytope.
+\item $x^*$ does not exist:
+\begin{itemize}
+\item $\mathcal{F} = \emptyset$ is an \textbf{infeasible LP}. $p^* = \infty$.
+\item $\mathcal{F}$ is unbounded with no minimum. $p^* = \infty$.
+\end{itemize}
+\end{enumerate}
+
+
+\subsection{Simplex Algorithm}
+The basic idea is to traverse the edges of the LP feasible set.
+\begin{enumerate}
+\item Start at a vertex within the feasible set. 
+\item Identify an edge $E$ of the feasible set where the angle $\angle c E$ is \textbf{obtuse} (i.e. you're decreasing cost by going along $E$).
+\item Move along the edge as far as you can until you bump into a constraint or another vertex. 
+\item Repeat until no edge available has $\angle cE > 90^o$.
+\end{enumerate}
+
+
+\subsection{Other Forms for LP}
+
+\paragraph{Inequality Form:} 
+\begin{align}
+\min_x & c^T x + d \\
+\text{such that } & Gx \leq h \\
+& Ax \leq b \\
+& -Ax \leq -b
+\end{align}
+
+\paragraph{Standard Form} 
+\begin{align}
+\min_x \,& \tilde c^T \tilde x + \tilde d \\
+\text{such that }& \tilde A \tilde x = \tilde b
+& \tilde x \geq 0
+\end{align}
+
+\begin{itemize}
+\item $Gx \leq h$ becomes $Gx + s = h$ with $s \geq 0$ are ``slack variables'' (common technique for formulating problems). 
+\item $x \to x^+ - x^-$ such that $x^+_i, x^-_i \geq 0$ for all $i \in [n]$.
+\item $\tilde c^T = [c^T\,\, -c^T\,\, 0]$.
+\item $\tilde d = d$.
+\begin{equation}
+\tilde x = \begin{bmatrix}
+x^+ \\
+x^- \\
+s
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\tilde A = \begin{bmatrix}
+G & -G & I \\
+A & -A & 0 \\
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\tilde b = \begin{bmatrix}
+h \\
+b
+\end{bmatrix}
+\end{equation}
+\end{itemize}
+
+
+
+
+\chapter{Quadratic Programs}
+
+\section{QP Definitions}
+
+A quadratic program has the same feasible set definition as a linear program, but has a \textbf{quadratic} objective function w.r.t. $x$.
+
+\begin{theorem}{Quadratic Program Definition:}
+\begin{align}
+\text{(arg) min }_{x\in \mathbb{R}^n} & \frac{1}{2} x^T H x + c^T x + d \\
+\text{such that } & Ax = b \\
+& Gx \leq h
+\end{align}
+\end{theorem}
+
+\section{Geometry}
+
+\paragraph{No Loss in Generality } for $H\in S^n$. For the objective $f_0$,
+\begin{equation}
+f_0 = \frac{1}{2} x^T H x + c^T + d
+\end{equation}
+
+We have $x^T H x = \frac{1}{2} x^T (H+H^T) x$. Therefore, \textbf{spectral decomposition} is valid for all quadratic objective functions.
+
+\paragraph{Properties of $H$} 
+\begin{enumerate}
+\item $H$ is \textbf{diagonalizable} ($H = U\Lambda U$ with orthonormal columns in $U$).
+\item Eigenvalues are \textbf{real} and therefore can be ordered.
+\item Eigenvectors can be chosen to be \textbf{orthogonal}.
+\end{enumerate}
+
+\paragraph{Properties of the Objective Function} 
+\begin{enumerate}
+\item If $H \notin S_+^n$ then $p^* = -\infty$.
+\begin{itemize}
+\item The quadratic ``bowl'' points downward, so if we follow vector $c$, we can find an unconstrained minimum.
+\end{itemize}
+
+\item If $H\in S_{++}^n$ then $p^*$ exists and can be found (i.e. is not $\pm \infty$).
+\begin{itemize}
+\item No directions of infinite descent because ``bowl'' points up and asymptotically dominates the linear components.
+\item The objective if a \textbf{convex function} in this case. 
+\end{itemize}
+
+\item If $H\in S_+^n \notin S_{++}^n$, we have two cases:
+\begin{enumerate}
+\item If $c\in \mathcal{R}(H)$: $p^*$ exists and can be found.
+\item If $c\notin \mathcal{R}(H)$: $p^* = -\infty$ 
+\end{enumerate}
+\end{enumerate}
+
+
+\section{Quadratically Constrained Quadratic Programs}
+
+\begin{theorem}{Form for QCQP's: }
+\begin{align}
+\min_{x\in \mathbb{R}^n} & \frac{1}{2} x^T H_0 x + c_0^T x + d_0 \\
+\text{such that }& \frac{1}{2} x^T H_i x + c_i^T x + d_i \leq 0, & \forall i\in [m] \\
+& \frac{1}{2} x^T \tilde H_i x + \tilde c_i^T x + \tilde d_i = 0, & \forall i\in [q] \\
+\end{align}
+\end{theorem}
+
+Though the intersections of these constraints may lead to some non-convex feasible sets, we generally focus on \textbf{convex} QCQP's. 
+
+\begin{theorem}{Form for Convex QCQP's: }
+\begin{align}
+\min_{x\in \mathbb{R}^n} & \frac{1}{2} x^T H_0 x + c_0^T x + d_0 \\
+\text{such that }& \frac{1}{2} x^T H_i x + c_i^T x + d_i \leq 0, & \forall i\in [m] \\
+& \tilde c_i^T x + \tilde d_i = 0, & \forall i\in [q] \\
+\end{align}
+
+Where $H_0\in S_+^n$ and each $H_i \in S_+^n$.
+\end{theorem}
+
+\paragraph{QCQP Feasible Sets} 
+\begin{itemize}
+\item These are generally the intersection of \textbf{half spaces, paraboloids, and ellipsoids}.
+\item Paraboloids are kind of like half spaces but have a quadratic instead of a flat plane separating the spaces. 
+\end{itemize}
+
+
+\chapter{Convexity, Sets, and Hulls}
+
+\section{Hulls}
+
+A hull is an infinite set of points that can be defined with respect to a set of vectors. For the following examples, we let $\mathcal{P}$ be some set of $m$ vectors in $\mathbb{R}^n$. 
+
+\begin{theorem}{Linear Hull Definition: }
+\begin{equation}
+\text{Lin}(\mathcal{P}) = \{x | x = \sum_{i = 1}^{m} \lambda_i x^{(i)}, \lambda_i \in \mathbb{R}\}
+\end{equation}
+\end{theorem}
+\begin{itemize}
+\item Which is exactly the same as the \textbf{span} of set $\mathcal P$.
+\end{itemize}
+
+
+\begin{theorem}{Affine Hull Definition: }
+\begin{equation}
+\text{Aff}(\mathcal{P}) = \{x | x = \sum_{i = 1}^{m} \lambda_i x^{(i)}, \lambda_i \in \mathbb{R}, \sum_{i=1}^{m} \lambda_i = 1 \}
+\end{equation}
+\end{theorem}
+\begin{itemize}
+\item All affine hulls are affine sets. 
+\item You can symbol-shunt the definition to make one of the vectors the \textbf{offset} vector and the rest create a subspace.
+\item Affine hull can be written, for any $x^{(k)}$
+\begin{equation}
+x^{(k)} + \text{span}(\{x^{(i)} - x^{(k)} | \forall i\in [m], i \neq k\})
+\end{equation}
+\end{itemize}
+
+
+\begin{theorem}{Convex Hull Definition: }
+\begin{equation}
+\text{Co}(\mathcal{P}) = \{x | x = \sum_{i = 1}^{m} \lambda_i x^{(i)}, \lambda_i \in \mathbb{R}, \lambda_i \geq 0, \sum_{i=1}^{m} \lambda_i = 1 \}
+\end{equation}
+\end{theorem}
+
+\begin{itemize}
+\item Given two points in a convex hull, all the points on the line connecting the two points are inside of the hull, too.
+\item Very convenient property.
+\end{itemize}
+
+
+\begin{theorem}{Conic Hull Definition: }
+\begin{equation}
+\text{conic}(\mathcal{P}) = \{x | x = \sum_{i = 1}^{m} \lambda_i x^{(i)}, \lambda_i \in \mathbb{R}, \lambda_i \geq 0 \}
+\end{equation}
+\end{theorem}
+
+\begin{itemize}
+\item Can be re-written as 
+\begin{equation}
+x = (\lambda_1 + \lambda_2)(\frac{\lambda_1}{\lambda_1 + \lambda_2} x^{(1)} + \frac{\lambda_2}{\lambda_1 + \lambda_2} x^{(2)})
+\end{equation}
+\begin{itemize}
+\item The first sum being a ``gain'' term greater than zero and the fractions of lambda being any independent factors each between 0 and 1.
+\item Boils down to any point between the two vectors ``zoomed'' anywhere from the origin to infinity.
+\end{itemize}
+\item $\text{conic}(\mathcal P) = \gamma \text{Convex}(\mathcal P)$ where $\gamma$ is some positive gain.
+\end{itemize}
+
+
+\section{Sets}
+
+\begin{theorem}{Affine Set Definition: }
+$A\subset \mathbb R^n$ is affine iff for $x, y\in A$, 
+\begin{equation}
+\{z | z = \lambda x + (1-\lambda)y, \lambda \in \mathbb R\} \in A
+\end{equation}
+\end{theorem}
+\begin{itemize}
+\item This is algebraically the same as our initial definition.
+\item It boils down to \textbf{all the points on an infinite line going through two point in the set must also be in the set}. 
+\end{itemize}
+
+\begin{theorem}{Convex Set Definition: }
+$C\subset \mathbb R^n$ is convex iff $\forall \,\, x, y \in C$, 
+\begin{equation}
+\{ z | z = \lambda x + (1-\lambda)y, \lambda\in [0,1] \}\in C
+\end{equation}
+\end{theorem}
+\begin{itemize}
+\item All points on a line segment connecting two points in the set must also be in the set. 
+\item \textbf{Strict convexity} occurs when we have $\lambda \in (0,1)$ and all points in the line segment are in the \textbf{relative interior} of $C$.
+\end{itemize}
+
+\paragraph{Relative Interior: } 
+\begin{equation}
+\text{relint}(\mathcal D) = \{ x\in D | B(x,r) \cap \text{aff}(\mathcal D) \subseteq \mathcal D \text{ for some } r > 0 \}
+\end{equation}
+Where $B(x,r) = \{y | \norm{y-x} \leq r\}$
+
+\paragraph{Convexifying: } If set $S$ is not convex, we can create $S' = \text{Co}(S)$ to create minimum set that includes all $s\in S$ that is also convex. 
+
+\begin{theorem}{Cone Definition: }
+$\mathcal K \subseteq \mathbb R^n$ is a cone iff $\forall \, x\in \mathcal K$,
+\begin{equation}
+\{\gamma x | \gamma \geq 0\} \in \mathcal K
+\end{equation}
+\end{theorem}
+\begin{itemize}
+\item \textbf{Note: } All conic hulls are cones but not all cones are conic hulls.
+\end{itemize}
+
+
+\section{Properties of Convexity}
+\textit{These properties are stated without their proofs for ease of reference} 
+\begin{enumerate}
+\item Intersection of multiple convex sets are always convex.
+\item Affine (linear + offset) maps always preserve convexity.
+\begin{itemize}
+\item The \textbf{pre-image} of a set w.r.t. an affine map is also convex. 
+\end{itemize}
+\item All \textbf{norm balls} are convex.
+\item All \textbf{ellipsoids} are convex.
+\item The set of PSD matrices $S_+^n$ is a \textbf{convex cone} in $S^n$. 
+\end{enumerate}
+
+
+\section{Convex Functions}
+
+\begin{theorem}{Convex Function Definition: }
+A function $f:\mathbb R^n \to \mathbb R$ is \textbf{convex} iff for all $x, y \in \text{dom }f$,
+\begin{equation}
+f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda) f(y), \,\, \forall \lambda\in [0,1]
+\end{equation}
+With strict inequality indicating strict convexity.
+\end{theorem}
+
+\paragraph{Concavity: } When $-f$ is convex, $f$ is concave.
+
+\paragraph{Facts about Convex Functions: } \textit{Not proven here for ease of access.} 
+\begin{itemize}
+\item If each $f_i$ if convex, then 
+\begin{equation}
+f(x) = \sum_{i=1}^{m} \alpha_i f_i(x)\, | \, \alpha_i \geq 0
+\end{equation}
+Is also convex.
+
+\item Given convex $f:\mathbb R^m \to \mathbb R$, $b\in \mathbb R^m$, $A\in \mathbb R^{m\times n}$, then 
+\begin{equation}
+g(x) = f(Ax + b)
+\end{equation}
+Is also convex. 
+
+\item For a set of convex functions $\{f_i(x)\}$, then 
+\begin{equation}
+f(x) = \max(f_i(x))
+\end{equation}
+Is also convex.
+\end{itemize}
+
+
+\section{Convexity by Restriction to Line}
+
+\begin{theorem}{Restriction to Line: }
+$f:\reals^n \to \reals$ is convex iff $g:\reals \to \reals$ is convex with respect to $t$ as defined below.
+\begin{equation}
+g(t) = f(x^{(0)} + tv)
+\end{equation}
+For \textbf{all possible choices} of $x^{(0)} \in \text{dom }f$, $v\in \reals^n$, and $t\in \reals$.
+\begin{equation}
+\text{dom }g = \{t | x^{(0)} +tv \in \text{dom }f \}
+\end{equation}
+\end{theorem}
+
+
+\begin{theorem}{First Order Condition: }
+<++>
+\end{theorem}
+<++>
+
+
+\begin{theorem}{Second Order Condition: }
+<++>
+\end{theorem}
+<++>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

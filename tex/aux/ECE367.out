@@ -45,3 +45,21 @@
 \BOOKMARK [1][-]{section.7.5}{Theoretical Aspects of Least Squares}{chapter.7}% 45
 \BOOKMARK [2][-]{subsection.7.5.1}{1 Regularization}{section.7.5}% 46
 \BOOKMARK [2][-]{subsection.7.5.2}{SVD Connection}{section.7.5}% 47
+\BOOKMARK [0][-]{chapter.8}{Linear Programming}{}% 48
+\BOOKMARK [1][-]{section.8.1}{Definition and Notation}{chapter.8}% 49
+\BOOKMARK [1][-]{section.8.2}{Objective Function}{chapter.8}% 50
+\BOOKMARK [1][-]{section.8.3}{Feasible Set}{chapter.8}% 51
+\BOOKMARK [1][-]{section.8.4}{Inequality Constraint}{chapter.8}% 52
+\BOOKMARK [1][-]{section.8.5}{Solutions to Linear Programs}{chapter.8}% 53
+\BOOKMARK [2][-]{subsection.8.5.1}{Simplex Algorithm}{section.8.5}% 54
+\BOOKMARK [2][-]{subsection.8.5.2}{Other Forms for LP}{section.8.5}% 55
+\BOOKMARK [0][-]{chapter.9}{Quadratic Programs}{}% 56
+\BOOKMARK [1][-]{section.9.1}{QP Definitions}{chapter.9}% 57
+\BOOKMARK [1][-]{section.9.2}{Geometry}{chapter.9}% 58
+\BOOKMARK [1][-]{section.9.3}{Quadratically Constrained Quadratic Programs}{chapter.9}% 59
+\BOOKMARK [0][-]{chapter.10}{Convexity, Sets, and Hulls}{}% 60
+\BOOKMARK [1][-]{section.10.1}{Hulls}{chapter.10}% 61
+\BOOKMARK [1][-]{section.10.2}{Sets}{chapter.10}% 62
+\BOOKMARK [1][-]{section.10.3}{Properties of Convexity}{chapter.10}% 63
+\BOOKMARK [1][-]{section.10.4}{Convex Functions}{chapter.10}% 64
+\BOOKMARK [1][-]{section.10.5}{Convexity by Restriction to Line}{chapter.10}% 65
