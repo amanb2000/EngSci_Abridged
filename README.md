@@ -7,7 +7,8 @@ This repository is supercedes previous term-specific repositories (e.g. `EngSci_
 As of October 2020, over 293 pages have been written.
 
 ```
-NOTE: This repository does not contain every class I have taken -- merely the ones I chose to create LaTeX notes for.
+NOTE: This repository does not contain every class I have 
+taken -- merely the ones I chose to create LaTeX notes for.
 ```
 
 ## How to Use This Repository
