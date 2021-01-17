@@ -16,7 +16,7 @@ taken -- merely the ones I chose to create LaTeX notes for.
 See the `pdf` folder for PDF's from all of the classes for which I created notes for. Raw LaTeX files can be found in `tex`. 
 
 ## Courses and Descriptions
-_Most recent first__
+_Most recent first_
 
 ### ECE367: Matrix Algebra & Optimization
 
