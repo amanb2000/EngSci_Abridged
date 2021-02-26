@@ -1,0 +1,168 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{media9}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{mathtools} 
+\usepackage{amsmath}
+\usepackage{extarrows} 
+
+% \def\reals{{\rm I\!R}}
+\def\reals{\mathbb{R}}
+\def\integers{\mathbb{Z}}
+\def\fft{\xlongleftrightarrow{\mathcal{F}}}
+\def\fs{\xlongleftrightarrow{\mathcal{FS}}}
+
+
+\newtheorem{theorem}{Theorem}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\begin{document}
+
+\title{ECE368: Probabilistic Reasoning}
+\author{Aman Bhargava}
+\date{January-April 2021}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction and Course Information}
+
+\paragraph{Course Information}
+\begin{itemize}
+\item Professors: Prof. Saeideh Parsaei Fard and Prof. Foad Sohrabi
+\item Course: Engineering Science, Machine Intelligence Option
+\item Term: 2021 Winter
+\end{itemize}
+
+\paragraph{Main Course Topics} 
+\begin{itemize}
+\item Vector, temporal, and spatial models.
+\item Classification and regression model training.
+\item Bayesian statistics, frequentist statistics.
+\end{itemize}
+
+
+
+
+\chapter{Review Topics}
+
+\textit{See ECE286 notes for further reference} 
+
+\section{Review of Probability Functions}
+
+\paragraph{Probability Mass Function: } For \textit{discrete random variables}, $P_X(x)$denotes the probability that random variable $X$ takes on value $x$.
+
+\paragraph{Probability Density Function: } For \textit{continuous random variables}, the probability $\Pr\{X\in [x_1, x_2]\}$ is given by $\int_{x_1}^{x_2} f_X(x) dx$.
+
+Joint PMF's and PDF's are similarly defined. 
+
+\paragraph{Marginal Probability Distributions: } Given joing PMF $P_{X, Y}(x, y)$ or PDF $f_{X,Y}(x, y)$, we can \textbf{marginalize} them as follows:
+\begin{equation}
+P_X(x) = \sum_{y\in Y}^{} P_{X,Y}(x, y)
+\end{equation}
+\begin{equation}
+f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y)dy
+\end{equation}
+
+\paragraph{Conditional Probability Functions: } 
+\begin{equation}
+P_{Y|X}(y, x) = \frac{P_{X,Y}(x,y)}{P_X(x)} 
+\end{equation}
+
+
+\paragraph{Prior Probability: } Probability \textbf{before} an additional observation is made (hence \textit{prior}). Example: $P_X(x)$.
+
+\paragraph{Posterior Probability: } Probability \textbf{after} an observation is made (hence \textit{post}erior). Example: $P_{X|Y}(x, y)$.
+
+\paragraph{Bayes Rule: }
+\begin{equation}
+P(B|A) = P(A|B)\frac{P(B)}{P(A)}
+\end{equation}
+
+\section{Expectation, Correlation, and Independence} 
+
+\paragraph{Expectation Value: } $\mathbb E[x] = \sum_{x\in X}^{} P_X(x) = \int_{-\infty}^{\infty} xf_X(x) dx$
+
+\paragraph{Law or Large Numbers: } $\lim_{N\to\infty} \frac{1}{N} \sum_{i=1}^{N} x_i = \mathbb E[X]$
+
+\paragraph{Variance: } 
+
+\begin{equation}
+\begin{split}
+\text{Var} (X) &= \mathbb E[(X-\mathbb E[x])^2] \\
+&= \mathbb E[X^2] - (\mathbb E[X])^2
+\end{split}
+\end{equation}
+
+\paragraph{Covariance: } 
+\begin{equation}
+\begin{split}
+\text{Cov}(X,Y) &= \mathbb E[(X-\mathbb E[X]) (Y-\mathbb E[Y])] \\
+&= \mathbb E_{XY}[XY] - \mathbb E[X]\mathbb E[Y]
+\end{split}
+\end{equation}
+
+\paragraph{Correlation Coefficient: } 
+\begin{equation}
+\rho_{XY} = \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X)}\sqrt{\text{Var}(Y)}} 
+\end{equation}
+\begin{itemize}
+\item $\rho_{XY}\in [-1, 1]$
+\item $\rho > 0$ indicates positive correlation (line of best fit has positive slope).
+\item $\rho < 0$ indicates negative correlation.
+\item \textbf{$\mathbb E[XY] = \mathbb E[X] \mathbb E[Y]$ iff $X,Y$ are uncorrelated}.
+\end{itemize}
+
+\paragraph{Independence} 
+\begin{theorem}{Independence}
+Random variables $X,Y$ are independent \textbf{iff} 
+\begin{equation}
+P_{XY}(x,y) = P_X(x) \cdot P_Y(y)
+\end{equation}
+This also means that $\rho_{XY} = 0$, $P(X|Y) = P(X)$, etc.
+\end{theorem}
+
+
+
+\section{Laws of Large Numbers}
+
+\paragraph{Weak Law: } Sample mean converges to the mean.
+
+\paragraph{Strong Law: } If $\{x_i\}$ are \textbf{independent, identically distributed} (i.i.d.) random variables with mean $\mu$, then the \textbf{probability of} the sample mean = $\mu$ is 1 as $n\to \infty$.
+
+\chapter{Parameter Estimation}
+
+\section{Estimation Terminology}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
