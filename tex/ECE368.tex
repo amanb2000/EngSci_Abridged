@@ -141,6 +141,152 @@ This also means that $\rho_{XY} = 0$, $P(X|Y) = P(X)$, etc.
 
 \section{Estimation Terminology}
 
+\begin{itemize}
+\item $\hat \theta_n$ is an \textbf{estimator} of some unknown parameter $\theta$.
+\item \textbf{Estimation Error: } $\hat \theta_n - \theta$
+\item \textbf{Bias} of estimator:  $\mathbb E[\hat \theta_n] - \theta$
+\begin{itemize}
+\item \textbf{Unbiased} estimator:  Bias$=0 = \mathbb E[\hat \theta_n] - \theta$.
+\item \textbf{Asymptotically Unbiased: } $\lim_{n\to \infty} \mathbb E[\hat \theta_n] = \theta$ for all $\theta$.
+\end{itemize}
+\item \textbf{Consistency: } Estimator is consistent if $\lim_{n\to \infty} \hat \theta_n = \theta$.
+\end{itemize}
+
+\section{Maximum Likelihood Estimation}
+
+\paragraph{Framing: } Let random variable $\vec X = [X_1, X_2, ..., X_n]$ be defined by either
+\begin{enumerate}
+\item Joint PMF $P_{\vec X}(\vec x; \theta)$
+\item Joint PDF $f_{\vec X}(\vec x; \theta)$
+\end{enumerate}
+
+$\vec x$ is a series of measurements. 
+
+\paragraph{Maximum Likelihood Estimation: } The ML estimate of model parameter $\theta$ is
+\begin{equation}
+\hat \theta_n = \text{argmax}_\theta P_{\vec X}(\vec x; \theta)
+\end{equation}
+
+\paragraph{Independent, identically distributed case: } If each $x_i\in\vec x$ are independent and identically distributed, then
+
+\begin{equation}
+P_{\vec X}(\vec x; \theta) = \prod_{i=1}^n P_{X}(x_i; \theta)
+\end{equation}
+
+Which we can convert to a summation by taking the \textbf{log-likelihood} (recall that logarithm is monotonically increasing, so maximizing log-likelihood is equialent to maximizing likelihood).
+
+\begin{equation}
+\hat\theta_n = \text{arg}\max_{\theta} (\sum_{i=1}^{n} \log P_X(x_i; \theta))
+\end{equation}
+
+
+\section{Frequentist vs. Bayesian Statistics}
+
+\paragraph{Frequentist: } In \textbf{classical statistics}, probability is taken to be approximately equal to the \textbf{frequency of events}. Model parameters are assumed to have some deterministic, fixed value (even though they might be unknown).
+
+\paragraph{Bayesian Statistics: } Model parameters are treated as \textbf{random variables} with their own distributions.
+\begin{itemize}
+\item Generally the more modern approach.
+\item We are most interested in the \textbf{joint probability distribution} of model parameters and model arguments (e.g., $f_x(x, \theta)$).
+\item \textbf{Main criticism:} probabilities are assigned to unrepeatable events (arguably violates the definition of probability as the limit of event frequency).
+\end{itemize}
+
+
+\section{Maximum a Posteri Estimation (MAP)}
+
+\begin{equation}
+\begin{split}
+\hat\theta_{map} &= \text{arg}\max_{\theta} f_{\theta | x} (\theta | x)\\
+&= \text{arg}\max_\theta f_{X|\theta} (x | \theta) \frac{f_\theta(\theta)}{f_X(x)} 
+\end{split}
+\end{equation} 
+
+
+Where $f_\theta(\theta)$ is the \textbf{prior distribution} of model parameter. 
+\begin{itemize}
+\item If $f_\theta(\theta)$ is uniform, we will still get the same answer as a \textbf{maximum likelihood} estimation.
+\end{itemize}
+
+
+\subsection{Picking a Prior Distribution}
+
+\paragraph{Best Practice: } Pick a distribution of the same form as $f_{X|\theta}(x|\theta)$ (called ``conjugate pair'').
+
+\paragraph{Beta Distribution: } Used for \textbf{binomial distribution}.
+\begin{itemize}
+\item Binomial distribution: 
+\begin{equation}
+P_{X = k | \theta} = {n\choose k} \theta^k(1-\theta)^{n-k}
+\end{equation}
+where 
+\begin{itemize}
+\item $\theta$: Probability of success on each Bernoulli trial.
+\item $n$: Total number of trials.
+\item $k$: Total number of successful trials.
+\end{itemize}
+\item \textbf{Beta Distribution: } 
+\begin{equation}
+f_\theta(\theta; \alpha, \beta) = \begin{cases}
+c\theta^{\alpha-1}(1-\theta)^{\beta-1} & \text{for } \theta\in [0,1] \\
+0 & \text{else}
+\end{cases}
+\end{equation}
+
+Where
+\begin{itemize}
+\item $\alpha, \beta$ are customizable parameters.
+\item $c = [\Gamma(\alpha + \beta)]/[\Gamma(\alpha)\Gamma(\beta)]$
+\item $\Gamma(x) \equiv \int_{0}^{\infty} u^{x-1}e^{-u} du$
+\item $\Gamma(x+1) = x\Gamma(x)$ for all $x\in \mathbb R$.
+\item $\Gamma(n+1) = n!$ for integer $n$.
+\item $\therefore c = \frac{(\alpha+\beta-1)!}{(\alpha-1)!(\beta-1)!}$ for integer $\alpha, \beta$.
+\item $\mu_f = \mathbb E[f_\theta(\theta)] = \frac{\alpha}{\alpha + \beta}$
+\item Maximum likelihood $\text{arg}\max_\theta f_\theta(\theta) = \frac{\alpha-1}{\alpha+\beta-2}$
+\end{itemize}
+\end{itemize}
+
+
+\section{Conditional Expectation Estimator}
+
+\paragraph{Key Idea: } Find the \textbf{expected value} for the estimator given your observations.
+
+\begin{equation}
+\hat\theta_{conditional expectation} = \mathbb E[\theta | \vec X = \vec x] = \int_{-\infty}^\infty \theta f_{\theta|\vec x}(\theta | \vec x)
+\end{equation}
+
+
+\section{Bayesian Least Mean Square Estimator (LMS)}
+
+\paragraph{Key Idea: } To estimate random variable model parameter $\theta$, we find
+
+\begin{equation}
+\hat \theta_{LMS} = \text{arg}\min_{\hat \theta} \mathbb E [(\theta-\hat\theta)^2]
+\end{equation}
+
+\begin{itemize}
+\item $\hat \theta_{LMS} = \mathbb E[\theta]$ achieves the goal.
+\item \textbf{Equivalently: } We can also find 
+\begin{equation}
+\hat\theta_{LMS} = \text{arg}\min_{\hat \theta} (\mathbb E[\theta-\hat\theta])^2
+\end{equation}
+\end{itemize}
+
+\section{LMS with Observations}
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
