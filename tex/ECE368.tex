@@ -271,9 +271,352 @@ Where
 \end{equation}
 \end{itemize}
 
-\section{LMS with Observations}
 
-...
+\chapter{Hypothesis Testing}
+
+\paragraph{Goal: } Given two hypotheses $H_0, H_1$ and observation $\pmb x = (x_0, \dots, x_n)$, we wish to decide which hypothesis is \textbf{better}.
+
+\paragraph{Error Types: } These are generally with respect to $H_0$, or the ``null hypothesis''.
+\begin{itemize}
+\item \textbf{Type I:} False \textbf{rejection}. We reject hypothesis $H_i$ despite it being the correct one.
+\item \textbf{Type II:} False \textbf{acceptance}. We accept hypothesis $H_i$ despite it being false.
+\end{itemize}
+
+
+\section{Likelihood Ratio Test}
+
+\begin{equation}
+\mathbb L(\pmb x) = \frac{P_x(\pmb x; H_1)}{P_x(\pmb x; H_0)} \lessgtr z
+\end{equation}
+
+If $\mathbb L(\pmb x) > z$, we \textbf{accept $H_1$}. Else, we accept $H_0$. $z = 1$ corresponds to the maximum likelihood decision rule.
+
+\paragraph{Neyman-Pearson Lemma: } We let $\alpha$ represent the probability of \textbf{false rejection} and $\beta$ represent the probability of \textbf{false acceptance} (i.e., type I and type II error probability respectively).
+
+\begin{equation}
+P(\mathbb L(\pmb x) > z ; H_0) = \alpha
+\end{equation}
+\begin{equation}
+P(\mathbb L(\pmb x) \leq z ; H_1) = \beta
+\end{equation}
+
+There is a direct tradeoff between $\alpha$ and $\beta$ -- they are inversely proportional (i.e., we cannot get better overall confidence ``for free'' with the same data).
+
+There is equivalence between selecting some likelihood cutoff $z$ and some $\gamma$ for $\pmb x \lessgtr \gamma$. 
+
+\section{Bayesian Hypothesis Testing}
+
+The likelihood ratio test is essentially a \textbf{maximum likelihood} method. Bayesian hypothesis testing is equivalent to \textbf{maximum a posteri} methods.
+
+\begin{itemize}
+\item \textbf{Goal: } Choose the most probable hypothesis \textit{given the data}.
+\item \textbf{Given: } Hypotheses $\pmb \theta = \{\theta_1, \dots, \theta_M\}$, data $\pmb x = (x_1, \dots, x_n)$.
+\item \textbf{Method: } Select the optimal hypothesis based on 
+\begin{equation}
+\begin{split}
+\hat \theta &= \arg\max_{\theta\in \pmb \theta} P(\theta | \pmb x) \\
+&= \arg\max_{\theta\in \pmb \theta} P(\pmb x | \theta)P(\theta)
+\end{split}
+\end{equation}
+\end{itemize}
+
+By maintaining $\pmb x$ as a free variable in these computations, the rejector regions $\mathcal R$ for $\pmb x$ can be found relatively easily.
+
+
+\section{Gaussian Vector Distribution}
+
+\paragraph{Scalar Gaussian Normal Distribution: } 
+\begin{equation}
+\begin{split}
+f_x(x) &= \frac{1}{\sqrt{2\pi\sigma^2}} \exp[\frac{-(x-\mu)^2}{2\sigma^2}] \\
+&\Leftrightarrow x \sim \mathcal N(\mu, \sigma^2)
+\end{split}
+\end{equation}
+
+
+\paragraph{Gaussian Vector} 
+\begin{equation}
+f_{\vec x}(\vec x; \vec \mu, \Sigma) = \frac{1}{(2\pi)^{D/2}} \frac{1}{|\Sigma|^{\frac{1}{2}}} \exp [\frac{-1}{2} (\vec x - \vec \mu)^T \Sigma^{-1} (\vec x - \vec \mu)]
+\end{equation}
+Where 
+\begin{itemize}
+\item $D$ is the dimension of the vectors $x$.
+\item $\vec \mu\in \mathbb R^D$ is the mean vector.
+\begin{itemize}
+\item $\vec \mu = \mathbb E[\vec x]$
+\end{itemize}
+
+\item $\Sigma \in \mathbb R^{D\times D}$ is the covariance matrix. It is \textbf{positive semidefinite}.
+\begin{itemize}
+\item $\Sigma = \mathbb E [(\vec x - \vec \mu)(\vec x - \vec \mu)^T]$
+\end{itemize}
+
+
+\end{itemize}
+
+\subsection{Eigen Analysis of Gaussian Vectors}
+
+\textit{From ECE367} : All PSD matrices $A$ have \textbf{orthogonal} eigenvectors. We can also arbitrarily scale them to be ortho\textbf{normal}. 
+\begin{equation}
+A = Q\Lambda Q^T
+\end{equation}
+
+Where each column of $Q$ is an eigenvector and $\Lambda = \text{diag}(\text{eigen values})$. $QQ^T = I$ and $Q^T = Q^{-1}$ by orthonormalcy. 
+
+\paragraph{Applying to Gaussian Vectors: } 
+We note the term $\frac{-1}{2} (\vec x - \vec \mu)^T \Sigma^{-1} (\vec x - \vec \mu)$. Since $\Sigma$ is PSD we can decompose it into 
+\begin{equation}
+\begin{split}
+\Sigma &= Q \Lambda Q^T \\
+\Sigma^{-1} &= Q \Lambda^{-1} Q^T \\
+\end{split}
+\end{equation}
+
+We define a helper variable $\vec y$ as follows:
+
+\begin{equation}
+\begin{split}
+& \vec y \equiv Q^T(\vec x - \vec \mu) \\
+& \Rightarrow \vec y^T = (\vec x - \vec \mu)^T Q \\
+& \Rightarrow (\vec x - \vec \mu)^T \Sigma^{-1} (\vec x - \vec \mu) = \vec y^T Q^T \Sigma^{-1} Q \vec y \\
+&= \vec y^T \Lambda^{-1} \vec y^T
+\end{split}
+\end{equation}
+
+The big payoff is that $\vec y$ is a random variable with a \textbf{diagonal} covariance matrix (i.e., independent components). $\vec y$ also has zero mean!
+
+\begin{equation}
+\begin{split}
+f_y(\vec y) &= \frac{1}{(2\pi)^{D/2} |\Lambda|^{1/2}} \exp (\frac{-1}{2} \vec y^T \Lambda^T \vec y) \\
+&= \prod_{i=1}^D \frac{1}{\sqrt{2\pi\lambda_i}} \exp[\frac{-y_i^2}{2\lambda_i}]
+\end{split}
+\end{equation}
+
+
+\section{Gaussian Estimation}
+
+\paragraph{Given: } Observations $x_i\in \mathbb R$ where we know that were generated by $x_i = \theta + w_i$ and $w_i \sim \mathcal N(0, \sigma_i^2)$. In other words, each $x_i$ is a ``measure'' of the same mean value $\theta$, but there is some zero-mean noise $w_i$ with variance $\sigma_i^2$. Note that each data point has its own variance. 
+
+\paragraph{Goal: } Estimate $\theta$.
+
+\subsection{Maximum Likelihood}
+
+\begin{equation}
+\begin{split}
+\hat \theta_{ML} &= \arg\max_{\theta} f_x(\vec x ; \theta) \\
+&= \arg\max_\theta \prod_{i= 1}^n \frac{1}{\sqrt{2\pi} \sigma_i} \exp[\frac{-1(x-\theta)^2}{2\sigma_i^2}] \\
+\hat \theta_{ML} &= \frac{\sum_{i=1}^{n} \frac{x_i}{\sigma_i^2}}{\sum_{i=1}^{n} \frac{1}{\sigma_i^2}}
+\end{split}
+\end{equation}
+
+Intuitively, this corresponds to a weighted sum of each $x_i$. Weight is proportional to $\frac{1 }{\sigma_i^2}$, which corresponds to ``certainty'' in the validity of the data point in representing $\theta$.
+
+\subsection{MAP Estimation}
+
+We assume a \textbf{conjugate prior} distribution for $\theta \sim \mathcal N(x_0, \sigma_0^2)$. Conveniently enough, these $x_0, \sigma_0$ are functionally identical to just having another data point!
+
+\begin{equation}
+\begin{split}
+\hat \theta_{MAP} &= \arg\max_{\theta} f_{\theta}(\theta) f(x | theta) \\
+&= \dots \\
+\hat \theta_{MAP} &= \frac{\sum_{i=0}^{n} \frac{x_i}{\sigma_i^2}}{\sum_{i=0}^{n} \frac{1}{\sigma_i^2}} 
+\end{split}
+\end{equation}
+
+\textbf{Note that the sums now start at zero to incorporate the prior distribution's information!} 
+
+% TODO: First part of March 1 content.
+
+
+\chapter{Statistical Machine Learning}
+
+\section{Naive Bayesian Classifier}
+
+\textit{Technically this was in the first half, but it fits well to motivate LDA and QDA.} 
+
+\paragraph{Goal: } Let $\theta\in \{1,2\}$ be the class of data points $\vec x \in \mathbb R^n$. We wish to find $P(\theta | \vec x)$.
+
+\paragraph{Naive Bayesian Assumption: } Each component of $\vec x$ is \textbf{independent} with respect to class $\theta$. By the probability axioms relating to independence, 
+\begin{equation}
+P_{\vec x | \theta}(\vec x | \theta) = \prod_{i = 1}^n P_{x_i | \theta}(x_i | \theta)
+\end{equation}
+
+
+\paragraph{Classification Equations: } 
+\begin{equation}
+P(\theta | \vec x) = \frac{P(\theta) \prod_{i=1}^n P_{x_i | \theta}(x_i | \theta) }{P(\vec x)} 
+\end{equation}
+Where $P(\vec x) = \sum_{\theta}^{} [P(\theta) \prod_{i=1}^n P_{x_i|\theta} (x_i | \theta)]$
+
+\begin{equation}
+P(\theta = 1) \prod_{i=1}^n P_{x_i | \theta}(x_i | \theta = 1) \lessgtr P(\theta = 2) \prod_{i=1}^n P_{x_i | \theta}(x | \theta = 2)
+\end{equation}
+
+
+\paragraph{Bag of words: } For classifying text, we choose a set of $W$ of the most common words. In our vectors $\vec x$, each index $x_i$ corresponds to whether word $w_i$ appears in the given text. 
+
+\begin{equation}
+P_{x_i | \theta}(x_i = w_d | \theta = j) = \frac{\text{occurrences of } w_i \text{ in set }j}{\text{total words in set }j} 
+\end{equation}
+
+
+\paragraph{Laplace Smoothing: } Even if we perform the computation in the log domain, we might run into a $P_{x_i|theta}(x_i | \theta) = 0$ if we lack a datapoint (word occurrence) for a given class. Laplace smoothing simply appends the vocabulary set $W$ to each class (i.e., all words in the set occur at least once a priori).
+
+
+
+
+\section{Linear Discriminant Analysis (LDA)}
+
+\paragraph{Goal: } Create algorithm $\text{LDA}: \vec x_i \to c_i$ where $\vec x_i$ is a data point and $c_i\in C$ is the class it belongs to.
+
+\paragraph{General Methodology: } We use \textbf{Bayesian hypothesis testing} with variable classes we model with normal distributions. An important simplifying assumption is that each class $c$ has different $\vec \mu_c$ \textbf{BUT} they all have the same $\Sigma$. This is what makes our decision boundaries \textbf{linear}!
+
+\paragraph{Classification Equations: } 
+\begin{enumerate}
+\item $\hat y(\vec x) = \arg\max_{c\in C} \beta_c^T \vec x + \gamma_c$ where
+\begin{itemize}
+\item $\beta_c = \Sigma^{-1} \mu_c$
+\item $\pi_c = P(c)$ (prior probability of class $c$)
+\item $\gamma_c = \log(\pi_c) - \frac{1}{2} \mu_c^T \Sigma^{-1} \mu_c$
+\end{itemize}
+
+\item Posterior probability of class $c$: 
+\begin{equation}
+P(c | \vec x) = \frac{\exp(\beta_c^T x + \gamma_c)}{\sum_{c'\in C}^{} \exp(\beta_{c'}^T x + \gamma_{c'})} 
+\end{equation}
+\end{enumerate}
+
+
+\section{Quadratic Discriminant Analysis (QDA)}
+
+\paragraph{Goal: } Same as LDA. 
+\paragraph{Assumptions: } We are given $\mu_c, \Sigma_c, \pi_c$ for each class, and each $\vec x_i \sim \mathcal N(\mu_c, \Sigma_c)$ for some $c\in C$.
+
+\paragraph{Classification Equations: } 
+\begin{equation}
+\hat y(\vec x) = \arg\max_{c\in C} [\log (\tilde \pi_c) - \frac{1}{2} (x-\mu_c)^T \Sigma^{-1}_c (x-\mu_c)]
+\end{equation}
+Where $\tilde \pi_c = \frac{1}{(2\pi)^{D/2} |\Sigma_c|^{1/2}} \pi_i$
+
+\begin{equation}
+P(c | x) = \pi_c \frac{1}{(2\pi)^{D/2} |\Sigma_c|^{1/2} } \exp(\frac{-1}{2} (x-\mu_c)^T \Sigma^{-1} (x - \mu_c))\frac{1}{P(x)} 
+\end{equation}
+Where $P(x)$ is given by
+\begin{equation}
+\begin{split}
+P(x) &= \sum_{c'\in C}^{} P(x | c')P(c') \\
+&= \sum_{c'\in C}^{} \mathcal N(x; \mu_c, \Sigma_c) P(c')
+\end{split}
+\end{equation}
+
+\paragraph{Calculating $\mu_c, \Sigma_c$} 
+
+The maximum likelihood estimation of these are as follows: 
+\begin{equation}
+\hat\mu_c = \frac{1}{n} \sum_{i=1}^{n} x_i \,\, \forall x_i \in c
+\end{equation}
+\begin{equation}
+\hat \Sigma_c^{ML} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \hat \mu_c)(x_i - \hat\mu_c)^T\,\, \forall x_i \in c
+\end{equation}
+\textbf{PROBLEM:} $\hat \Sigma_c^{ML}$ is a biased estimator. For the $D=1$ case, $\mathbb E[\hat \sigma_c^{ML}] = \frac{n-1}{n} \sigma^2$. To correct, we use the following:
+\begin{equation}
+\hat \Sigma_c^{corrected} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \hat \mu_c)(x_i - \hat\mu_c)^T\,\, \forall x_i \in c
+\end{equation}
+
+The primary problem with these sorts of classifiers is that $\Sigma$ has high dimensionality. If we use the same $\Sigma$ for all classes, we get LDA. If we force $\Sigma_c$ to be diagonal, we get a naive Bayesian classifier.
+
+
+
+
+
+% TODO: March 1 lecture videos notes.
+
+\section{General Bayesian Inference on Gaussian Vectors}
+
+\paragraph{Given: } We know that $\vec z \sim \mathcal N(\vec \mu, \Sigma)$. We know the value of only part of the $\vec z$ vector, and want to determine the probability distribution and ML/MLE/MMSE estimation for the remaining indices we don't know. 
+
+\begin{equation}
+\vec z = \begin{bmatrix}
+\vec x \\
+\vec y \\
+\end{bmatrix}
+\end{equation}
+
+We are given the value of $\vec y$ and want to know $\vec x$.
+
+\paragraph{Key Tools: } 
+\begin{equation}
+\Sigma = \begin{bmatrix}
+\Sigma_{xx} & \Sigma_{xy} \\
+\Sigma_{yx} & \Sigma_{yy}
+\end{bmatrix}
+\end{equation}
+Where $\Sigma_{xy} = \mathbb E[(x - \mu_x)(x - \mu_x)^T]$.
+
+\begin{itemize}
+\item \textit{The maximum of a Gaussian is at the mean!} 
+\item $f_{x|y} \sim \mathcal N$
+\item $\hat x_{MAP} = \hat x_{MMSE,LMS} = \mathbb E[\vec x | \vec y]$
+\end{itemize}
+
+
+\paragraph{Results: } 
+
+\begin{equation}
+f_{x|y}(x|y) \sim \mathcal N(\mu_{x|y}, \Sigma_{x|y})
+\end{equation}
+Where 
+\begin{equation}
+\mu_{x|y} = \mu_x + \Sigma_{xy} \Sigma_{yy}^{-1} (y-\mu_y)
+\end{equation}
+\begin{equation}
+\Sigma_{x|y} = \Sigma_{xx} - \Sigma_{xy}\Sigma^{-1}_{yy}\Sigma_{yx}
+\end{equation}
+
+Which is pretty cool, especially considering that $\hat x_{MAP, MMSE} = \mu_{x|y}$ is now linear with $\vec y$. We can think of $\Sigma_{x|y}$ as the ``remaining uncertainty'' in $\vec x$ after we receive information $\vec y$. 
+
+
+\section{Linear Gaussian Systems}
+
+\paragraph{Given: } $P(x) \sim \mathcal N(\mu_x, \Sigma_x)$. $y = Ax+b+z$ where
+\begin{itemize}
+\item $A$ is a known matrix.
+\item $b$ is a known vector.
+\item $z\sim \mathcal N(0, \Sigma_z)$
+\item $x,z$ are independent.
+\end{itemize}
+
+\paragraph{Goal: } We observe $y$. What are our estimates $\hat x_{MAP}$, $\hat x_{MMSE}$ that correspond to this particular $y$?
+
+\paragraph{Solution: } Unsurprisingly, $x,y$ have Gaussian distributions.
+\begin{equation}
+\hat x_{MAP, MMSE} = \mu_x + \Sigma_{xy}\Sigma_{yy}^{-1}(y-\mu_y)
+\end{equation}
+Where
+\begin{equation}
+\mu_y = A\mu_x + b
+\end{equation}
+\begin{equation}
+\Sigma_{xy} = \Sigma_x A^T
+\end{equation}
+\begin{equation}
+\Sigma_{yy} = A\Sigma_xA^T + \Sigma_z
+\end{equation}
+\begin{equation}
+\Sigma_{x|y} = (\Sigma_x^{-1} + A^T\Sigma_z^{-1}A)^{-1}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
