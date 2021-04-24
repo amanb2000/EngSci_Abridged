@@ -79,7 +79,7 @@ P_{Y|X}(y, x) = \frac{P_{X,Y}(x,y)}{P_X(x)}
 
 \paragraph{Prior Probability: } Probability \textbf{before} an additional observation is made (hence \textit{prior}). Example: $P_X(x)$.
 
-\paragraph{Posterior Probability: } Probability \textbf{after} an observation is made (hence \textit{post}erior). Example: $P_{X|Y}(x, y)$.
+\paragraph{Posterior Probability: } Probability \textbf{after} an observation is made (hence \textit{post}erior). Example: $P_{X|Y}(x | y)$.
 
 \paragraph{Bayes Rule: }
 \begin{equation}
@@ -278,8 +278,8 @@ Where
 
 \paragraph{Error Types: } These are generally with respect to $H_0$, or the ``null hypothesis''.
 \begin{itemize}
-\item \textbf{Type I:} False \textbf{rejection}. We reject hypothesis $H_i$ despite it being the correct one.
-\item \textbf{Type II:} False \textbf{acceptance}. We accept hypothesis $H_i$ despite it being false.
+\item \textbf{Type I:} False \textbf{rejection}. We reject hypothesis $H_0$ despite it being the correct one.
+\item \textbf{Type II:} False \textbf{acceptance}. We accept hypothesis $H_0$ despite it being false.
 \end{itemize}
 
 
@@ -289,9 +289,9 @@ Where
 \mathbb L(\pmb x) = \frac{P_x(\pmb x; H_1)}{P_x(\pmb x; H_0)} \lessgtr z
 \end{equation}
 
-If $\mathbb L(\pmb x) > z$, we \textbf{accept $H_1$}. Else, we accept $H_0$. $z = 1$ corresponds to the maximum likelihood decision rule.
+If $\mathbb L(\pmb x) > z$, we \textbf{reject $H_0$}. Else, we \textbf{fail to reject} $H_0$. $z = 1$ corresponds to the maximum likelihood decision rule.
 
-\paragraph{Neyman-Pearson Lemma: } We let $\alpha$ represent the probability of \textbf{false rejection} and $\beta$ represent the probability of \textbf{false acceptance} (i.e., type I and type II error probability respectively).
+\paragraph{Neyman-Pearson Lemma: } We let $\alpha$ represent the probability of \textbf{false rejection} of $H_0$ and $\beta$ represent the probability of \textbf{false acceptance} of $H_0$ (i.e., type I and type II error probability respectively).
 
 \begin{equation}
 P(\mathbb L(\pmb x) > z ; H_0) = \alpha
@@ -300,9 +300,7 @@ P(\mathbb L(\pmb x) > z ; H_0) = \alpha
 P(\mathbb L(\pmb x) \leq z ; H_1) = \beta
 \end{equation}
 
-There is a direct tradeoff between $\alpha$ and $\beta$ -- they are inversely proportional (i.e., we cannot get better overall confidence ``for free'' with the same data).
-
-There is equivalence between selecting some likelihood cutoff $z$ and some $\gamma$ for $\pmb x \lessgtr \gamma$. 
+To be completely honest, I don't know why this lemma deserves a name. In any case, there is a direct tradeoff between $\alpha$ and $\beta$ -- they are inversely proportional (i.e., we cannot get better overall confidence ``for free'' with the same data). There is also equivalence between selecting some likelihood cutoff $z$ and some $\gamma$ for $\pmb x \lessgtr \gamma$. 
 
 \section{Bayesian Hypothesis Testing}
 
@@ -364,7 +362,7 @@ A = Q\Lambda Q^T
 Where each column of $Q$ is an eigenvector and $\Lambda = \text{diag}(\text{eigen values})$. $QQ^T = I$ and $Q^T = Q^{-1}$ by orthonormalcy. 
 
 \paragraph{Applying to Gaussian Vectors: } 
-We note the term $\frac{-1}{2} (\vec x - \vec \mu)^T \Sigma^{-1} (\vec x - \vec \mu)$. Since $\Sigma$ is PSD we can decompose it into 
+Take a gander at the term $\frac{-1}{2} (\vec x - \vec \mu)^T \Sigma^{-1} (\vec x - \vec \mu)$. Since $\Sigma$ is PSD we can decompose it into 
 \begin{equation}
 \begin{split}
 \Sigma &= Q \Lambda Q^T \\
@@ -383,7 +381,7 @@ We define a helper variable $\vec y$ as follows:
 \end{split}
 \end{equation}
 
-The big payoff is that $\vec y$ is a random variable with a \textbf{diagonal} covariance matrix (i.e., independent components). $\vec y$ also has zero mean!
+The big payoff is that $\vec y$ is a random variable with a \textbf{diagonal} covariance matrix (i.e., independent components). $\vec y$ also has zero mean! What a swell result.
 
 \begin{equation}
 \begin{split}
@@ -469,7 +467,7 @@ P_{x_i | \theta}(x_i = w_d | \theta = j) = \frac{\text{occurrences of } w_i \tex
 
 \paragraph{Goal: } Create algorithm $\text{LDA}: \vec x_i \to c_i$ where $\vec x_i$ is a data point and $c_i\in C$ is the class it belongs to.
 
-\paragraph{General Methodology: } We use \textbf{Bayesian hypothesis testing} with variable classes we model with normal distributions. An important simplifying assumption is that each class $c$ has different $\vec \mu_c$ \textbf{BUT} they all have the same $\Sigma$. This is what makes our decision boundaries \textbf{linear}!
+\paragraph{General Methodology: } We use \textbf{Bayesian hypothesis testing} with variable classes modelled with normal distributions. An important simplifying assumption is that each class $c$ has different $\vec \mu_c$ \textbf{BUT} they all have the same $\Sigma$. This is what makes our decision boundaries \textbf{linear} (hence ``LDA'').
 
 \paragraph{Classification Equations: } 
 \begin{enumerate}
@@ -490,7 +488,7 @@ P(c | \vec x) = \frac{\exp(\beta_c^T x + \gamma_c)}{\sum_{c'\in C}^{} \exp(\beta
 \section{Quadratic Discriminant Analysis (QDA)}
 
 \paragraph{Goal: } Same as LDA. 
-\paragraph{Assumptions: } We are given $\mu_c, \Sigma_c, \pi_c$ for each class, and each $\vec x_i \sim \mathcal N(\mu_c, \Sigma_c)$ for some $c\in C$.
+\paragraph{Assumptions: } We are given $\mu_c, \Sigma_c, \pi_c$ for each class, and each $\vec x_i \sim \mathcal N(\mu_c, \Sigma_c)$ for some $c\in C$. Note the different $\Sigma_c$ for each class.
 
 \paragraph{Classification Equations: } 
 \begin{equation}
@@ -614,7 +612,7 @@ Where
 \begin{equation}
 p(y, \vec x, \theta) = \mathcal N(y | \vec w^T\vec x, \sigma^2)
 \end{equation}
-And of course $\mathcal E[y|\vec x] = \vec w^T \vec x$. You can also apply polynomial, gaussian, and sigmoid basis functions to transform $\vec x$ to get a more complex decision boundary.
+And of course $\mathbb E[y|\vec x] = \vec w^T \vec x$. You can also apply polynomial, gaussian, and sigmoid basis functions to transform $\vec x$ to get a more complex decision boundary.
 
 \paragraph{Some Notation: } 
 \begin{itemize}
@@ -648,7 +646,7 @@ Generic linear regression (no regularization, no prior) tries to find $\hat \the
 \sigma^2_{ML} = \frac{1}{N} \sum_{n=1}^{N} [y_n - \vec w^T \vec x_n]^2
 \end{equation}
 
-Interestingly, least squares is identical to projecting $\vec y$ onto the columns of dataset $X$. $\vec w$ holds the projection coefficients for this. 
+Interestingly, least squares is identical to projecting $\vec y$ onto the span of the columns of dataset $X$ under the $\ell_2$ norm. $\vec w$ holds the projection coefficients for this. 
 
 
 \section{Regularized Least Squares}
@@ -663,7 +661,7 @@ Interestingly, least squares is identical to projecting $\vec y$ onto the column
 &= (\tilde X^T\tilde X)^{-1} \tilde X^T \tilde y
 \end{split}
 \end{equation}
-Where $$\tilde X = \begin{bmatrix} X\\-I\lambda \end{bmatrix}$$ $$\tilde y = \begin{bmatrix} y\\0\\\dots\\0 \end{bmatrix}$$
+Where $$\tilde X = \begin{bmatrix} X\\-I\lambda \end{bmatrix}$$ $$\tilde y = \begin{bmatrix} y\\0\\\vdots\\0 \end{bmatrix}$$
 
 
 
@@ -691,7 +689,7 @@ P(y | \vec w, \vec x) = \text{Bernoulli}(\sigma(\vec w^T \vec x))
 \hat w_{ML} = \max_{\vec w}[-\sum_{i=1}^{n} y_i\log(\sigma(\vec w^T\vec x)) + (1-y_i) \log(1-\sigma(\vec w^T \vec x))  ]
 \end{equation}
 
-Interestingly this is pretty much just cross entropy loss. There's no analytical solution, so we need to use numerical techniques. It's also pretty easy to add regularization to this ``loss'' function.
+This is literally cross entropy loss. There's no analytical solution, so we need to use numerical techniques (see ECE421). It's also pretty easy to add regularization to this ``loss'' function.
 
 \section{Bayesian Linear Regression}
 
@@ -728,7 +726,7 @@ Where
 \paragraph{Some notes on intuition: } 
 \begin{itemize}
 \item Since $\Sigma_N^{-1}$ scales with $X^T X$, it will grow very large as the number of data points increases. This means that $\Sigma_N$ will be pretty small with many samples, which intuiviely makes sense because additional data (should) result in more ``certainty''.
-\item 
+\item For incorporating a non-Gaussian prior, see the Murphy textbook section on Bayesian linear regression.
 \end{itemize}
 
 \paragraph{Posterior Distribution of $y$: } Let's say we are given some dataset $\mathcal D$ to train on. Now we want to perform ``inference'' on some new data point $\vec x$ to get a distribution on the corresponding value of $y$: 
@@ -768,11 +766,11 @@ A_{i,j} = \Pr(X_{n+1} = j | X_n = i)
 
 \paragraph{Transition probability matrix: } Matrix $A$ from above always has an eigen value of $1$, and the rows all sum to $1$. It's called a \textit{stochastic matrix}, and we learned about these in ECE367! It can also be represented as a transition probability graph with edge weights representing the probability of traversal.
 
-\paragraph{Path probability: } $P(<X_0 \to X_1 \to \dots \to X_n>) = \prod_{i=1}^{n-1} A_{X_i \to X_{i+1}}$.
+\paragraph{Path probability: } $P(\langle X_0 \to X_1 \to \dots \to X_n\rangle) = \prod_{i=1}^{n-1} A_{X_i \to X_{i+1}}$.
 
 \paragraph{Initial conditions: } We can have a \textit{probabilistic initial condition} with vector $\vec \pi^0$:
 \begin{equation}
-\Pr(X_0 = j) = \vec \pi_j^(0)
+\Pr(X_0 = j) = \vec \pi_j^{(0)}
 \end{equation}
 We can find the probability vector for the next time step as:
 \begin{equation}
@@ -787,7 +785,7 @@ We can find the probability vector for the next time step as:
 \tilde \pi = \tilde \pi^T A
 \end{equation}
 
-This has deep connections to flow optimization (ECE358: Algorithms and Datastructure). When viewed on the graphical model of the chain, the steady state distribution corresponds to the ``flow'' into each node being equivalent to the ``flow'' out of each node. 
+This has deep connections to flow optimization (ECE358: Algorithms and Datastructures). When viewed on the graphical model of the chain, the steady state distribution corresponds to the ``flow'' into each node being equivalent to the ``flow'' out of each node. 
 
 \paragraph{Conditions for Steady State: } 
 \begin{enumerate}
@@ -872,16 +870,16 @@ Directed and undirected graphs are the main classes for graphical models. Direct
 
 \section{Defining Graphical Models}
 
-\paragraph{Hierarchy: } If there exists an edge connecting node $a\to b$, then $a$ is a parent of $b$ and $b$ is a child of $a$. This also means that there exists some term in the joint probability distribution of all the nodes $p(b|a)$. That is, the value of $a$ informs the value of $b$.
+\paragraph{Hierarchy: } If there exists an edge connecting node $a\to b$, then $a$ is a parent of $b$ and $b$ is a child of $a$. This also means that there exists some term $p(b|a)$ in the joint probability distribution corresponding to the entire graph. That is, the value of $a$ informs the value of $b$.
 
-\paragraph{Graphical Model $\to$ Joint Probability Distribution: } For a graph compoased of nodes $x_{1:N}$, the joint probability distribution is:
+\paragraph{Graphical Model $\to$ Joint Probability Distribution: } For a graph composed of nodes $x_{1:N}$, the joint probability distribution is:
 \begin{equation}
 P(x_{1:N}) = \prod_{i=1}^N P(x_i | pa_i)
 \end{equation}
 Where $pa_i$ is the set of \textbf{parents} of node $x_i$.
 
 
-\paragraph{Independence: } Recall that independence occurs when knowing the value of $B$ variable does not inform the probability distribution of $A$ (and vice versa):
+\paragraph{Independence: } Recall that independence between $A,B$ occurs when knowing the value of $B$ does not inform the probability distribution of $A$ (and vice versa):
 \begin{equation}
 P(A|B) = P(A); \,\,\, P(B|A) = P(B)
 \end{equation}
@@ -913,7 +911,8 @@ Generally, we arrive at conditional independence by comparing the values of $P(A
 
 \paragraph{Tail to Tail Connections: } $c$ has a tail-to-tail connection if we have $c\to a$ and $c \to b$.
 
-\paragraph{Result: } \begin{theorem}{Connection Types and their Conditional Independences: }
+
+\begin{theorem}{Connection Types and their Conditional Independences: }
 \begin{itemize}
 \item \textbf{Head-to-Head:} $a$ is independent of $b$. They are NOT conditionally independent given $c$, though!
 \begin{equation}
@@ -952,7 +951,7 @@ If all paths $p$ are blocked, then $A$ is d-separated from $B$ by $C$. All joint
 \end{enumerate}
 \end{theorem}
 
-\paragraph{Utility of D-separation: } We can determine how/if variables in a model are conditionally independent.
+\paragraph{Utility of D-separation: } We can determine how/if variables and parameters in a model are conditionally independent.
 
 
 \section{Markov Blanket/Boundary}
@@ -963,7 +962,7 @@ If all paths $p$ are blocked, then $A$ is d-separated from $B$ by $C$. All joint
 \item Children
 \item Co-parents
 \end{itemize}
-of the node. The meaning is that $P(x_i|x_{\{j\neq i\}} = f(\text{Markov blanket nodes})$. That is, you only really ``need'' the nodes in the Markov blanket to maximally ``inform'' the distribution of variable $x_i$.
+of the node. The meaning is that $P(x_i|x_{\{j\neq i\}}) = f(\text{Markov blanket nodes})$. That is, you only really ``need'' the nodes in the Markov blanket to maximally ``inform'' the distribution of variable $x_i$.
 
 
 This can be shown by analysis of $p(x_i|x_{i\neq j})$:
@@ -1010,10 +1009,7 @@ p(\pmb x) = \frac{1}{Z} \prod_c \phi_c(x_c)
 
 That is, we multiply the potential functions on all the max cliques in $\pmb x$ and normalize with factor $Z$ to get the joint probability distribution of $\pmb x = \{x_1, \dots, x_N\}$.
 
-\paragraph{Energy Functions: } To obtain potential functions $\phi_c \geq 0$, we can let $\phi_c(x_c) = \exp[-E(x_c)]$ where $E(x_c)$ is the energy function.
-
-
-We note that potential functions $\phi$ and energy functions $E$ have no true probabilistic meaning. They simply denote ``preferable'' configurations for the system. 
+\paragraph{Energy Functions: } To obtain potential functions $\phi_c \geq 0$, we can let $\phi_c(x_c) = \exp[-E(x_c)]$ where $E(x_c)$ is the energy function. Note that potential functions $\phi$ and energy functions $E$ have no true probabilistic meaning. They simply denote ``preferable'' configurations for the system. 
 
 \paragraph{Graphical Models as Filters: } 
 \begin{itemize}
@@ -1054,10 +1050,10 @@ These nested sums make for pretty terrible run time ($O(N^k)$ where each $x_i$ h
 
 \paragraph{General strategy -- ``pushing in'' sums: } To make this process faster, we the following technique. For a factorized probability distribution $p(x_1, \dots, x_N)$, we can ``push in'' summation operators as follows:
 \begin{equation}
-\sum_{i=1}^{5} \alpha f(i) = \alpha \sum_{i=1}^{5} f(i)
+\sum_{i=1}^{n} \alpha f(i) = \alpha \sum_{i=1}^{n} f(i)
 \end{equation}
 
-In other words, if factorized elements are not a function of the summation variable, they can be factored out to the left of the corresponding summation operator. Since graphical models have a strong ability to factorize probability distributions nicely, we can leverage this for faster inference algorithms.
+Where $\alpha$ can be any terms that are not functions of $i$, the summation variable. In other words, if factorized elements are not a function of the summation variable, they can be factored out to the left of the corresponding summation operator. Since graphical models have a strong ability to factorize probability distributions effectively based on graph structure, we can leverage this for faster inference algorithms.
 
 \section{Message Passing for First Order Markov Chain}
 
@@ -1070,9 +1066,10 @@ P(\pmb x) = \frac{1}{Z} \phi_{1,2}(x_1, x_2) \cdot \phi_{2,3}(x_2, x_3) \cdot \d
 The ``message passing'' algorithm will take advantage of this ``pushing in'' strategy to arrive at the following:
 
 \begin{equation}
-p(x_n) = \frac{1}{Z} [\sum_{x_{n-1}}^{} \phi_{n-1, n} (x_{n-1}, x_n) \dots [ \sum_{x_2}^{} \phi_{2,3}(x_2, x_3) [\sum_{x_1}^{} \phi_{1,2}(x_1, x_2) ] ]  ]
-\cdot
-[\sum_{x_{n+1}}^{} \phi_{n, n+1}(x_n, x_{n+1}) \dots [\sum_{x_N}^{} \phi_{N-1, N}(x_{N-1}, x_N)] ]\dots] ] ]
+\begin{split}
+p(x_n) &= \frac{1}{Z} [\sum_{x_{n-1}}^{} \phi_{n-1, n} (x_{n-1}, x_n) \dots [ \sum_{x_2}^{} \phi_{2,3}(x_2, x_3) [\sum_{x_1}^{} \phi_{1,2}(x_1, x_2) ] ]  ] \\
+& \cdot [\sum_{x_{n+1}}^{} \phi_{n, n+1}(x_n, x_{n+1}) \dots [\sum_{x_N}^{} \phi_{N-1, N}(x_{N-1}, x_N)] ]\dots] ] ]
+\end{split}
 \end{equation}
 
 \begin{equation}
@@ -1190,7 +1187,7 @@ A hidden Markov model is a Markov process with indirect observation of the state
 \begin{itemize}
 \item Hidden states are represented as $z_n$ for $n\in [N]$. The full sequence is denoted $\pmb z$.
 \item Observations or ``emissions'' are denoted $x_n$ for $n\in [N]$. The full sequence is denoted $\pmb x$.
-\item We are generally given $P(x | z)$, $P(z_{n+1} | z_n)$ distributions.
+\item We are generally given emission distribution $P(x | z)$ and transition probabilities $P(z_{n+1} | z_n)$.
 \end{itemize}
 
 Our goal is usually about inferring hidden state from observations. The two sub-problems are (1) estimating a specific hidden state $p(z_n)$ and (2) finding the most likely sequence of states.
@@ -1216,7 +1213,7 @@ Let us convert the directed Markov chain to $h - z_1 - f_2 - f_3 - \dots - f_{n-
 h(z_1) = P(z_1)P(x_1 | z_1)
 \end{equation}
 
-and each $z_i$ representing a hidden node and each $f_i$ representing a factor node. Forward messages are represented as $\alpha_n$ for $n\in [N]$ and backward messages are $\beta_n$.
+and each $z_i$ represents a hidden node and each $f_i$ represents a factor node. Forward messages are represented as $\alpha_n$ for $n\in [N]$ and backward messages are $\beta_n$.
 
 \begin{equation}
 \begin{split}
@@ -1278,7 +1275,7 @@ Importantly, this corresponds to $\alpha(z_n), \beta(z_n)$ being normalized!
 
 \section{Viterbi Algorithm}
 
-This algorithm efficiently computes the most likely sequence that resulted in the observations at play. 
+This algorithm efficiently computes the most likely sequence that resulted in the observations. 
 
 \begin{equation}
 \max_{\pmb x} P(\pmb x) = \frac{1}{Z} \max_{x_1}\dots\max_{x_N} \phi_{1,2}(x_1,x_2) \phi_{2,3}(x_2, x_3) \dots \phi_{N-1,N}(x_{N-1}, x_N)
