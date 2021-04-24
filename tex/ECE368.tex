@@ -1323,6 +1323,42 @@ We run this recursively starting at factor node $h$. This is our ``forward pass'
 
 
 
+\section{Expectation Maximization for HMM}
+
+\paragraph{Goal: } Derive the HMM's parameters $P(z_n | z_{n-1})$, $P(x_n | z_n)$ given $\pmb x$ and either $z_n$ or $\pmb z$.
+
+
+The big challenge here is the presence of latent variables. We can't just directly use ML/MLE/MMSE parameter estimation -- we have to use a more complicated algorithm (hence EM).
+
+
+The general procedure will be to estimate $z_n$ and update our transition matrix $A$, prior $\pi= p(z_1)$, and emission $\phi_k = P(x | z)$.
+
+\paragraph{The Algorithm: } 
+
+\begin{enumerate}
+\item \textbf{Expectation step:} We start with $\theta^{old} = \{\pi_k, A, \phi_k\}$. 
+\begin{itemize}
+\item Try to enfer $\pmb z$ given $\pmb x$ using the \textbf{forward backward} algorithm.
+\item Let $p(\pmb z | \pmb x, \theta^{old}) = \gamma(z_n)$. 
+\item Use ML/MLE to estimate $P(z_{n-1}, z_n | \pmb x, \theta^{old}) = \xi(z_{n-1}, z_n)$.
+\end{itemize}
+
+\item \textbf{Maximization Step:} Use $\gamma, \xi$ to update $\theta^{old}\to \theta^{new}$.
+\begin{equation}
+\begin{split}
+\pi_k^{(new)} &= \frac{\gamma(z_1 = k)}{\sum_{j=1}^{k} \gamma(z_1 = k)} \\
+A_{i,j}^{(new)} &= \frac{\xi(z_{n-1,j}, z_{n,k})}{\sum_{\ell=1}^{K} \sum_{n=2}^{N} \xi(z_{n-1,j}, z_{n,\ell})} \\
+\phi_k^{(new)} &= P^{(NEW)} (x_n, z_n)
+\end{split}
+\end{equation}
+
+Note that the $\phi_k^{(new)}$ depends on the emission model. See Gaussian mixture model for one method of doing this.
+
+
+\end{enumerate}
+
+
+
 
 
 
