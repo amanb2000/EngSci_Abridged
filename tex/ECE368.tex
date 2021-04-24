@@ -1059,13 +1059,286 @@ These nested sums make for pretty terrible run time ($O(N^k)$ where each $x_i$ h
 
 In other words, if factorized elements are not a function of the summation variable, they can be factored out to the left of the corresponding summation operator. Since graphical models have a strong ability to factorize probability distributions nicely, we can leverage this for faster inference algorithms.
 
-\section{First Order Markov Chain}
+\section{Message Passing for First Order Markov Chain}
 
 For a first order Markov chain $x_1 \to x_2 \to \dots \to x_N$, we can convert to an undirected model and find the following joint PDF on all nodes:
 
 \begin{equation}
 P(\pmb x) = \frac{1}{Z} \phi_{1,2}(x_1, x_2) \cdot \phi_{2,3}(x_2, x_3) \cdot \dots \cdot \phi_{N-1,N}(x_{N-1}, x_N)
 \end{equation}
+
+The ``message passing'' algorithm will take advantage of this ``pushing in'' strategy to arrive at the following:
+
+\begin{equation}
+p(x_n) = \frac{1}{Z} [\sum_{x_{n-1}}^{} \phi_{n-1, n} (x_{n-1}, x_n) \dots [ \sum_{x_2}^{} \phi_{2,3}(x_2, x_3) [\sum_{x_1}^{} \phi_{1,2}(x_1, x_2) ] ]  ]
+\cdot
+[\sum_{x_{n+1}}^{} \phi_{n, n+1}(x_n, x_{n+1}) \dots [\sum_{x_N}^{} \phi_{N-1, N}(x_{N-1}, x_N)] ]\dots] ] ]
+\end{equation}
+
+\begin{equation}
+p(x_n) = \frac{1}{Z } \mu_\alpha(x_n) \mu_\beta(x_n)
+\end{equation}
+
+Note the recursive structure of $\mu_\alpha,\mu_\beta$.
+\begin{equation}
+\begin{split}
+\mu_{\alpha}(x_n) &= \sum_{x_{n-1}}^{} \phi_{n-1, n}(x_{n-1}, x_n) \cdot \mu_\alpha(x_{n-1}) \\
+\mu_{\beta}(x_n) &= \sum_{x_{n+1}}^{} \phi_{n+1, n} (x_{n+1}, x_n) \cdot \mu_{\beta}(x_{n+1}) \\
+\end{split}
+\end{equation}
+
+With base cases
+\begin{equation}
+\begin{split}
+\mu_{\alpha}(x_2) &= \sum_{x_1}^{} \phi_{1,2}(x_1, x_2) \\
+\mu_\beta(x_{N-1}) &= \sum_{x_N}^{} \phi_{N-1, N}(x_{N-1}, x_N)
+\end{split}
+\end{equation}
+
+
+The time complexity is now only $O(NK^2)$. This is a very efficient method, in part because dynamic programming can also be used to calculate $\mu_\alpha, \mu_\beta$. These $\mu$ values correspond to ``forward'' message and ``backward'' messages respectively in the chain.
+
+
+\section{Message Passing for Inference on Trees}
+
+A similar scheme to above can be employed for fast inference on tree graphical models. 
+
+\paragraph{Polytree: } If the tree structure has nodes with more than 1 parent. However, there must be only one path between each pair of nodes (disregarding edge direction). 
+
+\subsection{Factor Graphs}
+
+A factor graph is another method for visualizing graphical models that we will make use of for the message passing algorithm on trees. 
+\begin{itemize} 
+\item Two node types: Circles for random variable nodes, squares for \textbf{factor functions}.
+\item \textbf{Factor functions} represent elements of the factorization for the joint probability function. They connect to each random variable node that is an argument for the particular factor function.
+\item Note that an undirected graph can be easily converted by introducing one \textbf{factor node} per max clique $c$. 
+\item To convert directed graphs into factor graphs, we first convert to undirected graphs. 
+\end{itemize}
+
+Factor graphs are \textbf{bipartite} because members of the \textit{factor function} node class only connect with members of the \textit{random variable} node class.
+
+\subsection{Generalized Message Passing Algorithm}
+
+\paragraph{Input: } Any undirected tree, directed tree, polytree.
+
+\paragraph{Output: } A marginalized joint PDF $P(x_n)$
+
+\begin{equation}
+\begin{split}
+p(x_n) &= \sum_{\forall x\in \pmb x | x\neq x_n}^{} p(\pmb x) \\
+&= \prod_{s\in ne(x)} [\sum_{X_s}^{} F_s(x, X_s)] \\
+&= \prod_{s\in ne(x)} [\sum_{X_s} \mu_{f_s\to x}]
+\end{split}
+\end{equation}
+
+Where $ne(x)$ is the set of factor nodes neighbouring $x$, $X_s$ is the set of variables in subtree at factor node $f_s$. $F_s(x, X_s)$ is the product of all the factor nodes in the subtree rooted at $f_s$ (i.e., the probability factor corresponding to the entire subtree at $f_s$). 
+
+
+\begin{enumerate}
+\item Convert to factor graph.
+\item Initialize each $\mu_{x\to f} = 1$ where $x\in \pmb x$ and $f$ is a factor node connected to $x$.
+\item Initialize each $\mu_{f\to x} = f(x)$ where $f(x)$ is the factor function.
+
+\item Begin by computing variable $\to$ factor node messages:
+\begin{equation}
+\mu_{x\to f}(x) = \prod_{\ell \in Ne(x) | \ell \neq f} \mu_{f_l \to x}(x)
+\end{equation}
+
+\item Next, calculate factor $\to$ variable node messages:
+\begin{equation}
+\mu_{f_s\to x_i}(x_i) = \sum_{\pmb x_s | \neq x_i}^{} \phi_{f_s}(\pmb x) \cdot \mu_{x_1 \to f_s} \cdot \mu_{x_2 \to f_s} \cdot \dots \cdot \mu_{x_N \to f_s}
+\end{equation}
+Where $x_{1:N}$ are the children of factor node $f_s$.
+
+\item Return \begin{equation}
+f(x_n) = \frac{1}{Z} \prod_{s\in ne(x)} \mu_{f_s t\ x}(x)
+\end{equation}
+\end{enumerate}
+
+This algorithm gives an exact solution for inference and can approximate solutions for graphs with cycles. The max-product algorithm uses similar techniques to solve for $\pmb x^* = \arg\max P(\pmb x)$.
+
+\subsection{Max Sum Algorithm Sketch}
+
+\begin{enumerate}
+\item Initialize 
+\begin{equation}
+\begin{split}
+\mu_{x\to f}(x) &= 0 \\
+\mu_{f\to x}(x) &= \ln f(x)
+\end{split}
+\end{equation}
+
+\item Recursion: 
+\begin{equation}
+\begin{split}
+\mu_{f\to x}(x) &= \max_{\pmb x = ne(f)}[\ln(f(\pmb x)) + \sum_{m\in ne(f) | m \neq x}^{} \mu_{x\to f} (x) ] \\
+\mu_{x\to f}(x) &= \sum_{\ell \in ne(x) | \ell \neq f}^{} \mu_{f_\ell \to x}(x)
+\end{split}
+\end{equation}
+\end{enumerate}
+
+
+
+
+\chapter{Hidden Markov Models}
+
+\section{Introduction}
+
+A hidden Markov model is a Markov process with indirect observation of the state. Standard Markovian assumptions still hold, namely that the future depends only on the present state.
+
+\paragraph{Notation: } 
+\begin{itemize}
+\item Hidden states are represented as $z_n$ for $n\in [N]$. The full sequence is denoted $\pmb z$.
+\item Observations or ``emissions'' are denoted $x_n$ for $n\in [N]$. The full sequence is denoted $\pmb x$.
+\item We are generally given $P(x | z)$, $P(z_{n+1} | z_n)$ distributions.
+\end{itemize}
+
+Our goal is usually about inferring hidden state from observations. The two sub-problems are (1) estimating a specific hidden state $p(z_n)$ and (2) finding the most likely sequence of states.
+
+\begin{equation}
+P(\pmb x | \pmb z) = \prod_{i = 1}^N P(x_i | z_i)
+\end{equation}
+\begin{equation}
+P(\pmb x, \pmb z) = p(z_1) (\prod_{i = 2}^N P(z_n | z_{n-1})) (\prod_{n=1}^N P(x_n | z_n))
+\end{equation}
+
+
+\paragraph{General Procedures for Estimating $\hat z_n$: } Given $\pmb x$, we can use MLE
+\begin{equation}
+\hat z_n = \arg\max_{z_n} P(z_n)
+\end{equation}
+Where $P(\pmb z, \pmb x)$ is given as above. We simply must marginalize \textbf{efficiently} using the message passing algorithm. When used with HMM's, this is known as the \textbf{forward backward algorithm}.
+
+\section{Forward-Backward Algorithm}
+
+Let us convert the directed Markov chain to $h - z_1 - f_2 - f_3 - \dots - f_{n-1} - z_{n-1} - f_n - z_n - \dots - z_n$ where 
+\begin{equation}
+h(z_1) = P(z_1)P(x_1 | z_1)
+\end{equation}
+
+and each $z_i$ representing a hidden node and each $f_i$ representing a factor node. Forward messages are represented as $\alpha_n$ for $n\in [N]$ and backward messages are $\beta_n$.
+
+\begin{equation}
+\begin{split}
+\alpha(z_{n-1}) &= \mu_{z_{n-1}\to f_n}(z_{n-1}) = \mu_{f_{n-1} \to z_{n-1}}(z_{n-1}) \\
+&= P(x_n | z_n) \sum_{z_{n-1}}^{} P(z_n | z_{n-1}) \alpha(z_{n-1})
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\beta(z_n) &= \mu_{f_{n+1}\to z_{n}}(z_n) \\
+&= \sum_{z_{n+1}}^{} \beta(z_{n+1})P(x_{n+1} | z_{n+1}) P(z_{n+1} | z_n)
+\end{split}
+\end{equation}
+
+
+These are pretty much the same as our $\mu_{\alpha,\beta}$ values from the message passing before.
+
+\begin{equation}
+\begin{split}
+P(z_n, \pmb x) &= \alpha(z_n) \beta(z_n) \\
+P(z_n | \pmb x) &= \frac{\alpha(z_n)\beta(z_n)}{P(\pmb x)} \\
+&= \gamma(z_n)
+\end{split}
+\end{equation}
+
+\textbf{Intuition for $\alpha, \beta, \gamma$:} Bases can be inferred from these as well.
+\begin{itemize}
+\item $\alpha(z_n) = P(z_n, x_{1:n})$
+\item $\beta(z_n) = P( x_{(n+1):(N)} | z_n)$
+\item $\gamma (z_n) = P(z_n | x_{1:N})$
+\end{itemize}
+
+
+\subsection{Implementing Forward-Backward Algorithm}
+
+$\alpha, \beta$ can become very small since they are conditioned on $x_{1:n}, x_{n+1:N}$ respectively. Therefore, we introduce the following:
+
+\begin{equation}
+\begin{split}
+\hat \alpha(z_n) &= \frac{\alpha(z_n)}{P(x_{1:n})} = P(z_n | x_{1:n}) \\
+\hat beta &= \frac{\beta(z_n)}{P(x_{n+1:N})} \\
+\end{split}
+\end{equation}
+
+Importantly, this corresponds to $\alpha(z_n), \beta(z_n)$ being normalized!
+
+\paragraph{Recursion Formulae: } To convert from $\alpha, \beta \to \hat\alpha, \hat\beta$, just normalize them w.r.t. possible states for $z_n$!
+\begin{equation}
+\begin{split}
+\alpha(z_n) &= P(x_n | z_n) \sum_{z_{n-1}}^{} \hat\alpha(z_{n-1}) P(z_n | z_{n-1}) \\
+\beta(z_n) &= \sum_{z_{n+1}}^{} \hat\beta(z_{n+1}) P(x_{n+1} | z_{n+1}) P(z_{n-1} | z_n) \\
+\end{split}
+\end{equation}
+
+\paragraph{Missing observations: } Simply marginalize over all possible observations. This corresponds to setting terms $P(x_i | z_i) = 1$.
+
+
+
+\section{Viterbi Algorithm}
+
+This algorithm efficiently computes the most likely sequence that resulted in the observations at play. 
+
+\begin{equation}
+\max_{\pmb x} P(\pmb x) = \frac{1}{Z} \max_{x_1}\dots\max_{x_N} \phi_{1,2}(x_1,x_2) \phi_{2,3}(x_2, x_3) \dots \phi_{N-1,N}(x_{N-1}, x_N)
+\end{equation}
+
+We really just want to apply the ``pushing in'' principal to the $\max$ operators. We can also incorporate the same message passing scheme to further improve speed. 
+
+\paragraph{Key Formulae: } 
+\begin{equation}
+\begin{split}
+\mu_{x\to f}(x) &= \sum_{\ell \in ne(x)}^{} \mu_{f_\ell \to x}(x) \\
+\mu_{f_\ell \to x} &= \max_{x_1, \dots, x_m} [\log(\phi_\ell(x_1, \dots, x_m)) + \sum_{m\in ne(f)}^{} \mu_{x_m \to f}(x_m) ]
+\end{split}
+\end{equation}
+
+
+It's also generally a good idea to run this algorithm in the log domain (hence the $\log$s above).
+
+\paragraph{Initialization} 
+
+We initialize the Viterbi algorithm from the leaves of the tree. 
+\begin{enumerate}
+\item If the leaf is a \textbf{factor node}: $\mu_{f\to x}(x) = \log f(x)$.
+\item If the leaf is a \textbf{varaible node}: $\mu_{x\to f}(x) = \log(1) = 0$
+\end{enumerate}
+
+The ``upward'' messages to the root node are the easiest. The backward messages are more difficult.
+
+\paragraph{The Algorithm} 
+
+We let $w_{n+1}(z_{n+1}) = \mu_{f_{n+1} \to z_{n+1}}(z_n)$
+
+\begin{equation}
+w_{n+1}(z_{n+1}) = \max_{z_n} [\ln( P(z_{n+1} | z_n)) + w_n(z_n) ] + \ln(P(x_{n+1} | z_{n+1}))
+\end{equation}
+
+We run this recursively starting at factor node $h$. This is our ``forward pass''. For each node we traverse, we store a ``dictionary'' relating each $z_{n+1}\to \arg \max_{z_n} \ln(P(z_{n+1}) | z_n) + w_n(z_n)$. Then, we trace back starting at $z_N$ using these dictionaries.
+
+\paragraph{Interpretation: } $w_n(z_n)= \max_{z_{1:n-1}} \ln(P(x_{1:n}, z_{1:n}))$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
