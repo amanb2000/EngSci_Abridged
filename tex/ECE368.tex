@@ -425,7 +425,7 @@ We assume a \textbf{conjugate prior} distribution for $\theta \sim \mathcal N(x_
 
 \textbf{Note that the sums now start at zero to incorporate the prior distribution's information!} 
 
-% TODO: First part of March 1 content.
+% TODO: First part of March 1 content (match filtering!).
 
 
 \chapter{Statistical Machine Learning}
@@ -605,6 +605,473 @@ Where
 \begin{equation}
 \Sigma_{x|y} = (\Sigma_x^{-1} + A^T\Sigma_z^{-1}A)^{-1}
 \end{equation}
+
+
+
+\chapter{Linear Regression}
+
+\paragraph{Linear Regression Model: } Our aim is to predict $y$ as a linear combination of indices of vector $\vec x$. A key difference now is that we are looking at \textbf{probabilistic} least squares, so we want a measure of certainty about our predictions. This is why we introduce a $\sigma^2$ term:
+\begin{equation}
+p(y, \vec x, \theta) = \mathcal N(y | \vec w^T\vec x, \sigma^2)
+\end{equation}
+And of course $\mathcal E[y|\vec x] = \vec w^T \vec x$. You can also apply polynomial, gaussian, and sigmoid basis functions to transform $\vec x$ to get a more complex decision boundary.
+
+\paragraph{Some Notation: } 
+\begin{itemize}
+\item $\mathcal D = (\vec y, X)$.
+\item $\theta = (\vec w, \sigma^2)$
+\end{itemize}
+Note that from here on out, we use \textbf{augmented vectors} in $X$. That is, we have a $1$ at the 1st index of each $X$ to account for the affine offset for each. This way, we don't need to include messy ``bias'' terms.
+
+$$\vec x_{augmented} = \begin{bmatrix} 1\\\vec x \end{bmatrix}$$
+
+
+
+
+\section{Ordinary Least Sqauares (MLE) Linear Regression}
+
+Generic linear regression (no regularization, no prior) tries to find $\hat \theta_{MLE}$ as follows: 
+
+\begin{equation}
+\begin{split}
+\hat \theta_{MLE} &= \arg\max_{\theta} \log[p(\mathcal D | \theta)] \\
+&= \arg\max_{\theta} \frac{-1}{2\sigma^2} \sum_{i=1}^{N} (y_i - \vec w^T \vec x_i)^2 - \frac{N}{2} \log(2\pi\sigma^2)
+\end{split}
+\end{equation}
+
+\paragraph{Solutions for Ordinary Least Squares} 
+
+\begin{equation}
+\vec w_{OLS} = (X^T X)^{-1} X^T y
+\end{equation}
+\begin{equation}
+\sigma^2_{ML} = \frac{1}{N} \sum_{n=1}^{N} [y_n - \vec w^T \vec x_n]^2
+\end{equation}
+
+Interestingly, least squares is identical to projecting $\vec y$ onto the columns of dataset $X$. $\vec w$ holds the projection coefficients for this. 
+
+
+\section{Regularized Least Squares}
+
+\paragraph{Key idea: } We introduce a penalization term in our error related to parameter $\vec w$. $\text{Error} = E_{\mathcal D}(\vec w) + \lambda E_{\vec w}(\vec w)$. Known as ``weight decay'', ``parameter shrinkage''. 
+
+\paragraph{Ridge Regression: } Literally just $\ell_2$ regularized least squares. 
+
+\begin{equation}
+\begin{split}
+\vec w_{ridge} &= (X^TX + \lambda I )^{-1} X^T y \\
+&= (\tilde X^T\tilde X)^{-1} \tilde X^T \tilde y
+\end{split}
+\end{equation}
+Where $$\tilde X = \begin{bmatrix} X\\-I\lambda \end{bmatrix}$$ $$\tilde y = \begin{bmatrix} y\\0\\\dots\\0 \end{bmatrix}$$
+
+
+
+Interestingly, this is identical to the MAP estimate of $\vec w$ with prior distribution $p(\vec w) = \prod_{j=1}^d \mathcal N(w_j | 0, \tau^2)$ where $\lambda^2 = \sigma^2/\tau^2$:
+
+\begin{equation}
+\begin{split}
+\hat w_{MAP} &= \arg\max_{\vec w} \log P(\mathcal D | \vec w, \sigma)P(\vec w) \\
+&= \arg\min_{\vec w} \sum_{i=1}^{n} (y_i - \vec w^T \vec x_i)^2 + \lambda^2 ||\vec w||_2^2
+\end{split}
+\end{equation}
+
+
+You can also apply previously discussed linear Gaussian vector formulations by introducing noise variable $\vec z \sim \mathcal N(\vec 0, \sigma^2 I)$ and using $\vec w$ as the variable we are trying to estimate with prior $\vec w \sim \mathcal N (\vec 0, \tau^2 I)$. 
+
+\section{Logistic Regression}
+
+Here we apply a sigmoid function to the $\vec w^T \vec x$ value and use the resulting value as the probability of ``positive'' $y$ via a bernoulli distribution:
+
+\begin{equation}
+P(y | \vec w, \vec x) = \text{Bernoulli}(\sigma(\vec w^T \vec x))
+\end{equation}
+
+\begin{equation}
+\hat w_{ML} = \max_{\vec w}[-\sum_{i=1}^{n} y_i\log(\sigma(\vec w^T\vec x)) + (1-y_i) \log(1-\sigma(\vec w^T \vec x))  ]
+\end{equation}
+
+Interestingly this is pretty much just cross entropy loss. There's no analytical solution, so we need to use numerical techniques. It's also pretty easy to add regularization to this ``loss'' function.
+
+\section{Bayesian Linear Regression}
+
+In case you wanted to be really extra and compute the full probability distributions of $\vec w$, $\sigma^2$ for a linear regression model, you can use Bayesian linear regression.
+
+\paragraph{Goal: } We wish to compute \textbf{full posteriors} for $\vec w, \sigma^2$ given the dataset $\mathcal D$. We assume a Gaussian prior on $\vec w$ so that the end distribution is also nice and Gaussian:
+
+\paragraph{Tools to Get There: } I won't build the full proof, but here are the building blocks:
+\begin{equation}
+p(\vec w) = \mathcal N(\vec w | \vec w_0, \Sigma_0)
+\end{equation}
+
+\begin{equation}
+p(\vec y | X, \vec w, \sigma^2) = \mathcal N(\vec y | X\vec w, \sigma^2I_{N\times N})
+\end{equation}
+
+\paragraph{Solution for Known $\sigma$: } Using ``Bayes theorem for Gaussians'',
+\begin{equation}
+\begin{split}
+p(\vec w | X, \vec y, \sigma^2) &\propto \mathcal N(\vec w | \vec w_0, \Sigma_0)\mathcal N(\vec y | X\vec w, \sigma^2 I_{N\times N}) \\
+&= \mathcal N(\vec w | \vec w_N, \Sigma_N)
+\end{split}
+\end{equation}
+Where 
+\begin{equation}
+\begin{split}
+\vec w_N &= \Sigma_N\Sigma_0^{-1}\vec w_0 + \frac{1}{\sigma^2} \Sigma_N X^T\vec y \\
+\Sigma_N^{-1} &= \Sigma_0^{-1} + \frac{1}{\sigma^2} X^T X
+\end{split}
+\end{equation}
+
+
+
+\paragraph{Some notes on intuition: } 
+\begin{itemize}
+\item Since $\Sigma_N^{-1}$ scales with $X^T X$, it will grow very large as the number of data points increases. This means that $\Sigma_N$ will be pretty small with many samples, which intuiviely makes sense because additional data (should) result in more ``certainty''.
+\item 
+\end{itemize}
+
+\paragraph{Posterior Distribution of $y$: } Let's say we are given some dataset $\mathcal D$ to train on. Now we want to perform ``inference'' on some new data point $\vec x$ to get a distribution on the corresponding value of $y$: 
+\begin{equation}
+p(y | \vec x, \mathcal D, \sigma^2) = \mathcal N(y | \vec w_N^T \vec x, \sigma^2_N(x))
+\end{equation}
+Where $\sigma_N^2(x) = \sigma^2 + \vec x^T\Sigma_N\vec x$.
+
+
+\paragraph{Bayesian Regression with Unknown $\sigma^2$: } Generally, we are not going to know what $\sigma^2$ is in advance for $y$. See Murphy p. 234 for how to do this (this topic was not covered in this course).
+
+
+
+
+
+
+\chapter{Markov Chains}
+
+Often we are interested in understanding the evolution of some random variable over time (e.g., a robot's position). Here, we examing \textbf{Markov decision processes}, a framework for understanding the evolution of some random variable over discrete time steps and discrete states. \textbf{Markov chains} are of particular interest.
+
+\section{Preliminary Definitions}
+
+\paragraph{Markov Chain: } Consists of 
+\begin{enumerate}
+\item A finite set of discrete \textbf{states} $S = \{1, \dots, m\}$.
+\begin{itemize}
+\item At each time step $n$, our random variable is in one of those state $X_n = s_i \in S$.
+\end{itemize}
+\item \textbf{Transition probabilities:} $\Pr(i\to j) \forall i,j\in S$. Matrix $A\in \mathbb R^{m\times m}$ as 
+\begin{equation}
+A_{i,j} = \Pr(X_{n+1} = j | X_n = i)
+\end{equation}
+
+\item \textbf{Memoryless assumption:} The probability distribution of the next state depends \textit{only} on the current state. Also known as the ``Markov property''.
+\item There can be no other states than those in $S$, so $\sum_{j=1}^{m} A_{i,j} = 1$ (rows of $P$ sum to 1).
+\end{enumerate}
+
+\paragraph{Transition probability matrix: } Matrix $A$ from above always has an eigen value of $1$, and the rows all sum to $1$. It's called a \textit{stochastic matrix}, and we learned about these in ECE367! It can also be represented as a transition probability graph with edge weights representing the probability of traversal.
+
+\paragraph{Path probability: } $P(<X_0 \to X_1 \to \dots \to X_n>) = \prod_{i=1}^{n-1} A_{X_i \to X_{i+1}}$.
+
+\paragraph{Initial conditions: } We can have a \textit{probabilistic initial condition} with vector $\vec \pi^0$:
+\begin{equation}
+\Pr(X_0 = j) = \vec \pi_j^(0)
+\end{equation}
+We can find the probability vector for the next time step as:
+\begin{equation}
+\vec \pi^{(i+1)} = \vec\pi^{(i)T}A
+\end{equation}
+
+
+\section{Markov Chain Steady State}
+
+\paragraph{Definition: } If $\lim_{n\to \infty} \vec \pi^{(n)} = \tilde \pi$ regardless of the starting state $\vec \pi_j^{(0)}$, then $\tilde \pi$ is the \textbf{steady state distribution} satisfying
+\begin{equation}
+\tilde \pi = \tilde \pi^T A
+\end{equation}
+
+This has deep connections to flow optimization (ECE358: Algorithms and Datastructure). When viewed on the graphical model of the chain, the steady state distribution corresponds to the ``flow'' into each node being equivalent to the ``flow'' out of each node. 
+
+\paragraph{Conditions for Steady State: } 
+\begin{enumerate}
+\item A \textbf{periodic} Markov chain has no steady state. The steady state behaviour of these chains oscillate between two or more nodes with $\Pr = 1$ (think of a 2-node cycle with transition probabilities of $1$).
+\item \textbf{Multiple recurrent graph} Markov chains have no steady state. This occurs when some node has an edge configuration such that, after traversing the node, part of the graph can never be reached. An example of this is if the starting node has ONLY two outgoing nodes leading to disconnected sub-graphs. 
+\item \textbf{Absorbing states} yield Markov chains with no steady state. If a state has transition probability $1$ for returning to itself, then it ``absorbs'' all paths into itself forever. 
+\item \textbf{Singly connected/``Recurrent States''} are a REQUIREMENT for a steady state to exist. There must exist a path from $i\to j$ and $j\to i$ for all $i,j\in S$.
+\end{enumerate}
+
+\begin{theorem}{Steady State Convergence Theorem: }
+For all Markov chains with 
+\begin{enumerate}
+\item Finite states
+\item Single recurrent classes
+\item Aperiodicity
+\end{enumerate}
+
+There exists a \textbf{steady state distribution} $\tilde \pi$ such that:
+\begin{enumerate}
+\item $\lim_{n\to \infty} \pi_j^{(n)} = \tilde \pi_j$ for all initial states.
+
+\item $\tilde \pi$ is a unique solution to
+\begin{equation}
+\begin{split}
+\tilde\pi &= \tilde\pi^T P \\
+\sum_{j=1}^{m} \tilde\pi_j &= 1
+\end{split}
+\end{equation}
+
+\item For all ``transition states'' $j$, $\tilde\pi_j = 0$.
+\item For all ``recurrent states'' $i$, $\tilde\pi_i > 0$.
+\end{enumerate}
+\end{theorem}
+
+
+\subsection{Eigen Analysis of Steady State}
+
+Recall the steady state equation: 
+\begin{equation}
+\tilde \pi^T A = \tilde\pi
+\end{equation}
+
+Let $M = A^T$ and $\vec x = \tilde\pi^T$. We can frame this as an eigen value problem as follows with $\lambda = 1$:
+
+\begin{equation}
+M\vec x = \lambda \vec x
+\end{equation}
+
+\begin{theorem}{}
+For stochastic matrix $M$, there exists eigen value $\lambda = 1$, and the rest of the eigen values satisfy $|\lambda| < 1$.
+
+
+Since $\det(A) = \det(A^T)$, $M$ and $A$ have the same eigen values. We can also show that iterated multiplications by $A$ result in all eigenvectors except the one corresponding to $\lambda = 1$ go to zero. Therefore, the steady state value will be the eigenvector associated with $\lambda =1$.
+\end{theorem}
+
+\paragraph{Power iteration algorithm: } To find steady state (i.e., $\vec v^{(1)}$): 
+
+\begin{enumerate}
+\item Initialize $v^{(0)}$.
+\item For $\ell = 1, \dots$:
+\begin{equation}
+v^{(\ell)} = \frac{Mv^{(\ell-1)}}{||Av^{(\ell-1)}||} 
+\end{equation}
+\item End.
+\end{enumerate}
+
+Applications include Pagerank (see ECE367.pdf).
+
+
+
+
+\chapter{Directed Graphical Models}
+
+Diagramatic representations of joint and conditional probability distributions can be very helpful for representing and understanding the relationships between random variables. For graphical models, we have:
+\begin{itemize}
+\item \textbf{Nodes:} Random variables.
+\item \textbf{Edges:} Joint/conditional distribution connections.
+\end{itemize}
+
+Directed and undirected graphs are the main classes for graphical models. Directed graphical models are known as ``Bayes nets'', ``causal networks'', or ``belief networks''. Undirected models are known as ``random Markov fields''.
+
+
+\section{Defining Graphical Models}
+
+\paragraph{Hierarchy: } If there exists an edge connecting node $a\to b$, then $a$ is a parent of $b$ and $b$ is a child of $a$. This also means that there exists some term in the joint probability distribution of all the nodes $p(b|a)$. That is, the value of $a$ informs the value of $b$.
+
+\paragraph{Graphical Model $\to$ Joint Probability Distribution: } For a graph compoased of nodes $x_{1:N}$, the joint probability distribution is:
+\begin{equation}
+P(x_{1:N}) = \prod_{i=1}^N P(x_i | pa_i)
+\end{equation}
+Where $pa_i$ is the set of \textbf{parents} of node $x_i$.
+
+
+\paragraph{Independence: } Recall that independence occurs when knowing the value of $B$ variable does not inform the probability distribution of $A$ (and vice versa):
+\begin{equation}
+P(A|B) = P(A); \,\,\, P(B|A) = P(B)
+\end{equation}
+\begin{equation}
+P(A,B)= P(A)P(B)
+\end{equation}
+\paragraph{Conditional Independence: } Independence when the two variables are conditioned on some tertiary variable $C$. Surprisingly, conditional independence generally does not imply regular independence.
+\begin{equation}
+P(A,B|C) = P(A|C)P(B|C)
+\end{equation}
+
+Which is equivalent to 
+
+\newcommand\ci{\perp\!\!\!\perp}
+
+\begin{equation}
+A \ci B \perp C
+\end{equation}
+
+Generally, we arrive at conditional independence by comparing the values of $P(A|C)P(B|C)$ with $P(A,B|C) = P(A,B,C)/P(C)$.
+
+
+\section{Conditional Independence for Connection Types}
+
+\paragraph{Head to Head Connections: } A head to head connection is when the ``arrow heads'' of our graphical model meet at the same node. For a graphical model of $a,b,c$, we would have edges $a\to c$ and $b\to c$ forming a \textit{head to head} connection at $c$.
+
+
+\paragraph{Head to Tail Connection: } $c$ has a head-to-tail connection if we have $a\to c$ and $c\to b$. 
+
+\paragraph{Tail to Tail Connections: } $c$ has a tail-to-tail connection if we have $c\to a$ and $c \to b$.
+
+\paragraph{Result: } \begin{theorem}{Connection Types and their Conditional Independences: }
+\begin{itemize}
+\item \textbf{Head-to-Head:} $a$ is independent of $b$. They are NOT conditionally independent given $c$, though!
+\begin{equation}
+a \ci b \text{ BUT } a \not\ci b \perp c
+\end{equation}
+
+\item \textbf{Head-to-Tail:} $a$ is independent of $b$ given $c$. This corresponds to a Markov chain's next state depending only on the present state. 
+\begin{equation}
+a \ci b \perp c
+\end{equation}
+
+\item \textbf{Tail-to-Tail:} $a$ and $b$ are generally dependent on eachother. However, once you know the shared parent, they become \textit{independent}.
+\begin{equation}
+a \not \ci b \text{ BUT } a \ci b \perp c
+\end{equation}
+\end{itemize}
+\end{theorem}
+
+
+
+\section{Direct Separation (D-Sep)}
+
+D-separation property for directed graphs tells us if we have conditional independence for subsets of a graph.
+
+\begin{theorem}{D-separation theorem: }
+Let $A,B,C$ be disjoint subsets of the nodes in a directed, acyclic graphical model.  To ascertain whether $A \ci B \perp C$, we do the following:
+\begin{enumerate}
+\item Consider all paths $p$ from all nodes in $A$ to all nodes in $B$ (note that this path can traverse any edge regardless of the direction of the edge).
+\item A path is \textbf{blocked} if it includes a node $c$ where either
+\begin{enumerate}
+\item There is a \textbf{head-to-tail} or \textbf{tail-to-tail} meeting some node $c\in C$.
+\item There is a \textbf{head-to-head} meeting at node $c\notin C$ AND none of the \textbf{descendants} of $c$ are in $C$.
+\end{enumerate}
+
+If all paths $p$ are blocked, then $A$ is d-separated from $B$ by $C$. All joint distributions over all variables satisfy $A \ci B \perp C$.
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Utility of D-separation: } We can determine how/if variables in a model are conditionally independent.
+
+
+\section{Markov Blanket/Boundary}
+
+\paragraph{Definition: } A markov blanket for a given node $x_i$ consists of the 
+\begin{itemize}
+\item Parents
+\item Children
+\item Co-parents
+\end{itemize}
+of the node. The meaning is that $P(x_i|x_{\{j\neq i\}} = f(\text{Markov blanket nodes})$. That is, you only really ``need'' the nodes in the Markov blanket to maximally ``inform'' the distribution of variable $x_i$.
+
+
+This can be shown by analysis of $p(x_i|x_{i\neq j})$:
+
+\begin{equation}
+\begin{split}
+p(x_i | x_{j\neq i}) &= \frac{p(x_{1:N})}{\int p(x_{1:N}) dx_i} \\
+&= \frac{\prod_k p(x_k | \text{pa}_k)}{\int \prod_k p(x_k | \text{pa}_k) dx_i}
+\end{split}
+\end{equation}
+
+and factoring out terms in the integral in the denominator that are not functions of $x_i$ (i.e., those not members of the Markov blanket). As one might expect, the node $x_i$ is independent from the rest of the graph given the Markov blanket node values.
+
+
+
+
+\chapter{Markov Random Fields (Undirected Graphical Models)}
+
+\section{Conditional Independence Properties}
+
+The analogy for D-separation is simpler for undirected graphical models since we don't need to worry about the case of descendants informing us, and there is no way to distinguish head-to-head vs. head-to-tail connections.
+
+\begin{theorem}{Conditional Independence for Undirected Graphical Models: }
+Let $A,B,C$ be disjoint subsets of the nodes in the graph. $A\ci B \perp C$ \textbf{iff} \textit{all paths} from any node in $A$ to any node in $B$ \textbf{pass through} $C$.
+\end{theorem}
+
+From here, we can derive that the \textbf{Markov blanket} for any node is simply \textbf{all directly neighbouring nodes}.
+
+
+\section{Factorizing a Markov Random Field}
+
+\paragraph{Maximal Clique: } A subset of the nodes in $G$ that is a clique BUT would cease to be a clique if any more nodes were added. 
+
+We factorize undirected graphical models in terms of the max cliques in the graph.
+
+\begin{itemize}
+\item Let $x_c$ be set of variables in max clique $c$.
+\item Let $\phi_c()$ be a \textbf{potential} function on clique $x_c$ where $\phi_c(x_c) \geq 0$ always.
+\end{itemize}
+Then we have
+\begin{equation}
+p(\pmb x) = \frac{1}{Z} \prod_c \phi_c(x_c)
+\end{equation}
+
+That is, we multiply the potential functions on all the max cliques in $\pmb x$ and normalize with factor $Z$ to get the joint probability distribution of $\pmb x = \{x_1, \dots, x_N\}$.
+
+\paragraph{Energy Functions: } To obtain potential functions $\phi_c \geq 0$, we can let $\phi_c(x_c) = \exp[-E(x_c)]$ where $E(x_c)$ is the energy function.
+
+
+We note that potential functions $\phi$ and energy functions $E$ have no true probabilistic meaning. They simply denote ``preferable'' configurations for the system. 
+
+\paragraph{Graphical Models as Filters: } 
+\begin{itemize}
+\item Let $UI = \{p(\pmb x) | p(\pmb x) \text{ aligns with conditional distributions represented in the graph}\}$.
+\item Let $UF = \{p(\pmb x) | p(\pmb x) \text{ that can be expressed as } \frac{1}{Z} \prod_c \phi_c(x_c)\}$.
+\end{itemize}
+
+\textbf{Theorem: } $UI = UF$. We can regard the graphical model as a ``filter'' that only ``lets through'' distributions that satisfy the aforementioned requirements on the conditionals.
+
+\section{Relating Undirected Graphical Models to Directed}
+
+The general method for conversion from directed to undirected graphical models is as follows:
+\begin{enumerate}
+\item For head-to-head connections $p(x_i | x_j, x_k, x_\ell)$, we \textbf{marry the parents} by adding additional undirected connections between them.
+\item The rest of the directed links are converted to undirected edges.
+\item We initialize $\phi_c(x_c) = 1$ for all max cliques $c$ in the graph.
+\item We multiply in the corresponding terms from the directed version to each $\phi_c$ such that $p(\pmb x)$ remains the same.
+\end{enumerate}
+
+
+\paragraph{D-map: } A graph id a d-map of $p(\pmb x)$ if all conditional independence statements on $p(\pmb x)$ are reflected in the graph.
+\paragraph{I-map: } A graph is an i-map of $p(\pmb x)$ if all conditional independence statements implied by $G$ are atisfied by $p(\pmb x)$.
+
+
+A perfect graph is a d-map and an i-map.
+
+
+
+\chapter{Inference on Graphical Models}
+
+Graphical models offer a convenient way to understand the \textbf{reasoning} behind predictions. Here we examine some efficient methods that take advantage of graph structure. For marginalizing inference, we would generally need to do the following:
+
+\begin{equation}
+P(x_n) = \sum_{x_1}^{} \sum_{x_2}^{} \dots \sum_{x_N}^{} p(x_1, \dots, x_N)
+\end{equation}
+
+These nested sums make for pretty terrible run time ($O(N^k)$ where each $x_i$ has domain of size $k$), and would need to be replaced by ugly integrations for continuous variable.
+
+\paragraph{General strategy -- ``pushing in'' sums: } To make this process faster, we the following technique. For a factorized probability distribution $p(x_1, \dots, x_N)$, we can ``push in'' summation operators as follows:
+\begin{equation}
+\sum_{i=1}^{5} \alpha f(i) = \alpha \sum_{i=1}^{5} f(i)
+\end{equation}
+
+In other words, if factorized elements are not a function of the summation variable, they can be factored out to the left of the corresponding summation operator. Since graphical models have a strong ability to factorize probability distributions nicely, we can leverage this for faster inference algorithms.
+
+\section{First Order Markov Chain}
+
+For a first order Markov chain $x_1 \to x_2 \to \dots \to x_N$, we can convert to an undirected model and find the following joint PDF on all nodes:
+
+\begin{equation}
+P(\pmb x) = \frac{1}{Z} \phi_{1,2}(x_1, x_2) \cdot \phi_{2,3}(x_2, x_3) \cdot \dots \cdot \phi_{N-1,N}(x_{N-1}, x_N)
+\end{equation}
+
+
+
+
+
+
 
 
 
