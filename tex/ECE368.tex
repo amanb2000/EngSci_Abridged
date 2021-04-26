@@ -588,7 +588,10 @@ Which is pretty cool, especially considering that $\hat x_{MAP, MMSE} = \mu_{x|y
 
 \paragraph{Solution: } Unsurprisingly, $x,y$ have Gaussian distributions.
 \begin{equation}
-\hat x_{MAP, MMSE} = \mu_x + \Sigma_{xy}\Sigma_{yy}^{-1}(y-\mu_y)
+\begin{split}
+\hat x_{MAP, MMSE} &= \mu_x + \Sigma_{xy}\Sigma_{yy}^{-1}(y-\mu_y) \\
+\hat x_{MAP, MMSE} &= (\Sigma_x^{-1} + A^T \Sigma_z^{-1} A)^{-1} (A^T \Sigma_z^{-1}(y-b) + \Sigma_x^{-1}\mu_x)
+\end{split}
 \end{equation}
 Where
 \begin{equation}
@@ -603,6 +606,10 @@ Where
 \begin{equation}
 \Sigma_{x|y} = (\Sigma_x^{-1} + A^T\Sigma_z^{-1}A)^{-1}
 \end{equation}
+\begin{equation}
+\mu_{x | y} = \Sigma_{x|y}(A^T \Sigma_z^{-1}(y-b) + \Sigma_x^{-1}\mu_x)
+\end{equation}
+
 
 
 
