@@ -1249,8 +1249,8 @@ P(z_n | \pmb x) &= \frac{\alpha(z_n)\beta(z_n)}{P(\pmb x)} \\
 
 \textbf{Intuition for $\alpha, \beta, \gamma$:} Bases can be inferred from these as well.
 \begin{itemize}
-\item $\alpha(z_n) = P(z_n, x_{1:n})$
-\item $\beta(z_n) = P( x_{(n+1):(N)} | z_n)$
+\item $\alpha(z_n) = P(z_n, x_{1:n})$. Hence we initialize $\alpha(z_1) = P(z_1, x_1)$.
+\item $\beta(z_n) = P( x_{(n+1):(N)} | z_n)$. Hence we initialize $\beta(z_N) = 1$ because $x_{N+1:N}$ doesn't really exist.
 \item $\gamma (z_n) = P(z_n | x_{1:N})$
 \end{itemize}
 
