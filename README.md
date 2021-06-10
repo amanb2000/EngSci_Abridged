@@ -1,22 +1,38 @@
 # Engineering Science, Abridged
 
-During my time at the University of Toronto's Engineering Science program, I create(d) polished 'textbooks' as review notes for many of my courses. I attempt to explain the concepts as simply as possible so that I (and perhaps others) can rapidly learn and utilize this content when they need to.
+For certain classes in the UofT EngSci program (2T2) I've written typeset notes for future reference. They function mainly as a searchable database of key concepts/equations and as a way for me to organize my understanding of course content. 
 
-This repository is supercedes previous term-specific repositories (e.g. `EngSci_2.2_Abridged`). Content includes classes from the Machine Intelligence option of the program.
+This repository is supercedes previous term-specific repositories (e.g. `EngSci_2.2_Abridged`). It also includes notes for classes from the Machine Intelligence option of the program.
 
-As of October 2020, over 293 pages have been written.
-
-```
-NOTE: This repository does not contain every class I have 
-taken -- merely the ones I chose to create LaTeX notes for.
-```
 
 ## How to Use This Repository
 
-See the `pdf` folder for PDF's from all of the classes for which I created notes for. Raw LaTeX files can be found in `tex`. 
+See the [pdf](https://github.com/amanb2000/EngSci_Abridged/tree/main/pdf) folder for PDFs from all of the courses. Raw LaTeX files can be found in `tex`. Documents were compiled using pdfLaTeX 3.14159265-2.6-1.40.21 (TeX Live 2020). 
 
 ## Courses and Descriptions
 _Most recent first_
+
+### ECE368: Probabilistic Reasoning
+
+[ECE368 PDF](https://github.com/amanb2000/EngSci_Abridged/blob/main/pdf/ECE368.pdf)
+
+After a review of basic probability theory, this course focuses on:
+ - Parameter estimation (ML, MAP, LMS).
+ - Hypothesis testing.
+ - Naive Bayes' classifier.
+ - Linear/Quadratic discriminant analysis (LDA/QDA).
+ - General inference on Gaussian vectors.
+ - Linear gaussian systems.
+ - Linear regressions (MLE, regularized/ridge, Bayesian, logistic).
+ - Markov chains.
+ - Directed, undirected graphical models (conditional independence relationships, d-sep, Markov blankets).
+ - Markov random fields.
+ - Factorization techniques and conversions for directed/undirected graphical models.
+ - Hidden Markov models:
+	 - Forward-backward algorithm.
+	 - Viterbi algorithm.
+	 - Expectation maximization.
+
 
 ### ECE367: Matrix Algebra & Optimization
 
