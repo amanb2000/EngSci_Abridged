@@ -222,6 +222,21 @@ for $p$ when generating codes for tokens drawn from $p(x)$.
 
 
 
+\paragraph{Conditional Relative Entropy/KL Divergence: } Distance between two
+distributions when conditioned on the same variable. Similar idea of averaging
+across all values of the conditioning variable. 
+\begin{align}\label{eqn:conditional_relative_entropy}
+D(p(y|x) \| q(y | x)) &= \sum_{x\in \mathcal X}^{} p(x) \big[ \sum_{y\in \mathcal
+Y}^{} p(y|x) \log \frac{p(y | x)}{q(y|x)}\big] \\
+&= \mathbb E_{p(x,y)} \log \big[ \frac{p(y|x)}{q(y|x)}\big]
+\end{align}
+
+
+
+
+
+
+
 We now move onto \textbf{mutual information} -- a measure of the dependence of
 two variables. As we will see, it is the \textbf{reduction in uncertainty} of
 $X$ due to knowing $Y$, on average. 
@@ -233,6 +248,9 @@ I(X; Y) &= \sum_{x\in \mathcal X}^{} \sum_{y\in \mathcal Y}^{} p(x, y) \log
 &= D\big(p(x,y) \| p(x)p(y) \big) \\
 &= \mathbb E [\log \frac{p(X,Y)}{p(X)p(Y)}]
 \end{align}
+
+
+
 
 \begin{theorem}{Properties of Mutual Information}
 \begin{itemize}
@@ -257,14 +275,28 @@ value.
 
 \end{itemize}
 
-
-
 \textbf{Proof Sketch for (3): } 
 \begin{itemize}
 \item Within the definition of $I(X; Y)$ there is a term $\log \frac{p(x,y)}{p(x)p(y)}$. 
 \item Once you convert the argument of the log into $p(x | y) / p(x)$, you can separate out $H(X) - H(X | Y)$ using the
 quotient-difference logarithm rule.
 \end{itemize}
+\end{theorem}
+
+
+\paragraph{Conditional Mutual Information: } $I(X, Y | Z)$ is the average
+reduction in uncertainty on the value of $X$ due to knowing $Y$ when $Z$ is
+given. 
+\begin{align}
+	\label{eqn:cond_MI}
+	I(X; Y | Z) &= H(X | Z) - H(X | Y, Z) \\ 
+				&= \mathbb E_{p(x,y,z)}	\log \big[ \frac{p(X, Y | Z)}{p(X|Z)
+				p(Y|Z)} big] \\
+\end{align}
+
+
+
+
 
 
 
@@ -275,6 +307,7 @@ These chain rules end up being very useful in a lot of proofs. Deeply
 understanding them is a good idea. 
 
 \begin{theorem}{Entropy chain rule}
+\label{thm:entropy_chain_rule}
 Let $X_1, X_2, \dots, X_n \tilde p(x_1, x_2, \dots, x_n)$. Then 
 \begin{align}
 	\label{eqn:entropy_chain_rule}
@@ -282,6 +315,7 @@ Let $X_1, X_2, \dots, X_n \tilde p(x_1, x_2, \dots, x_n)$. Then
 \end{align}
 \textbf{Proof: } Repeatedly apply Equation~\ref{eqn:simple_entropy_chain}.
 \end{theorem}
+
 \paragraph{Intuition of Chain Rule: } It's important to note that the term in
 the sum is conditioned on elements $X_j$ with $j < i$. Conditioning always
 reduces entropy, so it's as though the ``additional entropy'' from the term must
@@ -291,6 +325,125 @@ sum.
 
 
 
+\begin{theorem}{Chain Rule for Mutual Information}
+\begin{align}
+	\label{eqn:chain_rule_MI}
+	I(X_1, \dots, X_n; Y) &= \sum_{i=1}^{n} I(X_i; Y | X_{i-1}, X_{i-2}, \dots,
+	X_1) \\
+\end{align}
+\textbf{Proof: } Start with the entropy definition of mutual information. Then
+apply the chain rule for entropy (Theorem~\ref{thm:entropy_chain_rule}).
+\begin{itemize}
+\item $I(X_{1:n} ; Y) = H(X_{1:n}) - H(X_{1:n} | Y)$.
+\item $= \sum_{i=1}^{n} H(X_i | X_{i-1:1}) - \sum_{i=1}^{n} H(X_i | X_{i-1:1},
+Y)$.
+\item $= \sum_{i=1}^{n} I(X_i; Y | X_{1:i-1})$.
+\end{itemize}
+\end{theorem}
+
+
+
+
+
+\begin{theorem}{Chain Rule for Relative Entropy}
+\begin{equation}
+D(p(x,y) \| q(x,y)) = D(p(x) \| q(x)) + D(p(y | x) \| q(y|x))
+\end{equation}
+
+\textbf{Proof sketch:} Expand the LHS in log-sum form. Separate the term in the
+$\log$ into a sum of two $\log$ terms corresponding to the two divergences on
+the RHS. 
+
+\end{theorem}
+
+
+
+\section{Jensen's Inequality \& Consequences}
+
+\begin{theorem}{Jensen's Inequality (and Convexity)}
+For any convex function $f$ and random variable $X$, 
+\begin{align}
+	\mathbb E \big[ f(x)\big] \geq f(\mathbb E[X])
+\end{align}
+
+Where ``convex $f$ in $(a,b)$'' $\iff$ 
+\begin{align}
+	\label{eqn:convexity}
+	f(\lambda x_1 + (1-\lambda) x_2 ) \leq \lambda f(x_1) + (1-\lambda) f(x_2)
+\end{align}
+for all $x_1, x_2 \in (a, b)$ and $\lambda \in [0,1]$. \textbf{Strict} convexity
+has equality iff $\lambda \in \{0,1\}$. \textbf{Concave} $f$ $\iff$ convex $-f$.
+
+
+\textbf{Proof sketch of Jensen's Inequality: } 
+\begin{itemize}
+\item Start with $|\mathcal X| = 2$. Then we can let a vector $\mathbf p\in
+\mathbb R^2$ represent f(x). 
+\item $\mathbb E[f(x)] = p_1 f(x_1) + p_2 f(x_2)$. 
+\item $f(\mathbb E[X]) = f(p_1 x_1 + p_2 x_2)$.
+\item Show equivalence of Jensen's inequality $\iff$ $\mathbf p$ is a valid PMF.
+\item Expand to $|\mathcal X| = k-1$ (induction proof).
+\item Use continuity arguments for continuous case.
+\end{itemize}
+\end{theorem}
+
+
+\begin{theorem}{Implications of Jensen's Inequality}
+\begin{enumerate}
+\item \textbf{Information Inequality: } $D(p\| q) \geq 0$.
+\item \textbf{MI Inequality: } $I(X; Y) \geq 0$.
+\item \textbf{Maximum Entropy: } $H(X) \leq \log |\mathcal X|$. Maximum is
+achieved by $X\tilde {uniform} (\mathcal X)$.
+\item \textbf{Information can't Hurt: } $H(X|Y) \leq H(X)$.
+\item \textbf{Entropy Sum Bound: } $H(X_{1:n}) \leq \sum_{i=1}^{n} H(X_i)$ with
+equality for independent $X_i$.
+\end{enumerate}
+\end{theorem}
+
+
+
+\section{Log-Sum Inequality \& Consequences}
+
+\begin{theorem}{Log-Sum Inequality}
+Let $\{a_i, b_i\}_{i=1}^n$ be \textbf{non-negative} numbers. Then 
+\begin{align}
+\sum_{i=1}^{n} a_i \log \frac{a_i}{b_i} \geq \big(\sum_{i=1}^{n} a_i \big) \log
+\frac{\sum a_i}{\sum b_i} 
+\end{align}
+With equality iff $\frac{a_i}{b_i}$ is constant.
+
+\textbf{Proof sketch: } 
+\begin{enumerate}
+\item Introduce $\alpha_i = a_i/\sum a_j$ and $t_i = a_i/b_i$. $\alpha_i$ values
+comprise a probability distribution (sum to 1). 
+\item Apply \textbf{Jensen's} to $\sum \alpha_i f(t_i) \geq f(\sum \alpha_i
+t_i)$ where $f() = \log()$.
+\end{enumerate}
+\end{theorem}
+
+
+
+
+\begin{theorem}{Applications of Log-Sum Inequality}
+
+\begin{itemize}
+\item \textbf{Convexity of Relative Entropy: } $D(p\|q)$ is convex in pairs of
+$p, q$.
+	\begin{align}
+		D(\lambda p_1 + (1-\lambda) p_1 \| \lambda q_1 + (1-\lambda) q_2) \leq
+		\lambda D(p_1 \| q_1) + (1-\lambda) D(p_2 \| q_2)
+	\end{align}
+
+\item \textbf{Concavity of Mutual Information: } 
+\begin{enumerate}
+\item \textbf{For fixed $p(y|x)$:} $I(X; Y)$ is concave in $p(x)$.
+\item \textbf{For fixed $p(x)$:} $I(X; Y)$ if concave in $p(y | x)$.
+\item \textit{This property is really handy when doing channel capacity
+calculations/bounds!} 
+\end{enumerate}
+\end{itemize}
+
+
 \end{theorem}
 
 
@@ -301,16 +454,118 @@ sum.
 
 
 
+\section{Data Processing Inequality}
+
+\begin{theorem}{Data Processing Inequality}
+Let $X \to Y \to Z$ form a markov chain. That is, $p(x,y,z) = p(x)p(y|x)p(z|y)$.
+Then 
+\begin{equation}
+I(X; Y) \geq I(X; Z)
+\end{equation}
+
+That is, the mutual information between $X, Z$ is bounded by the mutual
+information between $X, Y$.
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item Expand $I(X; Y, Z)$ with the chain rule.
+\item ($\star$) Observe that $I(X; Z | Y) = 0$ since $X, Z$ are \textbf{conditionally
+independent} given $Y$ (recall Markov theory -- head-to-tail connection).
+\item Since $I(X; Y | Z) \geq 0$, we can conclude that $I(X; Y) \geq I(X; Z)$.
+\end{itemize}
+\end{theorem}
+
+
+\paragraph{Sufficient Statistics Connection: } Assume that $X \to Y$ is a Markov
+chain. E.g., $X$ are some parameters of an underlying distribution and $Y$ are
+some data collected from the distribution. If $Z = f(Y)$, then we have $X \to Y
+\to Z$. Therefore any function $Z$ on the data $Y$ cannot have greater
+information on the underlying distribution $X$ than $Y$ did in the first place. 
+
+A \textbf{sufficient statistic} is one that has all the information that the
+data had about the underlying distribution. That is, $Z = f(Y)$ is a sufficient
+statistic on $Y$ if $I(Z; X) = I(Y; X)$. 
+
+\paragraph{Minimal Sufficient Statistic: } Let $\theta \to T(X) \to U(X) \to X$.
+$T(X)$ is the \textit{minimal sufficient statistic} iff $U(X)$ can be any
+sufficient statistic and still have $\theta \to T(X) \to U(X) \to X$ be a valid
+Markov chain. 
 
 
 
 
 
+\section{Fano's Inequality}
+
+Fano's inequality concerns estimators for random variables. Given some
+correlated random variables $X, Y$, we want to understand the probability of
+error when using an estimator $\hat X(Y)$ to approximate $X$. The big reveal is
+that $\Pr(\text{error}) = \text{function}(H(X|Y))$.
 
 
+\begin{theorem}{Fano's Inequality}
+Let $X,Y$ be dependent random variables. $\hat X(Y)$ is an estimator on $X$, so
+$X\to Y\to \hat X$ is a valid Markov chain for the joint distribution. Then 
+\begin{align}
+	\label{eqn:fano}
+	H(P_{err}) + P_{err} \log |\mathcal X| \geq H(X | \hat X) \geq H(X | Y)
+\end{align}
+
+A weaker form of the same being: 
+\begin{align}
+	\label{eqn:fano_weak}
+	1 + P_{err} \log |\mathcal X| &\geq H(X | Y) \\
+	P_{err} &\geq \frac{H(X| Y)-1}{\log |\mathcal X|} \\
+\end{align}
+
+\textbf{Proof Sketch:} 
+\begin{itemize}
+\item Represent the ``error'' event as random variable $E$. It takes value 1 if
+$\hat X \neq X$ and zero if $\hat X = X$.
+\item $P_{err} = \mathbb E[E]$.
+\item Expand $H(E, X | \hat X) = H(X | \hat X) + H(E | X, \hat X)$, noting that
+the last term must be zero.
+\item Also note that $H(E | \hat X) \leq H(E)$ (conditioning reduces entropy).
+\item $H(X | E, \hat X)$ can be expanded and shown to be bounded by $P_e \log
+|\mathcal X|$.
+\item Finally use Markov's inequality for $H(X | \hat X) \geq H(X | Y)$. 
+\item Combine everything and you should be able to get the strongest version in
+Equation~\ref{eqn:fano}.
+\end{itemize}
+\end{theorem}
+
+You can also strengthen it to $$H(P_{err}) + P_{err} \log (\underbrace{|\mathcal
+X| - 1}_{(\star)}) \geq H(X|Y)$$ since one element of $\mathcal X$ is eliminated
+from the error entropy calculation by random guessing.
 
 
+\paragraph{``Sharpness'' of Fano's Inequality: } If you have no information $Y$
+to inform $\hat X$, your best guess is $\hat X = \arg\max_x p(x)$. Equality in
+Fano's inequality (i.e., $H(P_{err}) + P_{err} \log(|\mathcal X| - 1) \geq
+H(X)$) is achieved by $p(\hat x) = 1-P_{err}$ and $p(x \neq \hat x) =
+P_{err}/(|\mathcal X|-1)$.
 
+
+\paragraph{Bound on Collision: } Let $X, X' \tilde p(x)$. Then $\Pr\{X = X'\} =
+\sum_{x\in \mathcal X}^{} (p(x))^2$. Then \begin{equation}
+\Pr(X = X') \geq 2^{-H(X)}
+\end{equation}
+
+with equality if $X\tilde unif(\mathcal X)$. 
+
+\textbf{Proof sketch:} Expand RHS with entropy in $\mathbb E[]$ form. Apply
+Jensen's inequality, and you'll recover $\sum p(x)^2$ as the upper bound. 
+
+
+\paragraph{Collisions with Different Distributions: } Let $X\tilde p(x)$ and
+$\hat X \tilde r(x)$. Then 
+\begin{align}
+	\Pr(X\neq \hat X) &\geq 2^{-H(p) - D(p\|r)} \\
+	\Pr(X\neq \hat X) &\geq 2^{-H(r) - D(r\|p)} \\
+\end{align}
+\textbf{Proof sketch:} We know the LHS is $\sum_x p(x)r(x)$. Expanding the RHS,
+we can apply Jensen's inequality if $H$ and $D$ are in $\mathbb E$ form. Then we
+will have a bound equal to LHS.
 
 
 
