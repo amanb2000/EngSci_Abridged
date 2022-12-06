@@ -665,6 +665,10 @@ codes of length $n \log |\mathcal X| + 1$.
 \end{itemize}
 
 
+
+
+\section{Definitions \& Source Coding Theorem}
+
 \paragraph{Compression/Source Coding Preliminaries: } 
 \begin{itemize}
 \item \textbf{Source:} Random variable $X: x\in \mathcal X$.
@@ -684,8 +688,13 @@ C^*(x_1, x_2, \dots) = C(x_1)C(x_2)\dots
 \end{align}
 I.e., the concatenation of $C(x_i)$.
 \item \textbf{Uniquely Decodable: } $C$ is UD if $C^*$ is non-singular.
-\item \textbf{Prefix Code: } 
+\item \textbf{Prefix Code: } No codeword $c(x_1)$ is a prefix of another
+codeword $c(x_2)$. This also means one can decode without any future information
+-- it is an \textbf{instantaneous code}.
 \end{itemize}
+
+
+
 
 
 
@@ -709,18 +718,67 @@ $n$ using $nH(X)$ bits on average!
 \item Simplify using $\Pr\{A_\epsilon^{(n)}\}$ and upper bounds on
 $A_\epsilon^{(n)}$ size.
 \end{itemize}
-
-
-
-
-
-
-
-
-
-
-
 \end{theorem}
+
+
+
+
+
+\section{Kraft Inequality}
+
+The Kraft inequality answers the question, ``how short can codes get?''
+
+\begin{theorem}{Kraft Inequality}
+Let $C:\mathcal X^n \to \mathcal D^*$ be a \textbf{prefix code}. Let
+$\{\ell_i\}_{i=1}^m$ be the codeword lengths for each $x^n \in \mathcal X^n$
+(i.e., $m = |\mathcal X^n|$. Then 
+
+\begin{align}
+	\label{eqn:kraft}
+	\sum_{i=1}^{m} D^{-\ell_i} \leq 1
+\end{align}
+
+And conversely: For any $\{\ell_i\}$ satisfying the inequality, \textbf{there
+exists a prefix code with those lengths}!
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item Consider a tree structure for all possible $\mathcal D^*$. Each layer adds
+one character, etc. 
+\item At the deepest layer $\ell$, there are $D^\ell$ leaf nodes.
+\item Each non-leaf node on layer $\ell_i$ has $D^{\ell - \ell_i}$ descendants.
+\textbf{To maintain prefix quality}, all descendants are eliminated!
+\item The number of descendants on the final layer must sum to $D^{\ell_max}$. 
+\item Manipulate these equations and the inequality will pop out :)
+\end{itemize}
+\end{theorem}
+
+
+\begin{theorem}{Extended Kraft Inequality}
+Even for an infinite prefix code (i.e., countably infinite codewords), the
+lengths $\{\ell_i\}_{i=1}^\infty$ will satisfy 
+\begin{equation}
+	\sum_{i=1}^{\infty} D^{-\ell_i} \leq 1
+\end{equation}
+
+\textbf{Proof sketch:} Apply analogy to floating point numbers/place value.
+"Descendants" represent intervals, they must be disjoint, etc. 
+\end{theorem}
+
+
+
+
+
+\section{Sardinas-Patterson Test for Unique Decodability}
+
+
+
+
+
+
+
+
+
 
 
 
