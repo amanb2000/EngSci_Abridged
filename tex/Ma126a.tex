@@ -1,0 +1,154 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{media9}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{mathtools} 
+\usepackage{bbm}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\inpr{\langle}{\rangle}%
+
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+
+% \def\reals{{\rm I\!R}}
+\def\reals{\mathbb{R}}
+\def\integers{\mathbb{Z}}
+
+
+\newtheorem{theorem}{Theorem}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\begin{document}
+
+\title{EE/Ma/CS 126a: Information Theory}
+\author{Aman Bhargava}
+\date{October-December 2022}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction and Course Information}
+
+This document offers an overview of EE/Ma/CS 126a at Caltech. They comprise my condensed course notes for the course. No promises are made relating to the correctness or completeness of the course notes. These notes are meant to highlight difficult concepts and explain them simply, not to comprehensively review the entire course.
+
+\paragraph{Course Information}
+\begin{itemize}
+\item Professor: Michelle Effros
+\item Term: 2022 Fall
+\end{itemize}
+
+
+
+
+
+\chapter{Math Review}
+
+
+\section{Combinatorics \& Probability}
+
+\paragraph{Binomial Distribution \& Coefficient} 
+
+\begin{itemize}
+
+\item \textbf{Bernoulli Process}: Repeated trials, each with one binary outcome.
+The probability of a positive outcome is $p\in [0,1]$. Each trial is
+independent.
+\item \textbf{Binomial Distribution}: Let $x$ represent the number of successful
+trials in a Bernoulli process repeated $n$ times with success probability $p$.
+The binomial distribution gives the probability distribution on $x$: 
+
+\begin{equation}\label{eqn:binomial}
+b(x; n, p) = {n \choose k} p^x (1-p)^{n-x}
+\end{equation}
+
+Which has $\mu = np$, $\sigma^2 = npq$.
+
+\item \textbf{Intuition for Binomial Distribution}: The probability of observing
+a sequence with $x$ positive outcomes and $n-x$ negative outcomes is $p^x
+(1-p)^{n-x}$. There are ${n\choose k}$ different sequences (i.e., permutations)
+that have $x$ positive cases and $n$ negative cases. Thus the total probability
+of observing $x$ positive cases is given by Eq~\ref{eqn:binomial}.
+
+\item \textbf{Binomial Coefficient}: 
+\begin{equation}
+\label{eqn:binomial_coeff}
+{n\choose k} = \frac{n!} {k! (n-k)!}
+\end{equation}
+
+\end{itemize}
+
+
+\section{Logarithm Identities}
+
+Entropy calculations and manipulations involve a lot of logarithms. They're not
+so bad once you get to know them, though: 
+\begin{itemize}
+\item \textbf{Definition}: $$a = b^{\log_b a}$$
+\item \textbf{Sum-Product}: $$\log_c(ab) = \log_c a + \log_c b$$
+\item \textbf{Difference-Quotient}: $$\log (a/c) = \log a - \log c$$ 
+$$\log \frac 1 a = - \log a$$
+\item \textbf{Product-Exponent}: $$\log_c(a^n) = n\log_c(a)$$
+\item \textbf{Swapping Base}: $$\log_b(a) = \log_a(b)$$
+\item \textbf{Swapping Exponential}: $$a^{\log n} = n^{\log a}$$
+\item \textbf{Change of Base}; $$\log_b(a) = \frac{\log_x(a)}{\log_x(b)}$$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Entropy Definitions}
+\textit{Chapter 2 of Elements of Information Theory}.
+
+\paragraph{Entropy Definition (Discrete): } 
+\begin{align}
+H(X) &= \sum_{x\in \mathcal X} p(x) \log ( \frac{1}{p(x)} ) \\
+&= - \sum_{x\in \mathcal X} p(x) \log p(x) \\ 
+&= \mathbb{E} [\log \frac {1} {p(x)}] 
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
