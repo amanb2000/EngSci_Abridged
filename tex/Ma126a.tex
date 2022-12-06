@@ -6,6 +6,7 @@
 \usepackage{media9}
 \usepackage{hyperref}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{mathtools} 
 \usepackage{bbm}
 
@@ -308,7 +309,7 @@ understanding them is a good idea.
 
 \begin{theorem}{Entropy chain rule}
 \label{thm:entropy_chain_rule}
-Let $X_1, X_2, \dots, X_n \tilde p(x_1, x_2, \dots, x_n)$. Then 
+Let $X_1, X_2, \dots, X_n \sim p(x_1, x_2, \dots, x_n)$. Then 
 \begin{align}
 	\label{eqn:entropy_chain_rule}
 	H(X_1, \dots, X_n) &= \sum_{i=1}^{n} H(X_i | X_{i-1}, X_{i-2}, \dots, X_1)
@@ -393,7 +394,7 @@ has equality iff $\lambda \in \{0,1\}$. \textbf{Concave} $f$ $\iff$ convex $-f$.
 \item \textbf{Information Inequality: } $D(p\| q) \geq 0$.
 \item \textbf{MI Inequality: } $I(X; Y) \geq 0$.
 \item \textbf{Maximum Entropy: } $H(X) \leq \log |\mathcal X|$. Maximum is
-achieved by $X\tilde {uniform} (\mathcal X)$.
+achieved by $X \sim {uniform} (\mathcal X)$.
 \item \textbf{Information can't Hurt: } $H(X|Y) \leq H(X)$.
 \item \textbf{Entropy Sum Bound: } $H(X_{1:n}) \leq \sum_{i=1}^{n} H(X_i)$ with
 equality for independent $X_i$.
@@ -546,19 +547,19 @@ H(X)$) is achieved by $p(\hat x) = 1-P_{err}$ and $p(x \neq \hat x) =
 P_{err}/(|\mathcal X|-1)$.
 
 
-\paragraph{Bound on Collision: } Let $X, X' \tilde p(x)$. Then $\Pr\{X = X'\} =
+\paragraph{Bound on Collision: } Let $X, X' \sim p(x)$. Then $\Pr\{X = X'\} =
 \sum_{x\in \mathcal X}^{} (p(x))^2$. Then \begin{equation}
 \Pr(X = X') \geq 2^{-H(X)}
 \end{equation}
 
-with equality if $X\tilde unif(\mathcal X)$. 
+with equality if $X\sim unif(\mathcal X)$. 
 
 \textbf{Proof sketch:} Expand RHS with entropy in $\mathbb E[]$ form. Apply
 Jensen's inequality, and you'll recover $\sum p(x)^2$ as the upper bound. 
 
 
-\paragraph{Collisions with Different Distributions: } Let $X\tilde p(x)$ and
-$\hat X \tilde r(x)$. Then 
+\paragraph{Collisions with Different Distributions: } Let $X\sim p(x)$ and
+$\hat X \sim r(x)$. Then 
 \begin{align}
 	\Pr(X\neq \hat X) &\geq 2^{-H(p) - D(p\|r)} \\
 	\Pr(X\neq \hat X) &\geq 2^{-H(r) - D(r\|p)} \\
@@ -699,7 +700,7 @@ codeword $c(x_2)$. This also means one can decode without any future information
 
 
 \begin{theorem}{Source Coding Theorem}
-Let $X^n$ be iid with each $X_i \tilde p(x)$. Then \textbf{there exists} a code
+Let $X^n$ be iid with each $X_i \sim p(x)$. Then \textbf{there exists} a code
 with lengths satisfying: 
 \begin{align}
 	\label{eqn:source_coding_theorem}
@@ -817,7 +818,140 @@ nearest $D$-adic distribution!
 \end{itemize}
 
 
+To summaryze: we have just established some bounds on \textbf{code lengths
+$\{\ell_i\}_{i=1}^m$} for $n$-ary transmissions from the set $\mathcal X^n$, we
+can go ahead and take a look at the bounds on \textbf{expected code lengths} $L
+= \mathbb E[\ell_i] = \sum_{x^n\in \mathcal X^n}$! This will help us understand
+the true practical information transmission limitations -- after all, our
+concern is primarily in aggregate behavior for communication systems.
 
+
+\begin{theorem}{1-Bit Bound on Expected Code Length $L$}
+Let $L$ represent the expected code length $L = \mathbb E_{p(x)}[\ell(x)]$. Then
+the optimal code will produce the minimum expected code length $L^*$ where $L^*$
+is bounded as
+\begin{align}
+	\label{eq:one_bit_bound}
+	H(X) \leq L^* \leq H(X) + 1
+\end{align}
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item Recall that the optimal code will have lengths $\{\ell_i\}$ that give rise
+to the nearest diadic distribution $p(x_i) \approx D^{\ell_i} / \sum
+D^{\ell_i}$. 
+\item Let us introduce $\mathbf r$ as follows: 
+	$$r_i = \{\frac{D^{-\ell_i}}{\sum_j D^{\ell_j}}\}$$
+\item Then we can reframe the search for optimal code lengths $\{\ell_i^*\}$ as
+the minimization of the following function: 
+	$$\min_{\mathbf \{\ell_i\}} \big[ D(\mathbf p\| \mathbf r)\big] - \log (\sum
+	D^{-\ell_i})$$
+\end{itemize}
+
+\item Instead of doing anything clever, let's just use the \textbf{rounded
+version of the non-integer solution}. That is, 
+	\begin{equation}
+		\ell_i = \lceil \log_D \frac{1}{p_i} \rceil
+	\end{equation}
+\end{theorem}
+
+
+\paragraph{Arbitrary Closeness to Optimal $L = H(X)$: } Observe that we are able
+to make the per-character average length $\frac{1}{n} L \to \frac 1 n H(X^n) = nH(X)$
+arbitrarily close by increasing $n$ since $H(X^n)+1$ is an upper bound on
+optimal $L^*$.
+
+
+\paragraph{Wrong Code Cost: } If we create optimal codes according to $q(x)$,
+then $\ell_i = \lceil \log \frac 1 {q(x_i)} \rceil$. The resulting code length
+under real conditions $p(x)$ will be $\mathbb E_p [\ell(X)]$. It is given by 
+\begin{equation}
+	\label{eqn:wrong_distro}
+	H(p) + D(p \| q) \leq \mathbb E_p [\ell(X)] < H(p) + D(p \| q) + 1
+\end{equation}
+
+\textbf{Proof sketch:} Start by expanding $\mathbb E_{p(x)} [\ell(X)]$ into sum form,
+with $\ell(x) = \lceil \log \frac 1 {q(x)} \rceil$. You'll get a sum-log term
+that you can expand into $H(p)$ and $D(p\|q)$ by multiplying the term in the
+$\log$ by $p(x)/p(x)$ \qedsymbol{}
+
+
+
+\subsection{Generalizing Kraft Inequality to all UD Codes}
+
+So far, we have been proving bounds for expected code length in \textbf{prefix
+codes}. We now generalize these findings to all \textbf{uniquely decodable}
+codes. The big takeaway is that UD codes cannot out-perform prefix codes with
+respect to code length. 
+
+\begin{theorem}{McMillan Theorem -- Any UD Code Satisfies Kraft Inequality}
+For any uniquely decodable code $c: \mathcal X^n \to \mathcal D^*$, the code
+lengths $\ell_i = |c(x_i)|$ for each $x_i \in \mathcal X$ must satisfy 
+\begin{equation}
+	\sum D^{-\ell_i} \leq 1
+\end{equation}
+
+And conversely: Given any $\{\ell_i\}$ satisfying the Kraft inequality, we can
+construct a UD code that has lengths $\{\ell_i\}$.
+
+\textbf{Proof sketch:} Our goal is to show that the code lengths must satisfy
+$\sum_{x\in \mathcal X} D^{-\ell(x)} \leq 1$.
+\begin{itemize}
+\item We start by considering the number of different $D$-ary codewords of
+length $n$ the code $c(x)$ can produce.
+\item Since there only exist $D^n$ unique $D$-ary sequences of length $n$,
+$c^k()$ (the $k$th extension of $c$) can only produce $D^n$ sequences of length
+$n$.
+\item \textbf{Trick}: We do some cursed manipulations of the following term -- 
+\begin{align}
+	&= \big(\sum_{x\in \mathcal X} D^{-\ell(x)} \big)^k \\ 
+	&= \big(\sum_{x_1 \in \mathcal X} D^{-\ell(x_1)} \big) \big(\sum_{x_2 \in
+	\mathcal X} D^{-\ell(x_2)} \big) \dots \big(\sum_{x_k \in \mathcal X}
+	D^{-\ell(x_k)} \big) \\
+	&= \sum_{x_1:k \in \mathcal X^k} D^{-\ell(x_1)}D^{-\ell(x_2)}D^{-\ell(x_k)}\\
+\end{align}
+The reason this is a valid manipulation is that you can push around $\sum_{x_i}$
+around in the product as long as $x_i$ remains within its argument field. 
+
+\item We now apply a change of variables. Specifically, for each sum $\sum_{x^k}
+D^{-\ell (x_k)}$, we replace it with $$\sum_{m=1}^{k \ell_{max}} a(m) D^{-m}$$ where
+$a(m)$ is the number of $m$-long codes. This is equivalent to $\sum_x
+D^{-\ell(x)}$ -- we are just grouping and calculating by code lengths $m$. 
+
+\item $a(m)$ is the number of $m$-long codes, and there cannot be more than
+$D^m$ of those. So all of a sudden, we have 
+	\begin{align}
+		&= (\sum_{x\in \mathcal X} D^{-\ell(x)})^k \\ 
+		\sum_{x^k \in \mathcal x^k} D^{-\ell(x^k)} &= \sum_{m=1}^{k \ell_{max}}
+		a(m) D^{-m} \\ 
+		& \leq \sum_{m=1}^{k \ell_{max}} D^m D^{-m} \\ 
+		&= \ell_{max} k
+	\end{align}
+
+\item So now we know that 
+	\begin{align}
+		(\sum_{x\in\mathcal X} D^{-\ell(x)})^k &\leq \ell_{max} k \\ 
+		\implies \sum_{x\in \mathcal X} D^{\ell(x)} &\leq (\ell_{max} k)^{1/k} \\ 
+		\implies \sum_{x \in \mathcal X} D^{-\ell(x)} &\leq 1
+	\end{align}
+	With the last transformation justified by the fact that $\lim_{k\to\infty}
+	\ell_max k = 1$
+
+\item Therefore Kraft's inequality holds not only for prefix codes, but for all
+UD codes \qedsymbol{}.
+\end{itemize}
+
+
+
+
+\end{theorem}
+
+
+
+
+
+
+\section{Huffman Codes}
 
 
 
