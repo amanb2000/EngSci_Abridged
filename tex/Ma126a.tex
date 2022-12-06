@@ -118,12 +118,194 @@ $$\log \frac 1 a = - \log a$$
 \chapter{Entropy Definitions}
 \textit{Chapter 2 of Elements of Information Theory}.
 
+
+\section{Entropy, Conditional Entropy, Joint Entropy}
+
 \paragraph{Entropy Definition (Discrete): } 
-\begin{align}
+\begin{align}\label{eqn:entropy}
 H(X) &= \sum_{x\in \mathcal X} p(x) \log ( \frac{1}{p(x)} ) \\
 &= - \sum_{x\in \mathcal X} p(x) \log p(x) \\ 
 &= \mathbb{E} [\log \frac {1} {p(x)}] 
 \end{align}
+
+
+\begin{theorem}{Properties of Entropy}
+\begin{enumerate}
+\item \textbf{Non-negativity: } $H(X) \geq 0$ -- \textit{Reasoning: Entropy is the sum-product of
+non-negative terms}.
+\item \textbf{Change of base: } $H_b(X) = (\log_b a) H_a(X)$
+
+\item \textbf{Bernoulli entropy: } $H(X) = -p\log p - q \log q \equiv H(p)$.
+\begin{itemize}
+\item $H(p)$ is a concave function of $p$, peaks at $p=q=0.5$.
+\end{itemize}
+\end{enumerate}
+\end{theorem}
+
+
+
+\paragraph{Joint Entropy: } Literally just entropy of vector $[X,Y]^\top$.
+\begin{align}
+\label{eqn:joint_entropy}
+H(X, Y) &= - \sum_{x\in \mathcal X} \sum_{y\in \mathcal Y}^{} p(x,y) \log p(x,y) \\ 
+&= \mathbb E [\log p(x,y)] \\
+\end{align}
+
+
+\paragraph{Conditional Entropy: } $H(Y|X)$ is the expected entropy of $p(y|x)$
+averaged across all $x$.
+\begin{align}
+\label{eqn:conditional_entropy}
+H(Y | X) &= \sum_{x\in \mathcal X} p(x) \underbrace{ \sum_{y\in \mathcal Y} p(y
+| x) \log p(y | x) }_{H(Y| X = x)} \\
+&= - \mathbb E [\log p(Y | X)]
+\end{align}
+
+
+
+Entropy can be thought of as the \textbf{uncertainty} in the value of a random
+variable. High entropy corresponds to a high degree of uncertainty. Conditional
+entropy $H(Y|X)$ can be thought of as the average \textbf{remaining uncertainty}
+in the value of $Y$ after learning the value of $X$.
+
+
+\begin{theorem}{Chain Rule for Entropy}
+\begin{align}\label{eqn:simple_entropy_chain}
+H(X, Y) &= H(X) + H(Y | X) \\
+&= H(Y) + H(X | Y)
+\end{align}
+
+It also follows that 
+\begin{align}
+H(X, Y | Z) &= H(X | Z) + H(Y | X, Z) 
+\end{align}
+
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item Recall that $H(X) = -\mathbb E [\log p(x)]$ and $H(Y | X) = -\mathbb E
+[\log p(y | x)]$. 
+\item $\log p(x) + \log p(y | x) = \log(p(x) \cdot p(y | x)) = \log p(x,y)$.
+\item The proof follows from there. You can also write out the full sum form of
+$H(X, Y)$ and recover $H(X), H(Y| X)$ from there if you're feeling rigorous.
+\end{itemize}
+\end{theorem}
+
+
+
+
+
+\section{Relative Entropy \& Mutual Information}
+
+\paragraph{Relative Entropy: } $D(p \| q)$ gives a \textit{distance} between
+distributions $p(x)$ and $q(x)$. Also known as KL divergence. 
+\begin{align}
+\label{eq:relative_entropy}
+D(p \| q) &= \sum_{x\in \mathcal X} p(x) \log \frac{p(x)}{q(x)} \\ 
+&= \mathbb E_{p(x)} [\log \frac {p(x)}{q(x)}] \\ 
+\end{align}
+
+This also corresponds to the \textbf{inefficiency} of using $q$ as a replacement
+for $p$ when generating codes for tokens drawn from $p(x)$. 
+\begin{itemize}
+\item \textbf{Average code length with correct $p(x)$:} $H(p)$.
+\item \textbf{Average code length with incorrect $q(x)$:} $H(p) + D(p \| q)$.
+\end{itemize}
+
+\begin{theorem}{Properties of Relative Entropy}
+\begin{enumerate}
+\item \textbf{Asymmetric: } In general, $D(p\| q) \neq D(q \| p)$.
+\item \textbf{Non-negative: } $D(p\| q) \geq 0$.
+\item \textbf{Identity: } If $D(p\| q) = 0$ then $p \equiv q$.
+\end{enumerate}
+\end{theorem}
+
+
+
+We now move onto \textbf{mutual information} -- a measure of the dependence of
+two variables. As we will see, it is the \textbf{reduction in uncertainty} of
+$X$ due to knowing $Y$, on average. 
+
+\paragraph{Mutual Information: } \begin{align}
+\label{eqn:mutual_info}
+I(X; Y) &= \sum_{x\in \mathcal X}^{} \sum_{y\in \mathcal Y}^{} p(x, y) \log
+(\frac{p(x,y)}{p(x)p(y)} ) \\ 
+&= D\big(p(x,y) \| p(x)p(y) \big) \\
+&= \mathbb E [\log \frac{p(X,Y)}{p(X)p(Y)}]
+\end{align}
+
+\begin{theorem}{Properties of Mutual Information}
+\begin{itemize}
+\item It is the \textbf{divergence} between $p(x,y)$ and $p(x)p(y)$.
+\item \textbf{Symmetry: } $I(X; Y) = I(Y; X)$.
+\item \textbf{Relation to Entropy: } Mutual information is the \textit{reduction
+in uncertainty} of each RV expected after discovering the other variable's
+value. 
+	\begin{align}
+		\label{eqn:mi_entropy}
+		I(X; Y) &= H(X) - H(X | Y) \\ 
+				&= H(Y) - H(Y | X) \\
+	\end{align}
+
+\item \textbf{Alternative Entropy Relation: }
+	\begin{align}
+		\label{eqn:mi_entropy_2}
+		I(X; Y) &= H(X) + H(Y) - H(X, Y) \\ 
+		I(X; X)	&= H(X) - H(X | X) \\ 
+				&= H(X)
+	\end{align}
+
+\end{itemize}
+
+
+
+\textbf{Proof Sketch for (3): } 
+\begin{itemize}
+\item Within the definition of $I(X; Y)$ there is a term $\log \frac{p(x,y)}{p(x)p(y)}$. 
+\item Once you convert the argument of the log into $p(x | y) / p(x)$, you can separate out $H(X) - H(X | Y)$ using the
+quotient-difference logarithm rule.
+\end{itemize}
+
+
+
+
+\section{Chain Rules: $H(\cdot), I(\cdot ; \cdot)$}
+
+These chain rules end up being very useful in a lot of proofs. Deeply
+understanding them is a good idea. 
+
+\begin{theorem}{Entropy chain rule}
+Let $X_1, X_2, \dots, X_n \tilde p(x_1, x_2, \dots, x_n)$. Then 
+\begin{align}
+	\label{eqn:entropy_chain_rule}
+	H(X_1, \dots, X_n) &= \sum_{i=1}^{n} H(X_i | X_{i-1}, X_{i-2}, \dots, X_1)
+\end{align}
+\textbf{Proof: } Repeatedly apply Equation~\ref{eqn:simple_entropy_chain}.
+\end{theorem}
+\paragraph{Intuition of Chain Rule: } It's important to note that the term in
+the sum is conditioned on elements $X_j$ with $j < i$. Conditioning always
+reduces entropy, so it's as though the ``additional entropy'' from the term must
+be reduced to account for the previous terms already having been added to the
+total. Also note that any order can suffice -- there is no absolute order in the
+sum.
+
+
+
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
