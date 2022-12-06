@@ -576,6 +576,155 @@ will have a bound equal to LHS.
 
 
 
+\chapter{Asymptotic Equipartition Theorem (AEP)}
+
+\section{Typicality and AEP Theorem}
+
+AEP is the application of the \textbf{weak law of large numbers} (WLLN) to
+entropy.  Recall WLLN: 
+\begin{equation}
+	\label{eqn:wlln}
+	\lim_{n\to \infty} \frac{1 }{n} \sum_{i=1}^{n} X_i = \mathbb E[X]
+\end{equation}
+
+Applying to entropy, 
+
+\begin{theorem}{Asymptotic Equipartition Theorem}
+Let $X_1 \dots X_n$ be iid with PMF $p(x)$. Then 
+\begin{align}
+	\label{eqn:aep}
+	\frac{1}{n} \log \frac{1}{p(X_1, \dots, X_n)} &\to H(x) \\
+	p(X_1, \dots, X_n) &\to 2^{-n H(x)}
+\end{align}
+
+in probability. That is, for all $\epsilon > 0$, $\exists$ $n$ such that the
+difference between the sample entropy (LHS) and the true entropy (RHS) is less
+than $\epsilon$.
+
+\textbf{Proof sketch:} Apply WLLN to the definition of entropy. LHS = RHS in
+limit $n\to \infty$..
+\end{theorem}
+
+
+\paragraph{Typical sequences: } Sequences of $x_i$ with \textbf{sample entropy}
+$\approx nH(X)$. 
+
+\paragraph{Typical set $A_\epsilon^{(n)}$ w.r.t. $p(x)$: } A set of sequences
+$x^n\in \mathcal X^n$ that satisfy 
+\begin{align}
+	\label{eqn:typical_set}
+	2^{-n(H(X) + \epsilon)} \leq p(x_1, \dots, x_n) \leq 2^{-n(H(X) - \epsilon)}
+\end{align}
+
+
+\begin{theorem}{Properties of $A_\epsilon^{(n)}$}
+\begin{enumerate}
+\item $x^n \in A_\epsilon^{(n)}$ $\to$ sample entropy $- \frac 1 n \log p(x^n)
+\in [H(X)-\epsilon, H(X)+\epsilon]$.
+\item $\Pr\{X^n \in A_\epsilon^{(n)}\} = \Pr\{A_\epsilon^{(n)}\} \geq
+1-\epsilon$ for large $n$.
+\item $|A_\epsilon^{(n)}| \leq 2^{n(H(x) + \epsilon)}$ for all $n$.
+\item $A_\epsilon^{(n)} \geq (1-\epsilon) 2^{n(H(x) - \epsilon)}$ for
+sufficiently large $n$.
+\end{enumerate}
+
+\textbf{Proof Sketches:} 
+\begin{enumerate}
+\item Rearrangement of AEP/definition of $A_\epsilon^{(n)}$.
+\item Apply the lower bound on $\Pr{x^n}: x^n\in A_\epsilon^{(n)}$.
+\item $\Pr\{A_\epsilon^{(n)}\} \leq 1$. But we also know that $\Pr(x^n) \geq
+2^{-n(H(x) + \epsilon)}$ if $x^n \in A_\epsilon^{(n)}$. Do the math.
+\item $\Pr\{A_\epsilon^{(n)}\} \geq 1-\epsilon$ (from 2). Since typical
+sequences $x^n$ have maximum probability $2^{-n(H(X)-\epsilon)}$, we can derive
+this bound.
+\end{enumerate}
+
+\end{theorem}
+
+
+
+
+
+\chapter{Data Compression}
+
+\textit{Tail end of EIT chapter 3 and the entirety of chapter 5}.
+
+
+\paragraph{Data Compression -- Problem Statement: } We want to find the
+\textit{shortest} codes for transmitting sequences $x^n$ where each token is iid
+with PMF $p(x)$. 
+\begin{itemize}
+\item We can leverage notions of \textbf{typicality} since we know that $X^n \in
+A_\epsilon^{(n)}$ with arbitrarily high probability for large $n$.
+\item \textbf{Simple implementation:} Introduce some ordering to elements in
+$A_\epsilon^{(n)}$. Since the size of $A_\epsilon^{(n)} \approx 2^{nH(X)}$, a
+binary index would need $n(H+\epsilon) + 1$ bits. This is a pretty good code
+already!
+\item For items not in $A_\epsilon^{(n)}$, we can prepend a flag bit and use
+codes of length $n \log |\mathcal X| + 1$.
+\end{itemize}
+
+
+\paragraph{Compression/Source Coding Preliminaries: } 
+\begin{itemize}
+\item \textbf{Source:} Random variable $X: x\in \mathcal X$.
+\item \textbf{Codeword Alphabet:} $\mathcal D$ is a $D$-ary alphabet.
+\item \textbf{Source Code $C: \mathcal X \to \mathcal D^*$ } maps from the
+source alphabet to strings of arbitrary length from the code alphabet. 
+\item \textbf{Expected Length $L(C) = \sum_{x\in \mathcal X} p(x)\ell(x)$} where
+$\ell(x) = |C(x)|$.
+\item \textbf{Assumption: } We tend to represent every $D$-ary alphabet with
+natural numbers $\{0,1,\dots, 1-D\}$.
+\item \textbf{Non-singular: } Code $C$ is non-singular iff \begin{align}
+	\label{eqn:non_sing}
+	x_1 \neq x_t \implies C(x_1) \neq C(x_2)
+\end{align}
+\item \textbf{Extension Code: } $C^*$ is the extension of $C$ -- \begin{align}
+C^*(x_1, x_2, \dots) = C(x_1)C(x_2)\dots
+\end{align}
+I.e., the concatenation of $C(x_i)$.
+\item \textbf{Uniquely Decodable: } $C$ is UD if $C^*$ is non-singular.
+\item \textbf{Prefix Code: } 
+\end{itemize}
+
+
+
+\begin{theorem}{Source Coding Theorem}
+Let $X^n$ be iid with each $X_i \tilde p(x)$. Then \textbf{there exists} a code
+with lengths satisfying: 
+\begin{align}
+	\label{eqn:source_coding_theorem}
+	\mathbb E\big[ \frac{1}{n} \ell(X^n) \big] \leq H(X) + \epsilon
+\end{align}
+for $n$ sufficiently large. In other words, we can represent sequences of length
+$n$ using $nH(X)$ bits on average!
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item For large $n$, $\Pr\{A_\epsilon^{(n)}\} \to 1$.
+\item Then $\mathbb E[\ell(X^n)] = \sum_{x^n\in \mathbb X^n} p(x^n) \ell(x^n)$.
+\item Split the sum into $x^n \in A_\epsilon^{(n)}$ and the compliment.
+\item Apply codes of length $n(H+\epsilon) + 2$ for the first sum and lengths $n
+\log |\mathcal X| + 2$ to the second (1 flag bit, 1 rounding bit).
+\item Simplify using $\Pr\{A_\epsilon^{(n)}\}$ and upper bounds on
+$A_\epsilon^{(n)}$ size.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\end{theorem}
+
+
+
+
 
 
 
