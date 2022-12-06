@@ -767,6 +767,61 @@ lengths $\{\ell_i\}_{i=1}^\infty$ will satisfy
 
 
 
+\section{Finding Optimal Codes}
+
+We learned from the Kraft Inequality (Equation~\ref{eqn:kraft}) that the
+codeword lengths are constrained to follow $\sum D^{-\ell_i} \leq 1$. Optimal
+codes will therefore solve the following optimization problem:
+\begin{align}
+\min_{\{\ell_i\}} & \sum_{i=1}^{m} p_i \ell_i \\ 
+s.t. & \sum_{i=1}^{m} D^{-\ell_i} \leq 1
+\end{align}
+
+
+\paragraph{Lagrange Multiplier Solution: } $\ell_i^* = -\log_D p_i$ satisfies
+Kraft inequality and minimizes $\mathbb E[\ell_i]$ -- expected code length
+converges to $H_D(x)$. However, we need to round off code lengths so they're
+integers!
+
+\begin{theorem}{Expected code length inequality}
+For a $D$-ary code and random variable $X: x\in \mathcal X$, 
+\begin{align}
+	L \geq H_D(X)
+\end{align}
+with equality iff $D^{-\ell_i} = p_i$ where $p_i = p(x_i)$.
+
+\textbf{Proof sketch:} Start by expanding $L - H_D(X)$. Combine the sums using
+product-sum log rule and recover $L - H_D(X) = D(\mathbf p \| \mathbf r)$ where
+$r_i = D^{-\ell_i}/\sum_j D^{-\ell_j}$. By non-negativity of $D(\|)$, the proof
+is done.
+\end{theorem}
+
+
+
+\paragraph{D-adic Distributions: } $p(x)$ is D-adic if $\exists \{n_i\}$ such
+that \begin{equation}
+p(x_i) = D^{-n_i}
+\end{equation}
+where each $n_i$ is a natural number.
+
+
+Generally, we want a $D$-adic distribution $p(x)$ so that our codes achieve
+expected length $L = \sum p_i \ell_i = H_D(X)$. Failing that, we want to
+\textbf{minimize $D(d-adic \| p(x))$}. We are approximating $p(x)$ with the
+closet $D$-adic distribution. That's really all that coding methods boil down
+to!
+\begin{itemize}
+\item Shannon-Fano: Offers good, easy, suboptimal codes. 
+\item Huffman: Truly optimal codes based on $p(x)$ -- we actually find the
+nearest $D$-adic distribution!
+\end{itemize}
+
+
+
+
+
+
+
 
 
 \section{Sardinas-Patterson Test for Unique Decodability}
