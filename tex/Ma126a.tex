@@ -1118,6 +1118,126 @@ produces optimal codes \qedsymbol{}
 
 
 
+\section{Shannon Codes}
+
+Shannon codes give a procedure to construct a prefix code with lengths $\ell(x)
+= \lceil \log \frac 1 {p(x)} \rceil$. These aren't optimal like Huffman codes,
+but they're pretty good. In fact, there's a whole section in the textbook
+dedicated to its ``competitive optimality'' with Huffman codes. Perhaps people
+feel the need to defend Shannon coding because Shannon is so central to
+information theory.  Regardless of whether it is deserved, you'll probably be
+asked to do a Shannon code example at some point in your life, and it's a
+somewhat elegant mathematical construction. 
+
+\paragraph{Big Picture: } I'm not sure if this is how they were developed, but
+this is the story I tell myself.
+\begin{enumerate}
+\item We know that $\ell(x) = \lceil \log \frac 1 {p(x)} \rceil$ is achievable.
+But if someone asks me to actually code some $x$, where do I even get the values
+for $c(x)$? Do I make them randomly? 
+\item \textbf{CDF encoding idea:} The CDF of a random variable has a really nice
+property: let $F(x)$ be the CDF of random variable $X$. Then $F:\mathcal X \to
+[0,1]$ in a \underline{one-to-one} manner! So let's try using the bits of
+$F(x)$ to create our code $c(x)$!
+\item That's great, but $F(x)$ could take an infinitey number of bits to encode!
+We need to \textbf{truncate} them somehow... 
+\item \textbf{Truncation technique:} Just take the first $\ell(x) = \lceil\log
+\frac 1 {p(x)} \rceil + 1$ bits from $F(x)$ to get truncated $\lfloor
+F(x)\rfloor_{\ell(x)}$.
+\item We can show that this will still produce a prefix code via \textbf{extreme
+cleverness}.
+\end{enumerate}
+
+
+I'll elaborate more on that last point (why the truncation technique ends up
+working) momentarily, but that's pretty much how Shannon coding works. The only
+important caveat is that we don't use $F(x)$ directly -- we use bits from a
+modified CDF $\tilde F(x) = F(x) + \frac 1 2 p(x)$. This corresponds to the
+midpoint between $F(x-1)$ and $F(x)$.
+
+\paragraph{Big result: } The scheme gives us a code with expected length $L \leq
+H(X) + 2$. Aren't we so lucky for that.
+
+
+\paragraph{Why does $\lceil \tilde F(x) \rceil_{\ell(x)}$ work? } What a great
+question! Let's start by considering what ``prefix-free'' corresponds to in the
+context of using bits from the binary representation of $\tilde F(x)$. 
+\begin{itemize}
+\item Let's assume you truncate to digit $\ell$ after the decimal point. Under
+the prefix condition, no codes that share those first $\ell$ digits. 
+\item This corresponds to \textbf{claiming} the range $[0.z_1z_2\dots z_\ell,
+0.z_1z_2\dots z_\ell + \frac 1 {2^\ell}]$. That last $+\frac 1 {2^\ell}$ term
+corresponds to the extra value if all the digits past $z_\ell$ were ones. 
+\item Now you just have to show that there's no \textbf{overlap} in the
+\textbf{claimed regions} of each $x$!
+\item At that point, it's just a bunch of symbol shunting. So I really can't be
+bothered to write it all out, and I suggest you refrain as well -- I suspect
+that symbol shunting is bad for one's health.
+\end{itemize}
+
+
+That's pretty much Shannon coding. You get some decent preformance out of it,
+it uses some clever ideas, and sometimes thats enough. I'm not going to get into
+the ``competitive optimality'' too much since it's terribly boring, but these
+are the main takeaways:
+\begin{enumerate}
+\item If $ell(x)$ are Shannon code lengths and $\ell'(x)$ are any other UD code,
+then $\Pr(\ell(x) \geq \ell'(x) + c) < \frac 1 {2^{c-1}}$.
+\item Given a dyadic $p(x)$ (expressible in base 2), let $\ell(x) = -\log p(x)$
+and $\ell'(x)$ be any other Shannon code. Then $\Pr (\ell(X) < \ell'(x)) \geq
+\Pr(\ell(X) > \ell'(x))$. 
+\end{enumerate}
+See? I told you it was boring. 
+
+
+
+\paragraph{An important note on ``competitive optimality'': } Most of this stuff
+is framed in probabilities that one is shorter/longer than the other. The reason
+Shannon coding secretly sucks is that it's pretty suboptimal in practical
+\textbf{expected length}. If you have a distribution $p(x_1) = 0.001, p(x_2) =
+0.999$ then Shannon coding would tell you to use insane large code lengths for
+$x_1$ for no reason. The point is, don't believe all the propaganda about
+Shannon coding. 
+
+
+\chapter{Channel Capacity}
+
+
+\paragraph{Discrete Channel Definition: } 
+\begin{enumerate}
+\item Input alphabet $\mathcal X$. 
+\item Output alphabet $\mathcal Y$.
+\item Transition matrix $p(y | x)$ -- this is the actual channel. 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\chapter{Continuous Stuff}
+
+If you've been outside or touched grass at any point in your life, you may have
+noticed that many things are actually continuous and not discrete. Unfortunately
+for you, we've spend most of the course looking at discrete distributions and
+codes, so now we need to make great haste to cover our ass and make sure this
+stuff works for continuous random variables. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
