@@ -1075,15 +1075,48 @@ correspond to the lowest probability symbols:
 	They should also correspond to the lowest probability $x\in \mathcal X$
 	given property (1) \qedsymbol{}
 	\end{enumerate}
-
-
-
 \end{itemize}
-
-
-
 \end{theorem}
-<++>
+
+
+Now that we've established that canonical codes exist and are optimal, we can
+move on and prove that Huffman codes are canonical at each iteration and are
+therefore optimal!
+
+\paragraph{Huffman Reduction: } We define a Huffman reduction on a probability
+distribution $p(x)$ where $x\in \mathcal X = \{x_1, \dots, x_m\}$. Let $\mathbf
+p = [p(x_1), \dots, p(x_m)]^\top$ be ordered from most likely $p(x_1)$ to least
+likely $p(x_m)$. Then the Huffman reduction of $\mathbf p$ is 
+\begin{equation}
+	\mathbf p' = \big[ p_1, p_2, \dots, p_{m-2}, \underbrace{p_{m-1} +
+	p_m}_{\text{reduction!}} \big]^\top
+\end{equation}
+
+Now all we have to do is show that the \textbf{optimal code} for the reduced
+$\mathbf p'$ can be expanded to the optimal code for unreduced $\mathbf p$.
+
+
+\begin{theorem}{Optimality of Huffman Codes}
+Let $C^*$ be a Huffman code and $C'$ be any uniquely decodable code. Then 
+\begin{equation}
+	L(C^*) \leq L(C')
+\end{equation}
+
+\textbf{Proof sketch:} 
+\begin{enumerate}
+\item Huffman code generation is essentially a series of \textbf{expansion
+operations} from a reduced $\mathbf p'$ to an unreduced $\mathbf p$
+\item Use \textbf{proof by contradiction} to show that codes extended from
+$\mathbf p' \to \mathbf p$ maintain optimality. 
+\item Therefore, if the first code is optimal (must be since it's 1 element),
+then the rest of the expansions must also be optimal. Therefore, Huffman coding
+produces optimal codes \qedsymbol{}
+\end{enumerate}
+\end{theorem}
+
+
+
+
 
 
 
