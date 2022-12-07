@@ -1202,6 +1202,9 @@ Shannon coding.
 
 \chapter{Channel Capacity}
 
+We've spent a lot of time on what essentially amounts to data compression. If
+you ever make a friend, though, you may actually need to \textit{send} data. So
+let's study ``channels'' -- stuff you would send that information through.
 
 \paragraph{Discrete Channel Definition: } 
 \begin{enumerate}
@@ -1210,10 +1213,93 @@ Shannon coding.
 \item Transition matrix $p(y | x)$ -- this is the actual channel. 
 \end{enumerate}
 
+It should be noted that we mainly care about \textbf{memoryless} channels where
+the input at a given time depends only on the current input symbol. 
+
+
+\section{Channel Capacity} 
+
+\paragraph{Channel Capacity: } The amount of information you can transmit on
+average via a single use of the channel with vanishingly small error
+probability.
+\begin{equation}
+	C = \max_{p(x)}\{I(X; Y)\}
+\end{equation}
+
+Where $p(y | x)$ is dictated by the channel itself. We basically get to ``pick''
+out $p(x)$ to maximize $C$. We generally want to get as close to the theoretical
+channel capacity as possible. But before we do anything so practical, we need to
+faff around with channel capacity calculations and properties of channel
+capacity.
+
+\paragraph{Top 10 Tips for Calculating Channel Capacity: } Probably not actually
+10, but you get the point.
+\begin{itemize}
+\item \textbf{Start with the definition.} If no inspiration strikes, just write
+down the definition. It's particularly important to write the equivalent forms
+of $I(X; Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)$. 
+\item \textbf{Worst case: leverage convexity and solve for $0$ gradient.} Recall
+how $I(X; Y)$ is convex w.r.t. $p(x)$ given fixed $p(y|x)$. Representing $p(x)$
+as a vector of values, you can solve for the point with zero gradient of $I(X;
+Y)$ with respect to each of the values in $p(x)$.
+\item \textbf{One-to-many but disjoint $Y$} yields capacity equal to the number
+of output clusters. 
+\item \textbf{(Maximum) number of bits transmitted} per use of the channel is
+identical to capacity. Sometimes this is enough for a hand-wavey calculation of
+capacity if you already know what it is. 
+\item \textbf{Noisy typewriter} is a big example to keep in mind. If the output
+is basically a ``diffused'' version of the input, a uniform distribution will
+suffice to maximize. This is basically the same as a symmetric channel.
+\item \textbf{Symmetry is your friend.} Check if the channel is symmetric first
+-- it gives you great guarantees (e.g., uniform distribution maximizes
+capacity).
+\item \textbf{Binary erasure channel} with erasure probability $\alpha$ has
+capacity $1-\alpha$ if there are two elements in the input space and 3 elements
+in the output space (i.e., two correspond to the input and 1 is the ``erased''
+outcome).
+\end{itemize}
+
+
+
+\paragraph{Top 10 Properties of Channel Capacity: } 
+\begin{enumerate}
+\item $C \geq 0$
+\item $C \leq \min \{\log \mathcal X, \log \mathcal Y\}$.
+\item $I(X; Y)$ is a continuous function of $p(x)$ and is a \textbf{concave}
+function w.r.t. $p(x)$. Therefore local optima are global optima.
+\item There's no closed form solution for capacity in the general case. 
+\end{enumerate}
 
 
 
 
+
+
+
+
+
+
+
+\section{Symmetric Channels}
+
+Symmetric channels are great. Can't get enough of them. Nobody loves symmetric
+channels more than I do.
+
+\paragraph{Symmetric Channel Definition: } When the rows of the channel are all
+permutations of eachother, and so are all the columns. Note that the $x$th row
+of the matrix corresponds to the input $x$ and the $y$th column corresponds to
+the probability of that output. Essentially, the \textbf{rows sum to 1}.
+
+\paragraph{Properties of Symmetric Channels: } 
+\begin{itemize}
+\item The maximizing $p(x)$ for $I(X; Y)$ is the uniform distribution.
+\item $I(X; Y) \leq \log |\mathcal Y| - H(\mathbf r)$ where $\mathbf r$ is a row
+of the transition matrix ($p(:|x)$). 
+\end{itemize}
+
+\paragraph{Weakly Symmetric Channels: } Rows are all permutations of eachother
+and all columns sum to the same value. Capacity is still $C = \log |\mathcal Y|
+- H(\mathbf r)$ and is still achieved by a uniform distribution on the input.
 
 
 
