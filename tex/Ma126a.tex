@@ -749,7 +749,7 @@ one character, etc.
 \item At the deepest layer $\ell$, there are $D^\ell$ leaf nodes.
 \item Each non-leaf node on layer $\ell_i$ has $D^{\ell - \ell_i}$ descendants.
 \textbf{To maintain prefix quality}, all descendants are eliminated!
-\item The number of descendants on the final layer must sum to $D^{\ell_max}$. 
+\item The number of descendants on the final layer must sum to $D^{\ell_{max}}$. 
 \item Manipulate these equations and the inequality will pop out :)
 \end{itemize}
 \end{theorem}
@@ -935,7 +935,7 @@ $D^m$ of those. So all of a sudden, we have
 		\implies \sum_{x \in \mathcal X} D^{-\ell(x)} &\leq 1
 	\end{align}
 	With the last transformation justified by the fact that $\lim_{k\to\infty}
-	\ell_max k = 1$
+	\ell_{max} k = 1$
 
 \item Therefore Kraft's inequality holds not only for prefix codes, but for all
 UD codes \qedsymbol{}.
@@ -952,6 +952,140 @@ UD codes \qedsymbol{}.
 
 
 \section{Huffman Codes}
+
+Huffman coding is provably optimal -- that is, it yields the minimum possible
+expected code length $L = \mathbb E_{p(x)}[\ell(x)]$. The general idea is to
+continually generate a \textbf{shared prefix} for the $D$ least likely remaining
+symbols. Once grouped, the codes for each of the least likely symbols will only
+differ in the last code character. The weird \textbf{recursive} part of the
+algorithm is how the new \textbf{shared prefix} is treated like a single source
+symbol in the next iteration -- hence why the algorithm is so popular as a
+dynamic programming/recursion exercise. 
+
+Overall, the intuition boils down to this: compression is aided by
+\textbf{degeneracy} -- when very similar codes can represent many different
+objects. This is an exploitation in the structure of the data: every time we
+group together the least likely terms, we are \textbf{adding 1} to their code
+length. The other symbols that were untouched essentially get to survive another
+iteration without having a character added to their code. In many ways, this is
+like the opposite of PCA, matching pursuit, and other compression techniques
+that first generate representations of information contained in the \textbf{most
+common} elements. One can also connect the ideas behind Huffman coding to
+concepts in \textbf{search} -- unlike most search algorithms where the
+performance is averaged evenly across search time to all elements, Huffman codes
+incorporate \textbf{weights} (i.e., probability of a source token) into the
+search procedure. You can even have the weights violate the ``sum to 1'' rule of
+probability distributions. Best of all, it's still a provably optimal scheme
+with respect to code length/number of search queries!
+
+Overall, Huffman codes are pretty neat :) 
+
+\paragraph{Algorithm Sketch:} 
+\begin{enumerate}
+	\item Construct a table of source symbols $x\in \mathcal X$ and their
+	probabilities $p(x)$. Order this table from high to low probability.
+	\item For $D \geq 3$, add dummy symbols with $0$ probability such that the
+	number of symbols is $1 + k(D-1)$ for integer $k$.
+	\item \textbf{For each iteration:} Combine the least likely $D$ symbols into one
+	symbol for the next iteration.
+	\begin{enumerate}
+		\item Draw arrows from each of the combined symbols to a new entry in a
+		new probability column. Assign each arrow a number from $\{0,\dots,D\}$.
+		\item Repeat this process with the new probability column. 
+	\end{enumerate}
+	\item The result of this iterative procedure will be a tree-like structure
+	with each path ending at a single symbol in the final column with
+	probability $1$.
+	\item To construct the codes for each source symbol: Follow the arrows back
+	from the $\Pr = 1$ top-level node. 
+\end{enumerate}
+
+
+
+
+\subsection{Optimality of Huffman Codes}
+
+Like with most recursive algorithms, the proof for correctness/optimality is
+inductive. The central idea to keep in mind is our \textbf{optimality
+condition}: we with to solve $\min \sum p_i \ell_i$. 
+
+
+\paragraph{Big Picture: } To prove the optimality of Huffman codes, we will do the following: 
+\begin{enumerate}
+\item \textbf{Canonical codes}: Optimal codes can be hard to reason about since there are lots of
+different optimal codes. Some will be prefix codes, others won't. Therefore, the
+first thing we do is \textbf{narrow the search} for optimal codes to a certain
+class. To do this, we need to prove the existence of optimal codes of this
+class. We call these codes ``\textbf{canonical codes}'', and their properties
+will enable the rest of the proof.
+\item \textbf{Induction}: Now that we have established what a ``canonical code''
+is, we get to the fun part! We start by naming the ``combine the $D$ least
+likely symbols'' operation from the Huffman code generation process a
+``\textbf{Huffman reduction}''. We then show that, assuming that the code of the
+\textbf{reduced} set of symbols is optimal/canonical, then so will the
+\textbf{unreduced} code.
+\end{enumerate}
+
+
+So, let's get started! First, we define a \textbf{canonical code}.
+\begin{theorem}{Existence of Canonical Codes}
+For all $p(x)$, there exists an \textbf{optimal source code} with the following
+properties: 
+\begin{enumerate}
+\item $p(x_1) > p(x_2) \implies \ell(x_1) \leq \ell(x_2)$.
+\item The two longest $\ell(x_i), \ell(x_j)$ are equal. 
+\item The two longest $c(x_i), c(x_j)$ differ \textbf{only in the final bit}.
+They also correspond to the \textbf{least likely source symbols}.
+\end{enumerate}
+
+We call optimal codes with these properties \textbf{canonical codes} (it sounds
+awfully clever).
+
+\textbf{Proof sketch:} 
+\begin{itemize}
+\item How to show $p(x_1) > p(x_2) \implies \ell(x_1) \leq \ell(x_2)$: 
+	\begin{enumerate}
+	\item Imagine swapping the codewords for $x_1, x_2$. 
+	\item Then the sum $\sum p_i \ell_i$ will be strictly greater than if they
+	were unswapped \qedsymbol{}
+	\end{enumerate}
+
+\item How to show that the two longest $\ell(x_i), \ell(x_j)$ will have the same
+lengths: 
+	\begin{enumerate}
+	\item \texttt{Assume toward a contradiction} that they have different
+	lengths. 
+	\item Recall the prefix property: the second longest cannot be a prefix of
+	the longest. 
+	\item Therefore deleting the last character(s) of the longest would yield a
+	shorter code that is still unique.
+	\item This would strictly reduce $\mathbb E[\ell(x)]$! \qedsymbol{}
+	\end{enumerate}
+
+\item How to show that the two longest codes only differ in the final bit AND
+correspond to the lowest probability symbols: 
+	\begin{enumerate}
+	\item For an optimal prefix code, imagine that the longest two codes are NOT
+	siblings. That is, they differ in more than just the final bit. 
+	\item Then we should be able to delete the last bit of each of them and
+	still have a UD/prefix code (since none of the other codes will be prefixes
+	of them). 
+	\item We can also just make them siblings with no cost to code lengths.
+	\item Therefore, the longest two codes should only differ in the last bit.
+	They should also correspond to the lowest probability $x\in \mathcal X$
+	given property (1) \qedsymbol{}
+	\end{enumerate}
+
+
+
+\end{itemize}
+
+
+
+\end{theorem}
+<++>
+
+
 
 
 
