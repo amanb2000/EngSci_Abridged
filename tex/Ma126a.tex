@@ -1280,6 +1280,8 @@ function w.r.t. $p(x)$. Therefore local optima are global optima.
 
 
 
+
+
 \section{Symmetric Channels}
 
 Symmetric channels are great. Can't get enough of them. Nobody loves symmetric
@@ -1300,6 +1302,260 @@ of the transition matrix ($p(:|x)$).
 \paragraph{Weakly Symmetric Channels: } Rows are all permutations of eachother
 and all columns sum to the same value. Capacity is still $C = \log |\mathcal Y|
 - H(\mathbf r)$ and is still achieved by a uniform distribution on the input.
+
+
+
+
+
+\section{Channel Coding Theorem}
+
+\begin{theorem}{Channel Coding Theorem}
+For a discrete memoryless channel, all rates $R < C$ are achievable.
+\end{theorem}
+
+Yup, that's the big takeaway. We need to go through a lot to prove it, though.
+We start with defining some error probability metrics and what exactly
+``achievable'' means. To keep things classy and WLLN-ish, we do most of this in
+the $n\to \infty$ regime. That lets us invoke AEP theorem and assume that pretty
+much every input/output is \textbf{jointly typical} (which we will also need to
+define -- it's not that bad though). After all that, we're ready to prove the
+channel coding theorem. We do this by randomly generating our codewords, then
+focusing on just the first one $c(x_1)$. Since everything's random, $c(x_1)$ can
+stand in for every codeword when we calculate the probability of error. The
+receiver just uses \textbf{joint typicality decoding} to determine which output
+input sequence $x^n$ matches the received $y^n$. Thanks to AEP stuff, error goes
+to zero and everyone's happy.
+
+So let's get cracking with all the definitions and theorems! Lots to do.
+
+
+
+
+
+
+\subsection{Definitions}
+
+\paragraph{Discrete memoryless channel: } Defined above, represented as
+$\mathcal X, p(y | x), \mathcal Y)$.
+
+\paragraph{$n$th extension of DMC: } Since there's no memory, $(\mathcal X^n,
+p(y^n | x^n), \mathcal Y^n$ is well defined. Just let $p(y^n | x^n) =
+\prod_{i=1}^n p(y_i | x_i)$.
+
+\paragraph{$(M, n)$ code: } Given a set of $M$ messages $\{1, \dots, M\}$, the
+$(M, n)$ code gives an encoding function $X^n: \{1, \dots, M\} \to \mathcal
+X^n$. It essentially uses $n$-long sequences from alphabet $\mathcal X$ to
+encode one of $M$ messages. It also gives a decoding function $g: \mathcal Y^n
+\to \{1, \dots, M\}$. It's a more general scheme than it may seem since the $M$
+messages can apply to any collection of $M$ objects -- maybe even source codes. 
+
+\paragraph{Conditional probability of error: } Given that our input message is
+$i \in \{1, \dots, M\}$, the conditional probability of error $\lambda_i$ is 
+\begin{align}
+	\lambda_i &= \Pr \{g(Y^n) \neq i | X^n = x^n(i)\} \\ 
+	&= \sum_{y^n \in \mathcal Y^n} p(y^n | x^n(i)) \mathbb I [g(y^n) \neq i] \\
+\end{align}
+
+\paragraph{Maximum probability of error: } $\lambda^{(n)}$ is exactly what it
+sounds like: 
+\begin{equation}
+	\lambda^{(n)} = \max_{i\in [M]} \lambda_i
+\end{equation}
+
+\paragraph{Arithmetic average error probability: } Also exactly what it sounds
+like. 
+\begin{equation}
+	P_e^{(n)} = \frac{1}{M} \sum_{i=1}^{M} \lambda_i
+\end{equation}
+It's the general error probability if input messages are chosen uniformly from
+$[M]$.
+
+
+\paragraph{Rate of $(M, n)$ code: } Number of bits per transmission
+\begin{equation}
+R = \frac{\log M}{n} 
+\end{equation}
+
+Though not all rates are \textit{achievable}...
+
+\paragraph{Achievability: } A rate $R$ is achievable if $\exists$ a
+\textbf{sequence} of $(\lceil 2^{nR}\rceil, n)$ codes such that 
+\begin{equation}
+	\lim_{n\to \infty} \lambda^{(n)} = 0
+\end{equation}
+
+\paragraph{Capacity: } The \textbf{supremum} of all \textbf{achievable} rates.
+Importantly, this implies that a rate less than the capacity implies that an
+error probability approaching zero with large block sizes is possible!
+
+
+
+
+
+\subsection{Joint Typicality}
+
+\begin{theorem}{Jointly Typical Sets Definition}
+$A_\epsilon^{(n)} = \{(x^n, y^n)\}$ are the set of $\{(x^n, y^n)\}$ that have
+\textbf{sample entropies} that are $\epsilon$-close to the true entropies
+(calculated by $p(x^n,y^n)$). 
+
+\begin{align}
+A_\epsilon^{(n)} = \{ & (x^n, y^n) \in \mathcal X^n \times \mathcal Y^n: \\ 
+& \big| \frac{-1}{n} \log p(x^n) - H(X) \big| \leq \epsilon, \\ 
+& \big| \frac{-1}{n} \log p(y^n) - H(Y) \big| \leq \epsilon, \\ 
+& \big| \frac{-1}{n} \log p(x^n, y^n) - H(X,Y) \big| \leq \epsilon, \\ 
+\}&
+\end{align}
+\end{theorem}
+
+
+\begin{theorem}{Joint AEP}
+Let $(X^n, Y^n)$ be sequences generated with with distribution $p(x^n, y^n) =
+\prod_{i=1}^n p(x_i, y_i)$ (iid). Then 
+
+\begin{align}
+\Pr\{ (X^n, Y^n) \in A_\epsilon^{(n)} \} &\to 1 \text{ as } n\to \infty \\
+|A_\epsilon^{(n)}| & \leq 2^{n(H(X, Y) + \epsilon)} \\ 
+\Pr\{ (\tilde X^n, \tilde Y^n) \in A_\epsilon^{(n)} \} & \leq 2^{-n(I(X; Y) - 3\epsilon)} \\
+\Pr\{ (\tilde X^n, \tilde Y^n) \in A_\epsilon^{(n)} \} & \geq (1-\epsilon)2^{-n(I(X; Y) + 3\epsilon)} 
+\end{align}
+
+Where $(\tilde X^n, \tilde Y^n) \sim p(x^n)p(y^n)$ are \textbf{independently
+sampled} sequences.
+\end{theorem}
+
+The big upside are those last two statements -- as long as you increase $n$, the
+probability of incorrectly associating two $\tilde X^n, \tilde Y^n$ that aren't
+actually sampled from $p(x,y)$ is vanishingly small as long as you use jointly
+typical decoding. 
+
+\paragraph{Proof sketch: Probability of $A_\epsilon^{(n)} \to 1$ } Literally
+just use the law of large numbers. Sample entropy convergest to expected value
+which is the actual entropy for all 3 of the conditions in the definition of
+$A_\epsilon^{(n)}$.
+
+\paragraph{Proof sketch: $|A_\epsilon^{(n)}| \leq 2^{n(H(X, Y) + \epsilon)}$ }
+The definition states the max/min probability of the sequence $(x^n, y^n)$ is
+it's in $A_\epsilon^{(n)}$ -- you just need to rephrase the entropy constraint.
+Using this, and the fact that the probability of the typical set in total is
+less than 1, you get this bound.
+
+\paragraph{Proof sketch: Independently sampled sequences have low probability in
+typical set. } This proof is actually a little cursed. I'm just going to have to
+write the 3 cursed lines:
+\begin{align}
+	\Pr \big( (\tilde X, \tilde Y) \in A_\epsilon^{(n)} \big) &= \sum_{(x^n,
+	y^n) \in A_\epsilon^{(n)}} p(x^n)p(y^n) \\ 
+	&\leq \underbrace{ 2^{n(H(X, Y) + \epsilon)} }_{|A_\epsilon^{(n)}|} 
+		\cdot \underbrace {
+			2^{-n( H(X) - \epsilon )} \cdot 2^{-n( H(Y) - \epsilon )}
+		}_{\text{Max } p(\tilde x^n), p(\tilde y^n): (\tilde x^n, \tilde y^n) \in A_\epsilon^{(n)} }
+		\\ 
+	&= 2^{-n (I(X; Y) - 3\epsilon)}
+\end{align}
+
+
+
+
+
+
+\subsection{Proof of Channel Coding Theorem}
+
+Finally we can get to the channel coding theorem proof! After all the work we
+have put in, it's not so bad -- the starting point is easy to forget, though.
+
+
+
+\paragraph{Messaging Procedure for Channel Coding Theorem: } Just to make it
+completely clear, this is the procedure we use to transmit and receive messages
+under the channel coding theorem:
+\begin{enumerate}
+\item Sender selects some message $W\in [M]$ from the index set to send. We
+generally assume that this is uniformly sampled. 
+\item Sender encodes $i$ as $x^n(W) \in \mathcal X^n$ -- the codeword for index
+set message $W$.
+	\begin{itemize}
+	\item The ``codebook'' $C$ consists of all $x^n(w): \; w\in [M]$. 
+	\end{itemize}
+
+\item Sender chucks $x^n(i)$ into the channel $p(y^n| x^n)$ and the receiver
+samples $y^n$ from that channel's probabilistic output.
+\item The receiver \textbf{guesses} the original message $W$ using the following
+estimation procedure: We find $\hat W$ such that
+	\begin{itemize}
+	\item Find $\hat W: (x^n(\hat W), y^n) \in A_\epsilon^{(n)}$ -- i.e.,
+	jointly typical decoding.
+	\item \textbf{Non-Unique Case} If $\nexists W' \neq \hat W$ such that
+	$(x^n(W'), y^n) \in A_\epsilon^{(n)}$ AND $(x^n(\hat W), y^n) \in
+	A_\epsilon^{(n)}$, \textbf{RETURN ERROR}.
+	\end{itemize}
+\end{enumerate}
+
+Our goal is essentially to understand the bounds on error probabilities
+associated with this procedure. Errors occur when we return \textbf{ERROR} and
+also when we incorrectly decode $\hat W$ -- i.e., $\hat W \neq W$.
+
+
+
+
+\paragraph{Starting the Channel Coding Theorem Proof: } Our goal is to show that
+all rates of transmission $R < C$ are \textbf{achievable} -- that is, we can
+construct a sequence of $(M, n)$ codes with that rate $R$ such that the
+\textbf{maximum error probability} $\lambda^{(n)}$ goes to zero as $n$ goes to
+infinity.
+
+That's all a bit of a mouthful, but you should read it until it's seared into
+your memory. We start the channel coding theorem by replacing $M$ with $2^{nR}$
+in the $(2^{nR}, n)$ code statement. Recall that rate $R = \log(M) / n$. So for
+any given $n, R$, setting $M := 2^{nR}$ will guarantee that rate. From there,
+you just have to prove \textbf{achievability} -- that $\lambda^{(n)} \to 0$.
+
+So, to summarize our roadmap: 
+\begin{enumerate}
+\item We want to show that rates $R < C$ are achievable. 
+\item Achievability of $R$ $\equiv$ $\exists$ a sequence of $(M, n)$ codes with
+rate $R$ such that max error probability $\lambda^{(n)} \to 0$ as $n\to \infty$.
+\item We set $M := 2^{nR}$. This yields a code with rate $R = \log (M)/n =
+\log(2^nR)/n = R$. 
+\item To show \textbf{achievability}, we now just need to show that
+$\lambda^{(n)} \to 0$ for some sequence of codes!
+\end{enumerate}
+
+
+\paragraph{Random Codes: Big Idea 1 } As everyone likes to harp on about,
+Shannon was a very clever guy. One of the clever things he did was use
+\textbf{random codes} to prove the channel coding theorem. For each of the $M =
+2^{nR}$ input messages, he generated a random $x^n(i):\; i\in [M]$ where each
+index $x_j\sim p(x)$ for some fixed $p(x)$. We then show that $\lambda^{(n)} \to
+0$ under the condition $R < C$ when we use \textbf{joint typicality decoding}.
+Hopefully this makes you glad we did all that stuff with joint AEP, because we
+basically just get to yeet that in at the end to prove that the error rates go
+to zero. 
+
+
+\paragraph{Bound Error Rate for $x^n(1)$: Big Idea 2 } Another life hack we get
+to use in the proof is to use $x^n(1)$ (i.e., the codeword for input number 1
+from index set $[M] = 2^{nR}$) as a stand-in for all $x^n(i)$ when bounding
+error probabilities. This is allowable since all the $x^n(i)$ were generated
+randomly using the same process. This really improves our quality of life over
+the course of the proof. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1329,7 +1585,12 @@ stuff works for continuous random variables.
 
 
 
+\chapter{Annoying Mechanical Procedures} 
 
+Have you ever dreamed of being an automaton? Do you wish that electronic
+computers had never been invented so that you could be a professional human
+computer? If you answered yes to either of these questions, this chapter is for
+you!
 
 \section{Sardinas-Patterson Test for Unique Decodability}
 
