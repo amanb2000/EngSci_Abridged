@@ -1631,15 +1631,14 @@ rate $R' = R - \frac 1 n$, but we get in return $\max \lambda_i = 4\epsilon$!
 That's pretty much it! 
 
 
+\section{Converse to Channel Coding Theorem}
+\textit{Todo} 
 
+\section{Hamming Codes}
+\textit{Todo} 
 
-
-
-
-
-
-
-
+\section{Feedback Codes} 
+\textit{Todo} 
 
 
 
@@ -1657,6 +1656,167 @@ noticed that many things are actually continuous and not discrete. Unfortunately
 for you, we've spend most of the course looking at discrete distributions and
 codes, so now we need to make great haste to cover our ass and make sure this
 stuff works for continuous random variables. 
+
+
+\section{Differential Entropy}
+
+Differential entropy is defined for \textbf{continuous random variables} with
+CDF $F(x)$ and PDF $f(x)$. A term that often comes up is the ``support set'' of
+$f(x)$ -- it's just $S = \{x\in \mathcal X : \; f(x) > 0\}$. Because god forbid you
+just say "regions where $f(x)>0$...
+
+It's also good to keep in mind that the existence of integrals and PDF's can't
+be taken for granted. Everything is qualified with ``if it exists''. 
+
+
+\paragraph{Differential Entropy Definition: } 
+\begin{align}
+	h(X) &= - \int_{S} f(x) \log f(x) dx \\ 
+		 &= - \mathbb E_{f(x)} [\log f(x)] 
+\end{align}
+
+Concerningly, you can have negative differential entropies. You can interpret
+$n+h(X)$ as the \textbf{number of bits} required to get $n$-bit accuracy on $X$.
+The reason you can have negative $h(X)$ is that sometimes you can get $n$-bit
+accuracy with less than $n$ bits -- e.g., if you know the RV $X$ will
+\textbf{always} have 3 leading zeros, you get 3 bits of accuracy for ``free''. 
+
+
+\subsection{Discrete $\to$ Differential Entropy}
+
+We can connect discrete entropy to differential entropy much like how we make
+most continuity arguments: we quantize differential entropy into progressively
+finer discrete Riemann-like approximations of the PDF $f(x)$, then we
+congratulate ourselves when it converges to our definition of differential
+entropy.
+
+\paragraph{Quantization Definition: } For any continuous random variable $X$, we
+define the quantization $X^\Delta$ with ``bin length'' $\Delta$ as 
+\begin{align}
+	X^\Delta = x_i &\text{ if } i \Delta \leq X \leq (i+1)\Delta \\
+	\iff \Pr(X^\Delta = x_i) &= f(x_i) \Delta 
+\end{align}
+
+
+\paragraph{Convergence of Quantized Entropy $\to$ Differential Entropy: }
+Assuming that $f(x)\log f(x)$ is \textbf{Riemann integrable}, we have a pretty
+straight-forward convergence of $H(X^\Delta) + \log \Delta \to h(X)$ as $\Delta \to 0$.
+\begin{equation}
+	H(X^\Delta) + \log \Delta \to h(X) \text{  as } \Delta \to 0
+\end{equation}
+
+In other words, the entropy of an $n$-bit quantization of continuous variable
+$X$ (i.e., $-\log \Delta$-bit) has discrete entropy approximately equal to $h(X)
++ n$. The number of partitions is roughly $1/\Delta$ which would require $\log
+(\frac 1 {\Delta})$ bits.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Examples of Differential Entropy}
+
+\paragraph{Uniform Distribution Entropy: } Let 
+\begin{equation}
+	f(x) = \begin{cases} 
+		\frac{1}{a} & \text{ if } x \in [0,a] \\
+		0 			& \text{ else}
+	\end{cases}
+\end{equation}
+
+Then $h(X) = \log(a)$ (just solve the integral). 
+
+
+\paragraph{Normal Distribution: } I strongly dislike solving integrals by hand,
+so I'm just going to put the result here.
+\begin{equation}
+	X \sim \phi(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp[\frac{-x^2}{2\sigma^2}]
+\end{equation}
+
+\begin{equation}
+	h(X) = \frac{1}{2} \log (2\pi e \sigma^2)
+\end{equation}
+
+
+
+
+
+
+\section{Joint and Conditional Differential Entropy}
+
+
+
+
+
+
+
+
+\section{AEP for Continuous Variables}
+
+All this essentially follows from the laws of large numbers, just like in the
+discrete case. 
+
+\begin{theorem}{AEP for Continuous Random Variables}
+Let $X_1, \dots, X_n$ be iid $\sim f(x)$. Then 
+
+\begin{equation}
+	\frac{-1}{n} \log f(X_1, \dots, X_n) \to \mathbb E[-\log f(X)] = h(X)
+\end{equation}
+
+in probability as $n\to \infty$.
+
+\textbf{Proof sketch:} Weak law of large numbers. The sample entropy converges
+to the underlying entropy because $h(X)$ is the expected value of the LHS.
+\end{theorem}
+
+
+
+Just like in the discrete case, typical sets are all sequences $x^n$ with sample
+entropies $\epsilon$-close to the underlying entropy.
+
+
+\begin{theorem}{Typical Sets for Continuous Random Variables (Definition)}
+
+For any $\epsilon > 0$ and any $n$, the typical set $A_\epsilon^{(n)}$ wrt
+$f(x)$ is 
+
+\begin{equation}
+	A_\epsilon^{(n)} = \begin{Bmatrix}
+		x^n \in S^n : \left|  
+			\frac {-1} n \log f(x_1, \dots, x_n) - h(X) 
+		\right|
+		\leq \epsilon
+	\end{Bmatrix}
+\end{equation}
+
+Where $S$ is the support set of $f$, $f(x_1, \dots, x^n) = \prod_{i=1}^n
+f(x_i)$.
+\end{theorem}
+
+Most of the properties of the typical set are the same as in the discrete case.
+The main difference is that cardinality $\left| A_\epsilon^{(n)} \right|$ is
+replaced by volume $\text{Vol} \left( A_\epsilon ^{(n)} \right)$
+
+
+
+
+
+
+
+
+\paragraph{Big Takeaways: } 
+\begin{itemize}
+\item 
+\end{itemize}
+
+
 
 
 
