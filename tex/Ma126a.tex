@@ -1682,6 +1682,128 @@ accuracy with less than $n$ bits -- e.g., if you know the RV $X$ will
 \textbf{always} have 3 leading zeros, you get 3 bits of accuracy for ``free''. 
 
 
+
+
+
+
+
+
+\begin{theorem}{Chain Rule for Differential Entropy}
+\begin{equation}
+	h(X_1, \dots, X_n) = \sum_{i=1}^{n} h(X_i | X_{1:i-1}
+\end{equation}
+
+\textbf{Proof sketch:} Same as for discrete case. 
+\end{theorem}
+
+\begin{theorem}{Hadamard's Inequality}
+Let $\mathbf X \sim \mathcal N(0, \mathbf K)$. Then 
+\begin{equation}
+	|\mathbf K| \leq \prod_{i=1}^n \mathbf K_{ii}
+\end{equation}
+
+\textbf{Proof sketch:} Based on the chain rule for differential entropy plus the
+fact that conditioning always reduces entropy: 
+\begin{equation}
+	h(X_{1:n}) = \sum_{i=1}^{n} h(X_i | X_{1:i-1}) \leq \sum_{i=1}^{n} h(X_i)
+\end{equation}
+
+And we know that the diagonals contain the variances of each independnet $X_i$.
+\end{theorem}
+
+
+\begin{theorem}{Translation Doesn't Affect Differential Entropy}
+\begin{equation}
+	h(X + c) \equiv h(X)
+\end{equation}
+\end{theorem}
+
+\begin{theorem}{Scaling Affects Differential Entropy}
+\begin{equation}
+	h(aX) = h(X) +\log a
+\end{equation}
+
+\textbf{Proof sketch:} Let $Y = aX$. Then $Y$'s PDF is
+\begin{equation}
+	f_Y(Y) = \frac{1}{|a|} f_X(\frac y a)
+\end{equation}
+
+Now solving for $h(aX) = h(Y)$ via the integral definition of differential entropy:
+\begin{align}
+h(aX) 	&= -\int f_Y(y) \log f_Y(y) dy \\
+		&= -\int \frac{1}{|a|} f_X(y/a)	\log \left(  \frac{1}{|a|}
+		f_X(\frac{y}{a}) \right) \\
+		&= -\int f_X(x) \log f_x(x) dx + \log |a| \\
+		&= h(X) + \log |a|
+\end{align}
+\end{theorem}
+
+
+\begin{theorem}{Differential Entropy of Linear Transformation on Multivariable}
+\begin{equation}
+	h(\mathbf A \mathbf X) = h(\mathbf X) + \log |\det(\mathbf A)|
+\end{equation}
+
+\textbf{Proof sketch:} This is a corollary of ``Scaling Affects Differential
+Entropy''.
+\end{theorem}
+
+
+
+\begin{theorem}{Multivariate Normal has Maximum Entropy over All Distributions
+with the same Covariance Matrix}
+
+Let $\mathbf X \in \mathbb R^n$ be a random variable with $\mathbf \mu = 0$,
+$\mathbf K = \mathbb E \left[ \mathbf X \mathbf X^\top \right]$. Then 
+
+\begin{equation}
+	h(\mathbf X) \leq \frac{1}{2} \log (2\pi e)^n \left| \mathbf K \right|
+\end{equation}
+
+With equality \textbf{iff} $\mathbf X \sim \mathcal N(0, \mathbf K)$.
+
+\textbf{Proof sketch:} You start with $g$ as a density with the same covariance
+as $\phi \sim \mathcal N(0, \mathbf K)$. You then expand the expression $0 \leq
+D(g \| \phi)$ to recover $h(g), h(\phi)$ -- this os only possible because ``$g,
+\phi$ give the same moments in $\log \phi(\mathbf x)$'', which isn't
+really elaborated on in the textbook's proof. Regardless, you get equivalence
+between $D(g \| \phi) = h(\phi) - h(g)$, and since $D \geq 0$, you prove that
+$h(\phi)$ is the upper bound on $h(g)$ with the same covariance.
+\end{theorem}
+
+
+\begin{theorem}{Estimator Error Bound from Differential Entropy}
+For any random variable $X$ and estimator $\hat X$, 
+\begin{equation}
+	\mathbb E\left[ X - \hat X \right]^2 \geq \frac{1}{2\pi e} e^{2 h(X)}
+\end{equation}
+
+With equality \textbf{iff} $X$ is gaussian and $\hat X = \mu_X$.
+
+\textbf{Proof sketch:} Let's solve for the minimum expected squared error.
+\begin{itemize}
+\item $\hat X = \mathbb E[X]$ is the best estimator.
+\item $\mathbb E \left[ X - \mathbb E[X] \right]^2 \equiv \text{var}(X)$.
+\item Leveraging ``Gaussian maximizes entropy for constant variance'', we can
+then bound $\text{var}(X)$ as
+\begin{equation}
+	\text{var}(X) \geq \frac{1}{2\pi e} e^{2h(X)}
+\end{equation}
+\end{itemize}
+\qedsymbol{}
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Discrete $\to$ Differential Entropy}
 
 We can connect discrete entropy to differential entropy much like how we make
@@ -1718,10 +1840,82 @@ $X$ (i.e., $-\log \Delta$-bit) has discrete entropy approximately equal to $h(X)
 
 
 
+\section{Joint and Conditional Differential Entropy}
+
+\paragraph{Conditional Differential Entropy: } Let $X, Y \sim f(x,y)$ be
+continuous random variables. Then 
+\begin{align}
+	h(X|Y) &= - \int_{x,y} f(x,y) \log\big( f(x|y) \big) dx dy \\
+		   &= h(X,Y) - h(Y)
+\end{align}
+
+Note: some of these values may be infinite!
+
+
+\paragraph{Joint Differential Entropy: } 
+\begin{align}
+	h(X,Y) &= - \int_{x,y} f(x,y) \log \big( f(x,y)\big)
+\end{align}
 
 
 
-\subsection{Examples of Differential Entropy}
+\paragraph{Differential Relative Entropy (KL Divergence): } $D(f \| g)$ is given
+by 
+\begin{equation}
+	D(f \| g) = \int f \log \frac{f}{g} 
+\end{equation}
+
+This is finite iff $\text{support}(f) \subseteq \text{support}(g)$.
+
+\paragraph{Non-negativity of Relative Entropy: } To prove that $D(f\|g)$ is
+non-negative, start with the integral definition. Use Jensen's inequality to
+move the $\log$ out of the integral. Cancel the $f$'s and come to the conclusion
+that $-D(f\|g)\leq \log 1 = 0$.
+\begin{itemize}
+\item Implies that $I(X; Y) \geq 0$ with equality for independent $X, Y$.
+\item Implies that $h(X | Y) \leq h(X)$ with equality for independent $X, Y$.
+\end{itemize}
+
+
+
+
+
+
+\paragraph{Differential Mutual Information: } 
+\begin{align}
+I(X; Y) &= \int f(x,y) \log \frac{f(x,y)}{f(x)f(y)} dxdy \\ 
+		&= h(X) - h(X|Y) \\
+		&= h(Y) - h(Y|X) \\
+		&= h(X) + h(Y) - h(X, Y) \\
+		&= D\left( f(x,y) \| f(x)f(y)  \right)
+\end{align}
+
+\paragraph{Master Definition of Differential Mutual Information: } $I(X^\Delta;
+Y^\Delta) \to I(X; Y)$ as $\Delta \to 0$. More generally, 
+\begin{equation}
+	I(X; Y) = \sup_{\mathcal P, \mathcal Q} I([X]_{\mathcal P} ; [Y]_{\mathcal Q})
+\end{equation}
+
+Where $\mathcal P, \mathcal Q$ are \textbf{finite partitions} of $\mathcal X,
+\mathcal Y$. This means that $\cup_i P_i = \mathcal X$ and $\cup_i Q_i =
+\mathcal Y$. This is a pretty robust definition since it works even if the PDF's
+aren't well defined. As above with $\Delta\to 0$, ``continual refinements'' of
+$\mathcal P, \mathcal Q$ make a monotonically increasing $I([X]_{\mathcal P} ;
+[Y]_{\mathcal Q}) \to I(X; Y)$
+
+
+
+Properties for MI, relative entropy are essentially the same as in the discrete
+case. 
+
+
+
+
+
+
+
+
+\section{Examples Differential Entropy Calculations}
 
 \paragraph{Uniform Distribution Entropy: } Let 
 \begin{equation}
@@ -1734,7 +1928,7 @@ $X$ (i.e., $-\log \Delta$-bit) has discrete entropy approximately equal to $h(X)
 Then $h(X) = \log(a)$ (just solve the integral). 
 
 
-\paragraph{Normal Distribution: } I strongly dislike solving integrals by hand,
+\paragraph{Normal Distribution Entropy: } I strongly dislike solving integrals by hand,
 so I'm just going to put the result here.
 \begin{equation}
 	X \sim \phi(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp[\frac{-x^2}{2\sigma^2}]
@@ -1745,11 +1939,33 @@ so I'm just going to put the result here.
 \end{equation}
 
 
+\paragraph{Mutual Informatioon between Correlated Gaussians: } Let $\rho$ be the
+correlation coefficient and $(X, Y)\sim \mathcal N (0, \mathbf K)$ where 
+\begin{equation}
+	\mathbf K = \begin{bmatrix}
+		\sigma^2      &  \rho \sigma^2 \\
+		\rho \sigma^2 &  \sigma^2      \\
+	\end{bmatrix}
+\end{equation}
+
+Then the following are true: 
+\begin{itemize}
+\item $h(X) = h(Y) = \frac 1 2 \log (2 \pi e)\sigma^2$.
+\item $h(X, Y) = \frac{1}{2} \log (2\pi e)^2 |\mathbf K|$.
+\end{itemize}
+\begin{equation}
+	\therefore I(X; Y) = \underbrace{
+		\frac{-1}{2} \log (1-\rho^2)
+	}_{
+		h(X) + h(Y) - h(X,Y)
+	}
+\end{equation}
 
 
 
 
-\section{Joint and Conditional Differential Entropy}
+
+
 
 
 
@@ -1782,7 +1998,7 @@ Just like in the discrete case, typical sets are all sequences $x^n$ with sample
 entropies $\epsilon$-close to the underlying entropy.
 
 
-\begin{theorem}{Typical Sets for Continuous Random Variables (Definition)}
+\begin{theorem}{Definition: Typical Sets for Continuous Random Variables}
 
 For any $\epsilon > 0$ and any $n$, the typical set $A_\epsilon^{(n)}$ wrt
 $f(x)$ is 
@@ -1802,19 +2018,56 @@ f(x_i)$.
 
 Most of the properties of the typical set are the same as in the discrete case.
 The main difference is that cardinality $\left| A_\epsilon^{(n)} \right|$ is
-replaced by volume $\text{Vol} \left( A_\epsilon ^{(n)} \right)$
+replaced by volume $\text{Vol} \left( A_\epsilon ^{(n)} \right)$.
+
+\paragraph{Volume Definition: } For a set $A \subset \mathbb R^n$, the volume is
+defined as 
+\begin{equation}
+	\text{Vol}(A) = \int_A dx_1 dx_2 \dots dx^n
+\end{equation}
 
 
 
 
+\begin{theorem}{Properties: Typical Sets for Continuous Random Variables}
+Let $A_\epsilon^{(n)}$ be the typical set of $n$-long sequences iid $\sim f(x)$.
+Then 
+
+\begin{equation}
+	\label{eqn:cts_typical_prob}
+	\Pr(A_\epsilon^{(n)}) > 1-\epsilon \text{ for $n$ sufficiently large} 
+\end{equation}
+
+\begin{equation}
+	\label{eqn:typical_volume_lower_bound}
+	\text{Vol}(A_\epsilon^{(n)}) \leq 2^{n(h(X) + \epsilon)} \text{ for all $n$}
+\end{equation}
+
+\begin{equation}
+	\label{eqn:typical_volume_upper_bound}
+	\text{Vol}(A_\epsilon^{(n)}) \geq (1-\epsilon) 2^{n(h(X) - \epsilon)} \text{
+	for $n$ sufficiently large}
+\end{equation}
+
+\textbf{Proof sketch:} 
+\begin{enumerate}
+\item $\Pr(A_\epsilon^{(n)}) > 1-\epsilon$ for large $n$ because all sequences
+have probability that converges to $2^{nh(X)}$ for $n$ sufficiently large.
+Therefore one can always pick some $n$ given a desired $\epsilon$ value such
+that the condition is satisfied. 
+\item $\text{Vol}(A_\epsilon^{(n)}) \leq 2^{n(h(X) + \epsilon)}$ because the
+probability of $A_\epsilon^{(n)}$ cannot exceed 1. Since the minimum probability
+if an element in the set is $2^{-n(h(X) + \epsilon)}$, we can work this out just
+like in the discrete case. 
+\item $\text{Vol}(A_\epsilon^{(n)}) \geq (1-\epsilon)2^{n(h(X) - \epsilon)}$
+because the probability of $A_\epsilon^{(n)} > 1-\epsilon$ according to property
+1. Apply the same reasoning as before to derive this limit (using the max
+probability of a given sequence the set).
+\end{enumerate}
+\end{theorem}
 
 
 
-
-\paragraph{Big Takeaways: } 
-\begin{itemize}
-\item 
-\end{itemize}
 
 
 
