@@ -1,6 +1,6 @@
 # Engineering Science, Abridged
 
-For certain classes in the UofT EngSci program (2T2) I've written typeset notes for future reference. They function mainly as a searchable database of key concepts/equations and as a way for me to organize my understanding of course content. 
+For certain classes in the UofT EngSci program (2T2) and Caltech's Computation and Neural Systems (CNS) PhD I've written typeset notes for future reference. They function mainly as a searchable database of key concepts/equations and as a way for me to organize my understanding of course content. 
 
 This repository is supercedes previous term-specific repositories (e.g. `EngSci_2.2_Abridged`). It also includes notes for classes from the Machine Intelligence option of the program.
 
@@ -11,6 +11,28 @@ See the [pdf](https://github.com/amanb2000/EngSci_Abridged/tree/main/pdf) folder
 
 ## Courses and Descriptions
 _Most recent first_
+
+### Ma126a: Information Theory
+
+[Ma126a](https://github.com/amanb2000/EngSci_Abridged/blob/main/pdf/Ma126a.pdf)
+
+The content of this course is based heavily on Cover and Thomas' "Elements of
+Information Theory", chapters 1-10. I focused on recording the main results and
+"sketches" of their proofs. Key concepts include: 
+ - Review of combinatorics, probability theory, and logarithm identities. 
+ - Entropy definitions. 
+	 - Jensen's inequality -- expectation on convex functions of random variables. 
+	 - Data processing inequality -- bounds on mutual information in Markov chains. 
+	 - Fano's inequality -- bounds on estimators for random variables. 
+ - Asymptotic Equipartition Theorem (AEP).
+ - Source coding theorem. 
+	 - Kraft inequality.
+	 - Huffman codes, Shannon codes, Hamming codes. 
+ - Entropies of Markov Processes.
+ - Discrete & continuous channel capacity.
+ - Channel coding theorem.
+ - Differential entropy, AEP for continuous variables.
+
 
 ### ECE368: Probabilistic Reasoning
 
