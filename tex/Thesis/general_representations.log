@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.30)  1 DEC 2023 07:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.30)  1 DEC 2023 08:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -217,39 +217,39 @@ Package pdftex.def Info: media/multitask_fig2a.png  used on input line 40.
 
 {/usr/local/texlive/2023basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2 <./media/multitask_fig2a.png>]
-Overfull \hbox (0.83685pt too wide) in paragraph at lines 121--127
+Overfull \hbox (0.83685pt too wide) in paragraph at lines 122--128
 \OT1/cmr/m/it/12 fi-ca-tion on ground truth in-put $\OT1/cmr/bx/n/12 x[]$ \OT1/
 cmr/m/it/12 w.r.t. de-ci-sion bound-aries $\OT1/cmr/m/n/12 ^^B = \OMS/cmsy/m/n/
 12 f\OML/cmm/m/it/12 []; [] ; []\OMS/cmsy/m/n/12 g$
  []
 
-[3] (./general_representations.aux) ) 
+[3] [4] (./general_representations.aux) ) 
 Here is how much of TeX's memory you used:
- 2689 strings out of 477476
- 39998 string characters out of 5824243
- 1858388 words of memory out of 5000000
- 22922 multiletter control sequences out of 15000+600000
+ 2691 strings out of 477476
+ 40045 string characters out of 5824243
+ 1859388 words of memory out of 5000000
+ 22924 multiletter control sequences out of 15000+600000
  522972 words of font info for 73 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 57i,13n,62p,374b,236s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023basic/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023basic/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023basic/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023basic/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023bas
-ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023
-basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2
-023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
-/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/lo
-cal/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
-></usr/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb>
-Output written on general_representations.pdf (3 pages, 248490 bytes).
+ 57i,13n,62p,374b,241s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023ba
+sic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/202
+3basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/
+2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texli
+ve/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
+cal/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></us
+r/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10
+.pfb></usr/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb>
+Output written on general_representations.pdf (4 pages, 250592 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

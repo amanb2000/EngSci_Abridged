@@ -79,6 +79,7 @@ facilitate some prediction of some output $\mathbf Y(t) = f(Z(t))$.
 
 
 \begin{definition}[Bayesian Filter Operation]
+	\label{def:bayesian_filter}
 	A discrete-time Bayesian filter updates latent variable $\mathbf z(t)$
 	based on incoming data $\mathbf x(t)$ by applying Bayes' theorem: 
 	\begin{align}
@@ -129,12 +130,14 @@ noisy discrete time measurement signals.
 \begin{proof}
 	\begin{lemma}[Equivalence to Angle Estimation] 
 		\label{lemma:angle_equiv}
-		In the limit as $N\to\infty$ for uniformly distributed decision boundaries
-		in $\Theta = \{\alpha_i\}_{i\in[N]}$, the multi-classification task of estimating 
-		$\mathbf y^*$ (Equation~\ref{eqn:boundaries}) for a given $\mathbf x^*$
-		given noisy observations $\mathbf X(t)$ is equivalent to estimating the
-		angle $\theta = \angle \mathbf x^*$. 
+		In the limit as $N\to\infty$ for uniformly distributed decision
+		boundaries in $\Theta = \{\alpha_i\}_{i\in[N]}$, the
+		multi-classification task of estimating $\mathbf y^*$
+		(Equation~\ref{eqn:boundaries}) for a given $\mathbf x^*$ given noisy
+		observations $\mathbf X(t)$ is equivalent to estimating the angle
+		$\theta = \angle \mathbf x^*$. 
 	\end{lemma}
+
 
 	\begin{lemma}[Angle Estimation Requires Magnitude Estimation]
 		\label{lemma:angle_to_magnitude}
@@ -144,10 +147,31 @@ noisy discrete time measurement signals.
 		magnitude of $\mathbf x^*$ within its latent $\mathbf Z(t)$. 
 	\end{lemma}
 	\begin{proof}
-		Recall that the update rule latent $\mathbf Z(t)$ in the Bayesian 
-		filter 
+		Recall that the update rule latent $\mathbf Z(t)$ in
+		Definition~\ref{def:bayesian_filter}. 
+		For Bayesian-optimal estimation of $\theta$ using latent $\mathbf Z(t)$
+		with readout map $f$ where $\hat\theta(t) = f(\mathbf Z(t))$, the
+		likelihood term $P\big(\mathbf X(t) | \mathbf Z(t)\big)$ must be
+		accurate.
+		Therefore, the latent representation must contain not only angle 
+		information on $\mathbf x^*$, but also magnitude information, as 
+		this information can be leveraged to narrow down the likelihood term, 
+		thus optimizing the estimation.
 	\end{proof}
 
+	Therefore, performing optimal multi-class classification in the limit as the 
+	number of tasks $N\to\infty$ with uniformly distributed boundary angles 
+	$\alpha_i\in \Theta$ is equivalent to estimating the angle of the ground truth 
+	$\mathbf x^*$ based on noisy $\mathbf X(t)$ (Lemma~\ref{lemma:angle_equiv}). 
+	Bayesian filtering for angle estimation requires that $Z(t)$ to maximally 
+	constrain the likelihood $P(\mathbf X(t) | \mathbf Z(t))$ to optimally 
+	weight the contribution of the new data $\mathbf X(t)$ in the new angle 
+	estimate $\hat\theta = f(Z(t))$. 
+
+	Thus we have demonstrated that both the angle information and the magnitude 
+	information of $\mathbf x^*$ must be implicitly estimated by an optimal 
+	Bayesian filter in multi-class classification problem $\Theta$ with non-zero
+	noise $\eta$ in the measurements $\mathbf X(t)$. 
 \end{proof}
 
 % Repeat for additional theorems/lemmas if necessary
