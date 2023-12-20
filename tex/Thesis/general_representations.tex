@@ -7,6 +7,8 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
+\setlength{\parindent}{0pt}
+
 \begin{document}
 
 \title{Bayesian-Optimal Multi-Classification with Noisy Input Necessitates
@@ -18,8 +20,10 @@ General Input Space Representation}
 \maketitle
 
 \section{Introduction}
-Here we analyze the latent representations in Bayesian filter models trained to
-perform multi-class classification on some ground truth input vector 
+\textit{Notation: lower case variables denote scalars (e.g., $x$), upper case variables denote random variables (e.g., $X$), and boldfaced variables denote vector quantities (e.g., $\mathbf x, \mathbf X$).} \\
+
+Here I analyze the latent representations in optimal Bayesian filter models
+trained to perform multi-class classification on some ground truth input vector 
 $\mathbf x^* = [x_1^*, x_2^*]^\top$ 
 based on noisy discrete-time measurement signals
 $\mathbf X(t) = [X_1(t), X_2(t)]^\top$ defined as  
@@ -28,8 +32,9 @@ $\mathbf X(t) = [X_1(t), X_2(t)]^\top$ defined as
 	X_1(t) &= x_1^* + \eta \mathcal N(0, 1) \\
 	X_2(t) &= x_2^* + \eta \mathcal N(0, 1) 
 \end{align}
+We scope our analysis to $N$ linear classification boundaries.
 The multi-classification task may be defined in terms of $N$ classification
-boundary angles which we collectively denote as $\Theta$: 
+boundary angles $\alpha_1, \dots, \alpha_N $ which we collectively denote as $\Theta$: 
 \begin{equation}
 	\label{eqn:boundaries}
 	\Theta = \{\alpha_i : \alpha_i \in [-\pi, \pi], i = 1, \dots, N\}
@@ -42,8 +47,8 @@ as in Figure~\ref{fig:2a}.
 	\label{fig:2a}
 \end{figure}
 % The classification boundary for $\alpha_i$ is the line $x_2 = x_1 \tan \alpha_i$. 
-Thus models must predict the ground truth label 
-$\mathbf y^* = [y_1^* \dots y_N^*]^\top$ 
+Models are tasked with predicting the binary classification label for corresponding to each boundary in $\Theta$. 
+We denote the $N$ labels $\mathbf y^* = [y_1^* \dots y_N^*]^\top$ 
 corresponding to some $\mathbf x^*$ based on the resulting noisy measurement
 signals $\mathbf X(t)$ where 
 \begin{equation}
@@ -59,11 +64,11 @@ Bayesian-optimal multi-classifier with noisy random input $\mathbf X(t)$ and
 classification estimate output $\hat {\mathbf y}(t) \in [-1, 1]^N$ must form
 latent representations $\mathbf z(t)$ that retain the 2-dimensional structural
 information of the input data space $[x_1^*, x_2^*] \in \mathbb R^2$ in the
-limit as $N\to \infty$ for evenly spaced $\alpha_i \in \Theta$. 
+limit as $N\to \infty$ for densely packed $\alpha_i \in \Theta$. 
 Intriguingly, without noise, we are unable to guarantee that optimal latent
 representations $\mathbf z(t)$ will retain sufficient information to estimate
 $\mathbf x^*$. 
-While the proof is stated for 2-dimensional input, the argument should hold for
+While the proof is stated for 2-dimensional input, the argument holds for
 any input dimensionality. 
 
 
@@ -75,7 +80,7 @@ latent state based on noisy and uncertain observation signals.
 Rooted in principles of Bayesian inference, these filters combine aggregated 
 ``knowledge'', represented by a latent state $\mathbf Z(t)$, with incoming
 observations $\mathbf X(t)$ to continually update the latent state to
-facilitate some prediction of some output $\mathbf Y(t) = f(Z(t))$. 
+facilitate some prediction of some output $\mathbf Y(t) = f(\mathbf Z(t))$. 
 
 
 \begin{definition}[Bayesian Filter Operation]
@@ -112,10 +117,14 @@ result in Section~\ref{sec:main}.
 \section{Main Results}
 \label{sec:main}
 
-Consider an optimal Bayesian filter for the multi-class classification task on 
-noisy discrete time measurement signals. 
+Consider an optimal Bayesian filter for the multi-class classification task
+$\Theta$ on noisy discrete time measurement signals. 
+Let $\epsilon$ be the maximum angular gap between classification boundaries in $\Theta=(\alpha_1 \dots \alpha_n)$ (Definition~\ref{def:epsilon}).
 
-
+\begin{equation}
+	\label{def:epsilon}
+	\epsilon = \max_{i \in N} \min_{j > i} \| \alpha_1 - \alpha_2 \|
+\end{equation}
 
 \begin{theorem}
 	\label{thm:main}
@@ -124,13 +133,13 @@ noisy discrete time measurement signals.
 	$\Theta = \{\alpha_1, \dots, \alpha_N\}$ based on noisy measurement signals
 	$\mathbf X(t)$ must have latent state $\mathbf Z(t)$ that retains a
 	representation of the 2-dimensional input vector $\mathbf x^*$ in the limit 
-	as $N \to \infty$. 
+	as $\epsilon \to 0$. 
 \end{theorem}
 
 \begin{proof}
-	\begin{lemma}[Equivalence to Angle Estimation] 
+	\begin{lemma}[Equivalence to Angle Estimation]
 		\label{lemma:angle_equiv}
-		In the limit as $N\to\infty$ for uniformly distributed decision
+		In the limit as $\epsilon \to 0$ for uniformly distributed decision
 		boundaries in $\Theta = \{\alpha_i\}_{i\in[N]}$, the
 		multi-classification task of estimating $\mathbf y^*$
 		(Equation~\ref{eqn:boundaries}) for a given $\mathbf x^*$ given noisy
@@ -141,42 +150,59 @@ noisy discrete time measurement signals.
 
 	\begin{lemma}[Angle Estimation Requires Magnitude Estimation]
 		\label{lemma:angle_to_magnitude}
-		An optimal Bayesian filter predicting the angle of some ground 
-		truth input $\angle \mathbf x^*$ based on noisy observations 
-		$\mathbf X(t)$ must implicitly estimate both the angle and the 
-		magnitude of $\mathbf x^*$ within its latent $\mathbf Z(t)$. 
+		An optimal Bayesian filter predicting the angle of some ground truth
+		input $\angle \mathbf x^*$ based on noisy observations $\mathbf X(t)$
+		must implicitly estimate the magnitude of $\mathbf x^*$ during state
+		updates on latent variable $\mathbf Z(t)$. 
 	\end{lemma}
 	\begin{proof}
-		Recall that the update rule latent $\mathbf Z(t)$ in
-		Definition~\ref{def:bayesian_filter}. 
-		For Bayesian-optimal estimation of $\theta$ using latent $\mathbf Z(t)$
-		with readout map $f$ where $\hat\theta(t) = f(\mathbf Z(t))$, the
-		likelihood term $P\big(\mathbf X(t) | \mathbf Z(t)\big)$ must be
-		accurate.
-		Therefore, the latent representation must contain not only angle 
-		information on $\mathbf x^*$, but also magnitude information, as 
-		this information can be leveraged to narrow down the likelihood term, 
-		thus optimizing the estimation.
+		We denote the conditional entropy of angle estimate $\hat \theta =
+		f(\mathbf Z(t))$ as $H(\hat \theta | \mathbf Z(t))=  H(\hat \theta |
+		\mathbf X(1), \dots, \mathbf X(t))$.
+		Since $\mathbf X(t)$ is subject to equivariant Gaussian noise with
+		variance $\eta$, the condition entropy is inversely proportional to the
+		distance between point $x^*$ and classification boundaries $\Theta =
+		(\alpha_1, \dots, \alpha_N)$.  
+		For fixed angle $\theta = \angle \mathbf x^*$, the distance between
+		$\mathbf x^*$ and each classification boundary scales monotonically
+		with $\|\mathbf x^*\|$. 
+		Therefore, the angle $\angle \mathbf x^*$ and the entropy of the angle
+		estimate $H(\hat \theta | \mathbf X(t) \dots \mathbf X(t)) = H(\hat
+		\theta | \mathbf Z(t))$ is sufficient to determine $\|\mathbf x^*\|$. 
+		Since $\hat \theta$ and $H(\hat \theta | Z(t))$ are both functions of
+		$\mathbf Z(t)$ and $\lim_{t\to\infty}\hat \theta = \theta$ we have demonstrated that
+		$\mathbf Z(t)$ implicitly estimates the magnitude of $\mathbf x^*$.
 	\end{proof}
 
-	Therefore, performing optimal multi-class classification in the limit as the 
-	number of tasks $N\to\infty$ with uniformly distributed boundary angles 
-	$\alpha_i\in \Theta$ is equivalent to estimating the angle of the ground truth 
-	$\mathbf x^*$ based on noisy $\mathbf X(t)$ (Lemma~\ref{lemma:angle_equiv}). 
-	Bayesian filtering for angle estimation requires that $Z(t)$ to maximally 
-	constrain the likelihood $P(\mathbf X(t) | \mathbf Z(t))$ to optimally 
-	weight the contribution of the new data $\mathbf X(t)$ in the new angle 
-	estimate $\hat\theta = f(Z(t))$. 
+	Therefore, multi-class classification in the limit as the decision boundary
+	spacing $\epsilon \to 0$ is equivalent to estimating the angle of the
+	ground truth $\mathbf x^*$ based on noisy $\mathbf X(t)$
+	(Lemma~\ref{lemma:angle_equiv}).
+	Optimal Bayesian filtering to estimate the angle $\theta = \angle \mathbf
+	x^*$ also implies estimating the magnitude of the ground truth data
+	$\|\mathbf x^*\|$. \\
 
-	Thus we have demonstrated that both the angle information and the magnitude 
-	information of $\mathbf x^*$ must be implicitly estimated by an optimal 
-	Bayesian filter in multi-class classification problem $\Theta$ with non-zero
-	noise $\eta$ in the measurements $\mathbf X(t)$. 
+
+	Thus we have demonstrated that both the angle information and the magnitude
+	information of $\mathbf x^*$ must be implicitly estimated by an optimal
+	Bayesian filter in multi-class classification problem $\Theta$ with
+	non-zero equivariant noise $\eta$ in the measurements $\mathbf X(t)$. 
 \end{proof}
 
-% Repeat for additional theorems/lemmas if necessary
 
-\section{Conclusion}
-% Your concluding remarks.
+
+\section{Discussion}
+
+\subsection{Implications of Non-Equivariant Gaussian Noise}
+In our analysis, we assumed equivariant Gaussian noise with variance $\eta$ in
+$\mathbf X(t)$. 
+The case of $\eta = [\eta_1, \eta_2]^\top$ with $\eta_1\neq\eta_2$ can be made
+equiavlent to the equivariant case via a coordinate transformation $x_2 = x_2
+\eta_1 / \eta_2$. 
+This may change the maximum inter-classification boundary distance $\epsilon$, 
+but the final result remains the same as $\epsilon \to 0$. 
+
+
+
 
 \end{document}

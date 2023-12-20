@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.30)  1 DEC 2023 08:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.30)  20 DEC 2023 05:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -150,20 +150,20 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 ) (./general_representations.aux)
 \openout1 = `general_representations.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/local/texlive/2023basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -189,64 +189,72 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
 
  (/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
 
 
 (/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (19.47511pt too wide) in paragraph at lines 21--26
-\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x[]; x[]\OT1/cmr/m/n/12 ][]$ based on noisy d
-iscrete-time mea-sure-ment sig-nals $\OT1/cmr/bx/n/12 X\OT1/cmr/m/n/12 (\OML/cm
-m/m/it/12 t\OT1/cmr/m/n/12 ) = [\OML/cmm/m/it/12 X[]\OT1/cmr/m/n/12 (\OML/cmm/m
-/it/12 t\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; X[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
-2 t\OT1/cmr/m/n/12 )][]$
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
  []
 
 <media/multitask_fig2a.png, id=1, 1045.9075pt x 400.49625pt>
 File: media/multitask_fig2a.png Graphic file (type png)
 <use media/multitask_fig2a.png>
-Package pdftex.def Info: media/multitask_fig2a.png  used on input line 40.
+Package pdftex.def Info: media/multitask_fig2a.png  used on input line 45.
 (pdftex.def)             Requested size: 350.99762pt x 134.40692pt.
 [1
 
 {/usr/local/texlive/2023basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2 <./media/multitask_fig2a.png>]
-Overfull \hbox (0.83685pt too wide) in paragraph at lines 122--128
+Overfull \hbox (0.83685pt too wide) in paragraph at lines 131--137
 \OT1/cmr/m/it/12 fi-ca-tion on ground truth in-put $\OT1/cmr/bx/n/12 x[]$ \OT1/
 cmr/m/it/12 w.r.t. de-ci-sion bound-aries $\OT1/cmr/m/n/12 ^^B = \OMS/cmsy/m/n/
 12 f\OML/cmm/m/it/12 []; [] ; []\OMS/cmsy/m/n/12 g$
  []
 
-[3] [4] (./general_representations.aux) ) 
+
+Overfull \hbox (6.58646pt too wide) in paragraph at lines 142--148
+\OT1/cmr/m/it/12 formly dis-tributed de-ci-sion bound-aries in $\OT1/cmr/m/n/12
+ ^^B = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 []\OMS/cmsy/m/n/12 g[]$\OT1/cmr/m/it
+/12 , the multi-classification
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 177--184
+
+ []
+
+[4] (./general_representations.aux) ) 
 Here is how much of TeX's memory you used:
- 2691 strings out of 477476
- 40045 string characters out of 5824243
+ 2692 strings out of 477476
+ 40058 string characters out of 5824243
  1859388 words of memory out of 5000000
- 22924 multiletter control sequences out of 15000+600000
+ 22925 multiletter control sequences out of 15000+600000
  522972 words of font info for 73 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 57i,13n,62p,374b,241s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023basic/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023basic/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023basic/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023ba
-sic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/202
-3basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/
-2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texli
-ve/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
-live/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/lo
-cal/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></us
-r/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10
-.pfb></usr/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbo
-ls/msbm10.pfb>
-Output written on general_representations.pdf (4 pages, 250592 bytes).
+ 57i,13n,62p,374b,235s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023basic/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023
+basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2
+023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
+texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/lo
+cal/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+></usr/local/texlive/2023basic/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb>
+Output written on general_representations.pdf (4 pages, 255540 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  47 compressed objects within 1 object stream
