@@ -114,16 +114,23 @@ result in Section~\ref{sec:main}.
 
 
 \subsection{Canonical Bayesian Filtering Example}
-A canonical example of Bayesian filtering is estimating the position of a robot based on noisy sensory readings. 
+A canonical example of Bayesian filtering is estimating the position of a robot based on noisy sensory readings (Figure~\ref{fig:robot_filter_ex}). 
 Continuing with the same notation as above, assume the ground truth position of the robot is $\mathbf x^* \in \mathbb R^2$. 
 We obtain noisy sensor readings $\mathbf X(t) = \mathbf x^* + \eta \mathcal N(\mathbf 0, \mathbb I)$, where $\eta$ is the amount of zero-mean, identity covariance noise. 
 The latent variable $\mathbf Z(t)$ represents our estimate of $\mathbf x^*$ at time $t$. 
-Using Equation~\ref{def:bayes_filter}, we obtain the updated estimated position based on incoming readings $\mathbf X(t)$. \\
+Using Equation~\ref{eqn:bayes_filter}, we obtain the updated estimated position based on incoming readings $\mathbf X(t)$. \\
+
+\begin{figure}[h! tbp]
+	\centering 
+	\includegraphics[width=0.9\textwidth]{media/robot_filter.png}
+	\caption[Canonical filtering task]{This figure shows the estimation of ground truth trajectory $\mathbf x^*(t)$ based on noisy readings $\mathbf X(t)$. $Z(t)$ is shown in blue, representing the filtered estimate of $x^*(t)$ in red based on $\mathbf X(t)$ in green.}
+	\label{fig:robot_filter_ex}
+\end{figure}
 
 In practice, we would initialize the latent variable $\mathbf Z(0) = \mathbf 0$ or some other neutral position. 
 The prior distribution $P(\mathbf Z(t) | \mathbf Z(t-1))$ represents our belief about the robot's current position before seeing any new sensor data. 
-We assume this is Gaussian-distributed around $\mathbf Z(t-1)$, though we can augment the sophistication of our prior model by including velocity and acceleration estimates. 
-This added sophistication is how one may connect system state estimation (observer theory) to classic linear/state space control system theory. 
+We assume this is Gaussian-distributed around $\mathbf Z(t-1)$, though we can augment the sophistication of our prior model by including velocity and acceleration estimates (cf. Kalman filter). 
+This added sophistication is how one may connect system state estimation (observer theory) to classic linear state space control theory. 
 The likelihood function $P(\mathbf X(t) | \mathbf Z(t))$ represents the probability of observing a particular sensor reading given the current latent state $\mathbf Z(t)$. 
 We assume this is Gaussian-distributed around $\mathbf Z(t)$. 
 At each update step, the position estimate $\mathbf Z(t)$ is updated with the incoming data by combining the prior belief and the likelihood. \\ 
@@ -158,12 +165,11 @@ Let $\epsilon$ be the maximum angular gap between classification boundaries in $
 \begin{proof}
 	\begin{lemma}[Equivalence to Angle Estimation]
 		\label{lemma:angle_equiv}
-		In the limit as $\epsilon \to 0$ for uniformly distributed decision
-		boundaries in $\Theta = \{\alpha_i\}_{i\in[N]}$, the
-		multi-classification task of estimating $\mathbf y^*$
-		(Equation~\ref{eqn:boundaries}) for a given $\mathbf x^*$ given noisy
-		observations $\mathbf X(t)$ is equivalent to estimating the angle
-		$\theta = \angle \mathbf x^*$. 
+		In the limit as $\epsilon \to 0$ for decision boundaries $\Theta =
+		(\alpha_1, \dots, \alpha_N)$, the multi-classification task of
+		estimating $\mathbf y^*$ (Equation~\ref{eqn:boundaries}) for a given
+		$\mathbf x^*$ given noisy observations $\mathbf X(t)$ is equivalent to
+		estimating the angle $\theta = \angle \mathbf x^*$. 
 	\end{lemma}
 
 
@@ -220,6 +226,14 @@ equiavlent to the equivariant case via a coordinate transformation $x_2 = x_2
 \eta_1 / \eta_2$. 
 This may change the maximum inter-classification boundary distance $\epsilon$, 
 but the final result remains the same as $\epsilon \to 0$. 
+
+
+\subsection{Generalizing to Higher Dimensions}
+To generalize these results to higher dimensions, the Lemmas~\ref{lemma:angle_equiv} and \ref{lemma:angle_to_magnitude} must be expanded. 
+Lemma~\ref{lemma:angle_equiv} focuses on the equivalence of the multi-classification problem to angle estimation. 
+This condition can be expressed for a high dimensional space in terms of hyperplane decision boundaries passing through the origin. 
+The angle estimation problem becomes a multi-angle estimation problem (e.g., latitude and longitude for $\mathbb R^3$). 
+The condition on maximal angular spacing $\epsilon \to 0$ can be generalized as an upper bound on surface area of the slices of a sphere defined by the hyperplanes' intersection with a sphere centered on the origin. 
 
 
 
