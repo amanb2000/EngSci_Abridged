@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath, amsthm, amsfonts, amssymb}
 \usepackage{graphicx} % for images
+\usepackage{hyperref}
 
 % Define theorem and lemma environments
 \newtheorem{theorem}{Theorem}
@@ -72,7 +73,6 @@ While the proof is stated for 2-dimensional input, the argument holds for
 any input dimensionality. 
 
 
-
 \subsection{Bayesian Filtering Framework}
 
 Bayesian filters are a class of statistical models and algorithm that update a
@@ -122,7 +122,7 @@ Using Equation~\ref{eqn:bayes_filter}, we obtain the updated estimated position 
 
 \begin{figure}[h! tbp]
 	\centering 
-	\includegraphics[width=0.9\textwidth]{media/robot_filter.png}
+	\includegraphics[width=0.5\textwidth]{media/robot_filter.png}
 	\caption[Canonical filtering task]{This figure shows the estimation of ground truth trajectory $\mathbf x^*(t)$ based on noisy readings $\mathbf X(t)$. $Z(t)$ is shown in blue, representing the filtered estimate of $x^*(t)$ in red based on $\mathbf X(t)$ in green.}
 	\label{fig:robot_filter_ex}
 \end{figure}
@@ -234,6 +234,31 @@ Lemma~\ref{lemma:angle_equiv} focuses on the equivalence of the multi-classifica
 This condition can be expressed for a high dimensional space in terms of hyperplane decision boundaries passing through the origin. 
 The angle estimation problem becomes a multi-angle estimation problem (e.g., latitude and longitude for $\mathbb R^3$). 
 The condition on maximal angular spacing $\epsilon \to 0$ can be generalized as an upper bound on surface area of the slices of a sphere defined by the hyperplanes' intersection with a sphere centered on the origin. 
+
+\subsection{Implications for Learned Representations in the Brain}
+This theoretical analysis implies a connection between multi-task learning and topological information preservation in optimal Bayesian filtering models. 
+Understanding how representations of an underlying statistical process emerge in information processing systems is central to understanding cognition. 
+Our results suggest that a multi-tasking system must learn a representation of incoming noisy data that preserves the central aspects of the underlying topology of the statistical process.
+This harkens to work on the automated construction of cognitive maps via predictive coding (\href{https://www.biorxiv.org/content/10.1101/2023.09.18.558369v1}{Gornet and Thomson, 2023}). 
+In their paper, ``Automated construction of cognitive maps with predictive coding'', Gornet and Thomson demonstrate predictive coding (i.e., predicting subsequent sensory input) is sufficient for an agent to form an internal \textit{map} of its environment. 
+Our work suggests a relaxed condition -- that, under certain conditions, multi-task classification may also yield topology-preserving representations of the environment. 
+Further work is warranted to determine the precise relationship between these concepts. 
+
+\subsection{Relationships between $H(\mathbf X(t))$ and $H(\mathbf Z(t))$}
+The goal of optimal Bayesian filtering is to maximize \textit{information gain} $IG$. 
+\begin{equation}
+	\label{eqn:info_gain}
+	IG = 
+		\underbrace{H(P(\mathbf Z(t) | \mathbf Z(t-1)))}_{\text{Prior}}
+		-
+		\underbrace{H(P(\mathbf Z(t) | \mathbf X(t), \mathbf Z(t-1)))}_{\text{Posterior}}
+\end{equation}
+
+Maximizing information gain can be understood as minimizing the entropy (uncertainty) of the posterior distribution.
+
+As the posterior is proportional to the likelihood $P(\mathbf X(t) | \mathbf Z(t))$, it is tempting to relate the entropy of the likelihood -- i.e., the ability to predict incoming data -- and the posterior. 
+Unfortunately, due to the interplay between the prior and the likelihood, the relationship between the entropy of the likelihood and the entropy of the posterior is not straight forward. 
+
 
 
 
