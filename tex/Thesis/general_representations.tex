@@ -113,6 +113,25 @@ We leverage the structure in the Bayesian filter formulation to prove our main
 result in Section~\ref{sec:main}. 
 
 
+\subsection{Canonical Bayesian Filtering Example}
+A canonical example of Bayesian filtering is estimating the position of a robot based on noisy sensory readings. 
+Continuing with the same notation as above, assume the ground truth position of the robot is $\mathbf x^* \in \mathbb R^2$. 
+We obtain noisy sensor readings $\mathbf X(t) = \mathbf x^* + \eta \mathcal N(\mathbf 0, \mathbb I)$, where $\eta$ is the amount of zero-mean, identity covariance noise. 
+The latent variable $\mathbf Z(t)$ represents our estimate of $\mathbf x^*$ at time $t$. 
+Using Equation~\ref{def:bayes_filter}, we obtain the updated estimated position based on incoming readings $\mathbf X(t)$. \\
+
+In practice, we would initialize the latent variable $\mathbf Z(0) = \mathbf 0$ or some other neutral position. 
+The prior distribution $P(\mathbf Z(t) | \mathbf Z(t-1))$ represents our belief about the robot's current position before seeing any new sensor data. 
+We assume this is Gaussian-distributed around $\mathbf Z(t-1)$, though we can augment the sophistication of our prior model by including velocity and acceleration estimates. 
+This added sophistication is how one may connect system state estimation (observer theory) to classic linear/state space control system theory. 
+The likelihood function $P(\mathbf X(t) | \mathbf Z(t))$ represents the probability of observing a particular sensor reading given the current latent state $\mathbf Z(t)$. 
+We assume this is Gaussian-distributed around $\mathbf Z(t)$. 
+At each update step, the position estimate $\mathbf Z(t)$ is updated with the incoming data by combining the prior belief and the likelihood. \\ 
+
+In neuroscience, this example parallels how the brain integrates information over time to refine its predictions over future states. 
+This model highlights the probabilistic nature of perception and decision-making in the brain, illustrating how biological systems might deal with uncertainty and noise in sensory processing.
+Analyzing Bayesian-optimal filters is therefore of great interest for understanding the properties of high-performance iterative information processing systems -- particularly those performing prediction tasks on uncertain/noisy input.
+
 
 \section{Main Results}
 \label{sec:main}
