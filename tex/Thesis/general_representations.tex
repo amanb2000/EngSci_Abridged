@@ -261,6 +261,32 @@ Unfortunately, due to the interplay between the prior and the likelihood, the re
 
 
 
+\section{Information Theoretic Analysis of Main Result}
+
+Our main result revolves around demonstrating that Bayes-optimal multi-task classification implies latent variable $\mathbf Z(t)$ from which the input coordinate $\mathbf X(t)$ could be recovered. 
+Let us zoom out on the full graphical model representing Bayesian filter: 
+
+\begin{figure}[h! tbp]
+	\centering 
+	\includegraphics[width=0.99\textwidth]{media/bayesian_filter_graphical_model.jpg}
+	\caption[Bayesian Filter Graphical Model]{
+		\textbf{Multi-task Bayesian filter Graphical Model:} Graphical model representation of the multi-task filtering task. 
+	}
+	\label{fig:2a}
+\end{figure}
+
+Our result can be expressed in terms of the mutual information between random variables $\mathbf Z(t), \mathbf X(t) = \mathcal N (\mathbf x^*, \eta \mathbb I)$ and a hypothetical $\hat{\mathbf X}(t) = f(\mathbf Z(t))$ that is a deterministic function of latent $\mathbf Z(t)$. 
+
+
+\section{Trilateration Trick for Recovering $\hat{\mathbf X}$ from $\mathbf Z(t)$}
+In generalizing our main result, I found it helpful to introduce the idea of \textit{triangulation} of the position of the ground truth $\mathbf x^*$. 
+Triangulation is when you constrain a position based on known distances to known points. 
+
+\begin{theorem}
+	\label{thm:trilateration}
+	The sample entropies of each classification output $P(\hat{\mathbf Y})$ in a Bayesian-optimal is sufficient to trilaterate $\mathbf x^*$ w.r.t. $D+1$ decision boundaries where $D$ is the dimension of the underlying space $\mathbf x^*$ assuming sensor readings $\mathbf X(t)$ is subject to equivariant Gaussian noise.
+\end{theorem}
+
 
 
 \end{document}
