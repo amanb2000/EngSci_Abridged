@@ -38,6 +38,7 @@ The ground truth classification of a given point $\mathbf x$ is given by decisio
 \end{equation}
 
 
+
 \begin{figure}[h! tbp]
 	\centering 
 	\includegraphics[width=0.9\textwidth]{media/multitask_fig2a.png}
@@ -51,6 +52,7 @@ A restricted form of the problem is depicted in Figure~\ref{fig:2a}. Note that w
 
 
 \section{Bayesian Filtering Framework}
+\label{sec:bayes_framework}
 
 We are interested in the properties of optimal Bayesian filter models that sequentially process inputs $\mathbf X(t)$ to estimate each classification $y_i(\mathbf x^*), i\in [M]$. 
 Bayesian filters are a class of statistical models and algorithm that update a latent state based on noisy and uncertain observation signals. 
@@ -85,10 +87,15 @@ The readout $\hat{\mathbf Y}(t)$ is a vector of Bernoulli random variables with 
 
 
 
+
+
+
+
 \section{Main Result}
 
 In this section we show that an optimal Bayesian filter performing multi-classification as described in Section~\ref{sec:intro} must store a representation of $x^*$ in the latent variable $\mathbf Z(t)$. 
 More specifically, we show that the maximum likelihood estimate of $x^*$ based on $\mathbf X(1), \dots, \mathbf X(t)$ is recoverable from $\mathbf Z(t)$.
+
 
 
 \subsection{Single Decision Boundary}
@@ -187,9 +194,33 @@ Observe that the probability that $\hat Y = 1$ in Equation~\ref{eqn:single_estim
 
 \subsection{Translateration via Multiple Decision Boundaries}
 
-To recap Section~\ref{sec:single_boundary}: We derived an optimal estimator of $\mathbf x^*$ based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) ~ \mathcal N(\mathbf x^*, \mathbf I_d)$ in Lemma~\ref{}. 
+\paragraph{To recap Section~\ref{sec:single_boundary}}: 
+We derived an optimal estimator of $\mathbf x^*$ (denoted $\hat{\mathbf X}$) based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) \sim \mathcal N(\mathbf x^*, \mathbf I_d)$ in Lemma~\ref{lemma:x_star_estimate}. 
+In Lemma~\ref{lemma:zscore} we derived the equation for Bernoulli variable $\hat Y$ to estimate $y(\mathbf x^*)$ based on the same noisy measurements via $\hat{\mathbf X}$.
+Finally, we showed in Lemma~\ref{lemma:prob_to_dist} that the uncertainty in $\hat Y$ and the time $t$ is sufficient to determine the projection distance between the decision boundary and $\mu = \text{mean}(X(0), \dots, X(t))$ via Equation~\ref{eqn:solve_proj_dist}. \\
 
-for an optimal estimator of classification output $y(\mathbf x^*)$ based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) ~ \mathcal N(\mathbf x^*, \mathbf I_d)$. 
+
+We now have the tools to prove our final result. 
+
+\begin{theorem}
+	\label{thm:main}
+	Consider the problem statement from Section~\ref{sec:intro} and the Bayesian filter from Section~\ref{sec:bayes_framework} with Bernoulli random variable vector readout $\hat{\mathbf Y}$. \\
+	
+	Let $\mathbf C$ be the matrix of decision boundaries with row vectors $\mathbf c_i$ (cf Equation~\ref{def:decision_rule}). 
+	If $\mathbf C$ is full-rank, then $\hat{\mathbf Y}$, $t$, and $C$ are sufficient to reconstruct the exact value of $\mathbf \mu$, the mean of $\mathbf X(1), \dots, \mathbf X(t)$, which is also the optimal estimator for $\mathbf x^*$. 
+\end{theorem}
+\begin{proof}
+	We may prove this claim by providing an algorithm to reconstruct $\mathbf \mu = \text{mean}(\mathbf X(1), \dots, \mathbf X(t))$.
+	Invoke Lemma~\ref{lemma:prob_to_dist} to compute the signed projection distance between $\mathbf \mu$ and each decision plane $\mathbf c_i$.
+	Let $\mathbf k = [k_1, \dots, k_M]^\top$ where each $k_i$ corresponds to decision boundary $\mathbf c_i$.
+	Assume each $c_i$ are normalized. Then the mean $\mathbf \mu$ must satisfy 
+	\begin{equation}
+		\label{eqn:final_lin_sys}
+		\mathbf {C \mu} = \mathbf k
+	\end{equation}
+	Thus, for full rank $\mathbf C$, we will have a uniquely determined $\mu$ value. 
+\end{proof}
+
 
 
 
