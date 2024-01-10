@@ -12,8 +12,7 @@
 
 \begin{document}
 
-\title{Bayesian-Optimal Multi-Classification with Noisy Input Necessitates
-General Input Space Representation}
+\title{Bayesian-Optimal Multi-Classification with Noisy Input Necessitates General Input Space Representation}
 
 \author{Aman Bhargava}
 
@@ -207,7 +206,7 @@ We now have the tools to prove our final result.
 	Consider the problem statement from Section~\ref{sec:intro} and the Bayesian filter from Section~\ref{sec:bayes_framework} with Bernoulli random variable vector readout $\hat{\mathbf Y}$. \\
 	
 	Let $\mathbf C$ be the matrix of decision boundaries with row vectors $\mathbf c_i$ (cf Equation~\ref{def:decision_rule}). 
-	If $\mathbf C$ is full-rank, then $\hat{\mathbf Y}$, $t$, and $C$ are sufficient to reconstruct the exact value of $\mathbf \mu$, the mean of $\mathbf X(1), \dots, \mathbf X(t)$, which is also the optimal estimator for $\mathbf x^*$. 
+	If $\mathbf C$ is full-rank, then $\hat{\mathbf Y}$, $t$, and $\mathbf C$ are sufficient to reconstruct the exact value of $\mathbf \mu$, the mean of $\mathbf X(1), \dots, \mathbf X(t)$, which is also the optimal estimator for $\mathbf x^*$. 
 \end{theorem}
 \begin{proof}
 	We may prove this claim by providing an algorithm to reconstruct $\mathbf \mu = \text{mean}(\mathbf X(1), \dots, \mathbf X(t))$.
@@ -224,16 +223,6 @@ We now have the tools to prove our final result.
 
 
 
-
-
-
-
-
-
-
-
-
-
-\paragraph{Acknowledgements: } Aiden Rosebush, James Gornett. 
+\paragraph{Acknowledgements: } Pantelis Vafidis, Aiden Rosebush, James Gornett, Antonio Rangel. 
 
 \end{document}
