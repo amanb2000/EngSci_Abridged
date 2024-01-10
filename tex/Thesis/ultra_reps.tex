@@ -92,6 +92,7 @@ More specifically, we show that the maximum likelihood estimate of $x^*$ based o
 
 
 \subsection{Single Decision Boundary}
+\label{sec:single_boundary}
 
 First, we will consider the Bayesian filtering of a single classification output $y(x^*)$ from noisy inputs $X(1), \dots, X(n)$ with decision boundary parameters $(\mathbf c, b)$. 
 We begin by scaling our coordinates such that the Gaussian noise has unit variance:
@@ -131,22 +132,64 @@ In essence, we we are interested in the amount of the probability density of $\h
 Deriving this probability is simplified by the fact that $\hat{\mathbf X}$ is isotropic -- i.e., it inherits the spherical covariance of the underlying data generation process. 
 
 \begin{lemma}
+	\label{lemma:zscore}
 	Consider Gaussian-distributed $d$-dimensional random variable $\hat{\mathbf X}$ with isotropic covariance $\Sigma = t^{-1/2}\mathbf I_d$ and mean $\mathbf \mu \in \mathbb R^d$.
 	The probability density of $\hat{\mathbf X}$ on each side of the positive side of the decision boundary $\{\mathbf x : \mathbf c^\top \mathbf x > 0\}$ can be expressed as 
 	\begin{equation}
 		\label{eqn:class_prob}
-		\Pr\{\mathbf c^\top \mathbf x > 0\} = 1-\Phi(k\sqrt{t})
+		\Pr\{\mathbf c^\top \mathbf x > 0\} = \Phi(k\sqrt{t})
 	\end{equation}
-	where $\Phi$ is the CDF of the normal distribution and $k = \mathbf{(c^\top \mu)/ \|c\|}$ is the signed projection distance between the plane and the mean of $\hat{\mathbf X}$. 
+	where $\Phi$ is the CDF of the normal distribution and $k = \mathbf{(c^\top \mu)/ \|\mathbf c\|}$ is the signed projection distance between the plane and the mean of $\hat{\mathbf X}$. 
 \end{lemma}
 \begin{proof}
 	Since the $\hat{\mathbf X}$ is isotropic, the variance on every axis is equal and independent. 
 	We may rotate our coordinate system such that the projection line between the plane and the mean of $\hat{\mathbf X}$ aligns with an axis we denote as ``axis 0''. 
 	The rest of the axes must be orthogonal to the plane. 
-	Since each component of an isotropic Gaussian is independent, the marginal distribution of $\hat{\mathbf X}$ over axis 0 is a 
+	Since each component of an isotropic Gaussian is independent, the marginal distribution of $\hat{\mathbf X}$ on axis 0 is a univariate Gaussian with variance $t^{-1/2}$ mean at distance $k$ from the boundary. 
+	Equation~\ref{eqn:class_prob} applies the normal distribution CDF $\Phi$ to determine the probability mass on the positive side of the boundary. 
 \end{proof}
 
 
+Thus we are able to construct our optimal estimator $\hat{Y}$ for $P(y(\mathbf x^*) | X(1), \dots, X(t))$ using lemma 1 as 
+\begin{equation}
+	\label{eqn:single_estimator}
+	\hat{Y} = \begin{cases}
+		1 & \text{ with probability } \Phi\big( 
+			\frac{
+				\mathbf{(c^\top \mu)}
+			}{
+				\|\mathbf c\|
+			}
+			\sqrt t
+			\big)\\ 
+		0 & \text{ otherwise } 
+	\end{cases}
+\end{equation}
+
+
+Observe that the probability that $\hat Y = 1$ in Equation~\ref{eqn:single_estimator} \textbf{monotonically scales} with the signed distance between the hyperplane and $\mathbf \mu$ (CDFs are monotonic). 
+
+\begin{lemma}
+	\label{lemma:prob_to_dist}
+	Knowledge of time (number of samples) $t$ and the ``success probability'' for Bernoulli random variable $\hat Y$ as defined in Equation~\ref{eqn:single_estimator} is sufficient to determine the projection distance between $\mathbf \mu = \text{mean}\big(X(1), \dots, X(n)\big)$ and the decision boundary. 
+\end{lemma}
+\begin{proof}
+	Recall Equation~\ref{eqn:class_prob} from Lemma~\ref{lemma:zscore}. 
+	We may solve for projection distance $k$ separating the decision boundary and the mean $\mathbf \mu$ of observations $\mathbf X(0), \dots, \mathbf X(t)$ as 
+	\begin{equation}
+		\label{eqn:solve_proj_dist}
+		k = \frac{1}{\sqrt t}\Phi^{-1}(\Pr\{\hat Y = 1\})
+	\end{equation}
+
+	Since $\Phi$ is the CDF of the normal distribution, and the normal distribution is not zero except at $\pm \infty$, the inverse $\Phi^{-1}$ is well-defined.
+\end{proof}
+
+
+\subsection{Translateration via Multiple Decision Boundaries}
+
+To recap Section~\ref{sec:single_boundary}: We derived an optimal estimator of $\mathbf x^*$ based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) ~ \mathcal N(\mathbf x^*, \mathbf I_d)$ in Lemma~\ref{}. 
+
+for an optimal estimator of classification output $y(\mathbf x^*)$ based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) ~ \mathcal N(\mathbf x^*, \mathbf I_d)$. 
 
 
 
@@ -160,9 +203,6 @@ Deriving this probability is simplified by the fact that $\hat{\mathbf X}$ is is
 
 
 
-
-
-
-
+\paragraph{Acknowledgements: } Aiden Rosebush, James Gornett. 
 
 \end{document}
