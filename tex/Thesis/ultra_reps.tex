@@ -7,6 +7,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
 
 \setlength{\parindent}{0pt}
 
@@ -95,6 +96,7 @@ The readout $\hat{\mathbf Y}(t)$ is a vector of Bernoulli random variables with 
 In this section we show that an optimal Bayesian filter performing multi-classification as described in Section~\ref{sec:intro} must store a representation of $x^*$ in the latent variable $\mathbf Z(t)$. 
 More specifically, we show that the maximum likelihood estimate of $x^*$ based on $\mathbf X(1), \dots, \mathbf X(t)$ is recoverable from $\mathbf Z(t)$.
 
+We will start by investigating estimator $P(\hat{\mathbf Y}(t) | \mathbf X(1), \dots, \mathbf X(t))$, assuming that optimal $\mathbf Z(t)$ retains all relevant information from $\mathbf X(1), \dots, \mathbf X(t)$, and thus $P(\hat{\mathbf Y(t)} | \mathbf Z(t)) = P(\hat{\mathbf Y(t)} | \mathbf X(1), \dots, \mathbf X(t))$. 
 
 
 \subsection{Single Decision Boundary}
@@ -221,8 +223,33 @@ We now have the tools to prove our final result.
 \end{proof}
 
 
+\subsection{Data Processing Inequality}
 
 
-\paragraph{Acknowledgements: } Pantelis Vafidis, Aiden Rosebush, James Gornett, Antonio Rangel. 
+\begin{corollary}
+	For any system implementing optimal Bayesian filtering to estimate $\hat Y(t)$ based on latent $\mathbf Z(t)$ and inputs $\{\mathbf X(0), \dots, \mathbf X(t)\}$, the latent variable $Z(t)$ must necessarily encode a representation of the mean $\mu$ of optimal $\mathbf x^*$ estimator $\hat{\mathbf X}$, where $\hat{\mathbf X} \sim \mathcal{N}(\mu, \Sigma)$, and
+	\begin{align*}
+		\mu &= \text{mean}\left(\mathbf X(1), \dots, \mathbf X(n)\right), \\
+		\Sigma &= \hat{\Sigma} = t^{-\frac{1}{2}} \mathbf{I}_d.
+	\end{align*}
+\end{corollary}
+
+\begin{proof}
+	This follows from the data processing inequality, which in this context implies that if 
+	\begin{equation}
+		X^* \to \{X(1), \dots, X(n)\} \to \mathbf{Z}(t) \to \hat{\mathbf{Y}}(t) \to \hat{\mathbf X}(t) 
+	\end{equation}
+	forms a directed Markov chain, then the mutual information between $I\big(\hat{\mathbf Y}(t), \hat{\mathbf X}(t)\big)$ cannot exceed the mutual information between $I\big(\mathbf Z(t), \hat{\mathbf X}(t)\big)$.
+	We recall that $\hat{\mathbf X}(t)$ is a deterministic function of $\hat{\mathbf Y}(t)$ and time $t$, so $I\big(\hat{\mathbf Y}(t), \hat{\mathbf X}(t)\big) = H(\hat{\mathbf X}(t))$. 
+	Since the mutual information between the latent $\mathbf Z(t)$ and $\hat{\mathbf X}(t)$ is at least as great as that between $\hat{\mathbf Y}(t)$ and $\hat{\mathbf X}(t)$, $\mathbf Z(t)$ also must contain a representation of $\hat{\mathbf X}(t)$. 
+\end{proof}
+
+
+
+\end{document}
+
+
+
+\paragraph{Acknowledgements: } Pantelis Vafidis, Aiden Rosebush, Cameron Witkowski, James Gornett, Antonio Rangel. 
 
 \end{document}
