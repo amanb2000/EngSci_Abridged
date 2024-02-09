@@ -25,9 +25,11 @@
 \textit{Notation: lower case variables denote scalars (e.g., $x$), upper case variables denote random variables (e.g., $X$), and boldfaced variables denote vector quantities (e.g., $\mathbf x, \mathbf X$). 
 We denote the $d\times d$ identity matrix as $\mathbf I_d$.} \\
 
-Here we analyze the latent representations in optimal Bayesian filter models trained to perform multi-classification on some ground truth input vector $\mathbf x^* \in \mathbb R^d$ based on noisy discrete-time measurement signals $\mathbf X(1), \dots, \mathbf X(t)$ for i.i.d. $\mathbf X(i) = \mathbf x^* + \mathcal N(\mathbf{0, I_d})$. Classification boundaries are denoted $\{(\mathbf c_i, b_i)\}_{i = 0}^M$ where $\mathbf c_i \in \mathbb R^d$ is the normal vector to the hyperplane and $b_i\in \mathbb R$ is the offset from the origin. 
+\paragraph{Problem Statement: } Here we analyze the latent representations in optimal Bayesian filter models trained to perform multi-classification on some ground truth input vector $\mathbf x^* \in \mathbb R^d$ based on noisy discrete-time measurement signals $\mathbf X(1), \dots, \mathbf X(t)$ for i.i.d. $\mathbf X(i) = \mathbf x^* + \mathcal N(\mathbf{0, I_d})$. \\
+
+Classification boundaries are denoted $\{(\mathbf c_i, b_i)\}_{i = 0}^M$ where $\mathbf c_i \in \mathbb R^d$ is the normal vector to the hyperplane and $b_i\in \mathbb R$ is the offset from the origin. 
 For boundary $i$, the separating plane defined as the affine set $\{\mathbf x | \mathbf c_i^\top \mathbf x = b_i\}$. 
-The ground truth classification of a given point $\mathbf x$ is given by decision rule $y(\mathbf x)$: 
+The ground truth classification of a given point $\mathbf x \in \mathbb R^d$ is given by decision rule $y(\mathbf x)$: 
 
 \begin{equation}
 	\label{def:decision_rule}
@@ -46,7 +48,18 @@ The ground truth classification of a given point $\mathbf x$ is given by decisio
 	\label{fig:2a}
 \end{figure}
 
-A restricted form of the problem is depicted in Figure~\ref{fig:2a}. Note that we are interested in the general case where the hyperplanes do not necessarily pass through the origin. 
+A restricted form of the problem is depicted in Figure~\ref{fig:2a} where all $b_i = 0$.
+
+\paragraph{Contribution: } We show that any optimal estimator of $y_1, \dots, y_M$ based on $\mathbf X(0), \dots, \mathbf X(t)$ -- denoted $\hat{\mathbf Y} = [\hat Y_1, \dots, \hat Y_M]^T$ -- contains sufficient information to recover $\mu = \text{mean}(\mathbf X(1), \dots, \mathbf X(t))$ in Theorem~\ref{thm:main} (see graphical model diagram in Equation~\ref{eqn:big_picture}). 
+We leverage this finding to show that any recurrent Bayesian filter-style model with latent variable $\mathbf Z(t)$ that performs optimal estimation on $y_1, \dots, y_M$ must encode a representation of $\mu$, which in turn is the optimal estimator for $\mathbf x^*$. 
+
+\begin{equation}
+	\label{eqn:big_picture}
+	\mathbf x^* \to \{\mathbf X(1), \dots, \mathbf X(t)\} \to 
+	\underbrace{\mathbf Z(t)}_{\text{Corollary 1}}
+	\to 
+	\underbrace{\hat{\mathbf Y}(t) \to \mu}_{\text{Theorem 1}}
+\end{equation}
 
 
 
@@ -93,8 +106,8 @@ The readout $\hat{\mathbf Y}(t)$ is a vector of Bernoulli random variables with 
 
 \section{Main Result}
 
-In this section we show that an optimal Bayesian filter performing multi-classification as described in Section~\ref{sec:intro} must store a representation of $x^*$ in the latent variable $\mathbf Z(t)$. 
-More specifically, we show that the maximum likelihood estimate of $x^*$ based on $\mathbf X(1), \dots, \mathbf X(t)$ is recoverable from $\mathbf Z(t)$.
+In this section we show that an optimal Bayesian filter performing multi-classification as described in Section~\ref{sec:intro} must store an estimate of $x^*$ in the latent variable $\mathbf Z(t)$. 
+More specifically, we show that the \textbf{optimal estimator} of $x^*$ based on $\mathbf X(1), \dots, \mathbf X(t)$ is recoverable from $\mathbf Z(t)$.
 
 We will start by investigating estimator $P(\hat{\mathbf Y}(t) | \mathbf X(1), \dots, \mathbf X(t))$, assuming that optimal $\mathbf Z(t)$ retains all relevant information from $\mathbf X(1), \dots, \mathbf X(t)$, and thus $P(\hat{\mathbf Y(t)} | \mathbf Z(t)) = P(\hat{\mathbf Y(t)} | \mathbf X(1), \dots, \mathbf X(t))$. 
 
@@ -102,7 +115,9 @@ We will start by investigating estimator $P(\hat{\mathbf Y}(t) | \mathbf X(1), \
 \subsection{Single Decision Boundary}
 \label{sec:single_boundary}
 
-First, we will consider the Bayesian filtering of a single classification output $y(x^*)$ from noisy inputs $X(1), \dots, X(n)$ with decision boundary parameters $(\mathbf c, b)$. 
+First, we will consider the Bayesian filtering of a single classification output $y(x^*)$ from noisy inputs $\mathbf X(1), \dots, \mathbf X(n)$ with decision boundary parameters $(\mathbf c, b)$. 
+We will also focus on estimating $\hat Y$ directly from the noisy inputs without an intermediate latent variable.  \\
+
 We begin by scaling our coordinates such that the Gaussian noise has unit variance:
 \begin{equation}
 	\mathbf X(t) = \mathbf x^* + \mathcal N(\mathbf{0, I_d})
@@ -195,8 +210,7 @@ Observe that the probability that $\hat Y = 1$ in Equation~\ref{eqn:single_estim
 
 \subsection{Translateration via Multiple Decision Boundaries}
 
-\paragraph{To recap Section~\ref{sec:single_boundary}}: 
-We derived an optimal estimator of $\mathbf x^*$ (denoted $\hat{\mathbf X}$) based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) \sim \mathcal N(\mathbf x^*, \mathbf I_d)$ in Lemma~\ref{lemma:x_star_estimate}. 
+\paragraph{To recap Section~\ref{sec:single_boundary}}: We derived an optimal estimator of $\mathbf x^*$ (denoted $\hat{\mathbf X}$) based on noisy i.i.d. measurements $\mathbf X(1), \dots, \mathbf X(t) \sim \mathcal N(\mathbf x^*, \mathbf I_d)$ in Lemma~\ref{lemma:x_star_estimate}. 
 In Lemma~\ref{lemma:zscore} we derived the equation for Bernoulli variable $\hat Y$ to estimate $y(\mathbf x^*)$ based on the same noisy measurements via $\hat{\mathbf X}$.
 Finally, we showed in Lemma~\ref{lemma:prob_to_dist} that the uncertainty in $\hat Y$ and the time $t$ is sufficient to determine the projection distance between the decision boundary and $\mu = \text{mean}(X(0), \dots, X(t))$ via Equation~\ref{eqn:solve_proj_dist}. \\
 
@@ -246,7 +260,19 @@ We now have the tools to prove our final result.
 
 
 
-\end{document}
+\subsection{Discussion} 
+
+The primary result boils down to the observation that the confidence associated with each $\hat Y_i$ in $\hat{\mathbf Y}$ are measures of distance between an implied estimate of $x^*$ (denoted $\hat {\mathbf X}$). 
+$\hat{\mathbf Y}$ specifies the position of $\hat{\mathbf X} = \mu$ via ``coordinates'' defined by decision boundaries $\mathbf c_1, \dots, \mathbf c_M$. 
+For sub-optimal estimators of $\hat{\mathbf Y}$, we may still obtain an understanding of the implied estimate $\hat{\mathbf X}$ using the same methods. 
+In fact, the machinery of least-squares estimation for $\mathbf {Ax = b}$ provides a readily accessible formula for $\tilde \mu$ in sub-optimal estimators of $\hat{\mathbf Y}$: 
+
+\begin{equation}
+	\tilde \mu = (\mathbf{C^\top C})^{-1}\mathbf C^T \mathbf k
+\end{equation}
+
+assuming that $\mathbf C$ is full rank. Conveniently, if the estimation errors in sub-optimal $\hat{\mathbf Y}$ have a mean of zero, additional decision boundaries in $\mathbf C$ (e.g., beyond the minimum $D$ linearly independent boundaries) result in improved estimation of $\mathbf x^*$ by the central limit theorem, thus generalizing our results to sub-optimal estimators. 
+
 
 
 
