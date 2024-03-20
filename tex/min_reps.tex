@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{graphicx} % for images
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+
+% Define theorem and lemma environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Bayesian-Optimal Multi-Classification implies Abstract Representations}
+
+\author{Aman Bhargava}
+
+\date{\today}
+\maketitle
+
+Consider an intelligent agent making decisions in some environment.
+The agent receives noisy observations conditioned on the environment state, and
+must produce optimal decisions (i.e., learn a multi-classification objective).
+We show that the agent must represent an estimate of the de-noised environment
+state if it optimally estimates decision output using noisy observations.
+
+\section{Problem Statement}
+\label{sec:intro}
+
+
+\paragraph{Noisy Multi-Classifier: } Formalize the ``environment state'' as $X
+\sim P(X)$ with sample space $\mathcal X$ and a corresponding ground truth 
+decision set $P(Y_i | X)$ for $i\in [N]$ (e.g., multi-classification on
+the environment state). 
+Denote the i.i.d. noise process $X_i \sim P(\tilde X_i | X)$ from which
+observations $\tilde X_i$ are sampled. 
+We consider optimal estimators of the ground truth readout $Y$ given noisy
+measurements $\tilde X$ denoted $P(\hat Y | \tilde X_1, \dots, \tilde X_T)$. 
+
+
+\begin{equation}
+	\label{eqn:prob_statement}
+	% X \to \tilde X \to \hat Y
+	\begin{tikzcd}
+		X \arrow[rd] \arrow[r, "\text{noise}"] & \{\tilde X_t\}_{t\in [T]} \arrow[r, "\text{agent}"] & \{\hat Y_i\}_{i\in [N]}\\
+		& \{Y_i\}_{i\in [N]}
+	\end{tikzcd}
+\end{equation}
+
+
+\paragraph{Geometry: } Let $X$ reside in a metric space $\mathcal X$. 
+Let each $Y_i$ be defined in terms of a binary discriminator $\phi_i: \mathcal X \to \{0, 1\}$. 
+Let the equivalence classes of $\mathcal X$ under each discriminator $\phi_i$ be connected (i.e., $\{x | \phi_i(x) = 1, x\in \mathcal X\}$ is connected for each $\phi_i$).
+
+
+\paragraph{Claim: } Under fairly general conditions,
+\begin{equation}
+	I(Z(t); X) = I(\tilde X; X)
+\end{equation}
+\begin{equation}
+	I(Z(t); X) = I(\tilde X_1 \dots \tilde X_T; X)
+\end{equation}
+
+
+\paragraph{Proof Sketch: }
+\begin{itemize}
+	\item Derive $\hat Y_i \sim P(Y_i | \tilde X_t)$ using Bayes theorem. Due to independence, $P(Y_i | \tilde X_1, \dots, \tilde X_T)$ follows. 
+	\item Show that $P(Y_i | \tilde X_1, \dots, \tilde X_T)$ represents a distance between an implied $\hat X \sim P(X | \tilde X_1, \dots, \tilde X_T)$ and the boundary of the set $\{x | \phi(x) = 1, x\in \mathcal X\}$.
+	\item Show that the set of $N$ distances along with knowledge of the boundaries narrows $\hat X$ down to a point.
+\end{itemize}
+
+
+\paragraph{Results: }
+\begin{itemize}
+	\item Linear decision boundaries + Gaussian noise: proven in ``Disentangling Representations in RNNs through Multi-task Learning''. 
+	\item If $X$ is continuously deformable to some $U = g(X)$ such that decision boundaries in $U$ are linear, then the model must represent an optimal estimate of coordinates in $U$ (new result).
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
