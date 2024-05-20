@@ -23,11 +23,26 @@
 
 \textit{This document outlines the theoretical result from the paper ``Disentangling Representations in RNNs through Multi-task Learning'' by Pantelis Vafidis, Aman Bhargava, Antonio Rangel (coming soon to a preprint server near you!)} \\
 
+% insert figure here -- from media/min_reps_fig_1.png
+\begin{figure}[h! tbp]
+	\centering 
+	\includegraphics[width=0.9\textwidth]{media/min_reps_fig_1.png}
+	\caption{Theoretical framework for optimal multi-task classification. The agent estimates the ground truth decision output $\mathbf y(\mathbf x^*)$ from noisy observations $\mathbf X(t)$, with latent state $\mathbf Z(t)$ encoding an optimal estimate of the de-noised environment state $\mathbf x^*$.}
+	\label{fig:1}
+\end{figure}
 
 Consider an intelligent agent making decisions in some environment.
-The agent receives noisy observations conditioned on the environment state, and
-must produce optimal decisions (i.e., learn a multi-classification objective).
-We show that \textbf{the agent must represent an estimate of the de-noised environment state coordinate if it optimally estimates decision output from noisy observations}. I thought this was rather surprising, as it generalizes to to any optimal estimator. We focus on proving that optimal classification estimation implies state estimation in the case of linear decision boundaries in the multi-classification objective. We conclude with a discussion of the implications for non-linear decision boundaries via linear approximation and the introduction of non-linear observation maps. 
+The agent receives noisy observations ($\mathbf X(t)$) conditioned on the ``ground truth'' environment state $\mathbf x^*$ (e.g., $\mathbf X(t) \sim f(\mathbf x^* + \eta \mathcal N(0, 1))$ where $f$ is some injective observation map and $\eta$ is the noise level). 
+We consider optimal decision making agents that estimate the ground truth decision output $\mathbf y(\mathbf x^*) \in \{0, 1\}^{N_{task}}$ from noisy observations $\mathbf X(t)$). 
+Let $\mathbf Z(t)$ represent the latent state of the agent at time $t$ during sequential processing of observations $\mathbf X(t)$. 
+We show that \textbf{the agent must represent an optimal estimate of the de-noised environment state coordinate $\mathbf x^*$ in its latent $\mathbf Z(t)$ if the agent optimally estimates decision output $\mathbf y(\mathbf x^*)$ from noisy observations}. 
+I thought this was rather surprising, as it generalizes to to any optimal estimator. 
+We this result in the case of linear decision boundaries in the multi-classification objective $\mathbf y(\mathbf x^*)$. 
+We conclude with a discussion of the implications for non-linear decision boundaries via the introduction of non-linear observation maps $f$ and prove a corollary for agents observing the world through injective (e.g., potentially non-linear and high-dimensional) observation maps $f$.
+
+
+
+
 
 
 \section{General, Non-Linear Problem Statement}
